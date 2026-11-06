@@ -1,0 +1,8 @@
+// each investor tries to maximum their individual profits - normal markets
+<<i1:i2>>max=? (R{"profit1"}[F "finished1"] + R{"profit2"}[F "finished2"])
+
+// each investor tries to maximum their individual profits
+// investor 1: market favours late cash-ins
+// investor 2: market favours early cash-ins
+<<i1:i2>>max=? (R{"profit1_lc"}[F "finished1"] + R{"profit2_ec"}[F "finished2"])
+

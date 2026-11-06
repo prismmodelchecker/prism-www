@@ -1,0 +1,104 @@
+// **********************************************************************
+// Description: Fault trees and flow of the AAC systems
+// Author: Yang Zhao (zhaoy@cs.ucr.edu)
+// Date: July, 2012
+// References:
+// [Shortle12]
+// [Blum12] 
+// **********************************************************************
+
+dtmc
+
+// *****************************************
+const double second_cft_prob=0.010;
+// *****************************************
+
+const int scale=4;
+const int init_timer_value=180;
+const int AR_step=8;
+const int TSAFE_step=3;
+const int check_time=1;
+const int AR_L=30;			// (AR lower bound)
+const int TSAFE_H=45;		// (TSAFE higher bound)
+const int cutoff_time=15; 	// (Cut off time)
+const int TSAFE_L=8;		// (TSAFE lower bound)
+
+// Probability of detecting the conflict with time.[Blum12], Fig.A6.
+formula p_DET=1.0-(0.0000000000062)*timer*scale*timer*scale*timer*scale*timer*scale+(0.000000012)*timer*scale*timer*scale*timer*scale-(0.0000063)*timer*scale*timer*scale-(0.0003)*timer*scale;
+
+const double pARFail=0.95;	// probability that AR fails to work
+global AR_done : bool init false;
+global TSAFE_done : bool init false;
+
+const double check_success_prob=(1.0-second_cft_prob);
+const double success_resolve=0.9999;
+
+//formula done=(AR_res=1) | (TSAFE_res=1) | ((AR_res=0)&(TSAFE_res=0));
+//formula done=(AR_res=1) | ((AR_res=0)&(TSAFE_res=0));
+// The condition that we stop timer and done.
+formula done= (TSAFE_res<2);
+
+formula time_to_TSAFE= (timer>TSAFE_next_resolve) & ((AR_next_resolve<=TSAFE_next_resolve) | (AR_next_resolve>=timer));
+formula time_to_AR=(timer>AR_next_resolve) & ((AR_next_resolve>TSAFE_next_resolve) | (TSAFE_next_resolve>=timer));
+
+module time_elapse
+
+	timer : [0..init_timer_value] init 0;
+
+	[] (timer=0) -> pARFail:(timer'=init_timer_value) + (1-pARFail):(timer'=TSAFE_H);
+	[] done -> (timer'=timer);	// Make a self loop
+	[] (timer>TSAFE_L) & !done & (AR_done) & (TSAFE_done) & time_to_AR -> (timer'=AR_next_resolve) & (AR_done'=false) & (TSAFE_done'=false);
+	[] (timer>TSAFE_L) & !done & (AR_done) & (TSAFE_done) & time_to_TSAFE -> (timer'=TSAFE_next_resolve) & (AR_done'=false) & (TSAFE_done'=false);
+
+endmodule
+
+// AR_res, TSAFE_res FSM, (F) means possible final states.
+// 0: no resolution (F)
+// 1: generate a resolution (F)
+// 2: initial resolution, send to TSAFE to check and schedule a new time to see the final results.
+// 3: initial state (initial)
+//   3 -> 2---------checked by TSAFE ----> success : 1
+//   |    |                            | 
+//   |    <----conflict, regenerate-----
+//   |				       |
+//   |time out			       |
+//   |                                 |
+//   L---->0<---------------------------
+
+module AutoResolver
+
+	AR_res : [0..3] init 3;
+	AR_next_resolve : [0..init_timer_value] init init_timer_value;
+	AR_restime : [0..init_timer_value] init init_timer_value;
+	
+	// AutoResolver fails to give resolution
+	[] (timer>0) & (timer<=AR_L)& (AR_res>1) -> (AR_done'=true) & (AR_res'=0) & (AR_next_resolve'=init_timer_value);
+	[] (timer>0) & (!AR_done) & (timer != AR_next_resolve) -> (AR_done'=true);
+
+	[] (!AR_done) & (timer<=init_timer_value) & (timer>AR_L) & (timer=AR_next_resolve) & (AR_res=3) -> 
+			p_DET : (AR_res'=2) & (AR_next_resolve'=AR_next_resolve-check_time) & (AR_done'=true) + 
+			(1.0-p_DET) : (AR_res'=3)&(AR_next_resolve'=AR_next_resolve-AR_step)&(AR_done'=true);
+	[] (!AR_done) & (timer>AR_L) & (timer=AR_next_resolve) & (AR_res=2) -> 
+			success_resolve*check_success_prob : (AR_res'=1) & (AR_done'=true) & (AR_restime'= timer) + 
+			(1-success_resolve*check_success_prob) : (AR_res'=3) & (AR_next_resolve'=AR_next_resolve-AR_step+check_time)&(AR_done'=true);
+
+endmodule
+
+module TSAFE
+
+	TSAFE_res : [0..3] init 3;
+	TSAFE_next_resolve: [0..TSAFE_H] init TSAFE_H;
+
+	// Cut-off time
+	[] (timer>0) & (timer<=TSAFE_L) & (TSAFE_res=3) -> (TSAFE_done'=true) & (TSAFE_res'=0) & (TSAFE_next_resolve'=TSAFE_H);
+
+	// Still in checking
+	[] (timer>0) & (!TSAFE_done) & (timer!=TSAFE_next_resolve) -> (TSAFE_done'=true);
+	[] (!TSAFE_done) & (timer=TSAFE_next_resolve) & (TSAFE_res<2) -> (TSAFE_done'=true);
+
+	// Checked, and success or not
+	[] (!TSAFE_done) & (timer<=TSAFE_H) & (timer>TSAFE_L) & (timer=TSAFE_next_resolve) & (TSAFE_res=3) -> 
+			p_DET*success_resolve : (TSAFE_res'=1) & (TSAFE_next_resolve'=TSAFE_next_resolve-check_time) & (TSAFE_done'=true) + 
+			(1-p_DET*success_resolve) : (TSAFE_res'=3)&(TSAFE_next_resolve'=TSAFE_next_resolve-TSAFE_step)&(TSAFE_done'=true);
+
+endmodule

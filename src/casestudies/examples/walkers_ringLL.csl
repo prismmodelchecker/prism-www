@@ -1,0 +1,8 @@
+// Probability that the walker makes it to the correct end node
+P=? [F[T,T] (w1=17) ]
+
+// The expected number of steps that the walker takes
+R{"steps"}=? [ C<=T ]
+
+// The expected amount of time the walker spends on anchorages that were intended to be blocked
+R{"blocked"}=? [ C<=T ]

@@ -1,0 +1,10 @@
+// Probability for the walker to make it onto any anchorage
+P = ? [F[200*60,200*60] (w1=17)|(w1=20)|(w1=25)|(w1=28) ]
+// Probability to make it to the intended anchorage for input LL
+P = ? [F[200*60,200*60] (w1=17) ]
+// Probability to make it to the intended anchorage for input RL
+P = ? [F[200*60,200*60] (w1=20) ]
+// Probability to make it to the intended anchorage for input LR
+P = ? [F[200*60,200*60] (w1=25) ]
+// Probability to make it to the intended anchorage for input RR
+P = ? [F[200*60,200*60] (w1=28) ]

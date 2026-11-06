@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{% if title and title != site.title %}{{ title }} – {% endif %}{{ site.title }}</title>
+{% if description %}<meta name="description" content="{{ description }}">{% endif %}
+<link rel="icon" href="/favicon.ico">
+<link rel="stylesheet" href="/css/site.css?v={{ build.version }}">
+{{ headExtra | safe }}
+{%- if pageStyle %}<style>{{ pageStyle | safe }}</style>{% endif %}
+<script src="/js/site.js?v={{ build.version }}" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to main content</a>
+
+<header class="site-header">
+	<div class="site-header__top"><div class="site-header__inner">
+		<a class="brand" href="/">
+			<img src="/images/logo/p128.png" alt="" width="54" height="54">
+			<span class="brand__name">PRISM</span>
+		</a>
+		<span class="brand__tagline">{{ site.tagline | replace(" ", "<br>", 1) | safe }}</span>
+		<form class="site-search" role="search" action="/search/" method="get">
+			<label for="site-search-q" class="visually-hidden">Search the PRISM site</label>
+			<input id="site-search-q" name="q" type="search" placeholder="Search">
+			<button type="submit" aria-label="Search"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5"/></svg></button>
+		</form>
+		<button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" hidden>Menu</button>
+	</div></div>
+	<nav id="site-nav" class="site-nav" aria-label="Main">
+		<ul>
+		{%- for item in site.nav %}
+			<li><a href="{{ item.url }}"{% if item.id == section %} aria-current="true"{% endif %}>{{ item.title }}</a></li>
+		{%- endfor %}
+		</ul>
+	</nav>
+</header>
+
+{%- set sectionNav = site.nav | sectionMenu(section) %}
+
+<div class="page{% if sectionNav or isManual or newsSidebar %} page--with-nav{% endif %}{% if isManual %} page--manual{% endif %}{% if newsSidebar %} page--home{% endif %}">
+	{%- if isManual %}
+	{% include "partials/manual-nav.njk" %}
+	{%- elif sectionNav %}
+	<nav class="local-nav" aria-label="{{ sectionNav.title }}">
+		<h2 class="local-nav__title"><a href="{{ sectionNav.url }}">{{ sectionNav.title }}</a></h2>
+		<div class="local-nav__details">
+		<ul>
+		{%- for child in sectionNav.children %}
+			<li><a href="{{ child.url }}"{% if child.url == page.url or child.url == listUrl %} aria-current="page"{% endif %}>{{ child.title }}</a></li>
+		{%- endfor %}
+		</ul>
+		</div>
+	</nav>
+	{%- elif newsSidebar %}
+	<nav class="local-nav" aria-label="Latest news">
+		<h2 class="local-nav__title"><a href="/news/">Latest news</a></h2>
+		<div class="local-nav__details">
+		<div class="news-panel">
+		<ul class="news news--striped">
+		{%- for item in news | limit(3) %}
+			<li><time datetime="{{ item.date }}">{{ item.date | monthYear }}</time> {{ item.html | safe }}</li>
+		{%- endfor %}
+		</ul>
+		<p><a href="/news/">All news</a></p>
+		</div>
+		</div>
+	</nav>
+	{%- endif %}
+	<main id="main" class="content"{% if searchExclude != "true" %} data-pagefind-body{% endif %}>
+		{%- if section %}<span hidden data-pagefind-filter="Section">{{ (site.nav | sectionMenu(section, true)).title }}</span>{% endif %}
+		{{ content | safe }}
+	</main>
+</div>
+
+<footer class="site-footer">
+	<p>PRISM is free and open source, released under the GNU General Public License.
+	Site hosted at the Department of Computer Science, University of Oxford.</p>
+</footer>
+</body>
+</html>

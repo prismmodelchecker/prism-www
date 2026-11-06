@@ -1,0 +1,14 @@
+const int smax; // bound on messages sent
+
+module mac1
+	
+	s1 : [0..1]; // has player 1 sent?
+	e1 : [0..emax] init emax; // energy level of player 1
+	sent1 : [0..smax+1]; // number of messages sent by player 1
+	
+	[w1] true -> (s1'=0);
+	[t1] e1>0 -> (s1'=c'?0:1) & (e1'=e1-1) & (sent1'=c'?sent1:(min(sent1+1,smax+1)));
+	
+endmodule
+
+module mac2 = mac1 [ s1=s2, e1=e2, sent1=sent2, w1=w2, t1=t2 ] endmodule

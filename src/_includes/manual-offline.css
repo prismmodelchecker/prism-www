@@ -1,0 +1,36 @@
+/* Styles for the offline copy of the manual (src/manual-offline.njk): a cut-down version of the site's */
+:root {
+	--bg: #ffffff; --bg-subtle: #f4f4f8; --text: #1b1b24; --text-muted: #555566; --border: #d4d4e0;
+	--link: #2f2ca8; --code-bg: #f6f6fa;
+	--tok-keyword: #1b1b24; --tok-ident: #b3001b; --tok-num: #1a1ac0; --tok-comment: #2b7a0b; --tok-preproc: #8a2be2;
+	color-scheme: light dark;
+}
+@media (prefers-color-scheme: dark) {
+	:root {
+		--bg: #15151c; --bg-subtle: #1e1e28; --text: #e8e8f0; --text-muted: #a8a8bc; --border: #3a3a4c;
+		--link: #a9a7ff; --code-bg: #1c1c26;
+		--tok-keyword: #e8e8f0; --tok-ident: #ff8a8a; --tok-num: #8fb4ff; --tok-comment: #7fcf6a; --tok-preproc: #d39cff;
+	}
+}
+*, *::before, *::after { box-sizing: border-box; }
+body {
+	max-width: 52rem; margin: 0 auto; padding: 1rem 1rem 4rem;
+	background: var(--bg); color: var(--text);
+	font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; line-height: 1.6;
+}
+a { color: var(--link); }
+img { max-width: 100%; height: auto; }
+code, pre { font-family: ui-monospace, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace; font-size: 0.9em; }
+pre { background: var(--code-bg); border: 1px solid var(--border); border-radius: 6px; padding: 0.8rem 1rem; overflow-x: auto; line-height: 1.45; tab-size: 4; }
+.table-scroll { overflow-x: auto; margin: 1.5rem 0; }
+table { border-collapse: collapse; }
+th, td { padding: 0.35rem 0.8rem; border-bottom: 1px solid var(--border); text-align: left; vertical-align: top; }
+th { background: var(--bg-subtle); }
+.prismkeyword { color: var(--tok-keyword); font-weight: 700; }
+.prismident { color: var(--tok-ident); }
+.prismnum { color: var(--tok-num); }
+.prismcomment { color: var(--tok-comment); font-style: italic; }
+.prismpreproc { color: var(--tok-preproc); }
+.offline-note { color: var(--text-muted); font-size: 0.9rem; }
+.manual-single__version { color: var(--text-muted); font-weight: 400; }
+.manual-single__page, .manual-single__section > :first-child { border-top: 1px solid var(--border); margin-top: 2.5rem; }

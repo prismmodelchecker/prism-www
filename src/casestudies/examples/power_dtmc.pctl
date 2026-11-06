@@ -1,0 +1,23 @@
+const int T; // time
+const int K; // queue size
+
+// average power consumption
+R{"power"}=?[ F (bat=0) ]/R{"time"}=?[ F (bat=0) ]
+
+// average queue size
+R{"queue"}=?[ F (bat=0) ]/R{"time"}=?[ F (bat=0) ]
+
+// average number of lost requests
+R{"lost"}=?[ F (bat=0) ]/R{"time"}=?[ F (bat=0) ]
+
+// the expected power consumption by time T
+R{"power"}=?[ C<=2*T ]
+
+// the expected number of requests awaiting service at time T .
+R{"queue"}=?[ I=2*T ]
+
+// the expected number of lost requests by time T .
+R{"lost"}=?[ C<=2*T ]
+
+// probability queue of size k before time T
+P=?[ F q=K ]

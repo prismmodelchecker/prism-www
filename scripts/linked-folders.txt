@@ -1,0 +1,15 @@
+# Folders of files that aren't in git: papers, releases, artefacts, ...
+# On qav, scripts/prism-www-build.sh makes each one a symlink in the web folder, to the location given here
+# (relative to the web folder), and the deploy never deletes them. Local builds link to them on the
+# live site instead (see src/_lib/assets.js).
+
+# Shared with other sites (and the bibliography database)
+papers      ../papers
+talks       ../talks
+bibtex      ../doc/bib
+
+# This site's own
+dl          ../prism-www-files/dl
+files       ../prism-www-files/files
+# (subm, for papers under submission, now all in files: a link to it, so old /subm/ URLs keep working)
+subm        files

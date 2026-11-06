@@ -1,0 +1,54 @@
+mdp
+
+
+// Model Parameters 
+const double p = 0.15; // Mean Disturbance Probability
+const double e = 0.0; // Epistemic Uncertainty 
+
+const int M = 5; // Env. Width
+const int N = 5; // Env. Height
+
+formula crashed = (x = 1 & y = 3); // Obstacles 
+formula goal = x = 1 & y = N;
+
+// UAV Behaviour 
+module env
+
+	x : [1..M] init 1;
+	y : [1..N] init 1;
+
+	[up]    !crashed -> [1-3*p-e, 1-3*p+e] : (y'=min(y+1,N)) // Probability to move into intended direction
+			  + [p-e,p+e] : (y'=min(y+1,N)) & (x'=max(x-1,1)) // Probabilities to get pushed by wind
+			  + [p-e,p+e] : (y'=min(y+1,N)) & (x'=min(x+1,M))
+			  + [p-e,p+e] : true;
+   
+	[right] !crashed -> [1-3*p-e, 1-3*p+e] : (x'=min(x+1,M)) // Probability to move into intended direction
+			  + [p-e,p+e] : (x'=min(x+1,M)) & (y'=max(x-1,1)) // Probabilities to get pushed by wind
+			  + [p-e,p+e] : (x'=min(x+1,M)) & (y'=min(x+1,N))
+			  + [p-e,p+e] : true;
+
+	[left] !crashed -> [1-3*p-e, 1-3*p+e] : (x'=max(x-1,1)) // Probability to move into intended direction
+			  + [p-e,p+e] : (x'=max(x-1,1)) & (y'=max(x-1,1)) // Probabilities to get pushed by wind
+			  + [p-e,p+e] : (x'=max(x-1,1)) & (y'=min(x+1,N))
+			  + [p-e,p+e] : true;
+
+endmodule
+
+// Your handcrafted policy
+
+module policy
+	// ----------
+	// TODO...
+	// ----------
+endmodule
+
+// Labelling
+label "crashed" = crashed;
+label "goal" = goal;
+
+// Reward Structure (i.e., step-counting)
+rewards "steps"
+	true : 1;
+endrewards
+
+

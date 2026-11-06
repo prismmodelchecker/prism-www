@@ -1,0 +1,163 @@
+// MODEL OF REAL TIME DYNAMIC VOLTAGE SCALING SYSTEM
+// cyclic conserving edf scheduler (chooses job with the most immediate deadline)
+// gxn/dxp 11/11/03
+
+// non-deterministic since may be cases when two or more jobs have the same deadline
+mdp
+
+//-------------------------------------------------------------------------------------------------
+// FREQUENCIES (assume Vi greater than Vj if i<j)
+const double V1 = 1;   // corresponding voltage is 5
+const double V2 = 3/4; // corresponding voltage is 4
+const double V3 = 1/2; // corresponding voltage is 3
+
+//-------------------------------------------------------------------------------------------------
+// DISCRETISE TIME
+// choose a division of one time unit (one time step) such that to finish on WCET 
+// is an integer when the task is run on any of the frequencies
+// (e.g. WCET at frequency 3/4 is now WCET*4/3 time steps)
+const int N=3;
+// rescale units of work such that in one step an integer amount of work is done
+// since depending on the frequency the work in one time unit is 1, 3/4 or 1/2 
+// we scale by 4 to get integer values
+const int K=4; 
+// for frequencies V1, V2 and V3 in one time unit we now do 4,3 or 2 units of work respectively
+
+//-------------------------------------------------------------------------------------------------
+// CONSTANTS OF THE SYSTEM (assume task deadline equals the period)
+// scaled by the chosen discrete time step
+const int P1=8*N; // period of the first task
+const int C1=3*N; // worst case execution time of the first task
+const int T1=3*(K*N); // worst case execution time of the first task (scaled by units of work)
+
+const int P2=10*N; // period of the second task
+const int C2=3*N;  // worst case execution time of the second task
+const int T2=3*(K*N); // worst case execution time of the second task (scaled by units of work)
+
+const int P3=14*N; // period of the third task
+const int C3=1*N;  // worst case execution time of the third task
+const int T3=1*(K*N); // worst case execution time of the third task (scaled by units of work)
+
+//-------------------------------------------------------------------------------------------------
+// WHEN TO CHOOSE WHAT FREQUENCY
+// fi=0 means that process i has not finished in its current period
+formula frequency1 = !frequency2 & !frequency3 & ((u1/P1 + u2/P2 + u3/P3) <= V1);// frequency V1
+formula frequency2 = !frequency3 & ((u1/P1 + u2/P2 + u3/P3) <= V2); // frequency V2
+formula frequency3 = ((u1/P1 + u2/P2 + u3/P3) <= V3); // frequency V3
+
+// WHO TO SCHEDULE
+// task with nearest deadline (fi=0 if task i has not finished)
+// only consider task1 get remaining formulae through renaming
+formula schedule   = f1=0 & (!f2=0 | (d1<=d2)) & (!f3=0 | (d1<=d3)); // schedule task1
+formula noschedule = f1=1 & f2=1 & f3=1; // schedule nothing
+
+// probabilities of finishing in one time step (uniformly distributed)
+// only consider task1 get remaining probabilities through renaming
+formula finish1  = min(4/(T1-w1),1); // running at frequency 1 (4 units of work)
+formula finish2  = min(3/(T1-w1),1); // running at frequency 2 (3 units of work)
+formula finish3  = min(2/(T1-w1),1); // running at frequency 3 (2 units of work)
+
+//-------------------------------------------------------------------------------------------------
+// MODULE FOR FIRST TASK
+module task1
+	
+	d1 : [1..P1] init P1; // time until next period
+	f1 : [0..2]  init 0; // state of task in current period
+	// 0 - not finished
+	// 1 - finished 
+	// 2 - error (not finished and period over)
+	w1 : [0..T1] init 0; // work done (time spent running scaled by the frequency)
+	t1 : [0..C1] init 0; // time spent running
+	u1 : [0..C1] init C1; // used to decide who to schedule
+	
+	// TASK BEING PERFORMED
+	// task is being performed at frequency 1
+	[step1] schedule & frequency1 & d1>1 ->
+	  (1-finish1) : (d1'=d1-1) & (w1'=w1+4) & (t1'=min(t1+1,C1)) // not finished
+	    + finish1 : (d1'=d1-1) & (t1'=0) & (f1'=1) & (w1'=0) & (u1'=min(t1+1,C1)); // finished
+	[step1] schedule & frequency1 & d1=1 ->
+	  (1-finish1) : (f1'=2)  // not finished (and error)
+	    + finish1 : (d1'=P1) & (t1'=0) & (f1'=0) & (w1'=0) & (u1'=C1); // finished
+	// task is being performed at frequency 0.75
+	[step1] schedule & frequency2 & d1>1 ->
+	  (1-finish2) : (d1'=d1-1) & (w1'=w1+3) & (t1'=min(t1+1,C1)) // not finished
+	    + finish2 : (d1'=d1-1) & (t1'=0) & (f1'=1) & (w1'=0) & (u1'=min(t1+1,C1)); // finished
+	[step1] schedule & frequency2 & d1=1 ->
+	  (1-finish2) : (f1'=2)  // not finished (and error)
+	    + finish2 : (d1'=P1) & (t1'=0) & (f1'=0) & (w1'=0) & (u1'=C1); // finished
+	// task is being performed at frequency 0.5
+	[step1] schedule & frequency3 & d1>1 ->
+	  (1-finish3) : (d1'=d1-1) & (w1'=w1+2) & (t1'=min(t1+1,C1)) // not finished
+	    + finish3 : (d1'=d1-1) & (t1'=0) & (f1'=1) & (w1'=0) & (u1'=min(t1+1,C1)); // finished
+	[step1] schedule & frequency3 & d1=1 -> 
+	  (1-finish3) : (f1'=2)  // not finished (and error)
+	    + finish3 : (d1'=P1) & (t1'=0) & (f1'=0) & (w1'=0) & (u1'=C1); // finished
+	// TASK NOT BEING PERFORMED (DEADLINE STILL CHANGES) - task 2 is running
+	// deadline goes down
+	[step2] d1>1 -> (d1'=d1-1);
+	// end of period and finished task - move to next period
+	[step2] d1=1 & f1=1 -> (d1'=P1) & (f1'=0) & (u1'=C1);
+	// end of period and not finished - error
+	[step2] d1=1 & f1=0 -> (f1'=2); 
+	// TASK NOT BEING PERFORMED (DEADLINE STILL CHANGES) - task 3 is running
+	// deadline goes down
+	[step3] d1>1 -> (d1'=d1-1);
+	// end of period and finished task - move to next period
+	[step3] d1=1 & f1=1 -> (d1'=P1) & (f1'=0) & (u1'=C1);
+	// end of period and not finished - error
+	[step3] d1=1 & f1=0 -> (f1'=2);
+	// TASK NOT BEING PERFORMED (DEADLINE STILL CHANGES) - no task is running
+	// deadline goes down 
+	[step] noschedule & d1>1 -> (d1'=d1-1);
+	// end of period and finished task - move to next period
+	[step] noschedule & d1=1 -> (d1'=P1) & (f1'=0) & (u1'=C1);
+	
+endmodule
+
+//-------------------------------------------------------------------------------------------------
+// CONSTRUCT OTHER TASKS THROUGH RENAMING
+// task 2
+module task2=task1[
+	  d1=d2, d2=d3, d3=d1,
+	  u1=u2, u2=u3, u3=u1,
+	  t1=t2,
+	  w1=w2,
+	  f1=f2, f2=f3, f3=f1,
+	  P1=P2, P2=P3, P3=P1,
+	  C1=C2, C2=C3, C3=C1,
+	  T1=T2,
+	  step1=step2, step2=step3, step3=step1 ]
+	  
+endmodule
+// task 3
+module task3=task1[
+	  d1=d3, d2=d1, d3=d2,
+	  u1=u3, u2=u1, u3=u2,
+	  t1=t3,
+	  w1=w3,
+	  f1=f3, f2=f1, f3=f2,
+	  P1=P3, P2=P1, P3=P2,
+	  C1=C3, C2=C1, C3=C2,
+	  T1=T3,
+	  step1=step3, step2=step1, step3=step2 ]
+	  
+endmodule
+
+//-------------------------------------------------------------------------------------------------
+// REWARDS - related to power consumption (equals square of current voltage)
+
+rewards "power"
+	// task performed at frequency 1 (voltage is 5)
+	[step1] frequency1 & !noschedule : 25;
+	[step2] frequency1 & !noschedule : 25;
+	[step3] frequency1 & !noschedule : 25;
+	// task performed at frequency 3 (voltage is 4)
+	[step1] frequency2 & !noschedule : 16;
+	[step2] frequency2 & !noschedule : 16;
+	[step3] frequency2 & !noschedule : 16;
+	// task performed at frequency 3 (voltage is 3)
+	[step1] frequency3 & !noschedule : 9;
+	[step2] frequency3 & !noschedule : 9;
+	[step3] frequency3 & !noschedule : 9;
+	
+endrewards

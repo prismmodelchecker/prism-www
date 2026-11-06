@@ -1,0 +1,11 @@
+// Social welfare Nash equilibrium
+<<p1:p2>>{nash,social}max=?(R{"r1"}[F s] + R{"r2"}[F s]);
+
+// Social welfare Nash equilibrium
+<<p1:p2>>{nash,fair}max=?(R{"r1"}[F s] + R{"r2"}[F s]);
+
+// Social welfare correlated equilibrium
+<<p1:p2>>{corr,social}max=?(R{"r1"}[F s] + R{"r2"}[F s]);
+
+// Social fairness correlated equilibrium
+<<p1:p2>>{corr,fair}max=?(R{"r1"}[F s] + R{"r2"}[F s]);

@@ -1,0 +1,19 @@
+---
+layout: layouts/base.njk
+title: News
+section: about
+---
+<h1>PRISM news</h1>
+
+{%- set years = news | groupByYear %}
+<nav aria-label="News by year">
+<ul class="year-nav">
+{%- for group in years %}<li><a href="#y{{ group.year }}">{{ group.year }}</a></li>{% endfor %}
+</ul>
+</nav>
+
+<ul class="news news--striped">
+{%- for group in years %}{% for item in group.items %}
+<li{% if loop.first %} id="y{{ group.year }}"{% endif %}><time datetime="{{ item.date }}">{{ item.date | monthYear }}</time> {{ item.html | safe }}</li>
+{%- endfor %}{% endfor %}
+</ul>

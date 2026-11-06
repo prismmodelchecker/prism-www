@@ -1,0 +1,8 @@
+User-agent: *
+# The same folders as /files/, under an older name
+Disallow: /subm/
+# Search: the results page and its index
+Disallow: /search/
+Disallow: /pagefind/
+# The file viewer: the same content as the files themselves
+Disallow: /view/

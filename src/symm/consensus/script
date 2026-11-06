@@ -1,0 +1,12 @@
+#!/bin/csh
+
+# normal
+prism -m coin8.nm coin8.pctl -prop 2 -fair -nopre -maxiters 10000000 -cuddmaxmem 900000
+prism -m coin10.nm coin10.pctl -prop 2 -fair -nopre -maxiters 10000000 -cuddmaxmem 900000
+  
+# symmetry reduction
+prism-symm -h coin8.nm coin8.pctl -prop 2 -fair -nopre -maxiters 10000000 -symm 0 0
+prism-symm -h coin10.nm coin10.pctl -prop 2 -fair -nopre -maxiters 10000000 -symm 0 0
+prism-symm -h coin12.nm coin12.pctl -prop 2 -fair -nopre -maxiters 10000000 -symm 0 0
+prism-symm -h coin14.nm coin14.pctl -prop 2 -fair -nopre -maxiters 10000000 -symm 0 0
+prism-symm -h coin16.nm coin16.pctl -prop 2 -fair -nopre -maxiters 10000000 -symm 0 0

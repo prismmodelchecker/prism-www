@@ -1,0 +1,31 @@
+{#- The manual's full table of contents (from its README.md), shown beside every manual page.
+    The current page also lists its own headings, as links into the page. -#}
+{%- set headings = content | manualHeadings %}
+<nav class="manual-nav" aria-label="Manual contents">
+	<div class="manual-nav__head">
+		<p class="manual-nav__title"><a href="/manual/">PRISM Manual</a> <span class="manual-nav__version">{{ site.version }}</span></p>
+		<form class="manual-nav__search" role="search" action="/search/" method="get">
+			<label for="manual-search-q" class="visually-hidden">Search the manual</label>
+			<input id="manual-search-q" name="q" type="search" placeholder="Search the manual">
+			<input type="hidden" name="section" value="Documentation">
+		</form>
+	</div>
+	<div class="local-nav__details">
+		{%- for section in manual.sections %}
+		{%- if section.title %}<h2 class="manual-nav__section"><a href="{{ section.url }}"{% if section.url == page.url %} aria-current="page"{% endif %}>{{ section.title }}</a></h2>{% endif %}
+		<ul{% if not section.title %} class="manual-nav__top"{% endif %}>
+			{%- for p in section.pages %}
+			<li>
+				<a href="{{ p.url }}"{% if p.url == page.url %} aria-current="page"{% endif %}>{{ p.title }}</a>
+				{%- if p.url == page.url and (headings.length or p.children.length) %}
+				<ul class="manual-nav__headings">
+					{%- for h in headings %}<li><a href="#{{ h.id }}">{{ h.text | safe }}</a></li>{% endfor %}
+					{%- for c in p.children %}<li><a href="{{ c.url }}">{{ c.title }}</a></li>{% endfor %}
+				</ul>
+				{%- endif %}
+			</li>
+			{%- endfor %}
+		</ul>
+		{%- endfor %}
+	</div>
+</nav>

@@ -1,0 +1,59 @@
+// COIN FLIPPING PROTOCOL FOR POLYNOMIAL RANDOMIZED CONSENSUS [AH90] 
+// 14 processes & K=2
+// gxn/dxp 20/11/00
+
+nondeterministic
+
+// CONSTANTS
+// counter : [0..2*(K+1)*N) ] = 2*3*14=84
+// init (K+1)*N = 3*14=42
+// counter<= N = 14
+// counter>= 2*(K+1)*N -N = 84-14=70
+
+// shared coin
+global counter : [0..84] init 42;
+
+module process1
+	
+	// program counter
+	pc1 : [0..3];
+	// 0 - flip
+	// 1 - write 
+	// 2 - check
+	// 3 - finished
+	
+	// local coin
+	coin1 : [0..1];	
+
+	// flip coin
+	[] (pc1=0)  -> 0.5 : (coin1'=0) & (pc1'=1) + 0.5 : (coin1'=1) & (pc1'=1);
+	// write tails -1 (reset coin to add regularity)
+	[] (pc1=1) & (coin1=0) & (counter>0) -> (counter'=counter-1) & (pc1'=2) & (coin1'=0);
+	// write heads +1 (reset coin to add regularity)
+	[] (pc1=1) & (coin1=1) & (counter<84) -> (counter'=counter+1) & (pc1'=2) & (coin1'=0);
+	// check
+	// decide tails
+	[] (pc1=2) & (counter<=14) -> (pc1'=3) & (coin1'=0);
+	//decide heads
+	[] (pc1=2) & (counter>=70) -> (pc1'=3) & (coin1'=1);
+	// flip again
+	[] (pc1=2) & (counter>14) & (counter<70) -> (pc1'=0);
+	// loop
+	[] (pc1=3) -> (pc1'=3);
+
+endmodule
+
+// construct remaining processes through renaming
+module process2 = process1[pc1=pc2,coin1=coin2] endmodule
+module process3 = process1[pc1=pc3,coin1=coin3] endmodule
+module process4 = process1[pc1=pc4,coin1=coin4] endmodule
+module process5 = process1[pc1=pc5,coin1=coin5] endmodule
+module process6 = process1[pc1=pc6,coin1=coin6] endmodule
+module process7 = process1[pc1=pc7,coin1=coin7] endmodule
+module process8 = process1[pc1=pc8,coin1=coin8] endmodule
+module process9 = process1[pc1=pc9,coin1=coin9] endmodule
+module process10 = process1[pc1=pc10,coin1=coin10] endmodule
+module process11 = process1[pc1=pc11,coin1=coin11] endmodule
+module process12 = process1[pc1=pc12,coin1=coin12] endmodule
+module process13 = process1[pc1=pc13,coin1=coin13] endmodule
+module process14 = process1[pc1=pc14,coin1=coin14] endmodule

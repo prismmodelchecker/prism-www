@@ -1,0 +1,15 @@
+{#- A list of bibliography items grouped by year, newest first, with a year index. Needs: items -#}
+{%- set years = items | sortByDate | groupByYear("year") %}
+<nav aria-label="Publications by year">
+<ul class="year-nav">
+{%- for group in years %}<li><a href="#y{{ group.year }}">{{ group.year }}</a></li>{% endfor %}
+</ul>
+</nav>
+{%- for group in years %}
+<h2 id="y{{ group.year }}">{{ group.year }} <small>({{ group.items.length }})</small></h2>
+<ul class="bib-list">
+{%- for item in group.items %}
+<li>{{ item | citation | safe }}</li>
+{%- endfor %}
+</ul>
+{%- endfor %}

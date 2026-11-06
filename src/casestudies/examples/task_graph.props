@@ -1,0 +1,8 @@
+// scheduler can complete all tasks (max probability all tasks complete equals 1)
+Pmax=?[F "tasks_complete" ]; 
+
+// min expected time to complete all tasks
+R{"time"}min=?[F "tasks_complete" ];
+
+// min expected energy to complete all tasks
+R{"energy"}min=?[F "tasks_complete" ];

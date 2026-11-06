@@ -1,0 +1,52 @@
+// model of dining cryptographers
+// gxn/dxp 15/11/06
+
+mdp
+
+// constants used in renaming
+const int p1 =1;
+const int p2 =2;
+const int p3 =3;
+
+// module of the master
+module master
+	
+	m : [0..1]; // program state
+	pay : [0..3]; // who pays
+	
+	// nondeterministically decide who pays
+	[] m=0 -> (m'=1); // master pays
+	[] m=0 -> (m'=1) & (pay'=1); // crypt 1  pays
+	[] m=0 -> (m'=1) & (pay'=2); // crypt 2  pays
+	[] m=0 -> (m'=1) & (pay'=3); // crypt 3  pays
+	
+endmodule
+
+// module for first cryptographer
+module crypt1
+	
+	coin1 : [0..2]; // value of its coin
+	s1 : [0..1]; // program state
+	agree1 : [0..1]; // what it states (0 disagree and 1 agree)
+	
+	// flip coin
+	[] m=1 & coin1=0 -> 0.5 : (coin1'=1) + 0.5 : (coin1'=2);
+	
+	// make statement (once relevant coins have been flipped)
+	// agree (coins the same and does not pay)
+	[] s1=0 & coin1>0 & coin2>0 & coin1=coin2    & (pay!=p1) -> (s1'=1) & (agree1'=1);
+	// disagree (coins different and does not pay)
+	[] s1=0 & coin1>0 & coin2>0 & !(coin1=coin2) & (pay!=p1) -> (s1'=1);
+	// disagree (coins the same and pays)
+	[] s1=0 & coin1>0 & coin2>0 & coin1=coin2    & (pay=p1)  -> (s1'=1);
+	// agree (coins different and pays)
+	[] s1=0 & coin1>0 & coin2>0 & !(coin1=coin2) & (pay=p1)  -> (s1'=1) & (agree1'=1);
+	
+	// remove deadlock by synchronising loop when finished
+	[done] s1=1 -> true;
+
+endmodule
+
+// construct further cryptographers with renaming
+module crypt2 =crypt1[coin1=coin2, s1=s2, agree1=agree2, p1=p2, coin2=coin3] endmodule
+module crypt3 =crypt1[coin1=coin3, s1=s3, agree1=agree3, p1=p3, coin2=coin1] endmodule

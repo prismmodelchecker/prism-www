@@ -1,0 +1,16 @@
+const int T;
+
+// What is the probability that the queue becomes full within time T?
+P=? [ F<=T "queue_full" ]
+
+// What is the expected time taken for the queue to first get full?
+R{"time"}=? [ F "queue_full" ]
+
+// What is the expected queue size at time T?
+R{"queue"}=? [ I=T ]
+
+// What is the expected number of lost requests up to time T?
+R{"lost"}=? [ C<=T ]
+
+// What is the expected energy consumption up to time T?
+R{"energy"}=? [ C<=T ]

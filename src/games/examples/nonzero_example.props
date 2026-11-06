@@ -1,0 +1,8 @@
+// Players p1 and p2 can collaborate so that the sum of their probabilities
+// of reach their goal states is at least 1.5
+<<p1:p2>> >=1.5(P[ F "goal1" ] + P[ F "goal2" ])
+
+// What is the sum of expected values when players 1 and 2 collaborate 
+// and each wants to minimise their expected rewards, with respect to
+// the reward measures r1 and r2, to reach their individual goals
+<<p1:p2>>min=?(R{"r1"}[ F "goal1" ] + R{"r2"}[ F "goal2" ])

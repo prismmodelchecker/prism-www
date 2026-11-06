@@ -1,0 +1,16 @@
+// SERVICE REQUESTER AND SERVICE REQUEST QUEUE
+
+// size of queue
+const int QMAX=20;
+
+// rate of arrivals
+const double request=100/72;
+
+module SRQ
+
+	q : [0..QMAX];
+	
+	[request] true -> request : (q'=min(q+1,QMAX)); // request arrives
+	[serve]  q>0 -> (q'=q-1); // request served
+	
+endmodule

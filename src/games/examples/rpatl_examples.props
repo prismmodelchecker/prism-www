@@ -1,0 +1,16 @@
+// Players 4 and 5 can ensure that the probability
+// of reaching an "end"-state within 100 time-steps is >= 0.95
+<<4,5>> P>=0.95 [ F<=100 "end" ]
+
+// The maximum probability that players p1 and p2 can guarantee of
+// of reaching a "b"-state within k steps, whilst not passing through any "c"-states,
+// no matter the behaviour of the other players
+<<p1,p2>> Pmin=? [ !"c" U<=k "b" ]
+
+// The maximum probability with which players p1 and p2
+// can guarantee that an "end"-state is reached
+<<p1,p3>> Pmax=? [ F "end"]
+
+// Players 1, 2 and 3 can guarantee that the probability
+// of reaching a "b"-state, whilst passing only through "a"-states, is > 0.5
+<<1,2,3>> P>0.5 [ "a" U "b" ]

@@ -1,0 +1,4 @@
+// Model parameters 
+const double p = 0.1;  // Mean disturbance probability
+const double e;        // Epistemic uncertainty 
+formula a = x * e;     // Epistemic uncertainty grows with x-coordinate

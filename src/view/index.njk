@@ -1,0 +1,46 @@
+---
+layout: layouts/base.njk
+title: File viewer
+searchExclude: "true"
+---
+{#- Shows a model or properties file from this site with PRISM highlighting: /view/?f=/files/tacas11/power.nm -#}
+<p class="breadcrumb" id="view-up" hidden>Up one level: <a href="/"></a>/</p>
+<h1 id="view-title">File viewer</h1>
+<figure class="code">
+<figcaption id="view-download" hidden>Download: <a download></a></figcaption>
+<pre class="language-prism" tabindex="0"><code id="view-code"></code></pre>
+</figure>
+<noscript><p>Showing the file needs JavaScript: use the download link instead.</p></noscript>
+<script type="module">
+import { highlightPrism } from "/js/prism-highlight.js?v={{ build.version }}";
+
+const MODEL_FILE = /\.(prism|nm|pm|sm|props|pctl|csl|smg|pp)$/;
+const code = document.getElementById("view-code");
+const f = new URLSearchParams(location.search).get("f") || "";
+
+// Only PRISM model and properties files on this site
+if (!/^\/[^/?#][^?#]*$/.test(f) || !MODEL_FILE.test(f) || f.split("/").includes("..")) {
+	code.textContent = "This page shows PRISM model and properties files from this site.";
+} else {
+	const name = f.split("/").pop();
+	const dir = f.slice(0, -name.length);
+	document.title = `${name} – ${document.title.split(" – ").pop()}`;
+	document.getElementById("view-title").textContent = name;
+	const up = document.getElementById("view-up");
+	up.querySelector("a").href = dir;
+	up.querySelector("a").textContent = dir.split("/").filter(Boolean).pop() || "";
+	up.hidden = false;
+	const download = document.getElementById("view-download");
+	download.querySelector("a").href = f;
+	download.querySelector("a").textContent = name;
+	download.hidden = false;
+	try {
+		const res = await fetch(f);
+		if (!res.ok) throw new Error(res.status === 404 ? "file not found" : `error ${res.status}`);
+		const text = (await res.text()).replace(/\s+$/, "");
+		code.innerHTML = highlightPrism(text);
+	} catch (e) {
+		code.textContent = `Couldn't load ${f}: ${e.message}.`;
+	}
+}
+</script>

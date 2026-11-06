@@ -1,0 +1,89 @@
+// checking for a path between nodes 1 and 2 for random graphs ($ nodes)
+// gxn/dxp 12/11/04
+
+mdp
+
+const double p; // probability there exists an edge between two nodes
+
+// program counter (decides which edge is set randomly next)
+// note: the second modelling stage does not start until the program
+// counter has reached its maximum value, i.e. the random graph has 
+// been constructed
+module PC
+	
+	pc : [0..12];
+	
+	[s12] pc=0 -> (pc'=pc+1);
+	[s13] pc=1 -> (pc'=pc+1);
+	[s14] pc=2 -> (pc'=pc+1);
+	[s23] pc=3 -> (pc'=pc+1);
+	[s24] pc=4 -> (pc'=pc+1);
+	[s34] pc=5 -> (pc'=pc+1);
+	
+endmodule
+
+// module for path between 1 and 2
+module M12
+	
+	x12 : bool;
+	
+	// randomly decide if there exists an edge
+	[s12] true -> p:(x12'=true)+(1-p):(x12'=false);
+	// update if we can find a path to 2
+	[] pc=6 & !x12 & (false | (x13 & x23) | (x14 & x24)) -> (x12'=true);
+	
+endmodule
+
+// module for path between 1 and 3
+module M13
+	
+	x13 : bool;
+	
+	// randomly decide if there exists an edge
+	[s13] true -> p:(x13'=true)+(1-p):(x13'=false);
+	
+endmodule
+
+// module for path between 1 and 4
+module M14
+	
+	x14 : bool;
+	
+	// randomly decide if there exists an edge
+	[s14] true -> p:(x14'=true)+(1-p):(x14'=false);
+	
+endmodule
+
+// module for path between 2 and 3
+module M23
+	
+	x23 : bool;
+	
+	// randomly decide if there exists an edge
+	[s23] true -> p:(x23'=true)+(1-p):(x23'=false);
+	// update if we can find a path to 2
+	[] pc=6  & !x23 & (false | (x12 & x13) | (x24 & x34)) -> (x23'=true);
+	
+endmodule
+
+// module for path between 3 and 4
+module M24
+	
+	x24 : bool;
+	
+	// randomly decide if there exists an edge
+	[s24] true -> p:(x24'=true)+(1-p):(x24'=false);
+	// update if we can find a path to 2
+	[] pc=6  & !x24 & (false | (x12 & x14) | (x23 & x34)) -> (x24'=true);
+	
+endmodule
+
+// module for path between 3 and 4
+module M34
+	
+	x34 : bool;
+	
+	// randomly decide if there exists an edge
+	[s34] true -> p:(x34'=true)+(1-p):(x34'=false);
+	
+endmodule

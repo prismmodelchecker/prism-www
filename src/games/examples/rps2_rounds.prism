@@ -1,0 +1,29 @@
+const k; // number of rounds
+
+// module to count the rounds
+module rounds
+
+	rounds : [0..k+1];
+	
+	[] rounds<=k -> (rounds'=rounds+1);
+	[] rounds=k+1 -> true;
+
+endmodule
+
+rewards "utility1" // utility of player 1
+	[r1,p2] true : -1;
+	[r1,s2] true : 1;
+	[p1,r2] true : 1;
+	[p1,s2] true : -1;
+	[s1,p2] true : 1;
+	[s1,r2] true : -1;
+endrewards
+
+rewards "utility2" // utility of player 2
+	[r1,p2] true : 1;
+	[r1,s2] true : -1;
+	[p1,r2] true : -1;
+	[p1,s2] true : 1;
+	[s1,p2] true : -1;
+	[s1,r2] true : 1;
+endrewards

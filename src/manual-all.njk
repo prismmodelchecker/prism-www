@@ -1,0 +1,16 @@
+---
+layout: layouts/base.njk
+title: PRISM Manual (all on one page)
+section: doc
+searchExclude: "true"
+permalink: /manual/all/
+eleventyImport:
+  collections: ["manualPage"]
+eleventyExcludeFromCollections: true
+---
+{#- The manual on one page, for printing or searching within (and the old AllOnOnePage URLs) -#}
+<p class="breadcrumb"><a href="/manual/">Manual</a> ›</p>
+<article class="manual-page manual-single">
+{%- set offline = false %}
+{% include "partials/manual-single.njk" %}
+</article>

@@ -1,0 +1,16 @@
+const int k;
+
+// Maximum worst-case probability to reach goal 1
+Pmaxmin=? [ F "goal1" ];
+
+// Maximum worst-case probability to reach goal 1 within k steps
+Pmaxmin=? [ F<=k "goal1" ];
+
+// Maximum worst-case probability to reach locations 4 or 5 within k steps
+Pmaxmin=? [ F<=k (s=4 | s=5) ];
+
+// Maximum worst-case probability to visit goal 1 and then goal 2
+Pmax=? [ F ("goal1" & (F "goal2")) ];
+
+// Minimum worst-case expected number of steps to reach either goal (stochastic shortest path)
+R{"moves"}minmax=? [ F ("goal1"|"goal2") ];

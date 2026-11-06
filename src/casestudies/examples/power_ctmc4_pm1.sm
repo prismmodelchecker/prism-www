@@ -1,0 +1,24 @@
+// POWER MANAGER
+module PM
+
+	p : [0..1];
+
+	// never in sleep so prevent transitions to and from sleep
+	[sleep2standby] false -> true;
+	[sleep2idle]    false -> true;
+	[standby2sleep] false -> true;
+	[idle2sleep]    false -> true;
+
+	// move to stand by when queue>=8
+	[standby2idle]  q>=8 -> true;
+	// probabilistically move to standby from idle when queue becomes empty	
+	[serve] q=1 -> 0.043289 : (p'=1);
+	[serve] q=1 -> 0.956711 : (p'=0);
+	// need loop for other cases
+	[serve] q>1 -> true;
+	// therefore perform transition when p=1
+	[idle2standby]  p=1 -> (p'=0);
+	// reset p to zero since a request have arrived (queue no longer empty)
+	[request] true -> (p'=0);
+	
+endmodule

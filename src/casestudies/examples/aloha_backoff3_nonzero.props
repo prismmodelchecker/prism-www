@@ -1,0 +1,7 @@
+// expected time user 1 eventually sends a packet
+// and users 2 and 3 form a coalition to send their packets
+<<usr1:usr2,usr3>>min=? (R{"time"}[F s1=3] + R{"time"}[F s2=3 & s3=3])
+
+// probability user 1 eventually sends a packet by a deadline
+// and users 2 and 3 form a coalition to send their packets by a deadline
+<<usr1:usr2,usr3>>max=? (P[F (s1=3 & t<=D)] + P[F (s2=3 & s3=3 & t<=D)])

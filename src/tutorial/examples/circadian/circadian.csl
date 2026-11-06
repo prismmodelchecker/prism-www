@@ -1,0 +1,5 @@
+const double t;
+
+R{"activated_protein"}=?[ I=t ]
+//R{"r"}=?[ I=t ]
+R{"repressor_transcriptions"}=?[ C<=t ]

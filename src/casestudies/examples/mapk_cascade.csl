@@ -1,0 +1,12 @@
+const double t; // time bound
+
+// the expected amount of activated MAPK at time t
+R{"activated"}=?[ I=t ]
+// the expected amount squared of activated MAPK at time t (used to calculate standard deviation)
+R{"activated_squared"}=?[ I=t ]
+// the expected percentage of activated MAPK at time t
+R{"percentage"}=?[ I=t ]
+//the expected number of reactions between MAPK and MAKK by time t
+R{"reactions"}=?[ C<=t ]
+// the expected time until all MAPK are activated at the same time instant
+R{"time"}=?[F kpp=N ]

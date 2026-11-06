@@ -1,0 +1,13 @@
+#!/bin/csh
+
+# normal
+prism -h csma4.nm csma4.pctl -prop 1
+prism -h csma5.nm csma5.pctl -prop 1
+prism -m csma6.nm csma6.pctl -prop 1 -cuddmaxmem 900000
+  
+# symmetry reduction
+prism-symm -h csma4.nm csma4.pctl -prop 1 -symm 1 0
+prism-symm -h csma5.nm csma5.pctl -prop 1 -symm 1 0
+prism-symm -h csma6.nm csma6.pctl -prop 1 -symm 1 0
+prism-symm -h csma7.nm csma7.pctl -prop 1 -symm 1 0
+prism-symm -h csma8.nm csma8.pctl -prop 1 -symm 1 0

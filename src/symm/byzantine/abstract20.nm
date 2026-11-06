@@ -1,0 +1,230 @@
+// Byzantine agreement protocol 
+// gxn 05/09/01
+// the property we want to show is that
+// in two rounds all honest pre votes will be the same with probability 1/2
+
+
+// CONSTANTS
+// N - number of parties &  T- number of corrupted parties
+// number of honest parties (M=N-T)
+const M=20;
+// minimum number of votes from honest parties needed before a vote can be made K=N- 2T 
+const K=11;
+
+// abstraction of actual protocol for proving probabilistic progress
+// need to include only:
+// main votes for round r-1
+// pre votes for round r
+// main votes for round r
+// pre votes for round r+1
+// where r is an arbitrary round
+
+// one question we have is when the coins in rounds r-1 and r are flipped
+// (these coins are needed for the pre-votes in round r and round r+1 respectively)
+// we have chosen that this can happen any time after at least n-2t honest parties have 
+// read the main votes in round r-1 (that is chosen their pre-vote)
+// so we have the following variable where K=N-2T
+// n0 : [0..K] counts the number of parties that have read the main votes in round r-1
+// this variable are updated when parties read main votes and decide on their pre votes
+// we also need the following variables for the coin in round i
+// coin1: [0..1] (0 coin has not been tossed  and 1 coin has been tossed) and fi : [0..1] (flipped 0 or flipped 1)
+// the transition rules are then given by
+//  (coini=0) & (n0>=K) -> 0.5 : (fi'=0) & (coini'=1) + 0.5 : (fi'=1) & (coini'=1);
+
+// the reason for this choice of when the coin is flipped follows from the fact that
+// n-t parties are needed to work out the value of the coin, so we need at least n-2t
+// honest parties and they do not give out their value of the coin until they have read the main votes
+// (using the same criterion for flipping the coin in round r as for round r-1 follows from the proof of probabilistic progress)
+// note this is not quite what is says above in the protocol the parties could collect different 
+// main votes for making a decision and giving out its signature share (point 3) 
+// from the ones used to make their next pre vote (point 1)
+// however, when I took this approach the property we require failed to hold
+// *in the proof in the paper the authors do suppose that the main votes that
+// are collected for the decision and for the pre vote are the same*
+
+// MAIN VOTES OF ROUND R-1 
+// we assume that these votes can be arbitrary except that there cannot be a main vote for 0 and for 1 
+// (this property can be proved elsewhere) 
+// we suppose that the adversary can choose which of these value is possible at any time 
+// and we suppose that there can always be main votes for abstain
+// we furthermore do not restrict the number of votes a party must read
+// therefore have variables main0_0 : [0..1]  (vote for 0) main0_1 : [0..1] (vote for 1)
+// and the following choices which can be made by the adversary at any time
+//	[] (main0_0=0) & (main0_1=0) -> (main0_0'=1);  
+// [] (main0_0=0) & (main0_1=0) -> (main0_1'=1); 
+
+// PRE VOTES OF ROUND R 
+// before the adversary has chosen which of 0 and 1 is a possible main vote for round r-1
+// the only pre vote possible is than of the coin (since the party can only read abstain votes)
+// once the adversary has chosen between 0 and 1 there can be pre votes for this value
+// but also still for the coin (since we suppose there can always be main votes for abstain)
+// we furthermore do not restrict the number of main votes the party must read before choosing its pre vote
+// we therefore have the following variables which count the number of pre votes
+// pre1_0 : [0..M] and pre1_1 : [0..M]
+// with the following transition rules: first reading main votes
+// (s1=0) & (main0_0=1) -> (s1'=1) & (n0'=min(K,n0+1)) (pre vote for 0)
+// (s1=0) & (main0_1=1) -> (s1'=2) & (n0'=min(K,n0+1)) (pre vote for 1)
+// (s1=0)               -> (s1'=3) & (n0'=min(K,n0+1)) (pre vote for coin)
+// (note that we need to increase the value of n0) then making pre votes
+// (s1=1) & (coin1=1)          -> (s1'=4) & (pre1_0'=pre1_0+1)
+// (s1=2) & (coin1=1)          -> (s1'=4) & (pre1_1'=pre1_1+1)
+// (s1=3) & (coin1=1) & (f1=0) -> (s1'=4) & (pre1_0'=pre1_0+1)
+// (s1=3) & (coin1=1) & (f1=1) -> (s1'=4) & (pre1_1'=pre1_1+1)
+// (note that the party must wait for the coin to be flipped)
+
+// MAIN VOTE FOR ROUND R
+// first a party must wait until sufficient (n-2t) honest pre votes in round R have been cast 
+// (since it must read n-t parties) to be able to cast a main vote 
+// to cast a main vote for abstain the party must receive a pre vote for 0 and for 1
+// these can be from either honest or corrupted parties
+// to receive an honest vote for 0 (1) then we must have pre1_0>0 (pre1_1>0)
+// to receive a corrupted vote for 0 (1) then either this is the value of the coin or the corrupted
+// party received a main vote in the previous round for 0 (1) that is the following holds
+// f0=0 | main0_0=1 (f0=1 | main0_1=1)
+// to cast a main vote for 0 or 1 the party must at least have received at least n-2t honest pre votes for this value
+// putting this together we need the following variables to indicate what the main votes are
+// main1_0 : [0..1] (vote for 0) main1_1 : [0..1] (vote for 1) and main1_abs : [0..1] (vote for 1)
+// and the following transition rules
+// (s1=4) & (pre1_0+pre1_1>=K) & ((pre1_0>0) | (f1=0) | (main0_0=1)) & ((pre1_1>0) | (f1=1) | (main0_1=1))  
+//											-> (s1'=5)  & (main1_abs'=1)
+// (s1=4) & (pre1_0+pre1_1>=K) & (pre1_0>=K) -> (s1'=5) & (main1_0'=1)
+// (s1=4) & (pre1_0+pre1_1>=K) & (pre1_1>=K) -> (s1'=5) & (main1_1'=1)
+
+// PRE VOTE FOR ROUND R+1
+// to vote for the coin the party must at least receive abstain votes from an honest party
+// to vote for 0 (1) need at least one vote for 0 (1) from either an honest or corrupted party
+// to get such a vote from a corrupted party there needs to be at least n-2t honest main votes for 0 (1) in round r
+// since we only need to know if all pre votes are the same or not we just
+// have boolean variables indicating that a pre vote for this value has been cast or not, that is
+// pre2_0 : [0..1] (vote for 0) and pre2_1 : [0..1] (vote for 1)
+// the transition rules are for reading the main votes:
+// (s1=5) & (main1_abs=1) & (main1_0=0) & (main1_1=0)  -> (s1'=6) // vote for coin
+// (s1=5) & ((main1_0=1) | (pre1_0>=K))	-> (s1'=7) // vote for 0
+// (s1=5) & ((main1_1=1) | (pre1_1>=K))	-> (s1'=8) // for for 1
+// (note that we need to increase n1) and for casting pre-votes 
+// (s1=6) & (coin2=1) & (f2=0) -> (s1'=9) & (pre2_0'=1);
+// (s1=6) & (coin2=1) & (f2=1) -> (s1'=9) & (pre2_1'=1);
+// (s1=7) & (coin2=1)		   -> (s1'=9) & (pre2_0'=1);
+// (s1=8) & (coin2=1)		   -> (s1'=9) & (pre2_1'=1);
+// (note that we need to wait for the coin)
+
+// the property we wish to check is that all party have the same pre vote in round r+1
+// with probability at least 1/2, in pctl we have for 3 honest parties
+// [ true U s1=9 & s2=9 & s3=9 & ((pre2_0=1 & pre2_1=0) | (pre2_1=1 & pre2_0=0)) ]>=0.5
+// not that si=9 means the party has made its pre vote in round r+1
+
+// VARIABLES 
+
+// counts the number of parties that have read the main votes in round r-1
+global n0 :  [0..K];
+
+// main-votes so far made in round r-1
+global main1_0 : [0..1]; // vote for 0
+global main1_1 : [0..1]; // vote for 1
+global main1_abs : [0..1]; // vote for 1
+
+// to count the pre-votes so far made in round r
+global pre1_0 : [0..M]; // number for 0
+global pre1_1 : [0..M]; // number for 1
+
+
+// pre-votes so far made in round r+1 
+global pre2_0 : [0..1]; // vote for 0
+global pre2_1 : [0..1]; // vote for 1
+
+// adversary which decides which main votes in round r-1 can be cast
+module adversary 
+
+	//  main-votes so far made in round r-1
+	main0_0 : [0..1]; // vote for 0
+	main0_1 : [0..1]; // vote for 1
+
+	// adversary decide which main vote is possible can do this at any time
+	[] (main0_0=0) & (main0_1=0) -> (main0_0'=1);  
+	[] (main0_0=0) & (main0_1=0) -> (main0_1'=1); 
+	
+endmodule 
+
+// module for tossing coin in round R-1
+module coin1
+
+	f1 : [0..1];
+	coin1 : [0..1];
+	
+//	[] (coin1=0) -> (coin1'=0);
+	[] (coin1=0) & (n0>=K) -> 0.5 : (f1'=0) & (coin1'=1) + 0.5 : (f1'=1) & (coin1'=1);
+//	[] (coin1=1) -> (coin1'=1);
+	
+endmodule
+
+// module for tossing coin in round R
+module coin2=coin1[coin1=coin2,f1=f2] endmodule
+
+// honest party
+module party1
+
+	// local state
+	s1 : [0..9];
+	// 1 - read main-votes r-1
+	// 2 - pre-vote for coin in round r
+	// 3 - pre-vote for 0 in round r
+	// 4 - pre-vote for 1 in round r
+	// 5 - collect and make main vote in round r
+	// 6 - read main-votes in round r
+	// 7 - pre-vote for coin r+1
+	// 8 - pre-vote for 0 in round r+1
+	// 9 - pre-vote for 1 in round r+1
+	
+	// read main votes in round r-1
+	[] (s1=0) & (main0_0=1) -> (s1'=1) & (n0'=min(K,n0+1)); // pre vote for 0
+	[] (s1=0) & (main0_1=1) -> (s1'=2) & (n0'=min(K,n0+1)); // pre vote for 1
+	[] (s1=0)               -> (s1'=3) & (n0'=min(K,n0+1)); // pre vote for coin
+	
+	// make pre-vote in round r (need to wait for coin)  
+	[] (s1=1) & (coin1=1)          -> (s1'=4) & (pre1_0'=min(M,pre1_0+1));
+	[] (s1=2) & (coin1=1)          -> (s1'=4) & (pre1_1'=min(M,pre1_1+1));
+	[] (s1=3) & (coin1=1) & (f1=0) -> (s1'=4) & (pre1_0'=min(M,pre1_0+1));
+	[] (s1=3) & (coin1=1) & (f1=1) -> (s1'=4) & (pre1_1'=min(M,pre1_1+1));
+	
+	// collect pre-votes and make main vote in round r
+	[] (s1=4) & (pre1_0+pre1_1>=K) & ((pre1_0>0) | (f1=0) | (main0_0=1)) & ((pre1_1>0) | (f1=1) | (main0_1=1)) 
+							-> (s1'=5)  & (main1_abs'=1);
+	[] (s1=4) & (pre1_0+pre1_1>=K) & (pre1_0>=K) -> (s1'=5) & (main1_0'=1);
+	[] (s1=4) & (pre1_0+pre1_1>=K) & (pre1_1>=K) -> (s1'=5) & (main1_1'=1);
+	
+	// read main votes in round r
+	// to get all abstain votes need at least all honest parties to have abstain
+	[] (s1=5) & (main1_abs=1)  -> (s1'=6); 
+	// to vote for 0 or 1 need a pre vote for 0 or 1 either from honest or corrupt parties
+	[] (s1=5) & ((main1_0=1) | (pre1_0>=K))	-> (s1'=7); 
+	[] (s1=5) & ((main1_1=1) | (pre1_1>=K))	-> (s1'=8); 
+	
+	// make pre-votes in round r+1 (need to wait for the coin 
+	[] (s1=6) & (coin2=1) & (f2=0) -> (s1'=9) & (pre2_0'=1);
+	[] (s1=6) & (coin2=1) & (f2=1) -> (s1'=9) & (pre2_1'=1);
+	[] (s1=7) & (coin2=1)          -> (s1'=9) & (pre2_0'=1);
+	[] (s1=8) & (coin2=1)          -> (s1'=9) & (pre2_1'=1);
+	// loop
+//	[] (s1=9) -> (s1'=9);
+	
+endmodule
+
+module party2=party1[s1=s2] endmodule
+module party3=party1[s1=s3] endmodule
+module party4=party1[s1=s4] endmodule
+module party5=party1[s1=s5] endmodule
+module party6=party1[s1=s6] endmodule
+module party7=party1[s1=s7] endmodule
+module party8=party1[s1=s8] endmodule
+module party9=party1[s1=s9] endmodule
+module party10=party1[s1=s10] endmodule
+module party11=party1[s1=s11] endmodule
+module party12=party1[s1=s12] endmodule
+module party13=party1[s1=s13] endmodule
+module party14=party1[s1=s14] endmodule
+module party15=party1[s1=s15] endmodule
+module party16=party1[s1=s16] endmodule
+module party17=party1[s1=s17] endmodule
+module party18=party1[s1=s18] endmodule
+module party19=party1[s1=s19] endmodule
+module party20=party1[s1=s20] endmodule

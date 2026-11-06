@@ -1,0 +1,373 @@
+//-----------------------------------------------------------------//
+// IEEE 802.15.4 CSMA-CA protocol
+// by Matthias Fruth 27/01/06
+// based on gxn/jxs 20/02/02
+//
+// scenario: PAN of two sending stations and two receiving stations
+//           each sending station wants to send a single data frame with acknowledgement to the respective receiving station
+//           transmission via slotted CSMA-CA
+// model: slotted CSMA-CA, 20 ksymbols/s mode, with GTS, without GTS maintenance, without pending messages, battery life extension off
+// timing values scaled [alur95timing] by 4 
+// data frame lengths fixed, parametric
+// CAP length fixed, parametric
+//-----------------------------------------------------------------//
+
+// VARIABLE PARAMETERS
+const int BO; // macBeaconOrder = 0..15 (has to be <15 for beacon-enabled PANs)
+const int SO; // macSuperframeOrder = 0..15, SO <= BO (has to be <15 for beacon-enabled PANs)
+
+// SUPERFRAME CONSTRAINTS
+const int A_SUPERFRAME_SLOT = floor(func(pow,2,SO)) * ASLOT; // 2^SO * aBaseSlotDuration
+const int ASLOT = 15; // aBaseSlotDuration = 60 [symbols]
+const int BI = floor(func(pow,2,BO)) * SUPERFRAME; // beacon interval
+const int CAP_MIN = 110; // aMinCAPLength = 440 [symbols]
+const int SUPERFRAME = ASLOT * SUPERFRAME_SLOTS; // aBaseSuperframeDuration = aBaseSlotDuration * aNumSuperframeSlots
+const int SUPERFRAME_SLOTS = 16; // aNumSuperframeSlots = 16
+const int SD = floor(func(pow,2,SO)) * SUPERFRAME; // superframe duration
+
+// TIMING CONSTRAINTS
+const int ACK_TIMEOUT = 30; // macAckWaitDuration = 120 [symbols] (at 20 and 40 ksymbols/s) or 54 (at 62.5 ksymbols/s)
+const int ACK = 22; // 11 octets = 88 symbols (at 20 and 40 ksymbols/s) or 22 (at 62.5 ksymbols/s)
+const int BACKOFF_PERIOD = 5; // aUnitBackoffPeriod = 20 [symbols]
+//const int BEACON_MAX = 280; // BEACON_MAX+LIFS=100+40=140 octets = 1120 symbols (at 20 and 40 ksymbols/s) or 280 (at 62.5 ksymbols/s) // enable for: nondeterministic CAP length; disable otherwise
+const int BEACON_MIN = 70; // BEACON_MIN+SIFS=23+12=35 octets = 280 symbols (at 20 and 40 ksymbols/s) or 70 (at 62.5 ksymbols/s)
+const int CCA = 2; // 8 symbols
+const int DATA_MAX = 266; // aMaxPHYPacketSize = 127 [octets] on MAC layer + 6 octets SHR+PHR = 1064 symbols (at 20 and 40 ksymbols/s) or 266 (at 62.5 ksymbols/s)
+//const int DATA_MIN = 30; // 15 octets = 120 symbols (at 20 and 40 ksymbols/s) or 30 (at 62.5 ksymbols/s)
+const int LIFS = 10; // aMinLIFSPeriod = 40 [symbols]
+//const int OCTET = 2; // 1 octet = 8 symbols (at 20 and 40 ksymbols/s) or 2 (at 62.5 ksymbols/s) // enable for nondeterministic data frame length only
+const int SIFS = 3; // aMinSIFSPeriod = 12 [symbols]
+const int SIFS_FRAME_MAX = 48; // aMaxSIFSFrameSize = 18 [octets] on MAC layer + 6 octets SHR+PHR = 192 symbols (at 20 and 40 ksymbols/s) or 48 (at 62.5 ksymbols/s)
+const int TURNAROUND = 3; // aTurnaroundTime = 12 [symbols]
+const int VULN = 10; // vulnerable period [heindl03performance, singh:performance]
+    // VULN = AIRPROP + CCA + TURNAROUND = 20 + 8 + 12 + 0.002 = 40.002 symbols 
+    // AIRPROP: 0.1 microseconds, that is 0.002, 0.004, or 0.00625 symbols (at 20, 40, 62.5 ksymbols/s, respectively)
+    // CCA: 2 analyses, each starting on a backoff boundary (6.7.9)
+
+// maximum constant used in timing constraints + 1
+const int TIME_MAX = DATA_MAX+1;
+
+// BACKOFF CONSTRAINTS
+const int RETR_MAX = 3; // aMaxFrameRetries = 3
+const int BE_MIN; // macMinBE = 0..3 (default 3)
+const int BE_MAX = 5; // aMaxBE = 5
+const int NB_MAX; // macCSMABackoffs = 0..5 (default 4)
+
+// DATA FRAME TRANSMISSION TIMES
+const int data1; // disable for nondeterministic data frame length only
+const int data2; // disable for nondeterministic data frame length only
+
+// end of CAP (that is, beacon length plus CAP length)
+const int cap; // disable for: nondeterministic CAP length; enable otherwise
+
+// OTHER CONSTANTS
+//const int COL_MAX; // enable for collision probability properties only
+
+// REWARDS
+// for expected time properties // enable for expected time properties only
+//rewards
+//  [time] true : 1;
+//endrewards
+
+// for expected number of collisions properties // enable for expected number of collisions properties only
+//rewards
+//  [send1] c1=0 & c2>0 : 1;
+//  [send2] c2=0 & c1>0 : 1;
+//endrewards
+
+//-----------------------------------------------------------------//
+
+// TIMER
+//module timer
+//        // global time
+//        t : [0..T];
+//
+//        [time] (t<T) -> (t'=min(t+1,T));
+//        // loop when time passes deadline T to prevent further transitions
+//        [] (t>=T) -> (t'=t);
+//
+//endmodule
+
+//-----------------------------------------------------------------//
+
+// CHANNEL
+module channel
+
+// number of collisions
+//col : [0..COL_MAX]; // enable for collision probability properties only
+
+// medium status 
+c1 : [0..2];
+c2 : [0..2];
+// ci corresponds to messages associated with station i
+// 0 nothing being sent
+// 1 being sent correctly
+// 2 being sent garbled
+
+[time] true -> true;
+
+// begin sending message and nothing else currently being sent
+[send1] c1=0 & c2=0 -> (c1'=1);
+[send2] c2=0 & c1=0 -> (c2'=1);
+
+// begin sending message and something is already being sent
+// in this case both messages become garbled
+[send1] c1=0 & c2>0 -> (c1'=2) & (c2'=2); // disable for collision probability properties only
+[send2] c2=0 & c1>0 -> (c1'=2) & (c2'=2); // disable for collision probability properties only
+//[send1] c1=0 & c2>0 -> (c1'=2) & (c2'=2) & col'=min(col+1,COL_MAX); // enable for collision probability properties only
+//[send2] c2=0 & c1>0 -> (c1'=2) & (c2'=2) & col'=min(col+1,COL_MAX); // enable for collision probability properties only
+
+// finish sending message
+[finish1] c1>0 -> (c1'=0);
+[finish2] c2>0 -> (c2'=0);
+
+endmodule
+ 
+// FORMULAE FOR THE CHANNEL
+// channel is busy
+formula busy = c1>0 | c2>0;
+// channel is free
+formula free = c1=0 & c2=0;
+
+//-----------------------------------------------------------------//
+
+// COORDINATOR FOR CSMA-CA SYNCHRONISATION
+module coordinator
+
+// clock for superframe
+x0 : [0..BI];
+
+// local state
+s0 : [0..3];
+// 0 transmit beacon
+// 1 define CAP length
+// 2 CAP
+// 3 CFP and inactive superframe duration
+
+// end of CAP (that is, beacon length plus CAP length)
+//cap : [0..SD]; // enable for: nondeterministic CAP length; disable otherwise
+
+// let time pass (transmit beacon)
+[time] s0=0 & x0<BEACON_MIN & x0<SD -> (x0'=x0+1) & (s0'=0); // disable for: nondeterministic CAP length; enable otherwise
+//[time] s0=0 & x0<BEACON_MAX & x0<SD -> (x0'=x0+1) & (s0'=0); // enable for: nondeterministic CAP length; disable otherwise
+// finish beacon transmission
+[] s0=0 & x0>=BEACON_MIN -> (s0'=2); // disable for: nondeterministic CAP length; enable otherwise
+//[] s0=0 & x0>=BEACON_MIN -> (s0'=1); // enable for: nondeterministic CAP length; disable otherwise
+
+// define CAP length
+//[] s0=1 & cap<16*A_SUPERFRAME_SLOT & cap<=SD-A_SUPERFRAME_SLOT -> (cap'=cap+A_SUPERFRAME_SLOT); // enable for: nondeterministic CAP length; disable otherwise
+//[] s0=1 & cap>=x0+CAP_MIN -> (s0'=2); // enable for: nondeterministic CAP length; disable otherwise
+//[] s0=1 & x0+CAP_MIN>16*A_SUPERFRAME_SLOT -> (s0'=0); // enable for: nondeterministic CAP length; disable otherwise
+
+// let time pass (during active superframe)
+[time] s0=2 & x0<cap -> (x0'=x0+1);
+// finish CAP
+[] s0=2 & x0=cap -> (s0'=3);
+
+// let time pass (during CFP and inactive superframe duration)
+[time] s0=3 & x0<BI -> (x0'=x0+1);
+// start new superframe
+[] x0=BI -> (s0'=0) & (x0'=0); // disable for: nondeterministic CAP length; enable otherwise
+// [] x0=BI -> (s0'=0) & (x0'=0) & (cap'=0); // enable for: nondeterministic CAP length; disable otherwise
+
+endmodule
+
+//-----------------------------------------------------------------//
+
+// STATION 1
+module station1
+ 
+// clocks for station 1
+x1 : [0..TIME_MAX];
+
+// local state
+s1 : [1..9]; // disable for nondeterministic data frame length only
+s1 : [0..9]; // enable for nondeterministic data frame length only
+// 0 set data frame length // for nondeterministic data frame length only
+// 1 set backoff counter
+// 2 backoff
+// 3 vulnerable
+// 4 failure
+// 5 transmit
+// 6 wait for acknowledgement
+// 7 transmit acknowledgement
+// 8 no acknowledgement received
+// 9 done
+
+// NUMBER OF RETRANSMISSIONS
+retr1 : [0..RETR_MAX]; // disable for: noack, noackcol, noRETRlimit
+
+// NUMBER OF BACKOFFS
+nb1 : [0..NB_MAX]; // disable for: noBOlimit
+
+// BACKOFF EXPONENT
+be1 : [0..BE_MAX] init BE_MIN;
+
+// BACKOFF COUNTER
+backoff1 : [0..floor(func(pow,2,BE_MAX))-1];
+
+// data frame length
+data1 : [DATA_MIN..DATA_MAX]; // enable for nondeterministic data frame length only
+
+// SET DATA FRAME LENGTH
+[] s1=0 & data1<DATA_MAX -> (data1'=min(data1+OCTET,DATA_MAX)); // enable for nondeterministic data frame length only
+[] s1=0 & data1>=DATA_MIN -> (s1'=1); // enable for nondeterministic data frame length only
+
+// SET BACKOFF COUNTER
+// uniformly set backoff counter
+// backoff exponent 0
+[] s1=1 & be1=0 -> (s1'=2) & (x1'=0) & (backoff1'=0);
+// backoff exponent 1
+[] s1=1 & be1=1 -> 1/2 : (s1'=2) & (x1'=0) & (backoff1'=0)
+                 + 1/2 : (s1'=2) & (x1'=0) & (backoff1'=1);
+// backoff exponent 2
+[] s1=1 & be1=2 -> 1/4 : (s1'=2) & (x1'=0) & (backoff1'=0)
+                 + 1/4 : (s1'=2) & (x1'=0) & (backoff1'=1)
+                 + 1/4 : (s1'=2) & (x1'=0) & (backoff1'=2)
+                 + 1/4 : (s1'=2) & (x1'=0) & (backoff1'=3);
+// backoff exponent 3
+[] s1=1 & be1=3 -> 1/8 : (s1'=2) & (x1'=0) & (backoff1'=0)
+                 + 1/8 : (s1'=2) & (x1'=0) & (backoff1'=1)
+                 + 1/8 : (s1'=2) & (x1'=0) & (backoff1'=2)
+                 + 1/8 : (s1'=2) & (x1'=0) & (backoff1'=3)
+                 + 1/8 : (s1'=2) & (x1'=0) & (backoff1'=4)
+                 + 1/8 : (s1'=2) & (x1'=0) & (backoff1'=5)
+                 + 1/8 : (s1'=2) & (x1'=0) & (backoff1'=6)
+                 + 1/8 : (s1'=2) & (x1'=0) & (backoff1'=7);
+// backoff exponent 4
+[] s1=1 & be1=4 -> 1/16 : (s1'=2) & (x1'=0) & (backoff1'=0)
+                 + 1/16 : (s1'=2) & (x1'=0) & (backoff1'=1)
+                 + 1/16 : (s1'=2) & (x1'=0) & (backoff1'=2)
+                 + 1/16 : (s1'=2) & (x1'=0) & (backoff1'=3)
+                 + 1/16 : (s1'=2) & (x1'=0) & (backoff1'=4)
+                 + 1/16 : (s1'=2) & (x1'=0) & (backoff1'=5)
+                 + 1/16 : (s1'=2) & (x1'=0) & (backoff1'=6)
+                 + 1/16 : (s1'=2) & (x1'=0) & (backoff1'=7)
+                 + 1/16 : (s1'=2) & (x1'=0) & (backoff1'=8)
+                 + 1/16 : (s1'=2) & (x1'=0) & (backoff1'=9)
+                 + 1/16 : (s1'=2) & (x1'=0) & (backoff1'=10)
+                 + 1/16 : (s1'=2) & (x1'=0) & (backoff1'=11)
+                 + 1/16 : (s1'=2) & (x1'=0) & (backoff1'=12)
+                 + 1/16 : (s1'=2) & (x1'=0) & (backoff1'=13)
+                 + 1/16 : (s1'=2) & (x1'=0) & (backoff1'=14)
+                 + 1/16 : (s1'=2) & (x1'=0) & (backoff1'=15);
+// backoff exponent 5
+[] s1=1 & be1=5 -> 1/32 : (s1'=2) & (x1'=0) & (backoff1'=0)
+                 + 1/32 : (s1'=2) & (x1'=0) & (backoff1'=1)
+                 + 1/32 : (s1'=2) & (x1'=0) & (backoff1'=2)
+                 + 1/32 : (s1'=2) & (x1'=0) & (backoff1'=3)
+                 + 1/32 : (s1'=2) & (x1'=0) & (backoff1'=4)
+                 + 1/32 : (s1'=2) & (x1'=0) & (backoff1'=5)
+                 + 1/32 : (s1'=2) & (x1'=0) & (backoff1'=6)
+                 + 1/32 : (s1'=2) & (x1'=0) & (backoff1'=7)
+                 + 1/32 : (s1'=2) & (x1'=0) & (backoff1'=8)
+                 + 1/32 : (s1'=2) & (x1'=0) & (backoff1'=9)
+                 + 1/32 : (s1'=2) & (x1'=0) & (backoff1'=10)
+                 + 1/32 : (s1'=2) & (x1'=0) & (backoff1'=11)
+                 + 1/32 : (s1'=2) & (x1'=0) & (backoff1'=12)
+                 + 1/32 : (s1'=2) & (x1'=0) & (backoff1'=13)
+                 + 1/32 : (s1'=2) & (x1'=0) & (backoff1'=14)
+                 + 1/32 : (s1'=2) & (x1'=0) & (backoff1'=15)
+                 + 1/32 : (s1'=2) & (x1'=0) & (backoff1'=16)
+                 + 1/32 : (s1'=2) & (x1'=0) & (backoff1'=17)
+                 + 1/32 : (s1'=2) & (x1'=0) & (backoff1'=18)
+                 + 1/32 : (s1'=2) & (x1'=0) & (backoff1'=19)
+                 + 1/32 : (s1'=2) & (x1'=0) & (backoff1'=20)
+                 + 1/32 : (s1'=2) & (x1'=0) & (backoff1'=21)
+                 + 1/32 : (s1'=2) & (x1'=0) & (backoff1'=22)
+                 + 1/32 : (s1'=2) & (x1'=0) & (backoff1'=23)
+                 + 1/32 : (s1'=2) & (x1'=0) & (backoff1'=24)
+                 + 1/32 : (s1'=2) & (x1'=0) & (backoff1'=25)
+                 + 1/32 : (s1'=2) & (x1'=0) & (backoff1'=26)
+                 + 1/32 : (s1'=2) & (x1'=0) & (backoff1'=27)
+                 + 1/32 : (s1'=2) & (x1'=0) & (backoff1'=28)
+                 + 1/32 : (s1'=2) & (x1'=0) & (backoff1'=29)
+                 + 1/32 : (s1'=2) & (x1'=0) & (backoff1'=30)
+                 + 1/32 : (s1'=2) & (x1'=0) & (backoff1'=31);
+
+// BACKOFF
+// let time pass
+[time] s1=2 & s0=2 & x1<BACKOFF_PERIOD & backoff1>0 -> (x1'=min(x1+1,TIME_MAX));
+// decrement backoff
+[] s1=2 & x1=BACKOFF_PERIOD & backoff1>0 -> (x1'=0) & (backoff1'=backoff1-1);
+// let time pass (remaining backoff postponed until next superframe)
+[time] s1=2 & x1<BACKOFF_PERIOD & (s0=0 | s0=3) -> (x1'=0);
+[time] s1=2 & backoff1=0 & s0=2 & data1<=SIFS_FRAME_MAX & x0+VULN+data1+ACK_TIMEOUT+SIFS>cap -> true;
+[time] s1=2 & backoff1=0 & s0=2 & data1>SIFS_FRAME_MAX-1 & x0+VULN+data1+ACK_TIMEOUT+LIFS>cap -> true;
+// finish backoff
+[] s1=2 & backoff1=0 & s0=2 & data1<=SIFS_FRAME_MAX & x0+VULN+data1+ACK_TIMEOUT+SIFS<=cap -> (s1'=3);
+[] s1=2 & backoff1=0 & s0=2 & data1>SIFS_FRAME_MAX-1 & x0+VULN+data1+ACK_TIMEOUT+LIFS<=cap -> (s1'=3);
+
+// VULNERABLE
+// if channel is not detected busy, then let time pass
+[time] s1=3 & x1<VULN & (x1!=CCA | free) -> (x1'=min(x1+1,TIME_MAX));
+// if channel is detected busy, then backoff
+[] s1=3 & x1=CCA & busy & nb1=NB_MAX -> (s1'=4); // disable for: noBOlimit
+[] s1=3 & x1=CCA & busy & nb1<NB_MAX -> (s1'=1) & (x1'=0) & (nb1'=min(nb1+1,NB_MAX)) & (be1'=min(be1+1,BE_MAX)); // disable for: noBOlimit
+//[] s1=3 & x1=CCA & busy -> (s1'=1) & (x1'=0) & (be1'=min(be1+1,BE_MAX)); // enable for: noBOlimit
+// move to transmit
+[send1] s1=3 & x1=VULN -> (s1'=5) & (x1'=0);
+
+// FAILURE
+[] s1=4 -> true;
+
+// TRANSMIT
+// let time pass
+[time] s1=5 & x1<data1 -> (x1'=min(x1+1,TIME_MAX));
+// finish transmission successfully
+[finish1] s1=5 & x1>=data1 & c1=1 -> (s1'=6) & (x1'=0); // disable for: noack
+//[finish1] s1=5 & x1>=data1 -> (s1'=9); // enable for: noack
+// finish transmission garbled
+[finish1] s1=5 & x1>=data1 & c1=2 -> (s1'=8) & (x1'=0); // disable for: noack
+
+// WAITING FOR ACKNOWLEDGEMENT
+// let time pass
+[time] s1=6 & x1<TURNAROUND & func(mod, x0, BACKOFF_PERIOD)=0 -> (x1'=min(x1+1,TIME_MAX)); // disable for: noack
+[time] s1=6 & x1<TURNAROUND+BACKOFF_PERIOD & func(mod, x0, BACKOFF_PERIOD)>0 -> (x1'=min(x1+1,TIME_MAX)); // disable for: noack
+// turn from sending to receiving
+[send1] s1=6 & x1>=TURNAROUND & func(mod, x0, BACKOFF_PERIOD)=0 -> (s1'=7) & (x1'=0); // disable for: noack
+
+// TRANSMIT ACKNOWLEDGEMENT
+// let time pass
+[time] s1=7 & x1<ACK -> (x1'=min(x1+1,TIME_MAX)); // disable for: noack
+// acknowledgement sent successfully
+[finish1] s1=7 & x1=ACK & c1=1 -> (s1'=9); // disable for: noack, noackcol
+//[finish1] s1=7 & x1=ACK -> (s1'=9); // enable for: noackcol
+// acknowledgement sent garbled (timer is not being resetted)
+[finish1] s1=7 & x1=ACK & c1=2 -> (s1'=8); // disable for: noack, noackcol
+
+// NO ACKNOWLEDGEMENT
+// let time pass
+[time] s1=8 & x1<ACK_TIMEOUT -> (x1'=min(x1+1,TIME_MAX)); // disable for: noack
+// no acknowledgement received after timeout
+[] s1=8 & x1=ACK_TIMEOUT & retr1<RETR_MAX -> (s1'=1) & (x1'=0) & (retr1'=retr1+1) & (nb1'=0) & (be1'=BE_MIN); // disable for: noBOlimit, noack, noackcol, noRETRlimit
+//[] s1=8 & x1=ACK_TIMEOUT & retr1<RETR_MAX -> (s1'=1) & (x1'=0) & (retr1'=retr1+1) & (be1'=BE_MIN); // enable for: noBOlimit; disable for: noBOlimit_noack, noBOlimit_noackcol, noBOlimit_noRETRlimit
+[] s1=8 & x1=ACK_TIMEOUT & retr1=RETR_MAX -> (s1'=4); // disable for: noack, noackcol, noRETRlimit
+//[] s1=8 & x1=ACK_TIMEOUT -> (s1'=1) & (x1'=0) & (nb1'=0) & (be1'=BE_MIN); // enable for: noackcol, noRETRlimit; disable for: noBOlimit_noackcol and noBOlimit_noRETRlimit
+//[] s1=8 & x1=ACK_TIMEOUT -> (s1'=1) & (x1'=0) & (be1'=BE_MIN); // enable for: noBOlimit_noackcol, noBOlimit_noRETRlimit
+
+// DONE
+[time] s1=9 -> true;
+
+endmodule
+
+// ---------------------------------------------------------------------------- //
+
+// STATION 2 (rename STATION 1)
+module 
+
+station2=station1[
+  backoff1=backoff2,
+  be1=be2,
+  c1=c2,
+  c2=c1,
+  data1=data2,
+  finish1=finish2,
+  nb1=nb2, // disable for: noBOlimit
+  retr1=retr2, // disable for: noack, noackcol, noRETRlimit
+  s1=s2,
+  send1=send2,
+  x1=x2
+]
+
+endmodule

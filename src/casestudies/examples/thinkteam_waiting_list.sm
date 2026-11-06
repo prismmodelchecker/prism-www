@@ -1,0 +1,95 @@
+ctmc
+
+const double lambda = 1.0;
+const double mu = 5.0;
+const int User_0 = 0;
+const int User_0a = 1;
+const int User_1 = 0;
+const int User_1a = 1;
+const int User_2 = 0;
+const int User_2a = 1;
+const int FIFO_empty = 0;
+const int F_0 = 1;
+const int F_01 = 2;
+const int F_012 = 3;
+const int F_02 = 4;
+const int F_021 = 5;
+const int F_1 = 6;
+const int F_10 = 7;
+const int F_102 = 8;
+const int F_12 = 9;
+const int F_120 = 10;
+const int F_2 = 11;
+const int F_20 = 12;
+const int F_201 = 13;
+const int F_21 = 14;
+const int F_210 = 15;
+
+module User_0
+
+	User_0_STATE : [0..1] init User_0;
+
+	[cO_0] (User_0_STATE=User_0) -> lambda : (User_0_STATE'=User_0a);
+	[cI_0] (User_0_STATE=User_0a) -> mu : (User_0_STATE'=User_0);
+
+endmodule
+
+module User_1
+
+	User_1_STATE : [0..1] init User_1;
+
+	[cO_1] (User_1_STATE=User_1) -> lambda : (User_1_STATE'=User_1a);
+	[cI_1] (User_1_STATE=User_1a) -> mu : (User_1_STATE'=User_1);
+
+endmodule
+
+module User_2
+
+	User_2_STATE : [0..1] init User_2;
+
+	[cO_2] (User_2_STATE=User_2) -> lambda : (User_2_STATE'=User_2a);
+	[cI_2] (User_2_STATE=User_2a) -> mu : (User_2_STATE'=User_2);
+
+endmodule
+
+module FIFO_empty
+
+	FIFO_empty_STATE : [0..15] init FIFO_empty;
+
+	[cO_0] (FIFO_empty_STATE=FIFO_empty) -> 1 : (FIFO_empty_STATE'=F_0);
+	[cO_1] (FIFO_empty_STATE=FIFO_empty) -> 1 : (FIFO_empty_STATE'=F_1);
+	[cO_2] (FIFO_empty_STATE=FIFO_empty) -> 1 : (FIFO_empty_STATE'=F_2);
+	[cI_0] (FIFO_empty_STATE=F_0) -> 1 : (FIFO_empty_STATE'=FIFO_empty);
+	[cO_1] (FIFO_empty_STATE=F_0) -> 1 : (FIFO_empty_STATE'=F_01);
+	[cO_2] (FIFO_empty_STATE=F_0) -> 1 : (FIFO_empty_STATE'=F_02);
+	[cI_0] (FIFO_empty_STATE=F_01) -> 1 : (FIFO_empty_STATE'=F_1);
+	[cO_2] (FIFO_empty_STATE=F_01) -> 1 : (FIFO_empty_STATE'=F_012);
+	[cI_0] (FIFO_empty_STATE=F_012) -> 1 : (FIFO_empty_STATE'=F_12);
+	[cI_0] (FIFO_empty_STATE=F_02) -> 1 : (FIFO_empty_STATE'=F_2);
+	[cO_1] (FIFO_empty_STATE=F_02) -> 1 : (FIFO_empty_STATE'=F_021);
+	[cI_0] (FIFO_empty_STATE=F_021) -> 1 : (FIFO_empty_STATE'=F_21);
+	[cI_1] (FIFO_empty_STATE=F_1) -> 1 : (FIFO_empty_STATE'=FIFO_empty);
+	[cO_0] (FIFO_empty_STATE=F_1) -> 1 : (FIFO_empty_STATE'=F_10);
+	[cO_2] (FIFO_empty_STATE=F_1) -> 1 : (FIFO_empty_STATE'=F_12);
+	[cI_1] (FIFO_empty_STATE=F_10) -> 1 : (FIFO_empty_STATE'=F_0);
+	[cO_2] (FIFO_empty_STATE=F_10) -> 1 : (FIFO_empty_STATE'=F_102);
+	[cI_1] (FIFO_empty_STATE=F_102) -> 1 : (FIFO_empty_STATE'=F_02);
+	[cI_1] (FIFO_empty_STATE=F_12) -> 1 : (FIFO_empty_STATE'=F_2);
+	[cO_0] (FIFO_empty_STATE=F_12) -> 1 : (FIFO_empty_STATE'=F_120);
+	[cI_1] (FIFO_empty_STATE=F_120) -> 1 : (FIFO_empty_STATE'=F_20);
+	[cI_2] (FIFO_empty_STATE=F_2) -> 1 : (FIFO_empty_STATE'=FIFO_empty);
+	[cO_0] (FIFO_empty_STATE=F_2) -> 1 : (FIFO_empty_STATE'=F_20);
+	[cO_1] (FIFO_empty_STATE=F_2) -> 1 : (FIFO_empty_STATE'=F_21);
+	[cI_2] (FIFO_empty_STATE=F_20) -> 1 : (FIFO_empty_STATE'=F_0);
+	[cO_1] (FIFO_empty_STATE=F_20) -> 1 : (FIFO_empty_STATE'=F_201);
+	[cI_2] (FIFO_empty_STATE=F_201) -> 1 : (FIFO_empty_STATE'=F_01);
+	[cI_2] (FIFO_empty_STATE=F_21) -> 1 : (FIFO_empty_STATE'=F_1);
+	[cO_0] (FIFO_empty_STATE=F_21) -> 1 : (FIFO_empty_STATE'=F_210);
+	[cI_2] (FIFO_empty_STATE=F_210) -> 1 : (FIFO_empty_STATE'=F_10);
+
+endmodule
+
+system
+	((User_0 ||| (User_1 ||| User_2))
+	|[cO_0,cO_1,cO_2,cI_0,cI_1,cI_2]| FIFO_empty)
+endsystem

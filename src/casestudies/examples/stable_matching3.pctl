@@ -1,0 +1,12 @@
+// prism find a single ergodic set (BSCC) specified by the following atomic proposition
+label "ergodic1" = (a1=1 & a2=3 & a3=2 & a4=6 & a5=7 & a6=4 & a7=5 & a8=8) |
+                   (a1=2 & a2=1 & a3=3 & a4=6 & a5=7 & a6=4 & a7=5 & a8=8) |
+                   (a1=2 & a2=1 & a3=8 & a4=6 & a5=7 & a6=4 & a7=5 & a8=3) |
+                   (a1=3 & a2=2 & a3=1 & a4=6 & a5=7 & a6=4 & a7=5 & a8=8);
+
+// probability reached a ergodic set by round R
+const int r; // bound of number of rounds
+P=?[ F<=r "ergodic1" ]
+
+// expected number of rounds to reach the ergodic set
+R{"rounds"}=? [ F "ergodic1" ] 

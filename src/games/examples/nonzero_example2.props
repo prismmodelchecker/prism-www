@@ -1,0 +1,13 @@
+// Players p1 and p2 can collaborate so that each player 
+// reaches their goal states without crashing with probability 1
+<<p1:p2>> >=2( P[ !"crash1" U "goal1" ] + P[ F !"crash2" U "goal2" ] )
+
+// What is the sum of probabilities when the players collaborate 
+// to reach there individual goals without with the condition 
+// player 2 has to reach its goal within 10 steps without crashing
+<<p1:p2>>max=?( P[ F "goal1" ] + P[ F !"crash2" U<=10 "goal2" ] )
+
+// What is the sum of the probabilities for the players to send 
+// their individual messages when the players collaborate and 
+// the players p2 and p3 form a coalition to send their messages
+<<p1:p2,p3>>max=?( P[ F "sent1" ] + P[ F "sent2" & "sent3" ] )

@@ -1,0 +1,8 @@
+node_modules/
+_site/
+.DS_Store
+# Generated from the bibliography database by scripts/export-bib.php
+src/_data/bib.json
+# Copied from the PRISM repo by scripts/sync-manual.js
+src/manual/*
+!src/manual/manual.11tydata.js
