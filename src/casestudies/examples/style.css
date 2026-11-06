@@ -1,0 +1,20 @@
+body,h1,h2,h3,h4,h5,p,ul,a,tr,td,b,i { font-family:Verdana,sans-serif;text-align:left }
+pre { font-family:monospace;text-align:left }
+a:link { text-decoration:none }
+a:visited { text-decoration:none }
+a:hover { text-decoration:underline }
+a:active { text-decoration:none }
+td.spacer { line-height:0px }
+td.alt1 { background-color:#eeeeee } 
+td.alt2 { background-color:#cccccc } 
+.pub-info { }
+.pub-key { font-weight:bold }
+.pub-auth { }
+.pub-title { font-weight:bold }
+.pub-src { }
+.pub-month { }
+.pub-year { }
+.prismkeyword { font-weight:bold }
+.prismident { color:#cc0000 }
+.prismnum { color:#0000cc }
+.prismcomment { font-style:italic; color:#009900 }

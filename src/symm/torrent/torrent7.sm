@@ -1,0 +1,47 @@
+// Simple peer-to-peer file distribution protocol based on BitTorrent
+// gxn/dxp Jan 2006
+
+ctmc
+
+// N=7 clients, K=5 blocks to be downloaded
+// Actually there are N+1=8 clients, one of which has all blocks initially
+
+// Rate of block download for a single source
+const double mu=2;
+
+// Rate of download of block i:
+// A client can download from the single client which starts with all blocks
+// or from anyone that has subsequently downloaded it.
+// Total number of concurrent downloads for each block is 4.
+formula rate1=mu*(1+min(3,b11+b21+b31+b41+b51+b61+b71));
+formula rate2=mu*(1+min(3,b12+b22+b32+b42+b52+b62+b72));
+formula rate3=mu*(1+min(3,b13+b23+b33+b43+b53+b63+b73));
+formula rate4=mu*(1+min(3,b14+b24+b34+b44+b54+b64+b74));
+formula rate5=mu*(1+min(3,b15+b25+b35+b45+b55+b65+b75));
+
+// One client
+module process1
+	
+	// bij - has client i downloaded block j yet?
+	b11 : [0..1];
+	b12 : [0..1];
+	b13 : [0..1];
+	b14 : [0..1];
+	b15 : [0..1];
+	
+	// Downloading of each block (see rate computations above)
+	[] b11=0 -> rate1 : (b11'=1);
+	[] b12=0 -> rate2 : (b12'=1);
+	[] b13=0 -> rate3 : (b13'=1);
+	[] b14=0 -> rate4 : (b14'=1);
+	[] b15=0 -> rate5 : (b15'=1);
+	
+endmodule
+
+// N-1 identical clients
+module process2=process1[b11=b21,b12=b22,b13=b23,b14=b24,b15=b25,b21=b11,b22=b12,b23=b13,b24=b14,b25=b15] endmodule
+module process3=process1[b11=b31,b12=b32,b13=b33,b14=b34,b15=b35,b31=b11,b32=b12,b33=b13,b34=b14,b35=b15] endmodule
+module process4=process1[b11=b41,b12=b42,b13=b43,b14=b44,b15=b45,b41=b11,b42=b12,b43=b13,b44=b14,b45=b15] endmodule
+module process5=process1[b11=b51,b12=b52,b13=b53,b14=b54,b15=b55,b41=b11,b52=b12,b53=b13,b54=b14,b55=b15] endmodule
+module process6=process1[b11=b61,b12=b62,b13=b63,b14=b64,b15=b65,b41=b11,b62=b12,b63=b13,b64=b14,b65=b15] endmodule
+module process7=process1[b11=b71,b12=b72,b13=b73,b14=b74,b15=b75,b41=b11,b72=b12,b73=b13,b74=b14,b75=b15] endmodule

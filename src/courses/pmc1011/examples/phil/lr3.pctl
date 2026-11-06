@@ -1,0 +1,7 @@
+// deadlock freeness
+"hungry" => P>=1 [ F "eat"]
+
+// no resource starvation
+"hungry1" => P>=1 [ F "eat1"]
+"hungry2" => P>=1 [ F "eat2"]
+"hungry3" => P>=1 [ F "eat3"]

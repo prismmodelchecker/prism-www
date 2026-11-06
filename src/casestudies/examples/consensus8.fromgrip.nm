@@ -1,0 +1,23 @@
+mdp
+
+global counter : [ 0 .. 48 ] init 24 ; 
+
+formula no_5 = (8-(no_0+no_1+no_2+no_3+no_4));    // No modules in state (3,1)
+
+module generic_process
+ no_0 : [0..8] init 8;    // No modules in state (0,0)
+ no_1 : [0..8] init 0;    // No modules in state (1,0)
+ no_2 : [0..8] init 0;    // No modules in state (1,1)
+ no_3 : [0..8] init 0;    // No modules in state (2,0)
+ no_4 : [0..8] init 0;    // No modules in state (3,0)
+
+  [] (no_0>0) -> 0.5:(no_0'=no_0-1)&(no_1'=no_1+1) + 0.5:(no_0'=no_0-1)&(no_2'=no_2+1);
+  [] (no_1>0) -> (counter'=counter-1)&(no_1'=no_1-1)&(no_3'=no_3+1);
+  [] (no_2>0) & (counter<48) -> (counter'=counter+1)&(no_2'=no_2-1)&(no_3'=no_3+1);
+  [] (no_3>0) & (counter<=8) -> (no_3'=no_3-1)&(no_4'=no_4+1);
+  [] (no_3>0) & (counter>=40) -> (no_3'=no_3-1);
+  [] (no_3>0) & ((counter>8)&(counter<40)) -> (no_3'=no_3-1)&(no_0'=no_0+1);
+  [] (no_4>0) -> true;
+  [] (no_5>0) -> true;
+
+endmodule

@@ -1,0 +1,10 @@
+const double t; // time bound
+const int k; // number of molecules
+
+// amount of cyclin bound at time t
+P=? [ true U[t,t] cyclin_bound=k ]
+
+// expected reward at time t
+R{"cdc14"}=? [I=t]
+R{"cdh1"}=? [I=t]
+R{"cyclin_bound"}=? [I=t]

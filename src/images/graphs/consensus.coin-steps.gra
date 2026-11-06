@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE chartFormat SYSTEM "chartformat.dtd">
+<chartFormat graphTitle="" legendFontColourB="0" legendFontColourG="0" legendFontColourR="0" legendFontName="SansSerif" legendFontSize="11" legendFontStyle="0" legendPosition="right" legendVisible="true" titleFontColourB="0" titleFontColourG="0" titleFontColourR="0" titleFontName="SansSerif" titleFontSize="14" titleFontStyle="0" versionString="3.2.dev">
+<layout/>
+<axis autoscale="true" heading="K" headingFontColourB="0" headingFontColourG="0" headingFontColourR="0" headingFontName="SansSerif" headingFontSize="12" headingFontStyle="0" logBase="10.0" logStyle="1" logarithmic="false" majorColourB="204" majorColourG="204" majorColourR="204" majorGridInterval="0.2" maxValue="1.0" maximumPower="1.0" minValue="0.0" minimumPower="0.0" numberFontColourB="0" numberFontColourG="0" numberFontColourR="0" numberFontName="SansSerif" numberFontSize="12" numberFontStyle="0" showMajor="true"/>
+<axis autoscale="true" heading="Expected number of steps" headingFontColourB="0" headingFontColourG="0" headingFontColourR="0" headingFontName="SansSerif" headingFontSize="12" headingFontStyle="0" logBase="10.0" logStyle="1" logarithmic="false" majorColourB="204" majorColourG="204" majorColourR="204" majorGridInterval="0.2" maxValue="1.0" maximumPower="1.0" minValue="0.0" minimumPower="0.0" numberFontColourB="0" numberFontColourG="0" numberFontColourR="0" numberFontName="SansSerif" numberFontSize="12" numberFontStyle="0" showMajor="true"/>
+<graph lineStyle="normal" lineWidth="1.0" seriesColourB="0" seriesColourG="51" seriesColourR="255" seriesHeading="N=6 (max)" seriesShape="circle" showLines="true" showPoints="true">
+<point x="1.0" y="362.8955030688992"/>
+<point x="2.0" y="866.3965078170663"/>
+<point x="3.0" y="1584.9713452824521"/>
+<point x="4.0" y="2517.865458980139"/>
+<point x="5.0" y="3664.1050922791737"/>
+<point x="6.0" y="5022.502167975255"/>
+<point x="7.0" y="6591.635034099125"/>
+</graph>
+<graph lineStyle="dashed" lineWidth="1.0" seriesColourB="0" seriesColourG="51" seriesColourR="255" seriesHeading="N=6 (min)" seriesShape="circle" showLines="true" showPoints="true">
+<point x="1.0" y="107.99115257777203"/>
+<point x="2.0" y="431.851584506982"/>
+<point x="3.0" y="971.2410133425433"/>
+<point x="4.0" y="1725.5933133943854"/>
+<point x="5.0" y="2694.118898576802"/>
+<point x="6.0" y="3875.8096442436486"/>
+<point x="7.0" y="5269.428792947727"/>
+</graph>
+<graph lineStyle="normal" lineWidth="1.0" seriesColourB="0" seriesColourG="153" seriesColourR="0" seriesHeading="N=4 (max)" seriesShape="circle" showLines="true" showPoints="true">
+<point x="1.0" y="146.9833247568968"/>
+<point x="2.0" y="362.8955030688992"/>
+<point x="3.0" y="674.6346320158966"/>
+<point x="4.0" y="1082.0558405268073"/>
+<point x="5.0" y="1584.9713452824521"/>
+<point x="6.0" y="2183.1424220082613"/>
+<point x="7.0" y="2876.295601236887"/>
+<point x="8.0" y="3664.1050922791737"/>
+<point x="9.0" y="4546.21147113487"/>
+<point x="10.0" y="5522.201354482471"/>
+</graph>
+<graph lineStyle="dashed" lineWidth="1.0" seriesColourB="0" seriesColourG="153" seriesColourR="0" seriesHeading="N=4 (min)" seriesShape="circle" showLines="true" showPoints="true">
+<point x="1.0" y="47.99844694193542"/>
+<point x="2.0" y="191.9711354557641"/>
+<point x="3.0" y="431.8511557746919"/>
+<point x="4.0" y="767.5261352324376"/>
+<point x="5.0" y="1198.8414993209112"/>
+<point x="6.0" y="1725.5933133943854"/>
+<point x="7.0" y="2347.5393309732135"/>
+<point x="8.0" y="3064.388526339464"/>
+<point x="9.0" y="3875.8057736687438"/>
+<point x="10.0" y="4781.427659578902"/>
+</graph>
+<graph lineStyle="normal" lineWidth="1.0" seriesColourB="255" seriesColourG="102" seriesColourR="102" seriesHeading="N=2 (max)" seriesShape="circle" showLines="true" showPoints="true">
+<point x="1.0" y="26.99954708120161"/>
+<point x="2.0" y="74.99578638013419"/>
+<point x="3.0" y="146.9831799738662"/>
+<point x="4.0" y="242.9532858998292"/>
+<point x="5.0" y="362.8947903749637"/>
+<point x="6.0" y="506.79398038822757"/>
+<point x="7.0" y="674.6339593186162"/>
+<point x="8.0" y="866.3947878956265"/>
+<point x="9.0" y="1082.0558405268073"/>
+<point x="10.0" y="1321.5881400424344"/>
+<point x="11.0" y="1584.9681887658753"/>
+<point x="12.0" y="1872.1638741681581"/>
+<point x="13.0" y="2183.1402410044802"/>
+<point x="14.0" y="2517.862947057269"/>
+<point x="15.0" y="2876.2927310468904"/>
+<point x="16.0" y="3258.3866553661583"/>
+<point x="17.0" y="3664.1014360779877"/>
+<point x="18.0" y="4093.3911138621825"/>
+<point x="19.0" y="4546.206933239785"/>
+<point x="20.0" y="5022.497149780567"/>
+</graph>
+<graph lineStyle="dashed" lineWidth="1.0" seriesColourB="255" seriesColourG="102" seriesColourR="102" seriesHeading="N=2 (min)" seriesShape="circle" showLines="true" showPoints="true">
+<point x="1.0" y="11.99993896484375"/>
+<point x="2.0" y="47.998324237033074"/>
+<point x="3.0" y="107.9910526850295"/>
+<point x="4.0" y="191.9711354557641"/>
+<point x="5.0" y="299.92827236388223"/>
+<point x="6.0" y="431.8511557746919"/>
+<point x="7.0" y="587.7227504465343"/>
+<point x="8.0" y="767.5261352324376"/>
+<point x="9.0" y="971.2390842301947"/>
+<point x="10.0" y="1198.8391148039411"/>
+<point x="11.0" y="1450.3002663068469"/>
+<point x="12.0" y="1725.5915939220095"/>
+<point x="13.0" y="2024.681319673628"/>
+<point x="14.0" y="2347.5346489882827"/>
+<point x="15.0" y="2694.1162125765395"/>
+<point x="16.0" y="3064.382412878783"/>
+<point x="17.0" y="3458.2946812967375"/>
+<point x="18.0" y="3875.8057736687438"/>
+<point x="19.0" y="4316.8597973166925"/>
+<point x="20.0" y="4781.418110164936"/>
+</graph>
+</chartFormat>

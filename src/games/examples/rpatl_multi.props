@@ -1,0 +1,8 @@
+// Player 1 can guarantee that the expected total reward values
+// for reward structures "r1" and "r2" are at least v1 and v2, respectively
+<<1>> ( R{"r1"}>=v1 [ C ] & R{"r2"}>=v2 [ C ] )
+
+// Player 1 can guarantee that, whenever the ratio of
+// expected long-run average values for "r1" and "c" is at most v1,
+// then the ratio for "r2" and "c" is at least v.
+<<1>> ( R{"r1"}/{"c"}<=v1 [ C ] => R{"r2"}/{"c"}>=v2 [ C ] )

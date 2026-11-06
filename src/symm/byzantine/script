@@ -1,0 +1,11 @@
+#!/bin/csh
+
+# normal
+prism -m abstract8.nm abstract8.pctl -fixdl -cuddmaxmem 900000
+prism -m abstract12.nm abstract12.pctl -fixdl -cuddmaxmem 900000
+
+# symmetry reduction
+prism-symm -m abstract8.nm abstract8.pctl -fixdl -cuddmaxmem 900000 -symm 3 0
+prism-symm -m abstract12.nm abstract12.pctl -fixdl -cuddmaxmem 900000 -symm 3 0
+prism-symm -m abstract16.nm abstract16.pctl -fixdl -cuddmaxmem 900000 -symm 3 0
+prism-symm -m abstract20.nm abstract20.pctl -fixdl -cuddmaxmem 900000 -symm 3 0

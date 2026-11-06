@@ -1,0 +1,5 @@
+module policy
+	[up]    x < 3  -> true;
+	[left]  x >= 3 -> true;
+	[right] false -> true;
+endmodule

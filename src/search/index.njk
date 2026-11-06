@@ -1,0 +1,18 @@
+---
+layout: layouts/base.njk
+title: Search
+headExtra: '<link href="/pagefind/pagefind-ui.css" rel="stylesheet"><script src="/pagefind/pagefind-ui.js"></script>'
+---
+<h1>Search the PRISM site</h1>
+<div id="search"></div>
+<noscript><p>Search needs JavaScript. You can also search with
+<a href="https://www.google.com/search?q=site%3Aprismmodelchecker.org">Google</a>.</p></noscript>
+<script>
+window.addEventListener("DOMContentLoaded", () => {
+	const ui = new PagefindUI({ element: "#search", showSubResults: true, showImages: false });
+	const params = new URLSearchParams(location.search);
+	// ?section=Documentation (from the manual's search box) pre-selects that filter
+	if (params.get("section")) ui.triggerFilters({ Section: [params.get("section")] });
+	if (params.get("q")) ui.triggerSearch(params.get("q"));
+});
+</script>

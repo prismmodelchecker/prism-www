@@ -1,0 +1,47 @@
+\documentclass{article}
+\usepackage{amsmath,amsfonts}
+\begin{document}
+\[
+\mathbf{x} =
+\left(
+\begin{array}{c}
+1  \\
+1  \\
+1   \\
+1  \\
+1  \\
+1  \\
+1  
+\end{array}
+\right)
++
+\left(
+\begin{array}{ccccccccccccc}
+0 & \, 0.5 \, & \, 0.5 \, & 0 & 0 & 0& 0  \\
+0 & 0 & \, 0.5 \, & \, 0.5 \, & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 & \, 0.5 \, & \, 0.5 \, \\
+0 & \, 0.5 \, & 0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 & 0 & 0\\
+0 & 0 & 0 & 0 & 0 & 0 & 0\\
+0 & 0 & \, 0.5 \, & 0 & 0 & 0 & 0 
+\end{array}
+\right)
+\cdot
+\mathbf{x}
+\]
+
+\begin{eqnarray*}
+\mbox{Minimize} \; \sum_{s \in S} v_s \; \mbox{subject to} && \\ \\
+&
+\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\! 
+v_s \geq \mathbf{cost}_i(s) + \displaystyle\sum\limits_{s \in S} \mu_{i,s}(t) \cdot v_t & \mbox{for} \; i=1,2
+\end{eqnarray*}
+
+\[
+\mu_{i,s}(t)
+\]
+\[
+ \mathbf{cost}_i(s)
+\]
+
+\end{document}

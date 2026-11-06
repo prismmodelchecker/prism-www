@@ -1,0 +1,18 @@
+const int K; // steps
+
+// min/max probability L lost requests by step K
+Pmin=?[ F<=K (lost=L) ]
+Pmax=?[ F<=K (lost=L) ]
+
+// min/max expected power consumption by step K
+R{"power"}min=? [ C<=K ]
+R{"power"}max=? [ C<=K ]
+
+// min/max expected queue size at step K
+R{"queue"}min=? [ I=K ]
+R{"queue"}max=? [ I=K ]
+
+// min/max expected lost customers by step K
+R{"lost"}min=? [ C<=K ]
+R{"lost"}max=? [ C<=K ]
+

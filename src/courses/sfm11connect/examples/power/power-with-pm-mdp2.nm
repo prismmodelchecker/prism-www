@@ -1,0 +1,44 @@
+//-------------------------------------------------------------------------
+
+// Power Manager (PM)
+
+const double p;
+
+module PM
+
+	pm : [0..4] init 0;
+	// 0 - go to active 
+	// 1 - go to idle 
+	// 2 - go to idlelp 
+	// 3 - go to stby  
+	// 4 - go to sleep 
+
+	[pm_active] true -> (pm'=0);
+	[pm_idle] q<QMAX -> (pm'=1);
+	[pm_idlelp] q<QMAX -> (pm'=2);
+	[pm_stby] q<QMAX -> (pm'=3);
+	[pm_sleep] q<QMAX -> (pm'=4);
+	
+	[tick] true -> (pm'=0);
+	
+endmodule
+
+
+//-------------------------------------------------------------------------
+
+// Scheduler
+
+module sched
+
+	turn : [0..1];
+
+	[pm_active] turn=0 -> (turn'=1);
+	[pm_idle] turn=0 -> (turn'=1);
+	[pm_idlelp] turn=0 -> (turn'=1);
+	[pm_stby] turn=0 -> (turn'=1);
+	[pm_sleep] turn=0 -> (turn'=1);
+	
+	[tick] turn=1 -> (turn'=0);
+	
+endmodule
+

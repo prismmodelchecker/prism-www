@@ -1,0 +1,25 @@
+---
+permalink: /manual/offline/index.html
+eleventyImport:
+  collections: ["manualPage"]
+eleventyExcludeFromCollections: true
+---
+{#- Self-contained copy of the manual, for the manual/ folder of PRISM distributions:
+    one HTML file with its styles, plus files/ (fetched by "make doc" in the PRISM repo) -#}
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+{#- (PRISM's Makefile checks this title, in release_check_manual) #}
+<title>PRISM Manual {{ manualVersion or site.version }}</title>
+<style>
+{% include "manual-offline.css" %}
+</style>
+</head>
+<body>
+<p class="offline-note">This is the manual for PRISM {{ manualVersion or site.version }}. The latest version is at <a href="https://www.prismmodelchecker.org/manual/">www.prismmodelchecker.org/manual</a>.</p>
+{%- set offline = true %}
+{% include "partials/manual-single.njk" %}
+</body>
+</html>

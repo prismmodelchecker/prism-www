@@ -1,0 +1,465 @@
+#states 63
+#trans 143  
+#clocks 7
+Z X1 X2 Y1 Y2 Z1 Z2
+
+state: 0
+prop: rootc_rootc_empty_empty
+invar: X1<=0 AND X2<=0
+trans: 
+TRUE => P_05 ; reset{X1,Y1,Y2}; goto 1
+TRUE => P_05 ; reset{X1,Y1,Y2}; goto 2
+TRUE => Q_05 ; reset{X2,Z1,Z2}; goto 3
+TRUE => Q_05 ; reset{X2,Z1,Z2}; goto 4
+
+state: 1
+prop: recreqfast_rootc_recidle_empty
+invar: X1<=850 AND X2<=0 AND Y1<=360
+trans: 
+TRUE => P_05 ; reset{X2,Z1,Z2}; goto 5
+TRUE => P_05 ; reset{X2,Z1,Z2}; goto 6
+TRUE => Q_1 ; reset{}; goto 9
+X1>=760 => R_1; reset{Y1}; goto 61
+
+state: 2
+prop: recreqslow_rootc_recidle_empty
+invar: X1<=1670 AND X2<=0 AND Y1<=360
+trans: 
+TRUE => P_05 ; reset{X2,Z1,Z2}; goto 7
+TRUE => P_05 ; reset{X2,Z1,Z2}; goto 8
+TRUE => Q_1 ; reset{}; goto 10
+X1>=1590 => R_1; reset{Y1}; goto 61
+
+state: 3
+prop: rootc_recreqfast_empty_recidle
+invar: X1<=0 AND X2<=850 AND Z1<=360
+trans: 
+TRUE => P_1 ; reset{}; goto 11
+TRUE => Q_05 ; reset{X1,Y1,Y2}; goto 5
+TRUE => Q_05 ; reset{X1,Y1,Y2}; goto 7
+X2>=760 => R_1; reset{Z1}; goto 62
+
+state: 4
+prop: rootc_recreqslow_empty_recidle
+invar: X1<=0 AND X2<=1670 AND Z1<=360
+trans: 
+TRUE => P_1 ; reset{}; goto 12
+TRUE => Q_05 ; reset{X1,Y1,Y2}; goto 6
+TRUE => Q_05 ; reset{X1,Y1,Y2}; goto 8
+X2>=1590 => R_1; reset{Z1}; goto 62
+
+state: 5
+prop: recreqfast_recreqfast_recidle_recidle
+invar: X1<=850 AND X2<=850 AND Y1<=360 AND Z1<=360
+trans:
+TRUE => P_1; reset{}; goto 13
+TRUE => Q_1; reset{}; goto 15
+X1>=760 => R_1; reset{Y1}; goto 21
+X2>=760 => S_1; reset{Z1}; goto 23
+
+state: 6
+prop: recreqfast_recreqslow_recidle_recidle
+invar: X1<=850 AND X2<=1670 AND Y1<=360 AND Z1<=360
+trans: 
+TRUE => P_1; reset{}; goto 14
+TRUE => Q_1; reset{}; goto 16
+X1>=760 => R_1; reset{Y1}; goto 22
+X2>=1590 => S_1; reset{Z1}; goto 23
+
+state: 7
+prop: recreqslow_recreqfast_recidle_recidle
+invar: X1<=1670 AND X2<=850 AND Y1<=360 AND Z1<=360
+trans: 
+TRUE => P_1; reset{}; goto 17
+TRUE => Q_1; reset{}; goto 19
+X1>=1590 => R_1; reset{Y1}; goto 21
+X2>=760 => S_1; reset{Z1}; goto 24
+
+state: 8
+prop: recreqslow_recreqslow_recidle_recidle
+invar: X1<=1670 AND X2<=1670 AND Y1<=360 AND Z1<=360
+trans: 
+TRUE => P_1; reset{}; goto 18
+TRUE => Q_1; reset{}; goto 20
+X1>=1590 => R_1; reset{Y1}; goto 22
+X2>=1590 => S_1; reset{Z1}; goto 24
+
+state: 9
+prop: recreqfast_recidle_empty_empty
+invar: X1<=760 AND X2<=0
+trans:
+X1>=760 => P_1; reset{Y1,Y2}; goto 25
+TRUE => Q_05 ; reset{X2,Z1,Z2}; goto 15
+TRUE => Q_05 ; reset{X2,Z1,Z2}; goto 16
+
+state: 10
+prop: recreqslow_recidle_empty_empty
+invar: X1<=1590 AND X2<=0
+trans:
+X1>=1590 => P_1; reset{Y1,Y2}; goto 25
+TRUE => Q_05 ; reset{X2,Z1,Z2}; goto 19
+TRUE => Q_05 ; reset{X2,Z1,Z2}; goto 20
+
+state: 11
+prop: recidle_recreqfast_empty_empty
+invar: X1<=0 AND X2<=760 
+trans:
+TRUE => P_05 ; reset{X1,Y1,Y2}; goto 13
+TRUE => P_05 ; reset{X1,Y1,Y2}; goto 17
+X2>=760 => Q_1; reset{Z1,Z2}; goto 26
+
+state: 12
+prop: recidle_recreqslow_empty_empty
+invar: X1<=0 AND X2<=1590
+trans:
+TRUE => P_05 ; reset{X1,Y1,Y2}; goto 14
+TRUE => P_05 ; reset{X1,Y1,Y2}; goto 18
+X2>=1590 => Q_1; reset{Z1,Z2}; goto 26
+
+state: 13  
+prop: reqidlefast_recreqfast_recidle_empty
+invar: X1<=850 AND X2<=850 AND Y1<=360
+trans:
+X1>=760 => P_1; reset{Y1}; goto 27 
+TRUE => Q_1; reset{}; goto 31
+X2>=760 => R_1; reset{Z1,Z2}; goto 35
+
+state: 14
+prop: reqidlefast_recreqslow_recidle_empty
+invar: X1<=850 AND X2<=1670 AND Y1<=360
+trans: 
+X1>=760 => P_1; reset{Y1}; goto 28
+TRUE => Q_1; reset{}; goto 32
+X2>=1590 => R_1; reset{Z1,Z2}; goto 35
+
+state: 15
+prop: recreqfast_reqidlefast_empty_recidle
+invar: X1<=850 AND X2<=850 AND Z1<=360 
+trans: 
+TRUE => P_1; reset{}; goto 31
+X1>=760 => Q_1; reset{Y1,Y2}; goto 37
+X2>=760 => R_1; reset{Z1}; goto 29
+
+state: 16
+prop: recreqfast_reqidleslow_empty_recidle
+invar: X1<=850 AND X2<=1670 AND Z1<=360 
+trans: 
+TRUE => P_1; reset{}; goto 32
+X1>=760 => Q_1; reset{Y1,Y2}; goto 38
+X2>=1590 => R_1; reset{Z1}; goto 29
+
+state: 17
+prop: reqidleslow_recreqfast_recidle_empty
+invar: X1<=1670 AND X2<=850 AND Y1<=360
+trans:
+X1>=1590 => P_1; reset{Y1}; goto 27
+TRUE => Q_1; reset{}; goto 33
+X2>=760 => R_1; reset{Z1,Z2}; goto 360
+ 
+state: 18 
+prop: reqidleslow_recreqslow_recidle_empty
+invar: X1<=1670 AND X2<=1670 AND Y1<=360
+trans:
+X1>=1590 => P_1; reset{Y1}; goto 28
+TRUE => Q_1; reset{}; goto 34
+X2>=1590 => R_1; reset{Z1,Z2}; goto 360
+
+state: 19 
+prop: recreqslow_reqidlefast_empty_recidle
+invar: X1<=1670 AND X2<=850 AND Z1<=360 
+trans: 
+TRUE => P_1; reset{}; goto 33
+X1>=1590 => Q_1; reset{Y1,Y2}; goto 37
+X2>=760 => R_1; reset{Z1}; goto 30
+
+state: 20 
+prop: recreqslow_reqidleslow_empty_recidle
+invar: X1<=1670 AND X2<=1670 AND Z1<=360 
+trans: 
+TRUE => P_1; reset{}; goto 34
+X1>=1590 => Q_1; reset{Y1,Y2}; goto 38
+X2>=1590 => R_1; reset{Z1}; goto 30
+
+state: 21 
+prop: root_recreqfast_recidleack_recidle
+invar: X2<=850 AND Y2<=360 AND Z1<=360
+trans: 
+TRUE => P_1; reset{}; goto 37
+X2>=760 => Q_1; reset{Z1}; goto 39
+
+state: 22
+prop: root_recreqslow_recidleack_recidle
+invar: X2<=1670 AND Y2<=360 AND Z1<=360
+trans: 
+TRUE => P_1; reset{}; goto 38
+X2>=1590 => Q_1; reset{Z1}; goto 39
+
+state: 23
+prop: recreqfast_root_recidle_recidleack
+invar: X1<=850 AND Y1<=360 AND Z2<=360 
+trans: 
+TRUE => P_1; reset{}; goto 35
+X1>=760 => Q_1; reset{Y1}; goto 39
+
+state: 24 
+prop: recreqslow_root_recidle_recidleack
+invar: X1<=1670 AND Y1<=360 AND Z2<=360 
+trans: 
+TRUE => P_1; reset{}; goto 360
+X1>=1590 => Q_1; reset{Y1}; goto 39
+ 
+state: 25 
+prop: root_recidle_recack_empty
+invar: X2<=0 AND Y1<=360 
+trans: 
+TRUE => Q_05 ; reset{X2,Z1,Z2}; goto 37
+TRUE => Q_05 ; reset{X2,Z1,Z2}; goto 38
+
+state: 26 
+prop: recidle_root_empty_recack
+invar: X1<=0 AND Z1<=360 
+trans: 
+TRUE => Q_05 ; reset{X1,Y1,Y2}; goto 35
+TRUE => Q_05 ; reset{X1,Y1,Y2}; goto 360
+
+state: 27 
+prop: sntreq_recreqfast_recidlereq_empty
+invar: X2<=850 AND Y2<=360
+trans:
+X1>=760 => P_1; reset{Z1,Z2}; goto 44
+TRUE => Q1; reset{}; goto 40
+ 
+state: 28 
+prop: sntreq_recreqslow_recidlereq_empty
+invar: X2<=1670 AND Y2<=360
+trans:
+X1>=1590 => P_1; reset{Z1,Z2}; goto 44
+TRUE => Q1; reset{}; goto 41
+
+state: 29 
+prop: recreqfast_sntreq_empty_recidlereq
+invar: X1<=850 AND Z2<=360
+trans:
+X2>=760 => P_1; reset{Y1,Y2}; goto 45
+TRUE => Q1; reset{}; goto 42
+
+state: 30 
+prop: recreqslow_sntreq_empty_recidlereq
+invar: X1<=1670 AND Z2<=360
+trans:
+X2>=1590 => P_1; reset{Y1,Y2}; goto 45
+TRUE => Q1; reset{}; goto 43
+ 
+state: 31 
+prop: reqidlefast_recidlefast_empty_empty
+invar: X1<=850 AND X2<=850
+trans:
+X1>=760 => P_1; reset{Y1,Y2}; goto 40
+X2>=760 => Q_1; reset{Z1,Z2}; goto 42
+
+state: 32 
+prop: reqidlefast_reqidleslow_empty_empty
+invar: X1<=850 AND X2<=1670
+trans:
+X1>=760 => P_1; reset{Y1,Y2}; goto 41
+X2>=1590 => Q_1; reset{Z1,Z2}; goto 42
+
+state: 33 
+prop: reqidleslow_reqidlefast_empty_empty
+invar: X1<=1670 AND X2<=850
+trans:
+X1>=1590 => P_1; reset{Y1,Y2}; goto 40 
+X2>=760 => Q_1; reset{Z1,Z2}; goto 43
+
+state: 34 
+prop: recidleslow_reqidleslow_empty_empty
+invar: X1<=1670 AND X2<=1670
+trans:
+X1>=1590 => P_1; reset{Y1,Y2}; goto 41
+X2>=1590 => Q_1; reset{Z1,Z2}; goto 43 
+
+state: 35 
+prop: reqidlefast_root_recidle_recack
+invar: X1<=850 AND Y1<=360 AND Z1<=360
+trans:
+X1>=760 => P_1; reset{Y1}; goto 44
+
+state: 360 
+prop: recidleslow_root_recidle_recack
+invar: X1<=1670 AND Y1<=360 AND Z1<=360
+trans:
+X1>=1590 => P_1; reset{Y1}; goto 44
+
+state: 37 
+prop: root_reqidlefast_recack_recidle
+invar: X2<=850 AND Y1<=360 AND Z1<=360
+trans:
+X2>=760 => P_1; reset{Z1}; goto 45
+
+state: 38 
+prop: root_reqidleslow_recack_recidle
+invar: X2<=1670 AND Y1<=360 AND Z1<=360
+trans:
+X2>=1590 => P_1; reset{Z1}; goto 45
+
+state: 39 
+prop: root_root_recidleack_recidleack
+invar: TRUE
+trans:
+
+
+
+
+
+state: 40 
+prop: sntreq_reqidlefast_recreq_empty
+invar: X2<=850 AND Y1<=360
+trans:
+X2>=760 => P_1; reset{Z1,Z2}; goto 46
+TRUE => Q_1; reset{}; goto 55
+
+state: 41 
+prop: sntreq_reqidleslow_recreq_empty
+invar: X2<=1670 AND Y1<=360
+trans:
+X2>=1590 => P_1; reset{Z1,Z2}; goto 46
+TRUE => Q_1; reset{}; goto 56
+
+state: 42 
+prop: reqidlefast_sntreq_empty_recreq
+invar: X1<=850 AND Z1<=360
+trans:
+X1>=760 => P_1; reset{Y1,Y2}; goto 46
+TRUE => Q_1; reset{}; goto 57
+
+state: 43 
+prop: reqidleslow_sntreq_empty_recreq
+invar: X1<=1670 AND Z1<=360
+trans:
+X1>=1590 => P_1; reset{Y1,Y2}; goto 46
+TRUE => Q_1; reset{}; goto 58
+
+state: 44 
+prop: sntreq_root_recidlereq_recack
+invar: Y2<=360 AND Z1<=360
+trans:
+Z<4000 => P_1; reset{X1,X2,Y1,Y2,Z,Z1,Z2}; goto 47
+Z>=4000 => Q_1; reset{X1,X2,Y1,Y2,Z,Z1,Z2}; goto 48
+
+state: 45 
+prop: root_sntreq_recack_recidlereq
+invar: Y1<=360 AND Z2<=360
+trans:
+Z<4000 => P_1; reset{X1,X2,Y1,Y2,Z,Z1,Z2}; goto 47
+Z>=4000 => Q_1; reset{X1,X2,Y1,Y2,Z,Z1,Z2}; goto 48
+
+state: 46 
+prop: sntreq_sntreq_recreq_recreq
+invar: Y1<=360 AND Z1<=360
+trans:
+TRUE => P_1; reset{X1}; goto 49
+TRUE => Q_1; reset{X2}; goto 50
+
+state: 47 
+prop: done_before
+invar: TRUE
+trans:
+
+state: 48 
+prop: done_after
+invar: TRUE
+trans:
+
+state: 49 
+prop: rootc_sntreq_recreq_empty
+invar: X1<=0 AND Y1<=360
+trans:
+TRUE => P_05; reset{X1,Y1}; goto 51
+TRUE => P_05; reset{X1,Y1}; goto 52
+TRUE => Q_1; reset{X2}; goto 0
+
+state: 50 
+prop: sntreq_rootc_empty_recreq
+invar: X2<=0 AND Z1<=360
+trans:
+TRUE => P_1; reset{X1}; goto 0
+TRUE => Q_05; reset{X2,Z1}; goto 53
+TRUE => Q_05; reset{X2,Z1}; goto 54
+
+state: 51 
+prop: recreqfast_sntreq_recreqidle_empty
+invar: X1<=850 AND Y2<=360
+trans:
+TRUE => P_1; reset{X2}; goto 1
+
+state: 52 
+prop: recreqslow_sntreq_recreqidle_empty
+invar: X1<=1670 AND Y2<=360
+trans:
+TRUE => P_1; reset{X2}; goto 2
+
+state: 53 
+prop: sntreq_recreqfast_empty_recreqidle
+invar: X2<=850 AND Z2<=360
+trans:
+TRUE => P_1; reset{X1}; goto 3
+
+state: 54 
+prop: sntreq_recreqslow_empty_recreqidle 
+invar: X2<=1670 AND Z2<=360
+trans:
+TRUE => P_1; reset{X1}; goto 4
+
+state: 55 
+prop: sntreq_recreqfast_empty_empty
+invar: X2<=850 
+trans:
+X2>=760 => P_1; reset{Z1,Z2}; goto 59
+
+state: 56
+prop: sntreq_recreqslow_empty_empty
+invar: X2<=1670 
+trans:
+X2>=1590 => P_1; reset{Z1,Z2}; goto 59
+
+state: 57
+prop: recreqfast_sntreq_empty_empty 
+invar: X1<=850 
+trans:
+X1>=760 => P_1; reset{Y1,Y2}; goto 60
+
+state: 58
+prop: recreqslow_sntreq_empty_empty
+invar: X1<=1670 
+trans:
+X1>=1590 => P_1; reset{Y1,Y2}; goto 60
+
+state: 59 
+prop: sntreq_root_empty_recack
+invar: Z1<=360
+trans:
+Z<4000 => P_1; reset{X1,X2,Y1,Y2,Z,Z1,Z2}; goto 47
+Z>=4000 => Q_1; reset{X1,X2,Y1,Y2,Z,Z1,Z2}; goto 48
+
+state: 60 
+prop: root_sntreq_recack_empty
+invar: Y1<=360 
+trans:
+Z<4000 => P_1; reset{X1,X2,Y1,Y2,Z,Z1,Z2}; goto 47
+Z>=4000 => Q_1; reset{X1,X2,Y1,Y2,Z,Z1,Z2}; goto 48
+
+state: 61 
+prop: root_rootc_recidleack_empty
+invar: X2<=0 AND Y2<=360
+trans:
+TRUE => P_1; reset{}; goto 25
+TRUE => Q_05; reset{}; goto 21
+TRUE => Q_05; reset{}; goto 22
+
+state: 62 
+prop: rootc_root_empty_recidleack
+invar: X1<=0 AND Z2<=360
+trans:
+TRUE => P_1; reset{}; goto 26
+TRUE => Q_05; reset{}; goto 23
+TRUE => Q_05; reset{}; goto 24

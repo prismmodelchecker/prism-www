@@ -1,0 +1,19 @@
+const int k;
+
+// Maximum probability to reach goal 1
+Pmax=? [ F "goal1" ];
+
+// Maximum probability to reach goal 1 within k steps
+Pmax=? [ F<=k "goal1" ];
+
+// Maximum probability to reach locations 4 or 5 within k steps
+Pmax=? [ F<=k (s=4 | s=5) ];
+
+// Maximum probability to visit goal 1 and then goal 2
+Pmax=? [ F ("goal1" & (F "goal2")) ];
+
+// Maximum probability to visit goal 1 infinitely often and avoid the hazard
+Pmax=? [ (G F "goal1") & (G!"hazard") ];
+
+// Minimum expected number of steps to reach either goal (stochastic shortest path)
+R{"moves"}min=? [ F ("goal1"|"goal2") ];

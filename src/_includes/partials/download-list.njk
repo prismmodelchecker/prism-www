@@ -1,0 +1,17 @@
+{#- Download links for the current release of a tool. Needs: release (releases.prism or releases.games) -#}
+<p>We distribute various pre-built binaries:</p>
+
+<ul>
+{%- for p in releases.platforms %}
+<li><a href="/dl/{{ release.file }}-{{ release.version }}-{{ p.id }}{{ p.ext }}">{{ release.name }} {{ release.version }} {{ p.label }}</a></li>
+{%- endfor %}
+</ul>
+
+<p>For non-Windows platforms, it is usually easy to build from source code:</p>
+
+<ul>
+<li><a href="/dl/{{ release.file }}-{{ release.version }}-src.tar.gz">{{ release.name }} {{ release.version }} source code</a></li>
+<li>See <a href="https://github.com/{{ release.github }}">GitHub</a> for the newest code</li>
+</ul>
+
+<p>Older versions are available on the <a href="https://github.com/{{ release.github }}/releases">GitHub releases</a> page.</p>

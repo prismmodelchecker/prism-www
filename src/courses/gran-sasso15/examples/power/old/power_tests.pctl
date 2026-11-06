@@ -1,0 +1,20 @@
+// use these properties to find the min/max rewards
+// and so what are useful constraints
+
+// min/max expected time till battery runs out (should both equal 1000)
+R{"time"}min=?[F bat=0] 
+R{"time"}max=?[F bat=0] 
+
+// max power consumption
+R{"power"}min=?[F bat=0] 
+R{"power"}max=?[F bat=0] 
+
+// min/max average queue size (divide by expected time till battery runs out)
+R{"queue"}min=?[F bat=0]/1000
+R{"queue"}max=?[F bat=0]/1000
+
+// min/max expected no of lost requests
+R{"lost"}min=?[F bat=0]
+R{"lost"}max=?[F bat=0]
+
+

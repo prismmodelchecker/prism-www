@@ -1,0 +1,6 @@
+// probability reached a stable matching by round R
+const int r; // bound of number of rounds
+P=?[ F<=r "deadlock" ]
+
+// expected number of rounds to reach a stable matching
+R{"rounds"}=? [ F "deadlock" ] 

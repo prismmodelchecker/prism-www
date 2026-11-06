@@ -1,0 +1,11 @@
+Open model file "power.sm".
+
+P=? [ true U[T,T] q=q_max ]
+
+T = 10
+
+T=0:20
+
+T=20:40 same
+
+S=?

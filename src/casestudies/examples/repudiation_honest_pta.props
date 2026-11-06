@@ -1,0 +1,10 @@
+// minimum probability terminate successfully
+Pmin=? [ F "terminated_successfully" ]
+
+const int T;
+
+// minimum probability that protocol terminates successfully by time T
+Pmin=? [ F<=T "terminated_successfully" ]
+// minimum probability that protocol terminates successfully by time T
+Pmax=? [ F<=T "terminated_successfully" ]
+

@@ -1,0 +1,4 @@
+// C1
+P>=1 [ true U pc1=3&pc2=3&pc3=3&pc4=3&pc5=3&pc6=3&pc7=3&pc8=3&pc9=3&pc10=3 ]
+// C2
+Pmin=? [ true U pc1=3&pc2=3&pc3=3&pc4=3&pc5=3&pc6=3&pc7=3&pc8=3&pc9=3&pc10=3 & coin1=1&coin2=1&coin3=1&coin4=1&coin5=1&coin6=1&coin7=1&coin8=1&coin9=1&coin10=1 ]

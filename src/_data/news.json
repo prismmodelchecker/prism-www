@@ -1,0 +1,482 @@
+[
+	{
+		"date": "2026-10",
+		"html": "PRISM 4.11 is now <a href=\"/download.php\">available</a>, including additional reward properties and enhanced/optimised export of models/strategies. Further details <a href=\"https://github.com/prismmodelchecker/prism/blob/master/CHANGELOG.txt\">here</a>."
+	},
+	{
+		"date": "2026-01",
+		"html": "New releases of <a href=\"/download.php\">PRISM</a> (4.10) and <a href=\"/games/download.php\">PRISM-games</a> (3.2.2) with support for the <a href=\"https://github.com/pmc-tools/umb/\">UMB (Unified Markov Binary)</a> format."
+	},
+	{
+		"date": "2025-09",
+		"html": "New paper surveying <a href=\"/bibitem/KNP25/\">applications of probabilistic model checking</a>, a contribution to the <a href=\"https://link.springer.com/book/10.1007/978-3-031-97439-7\">Festschrift</a> for Christel Baier."
+	},
+	{
+		"date": "2025-08",
+		"html": "PRISM 4.9 is now <a href=\"/download.php\">available</a>, including model import/export enhancements and more. Further details <a href=\"/download.php\">here</a>."
+	},
+	{
+		"date": "2025-03",
+		"html": "Postdoc position available now with <a href=\"https://www.cs.ox.ac.uk/people/david.parker/home.html\">Dave Parker</a> and <a href=\"https://www.cs.ox.ac.uk/people/nobuko.yoshida/\">Nobuko Yoshida </a> on probabilistic verification for concurrency. Applications close on 30th April 2025. Details <a href=\"https://my.corehr.com/pls/uoxrecruit/erq_jobspec_version_4.display_form?p_company=10&p_internal_external=E&p_display_in_irish=N&p_process_type=&p_applicant_no=&p_form_profile_detail=&p_display_apply_ind=Y&p_refresh_search=Y&p_recruitment_id=178593 \">here</a>."
+	},
+	{
+		"date": "2024-08",
+		"html": "Up to two postdoc positions are available now on the <a href=\"http://www.fun2model.org/\">FUN2MODEL</a> project. Applications close on 12th September 2024. See <a href=\"https://my.corehr.com/pls/uoxrecruit/erq_jobspec_version_4.display_form?p_company=10&p_internal_external=E&p_display_in_irish=N&p_process_type=&p_applicant_no=&p_form_profile_detail=&p_display_apply_ind=Y&p_refresh_search=Y&p_recruitment_id=174929\">here</a> for more details."
+	},
+	{
+		"date": "2024-05",
+		"html": "A postdoc position is available now at Oxford on the <a href=\"https://www.turing.ac.uk/research/research-projects/fair-framework-responsible-adoption-artificial-intelligence-financial\">FAIR</a> project. Applications close on 22nd May 2024. Follow <a href=\"https://www.cs.ox.ac.uk/news/2314-full.html\">this link</a> for more details."
+	},
+	{
+		"date": "2024-04",
+		"html": "We are honoured that PRISM and its creators have won the 2024 <a href=\"https://etaps.org/awards/test-of-time-tool/\">ETAPS Test-of-Time Tool Award</a>! For more details, see <a href=\"/news/2024-04-etaps.php\">here</a>."
+	},
+	{
+		"date": "2023-11",
+		"html": "PRISM-games 3.2 is now <a href=\"/games/download.php\">available</a>, including symbolic model checking of turn-based stochastic games, correlated/fair equilibria and more. Further information <a href=\"/games/download.php\">here</a>."
+	},
+	{
+		"date": "2023-10",
+		"html": "A postdoc position is available now at Oxford on the <a href=\"https://www.turing.ac.uk/research/research-projects/fair-framework-responsible-adoption-artificial-intelligence-financial\">FAIR</a> project. Applications close on 28th November 2023. See <a href=\"https://www.cs.ox.ac.uk/news/2209-full.html\">here</a> for more details."
+	},
+	{
+		"date": "2023-10",
+		"html": "Two postdoc positions are available now on the <a href=\"http://www.fun2model.org/\">FUN2MODEL</a> project. Applications close on 6th November 2023. See <a href=\"https://www.cs.ox.ac.uk/news/2193-full.html\">here</a> for more details."
+	},
+	{
+		"date": "2023-09",
+		"html": "<a href=\"https://www.cs.ox.ac.uk/people/david.parker/home.html\">Dave Parker</a> is giving a keynote talk at <a href=\"http://www.qest.org/qest2023/\">QEST</a> / <a href=\"https://www.uantwerpen.be/en/conferences/confest-2023/\">CONFEST</a> 2023 on \"<a href=\"/talks/dave-qest23inv.pdf\">Multi-Agent Verification and Control with Probabilistic Model Checking</a>\". There is an accompanying paper <a href=\"/bibitem/Par23/\">here</a>."
+	},
+	{
+		"date": "2023-07",
+		"html": "PRISM features in the <a href=\"https://essai.si/\">ESSAI'23</a> course on \"<a href=\"/courses/essai23/\">Model Uncertainty in Sequential Decision Making</a>\" by <a href=\"https://www.cs.ox.ac.uk/people/david.parker/home.html\">Dave Parker</a> <a href=\"https://ori.ox.ac.uk/people/bruno-lacerda/\">Bruno Lacerda</a> and <a href=\"http://www.robots.ox.ac.uk/~nickh/\">Nick Hawes</a>."
+	},
+	{
+		"date": "2023-07",
+		"html": "PRISM 4.8 is now <a href=\"/download.php\">available</a>, including uncertain models (IMDPs, IDTMCs) and improved strategy generation. More information <a href=\"/download.php\">here</a>."
+	},
+	{
+		"date": "2022-05",
+		"html": "New <a href=\"/bibitem/KNP22/\">survey paper</a> covering MDPs, POMDPs, stochastic games and their support in <a href=\"/\">PRISM</a> and <a href=\"/games/\">PRISM-games</a> and their support in <a href=\"/\">PRISM</a> and <a href=\"/games/\">PRISM-games</a> now available."
+	},
+	{
+		"date": "2022-02",
+		"html": "<a href=\"https://aihub.org/2022/02/24/congratulations-to-the-aaai2022-award-winners/\">Distinguished paper award</a> at <a href=\"https://aaai.org/Conferences/AAAI-22/\">AAAI-22</a> for <a href=\"/bibitem/BAJ+22/\">this paper</a>, which builds on new interval MDP model checking in <a href=\"https://www.prismmodelchecker.org/\">PRISM</a>."
+	},
+	{
+		"date": "2022-01",
+		"html": "We are looking for 2 motivated Research Associates to play key roles on the <a href=\"http://www.fun2model.org/\">FUN2MODEL</a> project. Applications close on 7th February. See <a href=\"http://www.cs.ox.ac.uk/news/2005-full.html\">here</a> for more details."
+	},
+	{
+		"date": "2021-09",
+		"html": "PRISM is 20 years old this month! It's first official release was in <a href=\"https://ls4-www.cs.tu-dortmund.de/home/kemper/toolsataachen.html\">2001</a>. Thanks to all those have <a href=\"/bib.php\">used</a> it and who have helped <a href=\"/people.php\">develop</a> it over the years."
+	},
+	{
+		"date": "2021-03",
+		"html": "PRISM 4.7 is now <a href=\"/download.php\">available</a>, including support for POMDPs, improved accuracy reporting and <a href=\"https://github.com/prismmodelchecker/prism/blob/master/CHANGELOG.txt\">more</a>."
+	},
+	{
+		"date": "2021-02",
+		"html": "We are looking for a senior researcher to play a key role on the <a href=\"http://www.fun2model.org/\">FUN2MODEL</a> project. Applications close on 12th March, with interviews expected to be held from 29th March 2020 onwards. See <a href=\"https://my.corehr.com/pls/uoxrecruit/erq_jobspec_version_4.display_form?p_company=10&p_internal_external=E&p_display_in_irish=N&p_process_type=&p_applicant_no=&p_form_profile_detail=&p_display_apply_ind=Y&p_refresh_search=Y&p_recruitment_id=149540\">here</a> for more details."
+	},
+	{
+		"date": "2021-01",
+		"html": "There are now <a href=\"http://www.prismmodelchecker.org/bib-ext.php?sort=date\">over 400 papers</a> by external research teams using or building on PRISM. Thanks for your support!"
+	},
+	{
+		"date": "2020-11",
+		"html": "<a href=\"https://www.cs.ox.ac.uk/people/david.parker/home.html\">Dave Parker</a> is giving a keynote at <a href=\"https://ifm20.si.usi.ch/\">iFM 2020</a> on \"Verification with Stochastic Games: Advances and Challenges\"."
+	},
+	{
+		"date": "2020-09",
+		"html": "<a href=\"http://www.cs.ox.ac.uk/people/marta.kwiatkowska/\">Marta Kwiatkowska</a> is giving a keynote at <a href=\"https://kr2020.inf.unibz.it/\">KR 2020</a> on \"Probabilistic model checking for strategic equilibria-based decision making\"."
+	},
+	{
+		"date": "2020-05",
+		"html": "<a href=\"/games/\">PRISM-games</a> 3.0 is now <a href=\"/games/download.php\">available</a>, providing concurrent stochastic games, equilibria, real-time models and many new <a href=\"/games/casestudies.php\">examples</a>."
+	},
+	{
+		"date": "2020-04",
+		"html": "PRISM 4.6 is now <a href=\"/download.php\">available</a>, including a wide range of updates and fixes for users and developers. More information <a href=\"/download.php\">here</a>."
+	},
+	{
+		"date": "2020-03",
+		"html": "We are looking for a research associate to work on probabilistic reasoning for multi-agent systems on the <a href=\"http://www.fun2model.org/\">FUN2MODEL</a> project. Applications close on 15th April, with interviews expect in the week of 20th April 2020. See <a href=\"http://www.cs.ox.ac.uk/news/1794-full.html\"> here</a> for more details."
+	},
+	{
+		"date": "2020-02",
+		"html": "We are looking for a senior researcher to play a key role on the <a href=\"http://www.fun2model.org/\">FUN2MODEL</a> project. Applications close on 4th March, with interviews to be held on 11th March 2020. See <a href=\"http://www.cs.ox.ac.uk/news/1783-full.html\">here</a> for more details."
+	},
+	{
+		"date": "2020-01",
+		"html": "<a href=\"/games/\">PRISM-games</a> 3.0 is now <a href=\"/games/download.php\">available</a> as a beta release, providing concurrent stochastic games, equilibria, real-time models and many new <a href=\"/games/casestudies.php\">examples</a>."
+	},
+	{
+		"date": "2019-09",
+		"html": "Senior researcher position and studentship are available at Oxford on the forthcoming <a href=\"http://www.fun2model.org/\">FUN2MODEL</a> project project. Applications close 30th October and 28th October respectively, and interviews will be on 8th November 2019. See <a href=\"http://www.cs.ox.ac.uk/news/1681-full.html\">here</a> and <a href=\"http://www.cs.ox.ac.uk/news/1733-full.html\">here</a> for more details."
+	},
+	{
+		"date": "2019-06",
+		"html": "Three postdoctoral positions are now available at Oxford on the forthcoming <a href=\"http://www.fun2model.org/\">FUN2MODEL</a> project. Applications close 8 July 2019. See <a href=\"http://www.cs.ox.ac.uk/news/1684-full.html\">here</a>, <a href=\"http://www.cs.ox.ac.uk/news/1683-full.html\">here</a> and <a href=\"http://www.cs.ox.ac.uk/news/1682-full.html\">here</a> for more details."
+	},
+	{
+		"date": "2019-06",
+		"html": "Two fully funded ERC Doctoral Studentships are now available at Oxford on the forthcoming <a href=\"http://www.fun2model.org/\">FUN2MODEL</a> project. Applications close 8 July 2019. See <a href=\"http://www.cs.ox.ac.uk/news/1681-full.html\">here</a> for more details."
+	},
+	{
+		"date": "2019-05",
+		"html": "PRISM-games 2.1 is now <a href=\"/games/download.php\">available</a>, providing simpler installation/compilation, updates from PRISM 4.5 and more. More information <a href=\"/games/download.php\">here</a>."
+	},
+	{
+		"date": "2019-04",
+		"html": "PRISM 4.5 is now <a href=\"/download.php\">available</a>, including a wide range of updates and fixes for users and developers. More information <a href=\"/download.php\">here</a>."
+	},
+	{
+		"date": "2019-03",
+		"html": "<a href=\"http://www.cs.ox.ac.uk/people/marta.kwiatkowska/\">Marta Kwiatkowska</a> has been awarded an ERC Advanced Grant titled \"FUN2MODEL: From FUNction-based TO MOdel-based automated probabilistic reasoning for DEep Learning\"\", which aims to make advances towards provably robust 'strong' Artificial Intelligence. More details <a href=\"http://www.cs.ox.ac.uk/news/1652-full.html\">here</a>."
+	},
+	{
+		"date": "2019-01",
+		"html": "PRISM just competed in <a href=\"http://qcomp.org/competition/2019/index.html\">QComp 2019</a>: the inaugural \"Comparison of Tools for the Analysis of Quantitative Formal Models\"\". See the <a href=\"/bibitem/HHH+19/\">report</a> to appear at TACAS'19 as part of <a href=\"https://tacas.info/toolympics.php\">Toolympics</a>."
+	},
+	{
+		"date": "2018-08",
+		"html": "The paper \"<a href=\"/bibitem/NPK+05/\">Using Probabilistic Model Checking for Dynamic Power Management</a>\" is one of 5 selected to \"highlight important developments for the scientific community\" as part of the 30-year anniversary of the journal <a href=\"https://link.springer.com/journal/165\">Formal Aspects of Computing</a>."
+	},
+	{
+		"date": "2018-08",
+		"html": "<a href=\"https://www.cs.ox.ac.uk/people/david.parker/home.html\">Dave Parker</a> is giving an invited talk at the <a href=\"http://logic.las.tu-berlin.de/hlga2018/index.html\">2018 Highlights of Logic, Games and Automata</a> conference on \"<a href=\"/talks/dave-highlights18.pdf\">Probabilistic Model Checking: Advances and Applications</a>\", summarising recent developments and future directions for PRISM."
+	},
+	{
+		"date": "2017-07",
+		"html": "PRISM 4.4 is now <a href=\"/download.php\">available</a>, including interval iteration, topological iteration, new reward operators, CTL/LTL model checking and <a href=\"/download.php\">much more</a>."
+	},
+	{
+		"date": "2016-09",
+		"html": "A 2-3 year postdoc position is available now at Birmingham, working with <a href=\"https://www.cs.ox.ac.uk/people/david.parker/home.html\">Dave Parker</a> on verification of probabilistic programming languages. Details <a href=\"http://www.cs.bham.ac.uk/~parkerdx/projects/brass/postdoc.php\">here</a>."
+	},
+	{
+		"date": "2016-07",
+		"html": "Marta Kwiatkowska, Gethin Norman and Dave Parker have been given the <a href=\"https://www.research.ibm.com/haifa/conferences/hvc2016/award.shtml\">2016 HVC award</a> for \"the invention, development and maintenance of the PRISM probabilistic model checker\". For more details, see <a href=\"/news/2016-07-hvc.php\">here</a>."
+	},
+	{
+		"date": "2016-07",
+		"html": "A 3-year postdoc and a PhD position are available now at Birmingham, working with <a href=\"https://www.cs.ox.ac.uk/people/david.parker/home.html\">Dave Parker</a> on a new project under the DARPA-funded <a href=\"http://www.darpa.mil/program/building-resource-adaptive-software-systems\">BRASS</a> program. This will be advertised shortly. Please <a href=\"mailto:d.a.parker@cs.bham.ac.uk\">contact him</a> directly for details."
+	},
+	{
+		"date": "2016-02",
+		"html": "We are delighted to announce that PRISM has again been selected to participate in <a href=\"https://summerofcode.withgoogle.com/\">Google Summer of Code</a>. Contribute to PRISM and get paid for it! More details <a href=\"/news/2016-02-gsoc.php\">here</a>."
+	},
+	{
+		"date": "2015-11",
+		"html": "We are pleased to report that PRISM has now been <a href=\"/download.php\">downloaded</a> more than 50,000 times. Thanks for your support!"
+	},
+	{
+		"date": "2015-10",
+		"html": "Version 2.0 of <a href=\"/games/\">PRISM-games</a> is out, featuring new reward properties, <a href=\"/games/properties.php#multi\">multi-objective</a> strategy synthesis and <a href=\"/games/compositional.php\">assume-guarantee</a> reasoning. More info <a href=\"/games/\">here</a>."
+	},
+	{
+		"date": "2015-09",
+		"html": "<a href=\"https://www.cs.ox.ac.uk/people/david.parker/home.html\">Dave Parker</a> will give a lecture on \"Probabilistic Model Checking and Controller Synthesis\" at the <a href=\"http://www.avacs.org/autumn2015/\">2nd AVACS Autumn School</a> on 1 October. See <a href=\"/lectures/avacs15/\">here</a> for resources."
+	},
+	{
+		"date": "2015-07",
+		"html": "A beta release of PRISM version 4.3 is now <a href=\"/download.php\">available</a>. New features include external LTL-to-automata converters and various new model checking algorithms. Details <a href=\"/download.php\">here</a>."
+	},
+	{
+		"date": "2015-06",
+		"html": "PRISM now supports the <a href=\"http://adl.github.io/hoaf/\">HOA</a> (Hanoi Omega Automata) format. This allows external LTL-to-automaton converters to be used. More details in this <a href=\"/bibitem/BBDL+15/\">CAV'15</a> paper."
+	},
+	{
+		"date": "2015-02",
+		"html": "Three postdoctoral positions <a href=\"/news/2015-02-pg.php\">available</a> to work on the 5-year Programme Grant \"Mobile Robotics: Enabling a Pervasive Technology of the Future\", held by Paul Newman and Ingmar Posner (Oxford's Engineering Science) and Niki Trigoni and <a href=\"http://www.cs.ox.ac.uk/people/marta.kwiatkowska/\">Marta Kwiatkowska</a> (Oxford's Computer Science). More details <a href=\"/news/2015-02-pg.php\">here</a>."
+	},
+	{
+		"date": "2014-11",
+		"html": "<a href=\"http://www.cs.ox.ac.uk/people/marta.kwiatkowska/\">Marta Kwiatkowska</a> has been awarded an honorary doctorate from KTH Royal Institute of Technology. More details <a href=\"/news/2014-11-kth.php\">here</a>. <!-- and <a href=\"https://www.kth.se/en/aktuellt/nyheter/skogens-foradlare-blir-hedersdoktor-1.510264\">here</a>.-->"
+	},
+	{
+		"date": "2014-08",
+		"html": "Here is a <a href=\"/papers/lms-qv.pdf\">new report</a>, published by the <a href=\"http://www.lms.ac.uk/about/committees/knowledge-transfer-papers\">LMS</a> and the <a href=\"http://www.smithinst.co.uk/partnerships/publications/\">Smith Institute</a>, giving an accessible introduction to quantitative verification."
+	},
+	{
+		"date": "2014-07",
+		"html": "Two PRISM-related postdoctoral positions are now available at Birmingham on the <a href=\"http://www.cs.bham.ac.uk/research/projects/hieratic/\">HIERATIC</a> project. See the <a href=\"http://www.jobs.ac.uk/job/AJF693/research-fellow-hieratic/\">advert</a>. The posts run until 30 Sep 2015. Applications close 17 Aug 2014."
+	},
+	{
+		"date": "2014-07",
+		"html": "<a href=\"https://www.cs.ox.ac.uk/people/david.parker/home.html\">Dave Parker</a> will give a session on \"Probabilistic real-time systems\" at the <a href=\"http://movep14.irccyn.ec-nantes.fr/\">MOVEP'14</a> summer-school on 7 July. See <a href=\"/lectures/movep14/\">here</a> for resources."
+	},
+	{
+		"date": "2014-05",
+		"html": "<a href=\"http://www.cs.ox.ac.uk/people/marta.kwiatkowska/\">Marta Kwiatkowska</a> will give a course on \"Probabilistic model checking with PRISM\" at the <a href=\"http://fm.csl.sri.com/SSFT14/\">SSFT'14</a> summer-school this month. See <a href=\"/courses/ssft14/\">this page</a> for resources."
+	},
+	{
+		"date": "2014-05",
+		"html": "A beta release of PRISM version 4.2 is now <a href=\"/download.php\">available</a>. New features include featuring parametric model checking, fast adaptive uniformisation and <a href=\"/doc/VERSIONS.txt\">more</a>."
+	},
+	{
+		"date": "2014-04",
+		"html": "We are delighted that PRISM has again been selected for the <a href=\"http://code.google.com/soc/\">Google Summer of Code</a> programme. This year we will have <a href=\"/news/2014-04-gsoc.php\">8 students</a> joining us."
+	},
+	{
+		"date": "2014-02",
+		"html": "We are delighted to announce that PRISM has again been selected to participate in <a href=\"http://code.google.com/soc/\">Google Summer of Code</a>. Contribute to PRISM and get paid for it! More details <a href=\"/news/2014-02-gsoc.php\">here</a>."
+	},
+	{
+		"date": "2013-11",
+		"html": "A new <a href=\"/dev/\">development version</a> of PRISM is now available, featuring parametric model checking, fast adaptive uniformisation and more."
+	},
+	{
+		"date": "2013-09",
+		"html": "See the upcoming <a href=\"/bibitem/KP13/\">tutorial</a> and keynote at <a href=\"http://www.uet.vnu.edu.vn/atva2013/\">ATVA'13</a> by Marta Kwiatkowska on probabilistic model checking, strategy synthesis and PRISM."
+	},
+	{
+		"date": "2013-08",
+		"html": "Two more postdoctoral positions are available in automated verification and synthesis on the ERC Advanced Investigator Grant <a href=\"http://www.veriware.org/\">VERIWARE</a>. Candidates with prior experience of applications to biology are particularly encouraged to apply. Applications close 30 Sep 2013. See <a href=\"http://www.cs.ox.ac.uk/news/679-full.html\">here</a> for more details."
+	},
+	{
+		"date": "2013-05",
+		"html": "A postdoc position is now available at <a href=\"http://www.cs.bham.ac.uk/\">Birmingham</a> on the new project \"<a href=\"http://www.cs.bham.ac.uk/~parkerdx/projects/epsrc-gamesec/\">Automated Game-Theoretic Verification of Security Systems\"</a>. Details <a href=\"http://www.cs.bham.ac.uk/~parkerdx/projects/epsrc-gamesec/advert.php\">here</a>. Applications close on 4 Sep 2013."
+	},
+	{
+		"date": "2013-06",
+		"html": "A fully funded <a href=\"/news/2013-06-phd.php\">PhD studentship</a> is now available at Birmingham on the topic \"Quantitative Verification of Complex Systems\". See <a href=\"/news/2013-06-phd.php\">here</a> for more details."
+	},
+	{
+		"date": "2013-06",
+		"html": "Congratulations to Alessandro Bruni and Proteek Roy, who have been selected to work on PRISM as part of GSoC 2013, and also to Jan Gorzny, who will work on PRISM as part of a <a href=\"http://babelfish.arc.nasa.gov/trac/jpf\">JPF</a> GSoC project."
+	},
+	{
+		"date": "2013-05",
+		"html": "Two postdoctoral positions are now available in automated verification and synthesis on the ERC Advanced Investigator Grant <a href=\"http://www.veriware.org/\">VERIWARE</a>. Applications close on 31st May 2013. See <a href=\"http://www.cs.ox.ac.uk/news/636-full.html\">here</a> for more details."
+	},
+	{
+		"date": "2013-04",
+		"html": "We are delighted to announce that PRISM has been selected to participate in the 2013 <a href=\"http://code.google.com/soc/\">Google Summer of Code</a>. Contribute to PRISM and get paid for it! More details <a href=\"/news/2013-04-gsoc.php\">here</a>."
+	},
+	{
+		"date": "2013-04",
+		"html": "PRISM features this week in a <a href=\"/lectures/cpsweek13\">tutorial</a> on probabilistic hybrid systems at <a href=\"http://www.cpsweek.org/\">CPSWeek 2013</a>, run by <a href=\"http://www.cs.ox.ac.uk/people/Marta.Kwiatkowska/\">Marta Kwiatkowska</a> and <a href=\"http://depend.cs.uni-saarland.de/hermanns\">Holger Hermanns</a>."
+	},
+	{
+		"date": "2013-03",
+		"html": "<a href=\"/games/\">PRISM-games</a> an extension of PRISM for probabilistic model checking of <em>stochastic multi-player games</em> will be presented at TACAS'13 this week. Read the <a href=\"/bibitem/CFK+13/\">tool paper</a> or visit the <a href=\"/games/\">website</a> for more information."
+	},
+	{
+		"date": "2012-10",
+		"html": "A postdoctoral position is now available at Birmingham on the new <a href=\"http://www.cs.bham.ac.uk/research/projects/hieratic/\">HIERATIC</a> project. See the <a href=\"http://www.jobs.ac.uk/job/AFG066/research-fellow/\">advert</a>, the <a href=\"http://www.download.bham.ac.uk/vacancies/jd/43880.pdf\">particulars</a> and apply <a href=\"https://atsv7.wcn.co.uk/search_engine/jobs.cgi?SID=amNvZGU9MTI2MTE5NyZ2dF90ZW1wbGF0ZT03Njcmb3duZXI9NTAzMjUyMSZvd25lcnR5cGU9ZmFpciZicmFuZF9pZD0wJnZhY2Zpcm0udmFjdGl0bGU9aGllcmF0aWMmcG9zdGluZ19jb2RlPTExNyZyZXFzaWc9MTM0OTIxNDMzMi1jNDliZGIxNDRjMjlhMzFlMTNhMGMxNDNlNDNkMDMzNGVmZjdlYzQ5\">here</a>. Applications close 22 Oct 2012."
+	},
+	{
+		"date": "2012-09",
+		"html": "Interested in probabilistic model checking for probabilistic timed automata? A new <a href=\"/bibitem/NPS13/\">tutorial paper</a> is now available, to appear in <a href=\"http://www.springer.com/engineering/circuits+%26+systems/journal/10703\">Formal Methods in System Design</a>."
+	},
+	{
+		"date": "2012-09",
+		"html": "Nature Scientific Reports publish a <a href=\"http://www.nature.com/srep/2012/120913/srep00656/full/srep00656.html\">paper</a> by Luca Cardelli &amp; Attila Csikász-Nagy that uses PRISM to study cell cycle switch as a computing device. See <a href=\"/news/2012-09-nsr.php\">here</a> for details."
+	},
+	{
+		"date": "2012-09",
+		"html": "Marta Kwiatkowska will give this year's <a href=\"http://wcms.inf.ed.ac.uk/lfcs/events/milner-lectures/\">Milner Lecture</a>, entitled \"Sensing everywhere: on quantitative verification for ubiquitous computing\", at the University of Edinburgh on 25 Sep 2012."
+	},
+	{
+		"date": "2012-07",
+		"html": "A postdoctoral position is now available at Birmingham on the forthcoming <a href=\"http://www.cs.bham.ac.uk/research/projects/hieratic/\">HIERATIC</a> project. See the <a href=\"http://www.jobs.ac.uk/job/AEU961/research-fellow/\">advert</a>, the <a href=\"http://www.download.bham.ac.uk/vacancies/jd/43880.pdf\">particulars</a> and apply <a href=\"https://atsv7.wcn.co.uk/search_engine/jobs.cgi?SID=amNvZGU9MTI2MTE5NyZ2dF90ZW1wbGF0ZT03Njcmb3duZXI9NTAzMjUyMSZvd25lcnR5cGU9ZmFpciZicmFuZF9pZD0wJnZhY2Zpcm0udmFjdGl0bGU9aGllcmF0aWMmcG9zdGluZ19jb2RlPTExNyZyZXFzaWc9MTM0MjYyNjg3Ny04YTYzNTgwYjM2NTkwZTcyYTc4YTA0ZDRlZjhlNTgxY2E2Yjc0NTNj\">here</a>. Applications close 14 Aug 2012."
+	},
+	{
+		"date": "2012-04",
+		"html": "Two postdoctoral positions are now available at Oxford on the <a href=\"http://www.veriware.org/\">VERIWARE</a> and <a href=\"http://qav.cs.ox.ac.uk/projects/sensing/\">Autonomous Ubiquitous Sensing</a> projects. Applications close 25 April 2012. See <a href=\"http://www.cs.ox.ac.uk/news/474-full.html\">here</a> and <a href=\"http://www.cs.ox.ac.uk/news/475-full.html\">here</a> for more details."
+	},
+	{
+		"date": "2012-02",
+		"html": "We are pleased to announce the release of <a href=\"/games/\">PRISM-games</a>, a new extension of PRISM for model checking <a href=\"/bibitem/CFK+12/\">stochastic multi-player games</a>."
+	},
+	{
+		"date": "2012-02",
+		"html": "PRISM has now been <a href=\"/download.php\">downloaded</a> more than 25,000 times. Thanks for your support."
+	},
+	{
+		"date": "2010-08",
+		"html": "Marta Kwiatkowska will give a course on \"Advances in Probabilistic Model Checking\" at the <a href=\"http://asimod.in.tum.de/2011/\">Marktoberdorf 2011</a> summer-school this month. See <a href=\"/courses/marktoberdorf11/\">this page</a> for resources."
+	},
+	{
+		"date": "2011-07",
+		"html": "To coincide with the recent <a href=\"/download.php\">release</a> of <a href=\"/bibitem/KNP11/\">PRISM 4.0</a>, we are pleased to announce the new <a href=\"/benchmarks/\">PRISM benchmark suite</a>, for testing or evaluating probabilistic model checking tools and techniques."
+	},
+	{
+		"date": "2011-07",
+		"html": "Congratulations to Shinji Kikuchi and Yasuhide Matsumoto from <a href=\"http://jp.fujitsu.com/group/labs/en/\">Fujitsu</a>, who won the Best Paper award for their new <a href=\"/bibitem/KM11/\">paper</a> applying PRISM to cloud computing systems."
+	},
+	{
+		"date": "2011-05",
+		"html": "The final beta release of PRISM 4.0, which includes support for probabilistic timed automata (PTAs) and statistical model checking, is available on the main <a href=\"/download.php\">download</a> page."
+	},
+	{
+		"date": "2011-03",
+		"html": "Interested in probabilistic model checking for MDPs? A new <a href=\"/bibitem/FKNP11/\">tutorial paper</a> on the subject, written for the <a href=\"http://www.sti.uniurb.it/events/sfm11connect/\">SFM-11:CONNECT</a> summer-school, is now available."
+	},
+	{
+		"date": "2011-02",
+		"html": "A fully funded PhD studentship is now available at Oxford on the topic \"Automated Verification Techniques for DNA Computing\". Applications close 28 Feb 2011. See <a href=\"http://www.cs.ox.ac.uk/news/304-full.html\">here</a> for more details."
+	},
+	{
+		"date": "2010-12",
+		"html": "An early release of PRISM 4.0 is now available as a <a href=\"/dev/\">development version</a>. This includes support for probabilistic timed automata (PTAs) and statistical model checking."
+	},
+	{
+		"date": "2010-11",
+		"html": "A 1-year postdoc position is now available at Oxford on the <a href=\"http://qav.cs.ox.ac.uk/projects/darpa-prismatic/\">PRISMATIC</a> project. Applications close 8 Dec 2010. See <a href=\"http://www.cs.ox.ac.uk/news/278-full.html\">here</a> for more details."
+	},
+	{
+		"date": "2010-10",
+		"html": "A fully funded PhD studentship is now available at Oxford on the new <a href=\"http://www.veriware.org/\">VERIWARE</a> project. Applications close 15 Nov 2010. See <a href=\"http://www.cs.ox.ac.uk/news/236-full.html\">here</a> for more details."
+	},
+	{
+		"date": "2010-09",
+		"html": "US R&amp;D company <a href=\"http://www.sift.info/\">SIFT</a> is hiring researchers in probabilistic verification. See <a href=\"/news/2010-09-sift.php\">here</a> for details."
+	},
+	{
+		"date": "2010-08",
+		"html": "The paper \"<a href=\"http://www.prismmodelchecker.org/bibitem/HKN+08/\">Probabilistic Model Checking of Complex Biological Pathways</a>\", by John Heath, Marta Kwiatkowska, Gethin Norman, David Parker and Oksana Tymchyshyn, was recently awarded the Top Cited Article award in the journal Theoretical Computer Science, for the period 2005-2010."
+	},
+	{
+		"date": "2010-07",
+		"html": "Marta Kwiatkowska and Dave Parker will give a 5-part <a href=\"/lectures/esslli10/\">course</a> on \"Probabilistic Model Checking\" at the <a href=\"http://esslli2010cph.info/\">ESSLLI'10</a> summer-school in Copenhagen next month."
+	},
+	{
+		"date": "2010-06",
+		"html": "Interested in applying PRISM to systems biology? This new <a href=\"/bibitem/KNP10a/\">book chapter</a> in \"Symbolic Systems Biology: Theory and Methods\" provides a tutorial and exercises on the subject."
+	},
+	{
+		"date": "2010-04",
+		"html": "A 2-year postdoc position is now available at Oxford on the <a href=\"http://qav.cs.ox.ac.uk/projects/epsrc-pss/\">Predictable Software Systems</a> project. Applications close 28 May 2010. See <a href=\"http://www.cs.ox.ac.uk/news/190-full.html\">here</a> for more details."
+	},
+	{
+		"date": "2010-03",
+		"html": "Two postdoctoral positions are now available at Oxford on the forthcoming <a href=\"http://www.veriware.org/\">VERIWARE</a> project. Applications close 7 May 2010. See <a href=\"http://www.cs.ox.ac.uk/news/185-full.html\">here</a> for more details."
+	},
+	{
+		"date": "2010-03",
+		"html": "Two fully funded PhD studentships are now available at Oxford on the forthcoming <a href=\"http://www.veriware.org/\">VERIWARE</a> project. Applications close 4 May 2010. See <a href=\"http://www.cs.ox.ac.uk/news/183-full.html\">here</a> for more details."
+	},
+	{
+		"date": "2010-02",
+		"html": "There will be a PRISM <a href=\"/courses/qmc10/\">session</a> at this month's PhD school on <a href=\"http://www.artist-embedded.org/artist/Overview,2048.html\">Quantitative Model Checking</a> (QMC), organised by ArtistDesign/MT-LAB."
+	},
+	{
+		"date": "2009-05",
+		"html": "A beta release of PRISM version 3.3 is now <a href=\"/download.php\">available</a>. New features include LTL model checking, better error reporting, an extended property language and <a href=\"/doc/VERSIONS.txt\">much more</a>."
+	},
+	{
+		"date": "2008-12",
+		"html": "A new <a href=\"/dev/\">development version</a> of PRISM is now available, with many new features and improvements. Full details <a href=\"/dev/\">here</a>."
+	},
+	{
+		"date": "2008-11",
+		"html": "Two research positions are now available at Oxford, working on the CONNECT-IP project: one Research Assistant (Grade 7) and one Student Researcher. Applications close 5 January 2009. See <a href=\"http://www.cs.ox.ac.uk/news/documents/connect7-fps.pdf\">here</a> and <a href=\"http://www.cs.ox.ac.uk/news/documents/connect6-fps.pdf\">here</a> for more details."
+	},
+	{
+		"date": "2008-04",
+		"html": "A fully funded <a href=\"http://www.cs.ox.ac.uk/news/21-full.html\">PhD studentship</a> is now available at Oxford on the forthcoming <a href=\"http://qav.cs.ox.ac.uk/projects/epsrc-pss/\">Predictable Software Systems</a> project. Applications close 16 May 208. See <a href=\"http://www.cs.ox.ac.uk/news/21-full.html\">here</a> for more details."
+	},
+	{
+		"date": "2008-03",
+		"html": "PRISM has now been <a href=\"/download.php\">downloaded</a> more than 10,000 times. Thanks for your support."
+	},
+	{
+		"date": "2008-02",
+		"html": "A beta version of the next PRISM release (version 3.2) is now <a href=\"/download.php\">available</a>. See <a href=\"/download.php\">here</a> for details."
+	},
+	{
+		"date": "2007-11",
+		"html": "A fully funded <a href=\"http://www.cs.ox.ac.uk/oucl/prospective/dphil/MartaStudentship.pdf\">PhD studentship</a> is now available at Oxford on the forthcoming <a href=\"http://qav.cs.ox.ac.uk/projects/epsrc-pss/\">Predictable Software Systems</a> project. Applications close 18 January. See <a href=\"http://www.cs.ox.ac.uk/oucl/prospective/dphil/MartaStudentship.pdf\">here</a> for more details."
+	},
+	{
+		"date": "2007-10",
+		"html": "A new <a href=\"/dev/\">development version</a> of PRISM is now available. Changes since the last development release include a new graph plotting engine, improvements to labels/formula, and a (slight) redesign to match the new web site."
+	},
+	{
+		"date": "2007-09",
+		"html": "A <a href=\"http://www.cs.ox.ac.uk/oucl/jobs/pss7-07.html\">postdoctoral position</a> is now available at Oxford on the forthcoming Predictable Software Systems project. Applications close 18 October. See <a href=\"http://www.cs.ox.ac.uk/oucl/jobs/pss7-07.html\">here</a> for more details."
+	},
+	{
+		"date": "2007-07",
+		"html": "The PRISM team have moved to <a href=\"http://www.cs.ox.ac.uk/\">Oxford University</a>. Concurrently, we have re-launched the PRISM web site, with a new design and a new <a href=\"http://www.prismmodelchecker.org/\">URL</a>."
+	},
+	{
+		"date": "2007-06",
+		"html": "New <a href=\"/dev/\">development versions</a> of PRISM are now being made available again. Recent new functionality includes: an SBML-to-PRISM translator, support for 64-bit architectures and an improved simulator GUI."
+	},
+	{
+		"date": "2007-05",
+		"html": "A new <a href=\"/manual/FrequentlyAskedQuestions/\">FAQ</a> section has been added to the PRISM manual. Comments or requests for topics to be covered are welcome."
+	},
+	{
+		"date": "2007-05",
+		"html": "A new symmetry reduction tool for PRISM called <a href=\"/grip/\">GRIP</a>, developed at the University of Glasgow, is now available."
+	},
+	{
+		"date": "2007-04",
+		"html": "The PRISM web site now includes slides for an 11-part <a href=\"/lectures/\">lecture course</a> introducing probabilistic model checking and PRISM. This material formed the basis of the recent 15-hour course given at the <a href=\"http://www.cs.unibo.it/ricerca/grad/biss2007/\">BISS 2007</a> school."
+	},
+	{
+		"date": "2007-04",
+		"html": "Version 3.1.1 of PRISM has now been <a href=\"/download.php\">released</a>, including a few small but important bug fixes (precise details <a href=\"/doc/CHANGELOG.txt\">here</a>)."
+	},
+	{
+		"date": "2006-11",
+		"html": "A beta release of version 3.1 of PRISM is now <a href=\"/download.php\"> available</a>. New features include a Windows installer, multiple reward structures and command-line generation of random paths (more details <a href=\"/doc/VERSIONS.txt\">here</a>)."
+	},
+	{
+		"date": "2006-10",
+		"html": "New and up-to-date material for those wishing to learn about PRISM is now available, to coincide with the <a href=\"http://first.dk/VPSM\">VPSM</a> PhD school in Copenhagen this month. An online tutorial is now <a href=\"/tutorial/\">available</a>. There are also up-to-date slides. These are in three parts: (I) <a href=\"/talks/vpsm06-part1.pdf\">probabilistic model checking for DTMCs/MDPs/PTAs</a>, (II) <a href=\"/talks/vpsm06-part2.pdf\">PRISM</a> and (III) <a href=\"/talks/vpsm06-part3.pdf\">case studies</a>."
+	},
+	{
+		"date": "2006-07",
+		"html": "The PRISM manual is now <a href=\"/manual/\">online</a>, making it considerably easier to navigate and search. This will also allow us to update and improve the manual more efficiently. This launch coincides with the full <a href=\"/download.php\">release</a> of version 3.0 of PRISM, which was previously available as a beta release."
+	},
+	{
+		"date": "2006-06",
+		"html": "Applications are invited for a Research Associate to work on the new EPSRC funded project <a href=\"http://www.cs.bham.ac.uk/~mzk/research/projects/swverif/\">Automated quantitative software verification with PRISM</a>, whose aim is to extend the PRISM tool with the capability to extract models from software. Details of the post can be found <a href=\"http://www.personnel.bham.ac.uk/vacancies/furtherParticulars.htm?refNo=43042\">here</a>. Informal enquires can be emailed to <a href=\"mailto:mzk@cs.bham.ac.uk\">Marta Kwiatkowska</a>."
+	},
+	{
+		"date": "2006-03",
+		"html": "Version 3.0.beta1 of PRISM is <a href=\"/download.php\">now available</a>. This major new release includes a simulator (providing approximate verification techniques and a model debugging tool), costs and rewards, support for Mac OS X, improved import/export functionality and <a href=\"/doc/VERSIONS.txt\">much more</a>."
+	},
+	{
+		"date": "2006-03",
+		"html": "A tool paper <?php prism_cite(\"HKNP06\"); ?> and demo of the forthcoming new release of PRISM will be presented at the <a href=\"http://depend.cs.uni-sb.de/index.php?id=329\">TACAS'06</a> conference in Vienna this month."
+	},
+	{
+		"date": "2006-03",
+		"html": "There will be a tutorial on probabilistic model checking and PRISM at the <a href=\"http://first.dk/VPSM\">Verification of Protocols for Security and Mobility (VPSM)</a> PhD School to be held in Copenhagen in October."
+	},
+	{
+		"date": "2006-01",
+		"html": "We are in the process of migrating \"<a href=\"/support/\">support</a>\" aspects of the PRISM project to SourceForge. The project page is <a href=\"http://sourceforge.net/projects/prism-mc/\">here</a>. Please help out by posting queries in the <a href=\"http://sourceforge.net/forum/forum.php?forum_id=520372\">help forum</a> or filing a <a href=\"http://sourceforge.net/tracker/?func=add&amp;group_id=155178&amp;atid=794764\">bug report</a>."
+	},
+	{
+		"date": "2005-10",
+		"html": "PRISM now runs on Mac OS X, as well as on Linux, Solaris and Windows. To try it out, download a <a href=\"/dev/\">development version</a> of PRISM."
+	},
+	{
+		"date": "2005-06",
+		"html": "A PhD studentship is now available in the School of Computer Science at the University of Birmingham to work on probabilistic model checking and PRISM. See <a href=\"http://www.cs.bham.ac.uk/~mzk/research_probmc_stud.html\">here</a> and <a href=\"http://www.cs.bham.ac.uk/study/postgraduate-research/special_opportunities.html\">here</a> for more information."
+	},
+	{
+		"date": "2005-01",
+		"html": "Recent development versions of PRISM are now being made available from <a href=\"/dev/\">here</a>. These versions add various new features, including support for analysis of models which include information about costs and rewards."
+	},
+	{
+		"date": "2004-09",
+		"html": "PRISM now runs on Windows, as well as on Linux and Solaris. This new functionality is available in version 2.1, the current release of PRISM, which can be downloaded from <a href=\"/download.html\">here</a>."
+	},
+	{
+		"date": "2004-04",
+		"html": "The book Mathematical Techniques for Analyzing Concurrent and Probabilistic Systems has now been published by <a href=\"http://www.ams.org/bookstore?fn=20&amp;arg1=crmmseries&amp;item=CRMM-23\">AMS</a>. This includes six chapters of lecture notes covering the background of probabilistic model checking and the PRISM tool. See <a href=\"/bibitem/KNP04a/\">here</a> for more information."
+	},
+	{
+		"date": "2004-03",
+		"html": "Version 2.0 of PRISM is now <a href=\"/download.html\">available</a>. The new release includes significant improvements to the PRISM modelling language and a completely new graphical user interface. See <a href=\"/doc/VERSIONS.txt\">here</a> for more precise details of what is included. To download PRISM 2.0, click <a href=\"/download.html\">here</a>."
+	}
+]

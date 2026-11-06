@@ -1,0 +1,8 @@
+const int T;
+
+// Maximum probability that malicious recepient gains information
+Pmax=? [ F "gains_information" ]
+
+// Maximum probability that malicious recepient gains information by deadline T
+Pmax=? [ F<=T "gains_information" ]
+

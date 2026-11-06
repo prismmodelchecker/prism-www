@@ -1,0 +1,5 @@
+const double t;
+
+R{"a"}=?[ I=t ]
+R{"r"}=?[ I=t ]
+R{"activated"}=?[ C<=t ]

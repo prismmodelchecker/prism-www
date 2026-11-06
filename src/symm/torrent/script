@@ -1,0 +1,11 @@
+#!/bin/csh
+
+# normal
+prism -h torrent4.sm torrent4.csl -fixdl -const T=0.5
+prism -h torrent5.sm torrent5.csl -fixdl -const T=0.5
+  
+# symmetry reduction
+prism-symm -h torrent4.sm torrent4.csl -fixdl -const T=0.5 -symm 0 0
+prism-symm -h torrent5.sm torrent5.csl -fixdl -const T=0.5 -symm 0 0
+prism-symm -h torrent6.sm torrent6.csl -fixdl -const T=0.5 -symm 0 0
+prism-symm -h torrent7.sm torrent7.csl -fixdl -const T=0.5 -symm 0 0

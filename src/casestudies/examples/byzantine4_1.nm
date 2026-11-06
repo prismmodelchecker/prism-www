@@ -1,0 +1,126 @@
+// Byzantine agreement protocol - abstract protocol for proving fast convergence
+// show that within two rounds all honest pre votes will be the same with probability 1/2
+// dxp/gxn 05/09/01
+
+mdp
+
+// CONSTANTS
+// N=4 (number of parties) T=1 (number of corrupted parties)
+// number of honest parties (M=N-T)
+const M=3;
+// minimum number of votes from honest parties needed before a vote can be made K=N- 2T 
+const K=2;
+
+// abstraction of actual protocol for proving probabilistic progress
+// need to include only:
+// main votes for round r-1
+// pre votes for round r
+// main votes for round r
+// pre votes for round r+1
+// where r is an arbitrary round
+
+// one question we have is when the coins in rounds r-1 and r are flipped
+// (these coins are needed for the pre-votes in round r and round r+1 respectively)
+// we have chosen that this can happen any time after at least n-2t honest parties have 
+// read the main votes in round r-1 (that is chosen their pre-vote)
+
+// VARIABLES 
+
+// counts the number of parties that have read the main votes in round r-1
+// used to know what coins can be flipped
+global n0 :  [0..K];
+
+// main-votes so far made in round r-1
+// note only boolean values
+global main1_0 : [0..1]; // vote for 0
+global main1_1 : [0..1]; // vote for 1
+global main1_abs : [0..1]; // vote for 1
+
+// to count the pre-votes so far made in round r
+global pre1_0 : [0..M]; // number for 0
+global pre1_1 : [0..M]; // number for 1
+
+
+// pre-votes so far made in round r+1 
+// note only boolean values
+global pre2_0 : [0..1]; // vote for 0
+global pre2_1 : [0..1]; // vote for 1
+
+// PROCESSES
+
+// adversary which decides which main votes in round r-1 can be cast
+module adversary 
+
+	//  main-votes so far made in round r-1
+	main0_0 : [0..1]; // vote for 0
+	main0_1 : [0..1]; // vote for 1
+
+	// adversary decide which main vote is possible can do this at any time
+	[] (main0_0=0) & (main0_1=0) -> (main0_0'=1);  
+	[] (main0_0=0) & (main0_1=0) -> (main0_1'=1); 
+	
+endmodule 
+
+// module for tossing coin in round R-1
+module coin1
+
+	f1 : [0..1];
+	coin1 : [0..1];
+	
+	[] (coin1=0) & (n0>=K) -> 0.5 : (f1'=0) & (coin1'=1) + 0.5 : (f1'=1) & (coin1'=1);
+	
+endmodule
+
+// module for tossing coin in round R
+module coin2=coin1[coin1=coin2,f1=f2] endmodule
+
+// honest party
+module party1
+
+	// local state
+	s1 : [0..9];
+	// 0 - read main-votes r-1
+	// 1 - pre-vote for coin in round r
+	// 2 - pre-vote for 0 in round r
+	// 3 - pre-vote for 1 in round r
+	// 4 - collect and make main vote in round r
+	// 5 - read main-votes in round r
+	// 6 - pre-vote for coin r+1
+	// 7 - pre-vote for 0 in round r+1
+	// 8 - pre-vote for 1 in round r+1
+	// 9 - done
+	
+	// read main votes in round r-1
+	[] (s1=0) & (main0_0=1) -> (s1'=1) & (n0'=min(K,n0+1)); // pre vote for 0
+	[] (s1=0) & (main0_1=1) -> (s1'=2) & (n0'=min(K,n0+1)); // pre vote for 1
+	[] (s1=0)               -> (s1'=3) & (n0'=min(K,n0+1)); // pre vote for coin
+	
+	// make pre-vote in round r (need to wait for coin)  
+	[] (s1=1) & (coin1=1)          -> (s1'=4) & (pre1_0'=pre1_0+1);
+	[] (s1=2) & (coin1=1)          -> (s1'=4) & (pre1_1'=pre1_1+1);
+	[] (s1=3) & (coin1=1) & (f1=0) -> (s1'=4) & (pre1_0'=pre1_0+1);
+	[] (s1=3) & (coin1=1) & (f1=1) -> (s1'=4) & (pre1_1'=pre1_1+1);
+	
+	// collect pre-votes and make main vote in round r
+	[] (s1=4) & (pre1_0+pre1_1>=K) & ((pre1_0>0) | (f1=0) | (main0_0=1)) & ((pre1_1>0) | (f1=1) | (main0_1=1)) -> (s1'=5)  & (main1_abs'=1);
+	[] (s1=4) & (pre1_0+pre1_1>=K) & (pre1_0>=K) -> (s1'=5) & (main1_0'=1);
+	[] (s1=4) & (pre1_0+pre1_1>=K) & (pre1_1>=K) -> (s1'=5) & (main1_1'=1);
+	
+	// read main votes in round r
+	// to get all abstain votes need at least all honest parties to have abstain
+	[] (s1=5) & (main1_abs=1) -> (s1'=6); 
+	// to vote for 0 or 1 need a pre vote for 0 or 1 either from honest or corrupt parties
+	[] (s1=5) & ((main1_0=1) | (pre1_0>=K))	-> (s1'=7); 
+	[] (s1=5) & ((main1_1=1) | (pre1_1>=K))	-> (s1'=8); 
+	
+	// make pre-votes in round r+1 (need to wait for the coin 
+	[] (s1=6) & (coin2=1) & (f2=0) -> (s1'=9) & (pre2_0'=1);
+	[] (s1=6) & (coin2=1) & (f2=1) -> (s1'=9) & (pre2_1'=1);
+	[] (s1=7) & (coin2=1)          -> (s1'=9) & (pre2_0'=1);
+	[] (s1=8) & (coin2=1)          -> (s1'=9) & (pre2_1'=1);
+	
+endmodule
+
+// construct further parties through renaming
+module party2=party1[s1=s2] endmodule
+module party3=party1[s1=s3] endmodule

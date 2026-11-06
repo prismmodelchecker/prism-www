@@ -1,0 +1,5 @@
+// stable states - where only one process has the same value as the process to its left
+label "stable" = num_tokens=1;
+
+// from the initial state, a stable state is reached with probability 1
+P>=1 [ F "stable" ]

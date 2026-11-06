@@ -1,0 +1,118 @@
+ctmc
+
+module generic_process
+ no_0 : [0..4] init 4;    // No modules in state (0,0,0,0,0)
+ no_1 : [0..4] init 0;    // No modules in state (0,0,0,0,1)
+ no_2 : [0..4] init 0;    // No modules in state (0,0,0,1,0)
+ no_3 : [0..4] init 0;    // No modules in state (0,0,0,1,1)
+ no_4 : [0..4] init 0;    // No modules in state (0,0,1,0,0)
+ no_5 : [0..4] init 0;    // No modules in state (0,0,1,0,1)
+ no_6 : [0..4] init 0;    // No modules in state (0,0,1,1,0)
+ no_7 : [0..4] init 0;    // No modules in state (0,0,1,1,1)
+ no_8 : [0..4] init 0;    // No modules in state (0,1,0,0,0)
+ no_9 : [0..4] init 0;    // No modules in state (0,1,0,0,1)
+ no_10 : [0..4] init 0;    // No modules in state (0,1,0,1,0)
+ no_11 : [0..4] init 0;    // No modules in state (0,1,0,1,1)
+ no_12 : [0..4] init 0;    // No modules in state (0,1,1,0,0)
+ no_13 : [0..4] init 0;    // No modules in state (0,1,1,0,1)
+ no_14 : [0..4] init 0;    // No modules in state (0,1,1,1,0)
+ no_15 : [0..4] init 0;    // No modules in state (0,1,1,1,1)
+ no_16 : [0..4] init 0;    // No modules in state (1,0,0,0,0)
+ no_17 : [0..4] init 0;    // No modules in state (1,0,0,0,1)
+ no_18 : [0..4] init 0;    // No modules in state (1,0,0,1,0)
+ no_19 : [0..4] init 0;    // No modules in state (1,0,0,1,1)
+ no_20 : [0..4] init 0;    // No modules in state (1,0,1,0,0)
+ no_21 : [0..4] init 0;    // No modules in state (1,0,1,0,1)
+ no_22 : [0..4] init 0;    // No modules in state (1,0,1,1,0)
+ no_23 : [0..4] init 0;    // No modules in state (1,0,1,1,1)
+ no_24 : [0..4] init 0;    // No modules in state (1,1,0,0,0)
+ no_25 : [0..4] init 0;    // No modules in state (1,1,0,0,1)
+ no_26 : [0..4] init 0;    // No modules in state (1,1,0,1,0)
+ no_27 : [0..4] init 0;    // No modules in state (1,1,0,1,1)
+ no_28 : [0..4] init 0;    // No modules in state (1,1,1,0,0)
+ no_29 : [0..4] init 0;    // No modules in state (1,1,1,0,1)
+ no_30 : [0..4] init 0;    // No modules in state (1,1,1,1,0)
+ no_31 : [0..4] init 0;    // No modules in state (1,1,1,1,1)
+
+  [] (no_0>0) -> no_0*2*(1+min(3,no_16+no_17+no_18+no_19+no_20+no_21+no_22+no_23+no_24+no_25+no_26+no_27+no_28+no_29+no_30+no_31)):(no_0'=no_0-1)&(no_16'=no_16+1);
+  [] (no_1>0) -> no_1*2*(1+min(3,no_16+no_17+no_18+no_19+no_20+no_21+no_22+no_23+no_24+no_25+no_26+no_27+no_28+no_29+no_30+no_31)):(no_1'=no_1-1)&(no_17'=no_17+1);
+  [] (no_2>0) -> no_2*2*(1+min(3,no_16+no_17+no_18+no_19+no_20+no_21+no_22+no_23+no_24+no_25+no_26+no_27+no_28+no_29+no_30+no_31)):(no_2'=no_2-1)&(no_18'=no_18+1);
+  [] (no_3>0) -> no_3*2*(1+min(3,no_16+no_17+no_18+no_19+no_20+no_21+no_22+no_23+no_24+no_25+no_26+no_27+no_28+no_29+no_30+no_31)):(no_3'=no_3-1)&(no_19'=no_19+1);
+  [] (no_4>0) -> no_4*2*(1+min(3,no_16+no_17+no_18+no_19+no_20+no_21+no_22+no_23+no_24+no_25+no_26+no_27+no_28+no_29+no_30+no_31)):(no_4'=no_4-1)&(no_20'=no_20+1);
+  [] (no_5>0) -> no_5*2*(1+min(3,no_16+no_17+no_18+no_19+no_20+no_21+no_22+no_23+no_24+no_25+no_26+no_27+no_28+no_29+no_30+no_31)):(no_5'=no_5-1)&(no_21'=no_21+1);
+  [] (no_6>0) -> no_6*2*(1+min(3,no_16+no_17+no_18+no_19+no_20+no_21+no_22+no_23+no_24+no_25+no_26+no_27+no_28+no_29+no_30+no_31)):(no_6'=no_6-1)&(no_22'=no_22+1);
+  [] (no_7>0) -> no_7*2*(1+min(3,no_16+no_17+no_18+no_19+no_20+no_21+no_22+no_23+no_24+no_25+no_26+no_27+no_28+no_29+no_30+no_31)):(no_7'=no_7-1)&(no_23'=no_23+1);
+  [] (no_8>0) -> no_8*2*(1+min(3,no_16+no_17+no_18+no_19+no_20+no_21+no_22+no_23+no_24+no_25+no_26+no_27+no_28+no_29+no_30+no_31)):(no_8'=no_8-1)&(no_24'=no_24+1);
+  [] (no_9>0) -> no_9*2*(1+min(3,no_16+no_17+no_18+no_19+no_20+no_21+no_22+no_23+no_24+no_25+no_26+no_27+no_28+no_29+no_30+no_31)):(no_9'=no_9-1)&(no_25'=no_25+1);
+  [] (no_10>0) -> no_10*2*(1+min(3,no_16+no_17+no_18+no_19+no_20+no_21+no_22+no_23+no_24+no_25+no_26+no_27+no_28+no_29+no_30+no_31)):(no_10'=no_10-1)&(no_26'=no_26+1);
+  [] (no_11>0) -> no_11*2*(1+min(3,no_16+no_17+no_18+no_19+no_20+no_21+no_22+no_23+no_24+no_25+no_26+no_27+no_28+no_29+no_30+no_31)):(no_11'=no_11-1)&(no_27'=no_27+1);
+  [] (no_12>0) -> no_12*2*(1+min(3,no_16+no_17+no_18+no_19+no_20+no_21+no_22+no_23+no_24+no_25+no_26+no_27+no_28+no_29+no_30+no_31)):(no_12'=no_12-1)&(no_28'=no_28+1);
+  [] (no_13>0) -> no_13*2*(1+min(3,no_16+no_17+no_18+no_19+no_20+no_21+no_22+no_23+no_24+no_25+no_26+no_27+no_28+no_29+no_30+no_31)):(no_13'=no_13-1)&(no_29'=no_29+1);
+  [] (no_14>0) -> no_14*2*(1+min(3,no_16+no_17+no_18+no_19+no_20+no_21+no_22+no_23+no_24+no_25+no_26+no_27+no_28+no_29+no_30+no_31)):(no_14'=no_14-1)&(no_30'=no_30+1);
+  [] (no_15>0) -> no_15*2*(1+min(3,no_16+no_17+no_18+no_19+no_20+no_21+no_22+no_23+no_24+no_25+no_26+no_27+no_28+no_29+no_30+no_31)):(no_15'=no_15-1)&(no_31'=no_31+1);
+  [] (no_0>0) -> no_0*2*(1+min(3,no_8+no_9+no_10+no_11+no_12+no_13+no_14+no_15+no_24+no_25+no_26+no_27+no_28+no_29+no_30+no_31)):(no_0'=no_0-1)&(no_8'=no_8+1);
+  [] (no_1>0) -> no_1*2*(1+min(3,no_8+no_9+no_10+no_11+no_12+no_13+no_14+no_15+no_24+no_25+no_26+no_27+no_28+no_29+no_30+no_31)):(no_1'=no_1-1)&(no_9'=no_9+1);
+  [] (no_2>0) -> no_2*2*(1+min(3,no_8+no_9+no_10+no_11+no_12+no_13+no_14+no_15+no_24+no_25+no_26+no_27+no_28+no_29+no_30+no_31)):(no_2'=no_2-1)&(no_10'=no_10+1);
+  [] (no_3>0) -> no_3*2*(1+min(3,no_8+no_9+no_10+no_11+no_12+no_13+no_14+no_15+no_24+no_25+no_26+no_27+no_28+no_29+no_30+no_31)):(no_3'=no_3-1)&(no_11'=no_11+1);
+  [] (no_4>0) -> no_4*2*(1+min(3,no_8+no_9+no_10+no_11+no_12+no_13+no_14+no_15+no_24+no_25+no_26+no_27+no_28+no_29+no_30+no_31)):(no_4'=no_4-1)&(no_12'=no_12+1);
+  [] (no_5>0) -> no_5*2*(1+min(3,no_8+no_9+no_10+no_11+no_12+no_13+no_14+no_15+no_24+no_25+no_26+no_27+no_28+no_29+no_30+no_31)):(no_5'=no_5-1)&(no_13'=no_13+1);
+  [] (no_6>0) -> no_6*2*(1+min(3,no_8+no_9+no_10+no_11+no_12+no_13+no_14+no_15+no_24+no_25+no_26+no_27+no_28+no_29+no_30+no_31)):(no_6'=no_6-1)&(no_14'=no_14+1);
+  [] (no_7>0) -> no_7*2*(1+min(3,no_8+no_9+no_10+no_11+no_12+no_13+no_14+no_15+no_24+no_25+no_26+no_27+no_28+no_29+no_30+no_31)):(no_7'=no_7-1)&(no_15'=no_15+1);
+  [] (no_16>0) -> no_16*2*(1+min(3,no_8+no_9+no_10+no_11+no_12+no_13+no_14+no_15+no_24+no_25+no_26+no_27+no_28+no_29+no_30+no_31)):(no_16'=no_16-1)&(no_24'=no_24+1);
+  [] (no_17>0) -> no_17*2*(1+min(3,no_8+no_9+no_10+no_11+no_12+no_13+no_14+no_15+no_24+no_25+no_26+no_27+no_28+no_29+no_30+no_31)):(no_17'=no_17-1)&(no_25'=no_25+1);
+  [] (no_18>0) -> no_18*2*(1+min(3,no_8+no_9+no_10+no_11+no_12+no_13+no_14+no_15+no_24+no_25+no_26+no_27+no_28+no_29+no_30+no_31)):(no_18'=no_18-1)&(no_26'=no_26+1);
+  [] (no_19>0) -> no_19*2*(1+min(3,no_8+no_9+no_10+no_11+no_12+no_13+no_14+no_15+no_24+no_25+no_26+no_27+no_28+no_29+no_30+no_31)):(no_19'=no_19-1)&(no_27'=no_27+1);
+  [] (no_20>0) -> no_20*2*(1+min(3,no_8+no_9+no_10+no_11+no_12+no_13+no_14+no_15+no_24+no_25+no_26+no_27+no_28+no_29+no_30+no_31)):(no_20'=no_20-1)&(no_28'=no_28+1);
+  [] (no_21>0) -> no_21*2*(1+min(3,no_8+no_9+no_10+no_11+no_12+no_13+no_14+no_15+no_24+no_25+no_26+no_27+no_28+no_29+no_30+no_31)):(no_21'=no_21-1)&(no_29'=no_29+1);
+  [] (no_22>0) -> no_22*2*(1+min(3,no_8+no_9+no_10+no_11+no_12+no_13+no_14+no_15+no_24+no_25+no_26+no_27+no_28+no_29+no_30+no_31)):(no_22'=no_22-1)&(no_30'=no_30+1);
+  [] (no_23>0) -> no_23*2*(1+min(3,no_8+no_9+no_10+no_11+no_12+no_13+no_14+no_15+no_24+no_25+no_26+no_27+no_28+no_29+no_30+no_31)):(no_23'=no_23-1)&(no_31'=no_31+1);
+  [] (no_0>0) -> no_0*2*(1+min(3,no_4+no_5+no_6+no_7+no_12+no_13+no_14+no_15+no_20+no_21+no_22+no_23+no_28+no_29+no_30+no_31)):(no_0'=no_0-1)&(no_4'=no_4+1);
+  [] (no_1>0) -> no_1*2*(1+min(3,no_4+no_5+no_6+no_7+no_12+no_13+no_14+no_15+no_20+no_21+no_22+no_23+no_28+no_29+no_30+no_31)):(no_1'=no_1-1)&(no_5'=no_5+1);
+  [] (no_2>0) -> no_2*2*(1+min(3,no_4+no_5+no_6+no_7+no_12+no_13+no_14+no_15+no_20+no_21+no_22+no_23+no_28+no_29+no_30+no_31)):(no_2'=no_2-1)&(no_6'=no_6+1);
+  [] (no_3>0) -> no_3*2*(1+min(3,no_4+no_5+no_6+no_7+no_12+no_13+no_14+no_15+no_20+no_21+no_22+no_23+no_28+no_29+no_30+no_31)):(no_3'=no_3-1)&(no_7'=no_7+1);
+  [] (no_8>0) -> no_8*2*(1+min(3,no_4+no_5+no_6+no_7+no_12+no_13+no_14+no_15+no_20+no_21+no_22+no_23+no_28+no_29+no_30+no_31)):(no_8'=no_8-1)&(no_12'=no_12+1);
+  [] (no_9>0) -> no_9*2*(1+min(3,no_4+no_5+no_6+no_7+no_12+no_13+no_14+no_15+no_20+no_21+no_22+no_23+no_28+no_29+no_30+no_31)):(no_9'=no_9-1)&(no_13'=no_13+1);
+  [] (no_10>0) -> no_10*2*(1+min(3,no_4+no_5+no_6+no_7+no_12+no_13+no_14+no_15+no_20+no_21+no_22+no_23+no_28+no_29+no_30+no_31)):(no_10'=no_10-1)&(no_14'=no_14+1);
+  [] (no_11>0) -> no_11*2*(1+min(3,no_4+no_5+no_6+no_7+no_12+no_13+no_14+no_15+no_20+no_21+no_22+no_23+no_28+no_29+no_30+no_31)):(no_11'=no_11-1)&(no_15'=no_15+1);
+  [] (no_16>0) -> no_16*2*(1+min(3,no_4+no_5+no_6+no_7+no_12+no_13+no_14+no_15+no_20+no_21+no_22+no_23+no_28+no_29+no_30+no_31)):(no_16'=no_16-1)&(no_20'=no_20+1);
+  [] (no_17>0) -> no_17*2*(1+min(3,no_4+no_5+no_6+no_7+no_12+no_13+no_14+no_15+no_20+no_21+no_22+no_23+no_28+no_29+no_30+no_31)):(no_17'=no_17-1)&(no_21'=no_21+1);
+  [] (no_18>0) -> no_18*2*(1+min(3,no_4+no_5+no_6+no_7+no_12+no_13+no_14+no_15+no_20+no_21+no_22+no_23+no_28+no_29+no_30+no_31)):(no_18'=no_18-1)&(no_22'=no_22+1);
+  [] (no_19>0) -> no_19*2*(1+min(3,no_4+no_5+no_6+no_7+no_12+no_13+no_14+no_15+no_20+no_21+no_22+no_23+no_28+no_29+no_30+no_31)):(no_19'=no_19-1)&(no_23'=no_23+1);
+  [] (no_24>0) -> no_24*2*(1+min(3,no_4+no_5+no_6+no_7+no_12+no_13+no_14+no_15+no_20+no_21+no_22+no_23+no_28+no_29+no_30+no_31)):(no_24'=no_24-1)&(no_28'=no_28+1);
+  [] (no_25>0) -> no_25*2*(1+min(3,no_4+no_5+no_6+no_7+no_12+no_13+no_14+no_15+no_20+no_21+no_22+no_23+no_28+no_29+no_30+no_31)):(no_25'=no_25-1)&(no_29'=no_29+1);
+  [] (no_26>0) -> no_26*2*(1+min(3,no_4+no_5+no_6+no_7+no_12+no_13+no_14+no_15+no_20+no_21+no_22+no_23+no_28+no_29+no_30+no_31)):(no_26'=no_26-1)&(no_30'=no_30+1);
+  [] (no_27>0) -> no_27*2*(1+min(3,no_4+no_5+no_6+no_7+no_12+no_13+no_14+no_15+no_20+no_21+no_22+no_23+no_28+no_29+no_30+no_31)):(no_27'=no_27-1)&(no_31'=no_31+1);
+  [] (no_0>0) -> no_0*2*(1+min(3,no_2+no_3+no_6+no_7+no_10+no_11+no_14+no_15+no_18+no_19+no_22+no_23+no_26+no_27+no_30+no_31)):(no_0'=no_0-1)&(no_2'=no_2+1);
+  [] (no_1>0) -> no_1*2*(1+min(3,no_2+no_3+no_6+no_7+no_10+no_11+no_14+no_15+no_18+no_19+no_22+no_23+no_26+no_27+no_30+no_31)):(no_1'=no_1-1)&(no_3'=no_3+1);
+  [] (no_4>0) -> no_4*2*(1+min(3,no_2+no_3+no_6+no_7+no_10+no_11+no_14+no_15+no_18+no_19+no_22+no_23+no_26+no_27+no_30+no_31)):(no_4'=no_4-1)&(no_6'=no_6+1);
+  [] (no_5>0) -> no_5*2*(1+min(3,no_2+no_3+no_6+no_7+no_10+no_11+no_14+no_15+no_18+no_19+no_22+no_23+no_26+no_27+no_30+no_31)):(no_5'=no_5-1)&(no_7'=no_7+1);
+  [] (no_8>0) -> no_8*2*(1+min(3,no_2+no_3+no_6+no_7+no_10+no_11+no_14+no_15+no_18+no_19+no_22+no_23+no_26+no_27+no_30+no_31)):(no_8'=no_8-1)&(no_10'=no_10+1);
+  [] (no_9>0) -> no_9*2*(1+min(3,no_2+no_3+no_6+no_7+no_10+no_11+no_14+no_15+no_18+no_19+no_22+no_23+no_26+no_27+no_30+no_31)):(no_9'=no_9-1)&(no_11'=no_11+1);
+  [] (no_12>0) -> no_12*2*(1+min(3,no_2+no_3+no_6+no_7+no_10+no_11+no_14+no_15+no_18+no_19+no_22+no_23+no_26+no_27+no_30+no_31)):(no_12'=no_12-1)&(no_14'=no_14+1);
+  [] (no_13>0) -> no_13*2*(1+min(3,no_2+no_3+no_6+no_7+no_10+no_11+no_14+no_15+no_18+no_19+no_22+no_23+no_26+no_27+no_30+no_31)):(no_13'=no_13-1)&(no_15'=no_15+1);
+  [] (no_16>0) -> no_16*2*(1+min(3,no_2+no_3+no_6+no_7+no_10+no_11+no_14+no_15+no_18+no_19+no_22+no_23+no_26+no_27+no_30+no_31)):(no_16'=no_16-1)&(no_18'=no_18+1);
+  [] (no_17>0) -> no_17*2*(1+min(3,no_2+no_3+no_6+no_7+no_10+no_11+no_14+no_15+no_18+no_19+no_22+no_23+no_26+no_27+no_30+no_31)):(no_17'=no_17-1)&(no_19'=no_19+1);
+  [] (no_20>0) -> no_20*2*(1+min(3,no_2+no_3+no_6+no_7+no_10+no_11+no_14+no_15+no_18+no_19+no_22+no_23+no_26+no_27+no_30+no_31)):(no_20'=no_20-1)&(no_22'=no_22+1);
+  [] (no_21>0) -> no_21*2*(1+min(3,no_2+no_3+no_6+no_7+no_10+no_11+no_14+no_15+no_18+no_19+no_22+no_23+no_26+no_27+no_30+no_31)):(no_21'=no_21-1)&(no_23'=no_23+1);
+  [] (no_24>0) -> no_24*2*(1+min(3,no_2+no_3+no_6+no_7+no_10+no_11+no_14+no_15+no_18+no_19+no_22+no_23+no_26+no_27+no_30+no_31)):(no_24'=no_24-1)&(no_26'=no_26+1);
+  [] (no_25>0) -> no_25*2*(1+min(3,no_2+no_3+no_6+no_7+no_10+no_11+no_14+no_15+no_18+no_19+no_22+no_23+no_26+no_27+no_30+no_31)):(no_25'=no_25-1)&(no_27'=no_27+1);
+  [] (no_28>0) -> no_28*2*(1+min(3,no_2+no_3+no_6+no_7+no_10+no_11+no_14+no_15+no_18+no_19+no_22+no_23+no_26+no_27+no_30+no_31)):(no_28'=no_28-1)&(no_30'=no_30+1);
+  [] (no_29>0) -> no_29*2*(1+min(3,no_2+no_3+no_6+no_7+no_10+no_11+no_14+no_15+no_18+no_19+no_22+no_23+no_26+no_27+no_30+no_31)):(no_29'=no_29-1)&(no_31'=no_31+1);
+  [] (no_0>0) -> no_0*2*(1+min(3,no_1+no_3+no_5+no_7+no_9+no_11+no_13+no_15+no_17+no_19+no_21+no_23+no_25+no_27+no_29+no_31)):(no_0'=no_0-1)&(no_1'=no_1+1);
+  [] (no_2>0) -> no_2*2*(1+min(3,no_1+no_3+no_5+no_7+no_9+no_11+no_13+no_15+no_17+no_19+no_21+no_23+no_25+no_27+no_29+no_31)):(no_2'=no_2-1)&(no_3'=no_3+1);
+  [] (no_4>0) -> no_4*2*(1+min(3,no_1+no_3+no_5+no_7+no_9+no_11+no_13+no_15+no_17+no_19+no_21+no_23+no_25+no_27+no_29+no_31)):(no_4'=no_4-1)&(no_5'=no_5+1);
+  [] (no_6>0) -> no_6*2*(1+min(3,no_1+no_3+no_5+no_7+no_9+no_11+no_13+no_15+no_17+no_19+no_21+no_23+no_25+no_27+no_29+no_31)):(no_6'=no_6-1)&(no_7'=no_7+1);
+  [] (no_8>0) -> no_8*2*(1+min(3,no_1+no_3+no_5+no_7+no_9+no_11+no_13+no_15+no_17+no_19+no_21+no_23+no_25+no_27+no_29+no_31)):(no_8'=no_8-1)&(no_9'=no_9+1);
+  [] (no_10>0) -> no_10*2*(1+min(3,no_1+no_3+no_5+no_7+no_9+no_11+no_13+no_15+no_17+no_19+no_21+no_23+no_25+no_27+no_29+no_31)):(no_10'=no_10-1)&(no_11'=no_11+1);
+  [] (no_12>0) -> no_12*2*(1+min(3,no_1+no_3+no_5+no_7+no_9+no_11+no_13+no_15+no_17+no_19+no_21+no_23+no_25+no_27+no_29+no_31)):(no_12'=no_12-1)&(no_13'=no_13+1);
+  [] (no_14>0) -> no_14*2*(1+min(3,no_1+no_3+no_5+no_7+no_9+no_11+no_13+no_15+no_17+no_19+no_21+no_23+no_25+no_27+no_29+no_31)):(no_14'=no_14-1)&(no_15'=no_15+1);
+  [] (no_16>0) -> no_16*2*(1+min(3,no_1+no_3+no_5+no_7+no_9+no_11+no_13+no_15+no_17+no_19+no_21+no_23+no_25+no_27+no_29+no_31)):(no_16'=no_16-1)&(no_17'=no_17+1);
+  [] (no_18>0) -> no_18*2*(1+min(3,no_1+no_3+no_5+no_7+no_9+no_11+no_13+no_15+no_17+no_19+no_21+no_23+no_25+no_27+no_29+no_31)):(no_18'=no_18-1)&(no_19'=no_19+1);
+  [] (no_20>0) -> no_20*2*(1+min(3,no_1+no_3+no_5+no_7+no_9+no_11+no_13+no_15+no_17+no_19+no_21+no_23+no_25+no_27+no_29+no_31)):(no_20'=no_20-1)&(no_21'=no_21+1);
+  [] (no_22>0) -> no_22*2*(1+min(3,no_1+no_3+no_5+no_7+no_9+no_11+no_13+no_15+no_17+no_19+no_21+no_23+no_25+no_27+no_29+no_31)):(no_22'=no_22-1)&(no_23'=no_23+1);
+  [] (no_24>0) -> no_24*2*(1+min(3,no_1+no_3+no_5+no_7+no_9+no_11+no_13+no_15+no_17+no_19+no_21+no_23+no_25+no_27+no_29+no_31)):(no_24'=no_24-1)&(no_25'=no_25+1);
+  [] (no_26>0) -> no_26*2*(1+min(3,no_1+no_3+no_5+no_7+no_9+no_11+no_13+no_15+no_17+no_19+no_21+no_23+no_25+no_27+no_29+no_31)):(no_26'=no_26-1)&(no_27'=no_27+1);
+  [] (no_28>0) -> no_28*2*(1+min(3,no_1+no_3+no_5+no_7+no_9+no_11+no_13+no_15+no_17+no_19+no_21+no_23+no_25+no_27+no_29+no_31)):(no_28'=no_28-1)&(no_29'=no_29+1);
+  [] (no_30>0) -> no_30*2*(1+min(3,no_1+no_3+no_5+no_7+no_9+no_11+no_13+no_15+no_17+no_19+no_21+no_23+no_25+no_27+no_29+no_31)):(no_30'=no_30-1)&(no_31'=no_31+1);
+
+endmodule

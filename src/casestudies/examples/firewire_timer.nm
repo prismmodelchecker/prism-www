@@ -1,0 +1,19 @@
+// deadline
+const int D;
+
+// timer
+module timer
+	
+	// global time
+	t : [0..D+1];
+	
+	// time increases
+	[time] (t<D) -> (t'=min(t+1,D+1));
+	// loop when time passes 1000
+	// note that since we are finding the minimum probability
+	// when t>=D  the adversary which gives the minimum probability
+	// will always choose this transition, and hence the states of the 
+	// nodes and the wires will no longer change 
+	[] (t>=D) -> (t'=t);
+	
+endmodule

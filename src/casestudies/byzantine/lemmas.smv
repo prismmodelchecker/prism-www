@@ -1,0 +1,1392 @@
+/* BYZANTINE AGREEMENT PROTOCOL */
+/* this files contains the sub lemmas we use to prove validity, agreement and fast termination */
+/* gxn 3/12/2001 */
+
+/* replaced the probabilistic choice of the coins by a non-deterministic choice */
+/* and suppose that the coin in round $r$ is flipped when at least $n-2t$ honest parties have read the main votes in round $r$ */
+/* note that the coin can never be tossed earlier than this since $n-t$ shares are required before it can be revealed */
+/* note that we have change the notations for the coins: for round r the coin is denoted \smvusersym{coin}$[r+1]$ */
+/* this is to simplify the code: it allows the pre-votes for each round to be based on the coin for the previous round */
+/* by setting the coin for round -1 (\smvusersym{coin}$[0]$) always to 0 */
+
+/* instead of parties reading votes individually, we store the total number of honest votes for each preference  */
+/* and for corrupted parties we include only boolean variables indicating what corrupted parties can vote for */
+/* recalling that different parties may see corrupted parties vote for different values */
+/* based on these totals we then know what combination of votes each party can read */
+/* that is what the adversary can make parties vote for */
+/* note that sometimes there will be a non-deterministic choice as to what a party will vote for */
+/* this is a choice of the adversary since it depends on which votes a party reads */
+
+/* an honest party must get at least $n-2t$ votes from other honest parties */
+/* and the remaining votes can come from either honest or corrupted parties */
+/* if we can show: ``if an honest party has a vote for a value then corrupted parties can also vote for this value'' */
+/* we need only count up to $n-2t$ honest party votes and use corrupted parties for the remaining votes */
+/* this has been proved (properties corrupted3 and corrupted4 in lemmas.smv) */
+
+/* note that to deal with the validity part of the proof and to keep things consistent the initial round is 0 instead of 1 */
+/* this is because the round variable is an ordset and cannot specify round=1, but we can specify round=0 */
+
+/* one further change is that we let the pre-votes be cast before they are cast in the actual protocol */
+/* now they are cast when a party reads the main-votes of the previous round */
+/* note that this can only give the adversary more power */
+/* however, in the original protocol at the time when the pre-votes are now cast */
+/* an honest party has read the main-votes it will use to cast a pre-vote */
+/* therefore at this time the adversary already knows what pre-vote the party is going make */
+/* and hence moving the casting of pre-votes to this point makes no difference to what the adversary knows */
+/* there is one added complication: we need to store two different possible pre-votes which depend on */
+/* what value of the corresponding coin becomes when it is tossed */
+
+/*-----------------------------------------------------------------------------------*/
+
+/* CONSTANTS (n=10 & t=3) */
+#define N 7 /* number of  honest parties */
+#define M 4 /* M=n-2t number of honest pre and main votes that must be read */ 
+#define K 4 /* K=2t+1-t=t+1 number of honest pre processing votes that must be read */ 
+
+/* ABSTRACT DATA TYPES */
+ordset PROC 1..N; /* set of parties  */
+ordset VOTES 0..M; /* honest pre and main votes */
+ordset PRE_PROC_VOTES 0..K; /* honest preprocessing votes */
+ordset ROUNDS 0..; /* round numbers  */
+
+
+/* DATA TYPES */
+typedef PC {INITIAL , PRE_PROCESSING  , MAIN , DECIDE , COIN , DONE  }; 
+/* INITIAL - make preprocessing vote (initial state)  */
+/* PRE_PROCESSING - read preprocessing votes and make initial pre-vote  */
+/* MAIN - read pre-votes and make main vote */
+/* DECIDE - read main votes and make choice whether to decide or not and next pre-vote */
+/* COIN - generate share of the coin */
+/* DONE - finished */
+
+/*-----------------------------------------------------------------------------------*/
+
+module main(act){
+		
+	/*------------------------------INPUTS------------------------------------------*/
+
+	act : PROC; /* SCHEDULER left unspecified */
+
+	/* in certain cases a party can cast different votes depending on which votes it reads */
+	/* we represent these choices using the following variables */
+	/* note since this is decided by the adversary we leave these variables unspecified */
+	/* pre votes */
+	nd_pre  : 0..1;  /* non deterministic choice between voting for 0 and 1 */
+	nd_pre1 : {0,2}; /* non deterministic choice between voting for 0 and coin */
+	nd_pre2 : 1..2;  /* non deterministic choice between voting for 1 and coin */
+	/* main votes */
+	nd_main1 : {0,2}; /* non deterministic choice between voting for 0 and 2 */
+	nd_main2 : 1..2;  /* non deterministic choice between voting for 1 and 2 */
+	
+	start : array PROC of 0..1; /* initial values of parties left unspecified */
+
+	/* -------------------THE PROTOCOL FOR HONEST PARTIES---------------------------- */
+
+	/* PHASE */
+	pc : array PROC of PC; /* pc[i] - phase of party i */
+
+	/* VALUES OF VOTES */
+	/* pre-processing-votes: 0 or 1 */
+	/* pre-votes: 0 or 1 */
+	/* main-votes: 0, 1 or 2 where 2 denotes abstain */
+	
+	/* PRE_PROCESSING */
+	pre_proc : PRE_PROC_VOTES; /* pre_proc - number of pre processing votes  */
+	pre_proc_votes : array 0..1 of PRE_PROC_VOTES; /* pre_proc_votes[v] - number of pre processing votes for v  */	
+
+	/* PRE_VOTE */
+	pre : array ROUNDS of VOTES; /* pre[r] - number of pre-votes in round r */	
+	pre_votes : array ROUNDS of array 0..1 of array 0..1 of VOTES; /* pre_votes[r][c][v] - number of pre-votes for v in round r if the coin in round r equals c */	
+
+	/* MAIN_VOTE */
+	main : array ROUNDS of VOTES; /* main[r] - number of main-votes so far in round r */	
+	main_votes : array ROUNDS of array 0..2 of VOTES; /* main_votes[r][v] - number of main-votes so far for v in round r */	
+
+	/* ROUND */
+	round : array PROC of ROUNDS; /* round[i] - round party i is currently in */
+
+	/* DECIDING */
+	decide : array ROUNDS of array PROC of boolean; /* decide[r][i] party i decided in round r  */
+	decide_value : array ROUNDS of array PROC of 0..1;	/* decide[r][i][v]=v what value party i decided on in round r (if the party decides)  */
+
+	/* COIN */
+	coin : array ROUNDS of { not_tossed , 0 , 1 }; /* coin[r] value of the coin in round r */
+
+	/* INITIAL VALUES */
+	forall (i in PROC) {
+		init(pc[i]) := INITIAL; 
+		init(round[i]) := 0;
+	}
+	/* set all totals to be zero  */
+	init(pre_proc) := 0;
+	for(v = 0; v <= 1; v = v + 1) init(pre_proc_votes[v]) := 0;
+	forall(r in ROUNDS){
+		init(pre[r]) := 0;
+		init(main[r]) := 0;
+		for(c = 0; c <= 1; c = c + 1) for(v = 0; v <= 1; v = v + 1) init(pre_votes[r][c][v]) := 0;
+		for(v = 0; v <= 2; v = v + 1) init(main_votes[r][v]) := 0; 
+	}
+	/* initially undecided */
+	forall(r in ROUNDS) forall(i in PROC) init(decide[r][i]) := 0;
+
+	/* as explained the coin in round 0 is set to 0 then never changed */
+	/* the remaining coins initially are not tossed */	
+	forall(r in ROUNDS) init(coin[r]) := (r=0) ? 0 : not_tossed;
+
+	/* NEXT VALUES */		
+	switch (pc[act]) {				
+		INITIAL : {
+			/* move to pre processing */
+			next(pc[act]) := PRE_PROCESSING;
+			/* make pre processing vote based on the value of start[act] */
+			next(pre_proc_votes[start[act]]) := (pre_proc_votes[start[act]])=K ? pre_proc_votes[start[act]] : pre_proc_votes[start[act]]+1;
+			/* record that a pre processing vote has been cast */
+			next(pre_proc) := pre_proc=K ?  pre_proc : pre_proc+1;
+		}
+		PRE_PROCESSING : { 
+			if (pre_proc=K) { /* sufficient pre processing votes */
+				/* move to MAIN */
+				next(pc[act]) := MAIN;
+				/* record that a pre vote has been cast */
+				next(pre[round[act]]) := pre[round[act]]=M ?  pre[round[act]] : pre[round[act]]+1; 
+				for(c = 0; c <= 1; c = c + 1) {
+					/* sufficient votes to have a pre vote for either value therefore the vote is the adversary's choice */
+					if (pre_proc_votes[0]>0 & pre_proc_votes[1]>0)
+						next(pre_votes[round[act]][c][nd_pre]) := pre_votes[round[act]][c][nd_pre]=M ? pre_votes[round[act]][c][nd_pre] : pre_votes[round[act]][c][nd_pre]+1;
+					/* pre vote for 0 only  */
+					else if (pre_proc_votes[0]>0) 
+						next(pre_votes[round[act]][c][0]) := pre_votes[round[act]][c][0]=M ? pre_votes[round[act]][c][0] : pre_votes[round[act]][c][0]+1;
+					/* pre vote for 1 only  */
+					else if (pre_proc_votes[1]>0) 
+						next(pre_votes[round[act]][c][1]) := pre_votes[round[act]][c][1]=M ? pre_votes[round[act]][c][1] : pre_votes[round[act]][c][1]+1;
+					/* the above should be the only cases but as a default suppose the adversary can choose */
+					else 
+						next(pre_votes[round[act]][c][nd_pre]) := pre_votes[round[act]][c][nd_pre]=M ? pre_votes[round[act]][c][nd_pre] : pre_votes[round[act]][c][nd_pre]+1;
+				}
+			}
+		}
+		MAIN : {
+			/* read pre votes and cast main vote */
+			/* to simplify the conditions have used the assumptions that there cannot be M votes for two distinct values in the same round */
+			if ( pre[round[act]]=M & !coin[round[act]]=not_tossed ) { /* sufficient pre votes and  the coin has been tossed */
+				/* move DECIDE */
+				next(pc[act]) := DECIDE;
+				/* record that the party has made a main vote */
+				next(main[round[act]]) := main[round[act]]=M ? main[round[act]] : main[round[act]]+1;
+				/* main vote for 0 or abstain only */
+				if (pre_votes[round[act]][coin[round[act]]][0]=M & corrupted_pre[round[act]][coin[round[act]]][0] & (pre_votes[round[act]][coin[round[act]]][1]>0 | corrupted_pre[round[act]][coin[round[act]]][1]) )
+					next(main_votes[round[act]][nd_main1]) := main_votes[round[act]][nd_main1]=M ? main_votes[round[act]][nd_main1] : main_votes[round[act]][nd_main1]+1;
+				/* main vote for 1 or abstain only */
+				else if (pre_votes[round[act]][coin[round[act]]][1]=M & corrupted_pre[round[act]][coin[round[act]]][1] & (pre_votes[round[act]][coin[round[act]]][0]>0 | corrupted_pre[round[act]][coin[round[act]]][0]) )
+					next(main_votes[round[act]][nd_main2]) := main_votes[round[act]][nd_main2]=M ? main_votes[round[act]][nd_main2] : main_votes[round[act]][nd_main2]+1;
+				/* main vote for 0 only */
+				else if (pre_votes[round[act]][coin[round[act]]][0]=M & corrupted_pre[round[act]][coin[round[act]]][0])
+					next(main_votes[round[act]][0]) := main_votes[round[act]][0]=M ? main_votes[round[act]][0] : main_votes[round[act]][0]+1;
+				/* main vote for 1 only  */
+				else if (pre_votes[round[act]][coin[round[act]]][1]=M & corrupted_pre[round[act]][coin[round[act]]][1])
+					next(main_votes[round[act]][1]) := main_votes[round[act]][1]=M ? main_votes[round[act]][1] : main_votes[round[act]][1]+1;
+				/* left with only a main vote for abstain */
+				else
+					next(main_votes[round[act]][2]) := main_votes[round[act]][2]=M ? main_votes[round[act]][2] : main_votes[round[act]][2]+1;
+			}
+		
+		}
+		DECIDE : {
+			/* to simplify the model we allow decide_value to be set without decide being set to true in the case the value of decide_value does not matter */
+			/* and again use the assumptions that there cannot be M votes for two distinct values in the same round */
+			if (main[round[act]]=M) { /* sufficient main votes */
+				next(pc[act]) := COIN; 
+				/* record that a pre vote has been cast */
+			    next(pre[round[act]+1]) := pre[round[act]+1]=M ?  pre[round[act]+1] : pre[round[act]+1]+1;
+				/* must decide on 0 and cast a pre-vote for 0 */
+				if (main_votes[round[act]][0]=M & corrupted_main[round[act]][0] & main_votes[round[act]][2]=0 & !corrupted_main[round[act]][2] & main_votes[round[act]][1]=0 & !corrupted_main[round[act]][1] ) {
+					next(decide[round[act]][act]) := 1;
+					next(decide_value[round[act]][act]) := 0;
+					for(c = 0; c <= 1; c = c + 1) 
+						next(pre_votes[round[act]+1][c][0]) := pre_votes[round[act]+1][c][0]=M ?  pre_votes[round[act]+1][c][0] : pre_votes[round[act]+1][c][0]+1;
+				}
+				/* must decide on 1 and cast a pre-vote for 1 */
+				else if (main_votes[round[act]][1]=M & corrupted_main[round[act]][1] & main_votes[round[act]][2]=0 & !corrupted_main[round[act]][2] & main_votes[round[act]][0]=0 & !corrupted_main[round[act]][0] ) {
+					next(decide[round[act]][act]) := 1;
+					next(decide_value[round[act]][act]) := 1;
+					for(c = 0; c <= 1; c = c + 1)					
+						next(pre_votes[round[act]+1][c][1]) := pre_votes[round[act]+1][c][1]=M ?  pre_votes[round[act]+1][c][1] : pre_votes[round[act]+1][c][1]+1;
+				}
+				/* may decide on 0 and must cast a pre-vote for 0 */
+				else if (main_votes[round[act]][0]=M & corrupted_main[round[act]][0] & main_votes[round[act]][1]=0 & !corrupted_main[round[act]][1] ) {
+					next(decide[round[act]][act]) := {0,1};
+					next(decide_value[round[act]][act]) := 0;
+					for(c = 0; c <= 1; c = c + 1)
+						next(pre_votes[round[act]+1][c][0]) := pre_votes[round[act]+1][c][0]=M ?  pre_votes[round[act]+1][c][0] : pre_votes[round[act]+1][c][0]+1;
+				}
+				/* may decide on 1 and must cast a pre-vote for 1 */
+				else if (main_votes[round[act]][1]=M & corrupted_main[round[act]][1] & main_votes[round[act]][0]=0 & !corrupted_main[round[act]][0] ) {
+					next(decide[round[act]][act]) := {0,1};
+					next(decide_value[round[act]][act]) := 1;
+					for(c = 0; c <= 1; c = c + 1)					
+						next(pre_votes[round[act]+1][c][1]) := pre_votes[round[act]+1][c][1]=M ?  pre_votes[round[act]+1][c][1] : pre_votes[round[act]+1][c][1]+1;
+				}
+				/* cannot decide and must cast a pre-vote for 0 */
+				else if ( (main_votes[round[act]][0]>0 | corrupted_main[round[act]][0]) & (main_votes[round[act]][2]<M | !corrupted_main[round[act]][2]) & main_votes[round[act]][1]=0 & !corrupted_main[round[act]][1] ) {
+					for(c = 0; c <= 1; c = c + 1)
+						next(pre_votes[round[act]+1][c][0]) := pre_votes[round[act]+1][c][0]=M ?  pre_votes[round[act]+1][c][0] : pre_votes[round[act]+1][c][0]+1;
+				}
+				/* cannot decide and must cast a pre-vote for 1 */
+				else if ( (main_votes[round[act]][1]>0 | corrupted_main[round[act]][1]) & (main_votes[round[act]][2]<M | !corrupted_main[round[act]][2]) & main_votes[round[act]][0]=0 & !corrupted_main[round[act]][0] ) {
+					for(c = 0; c <= 1; c = c + 1)					
+						next(pre_votes[round[act]+1][c][1]) := pre_votes[round[act]+1][c][1]=M ?  pre_votes[round[act]+1][c][1] : pre_votes[round[act]+1][c][1]+1;
+				}
+				/* may vote for 0 or coin (cannot decide) */
+				else if ( (main_votes[round[act]][0]>0 | corrupted_main[round[act]][0]) & (main_votes[round[act]][2]>0 | corrupted_main[round[act]][2]) & main_votes[round[act]][1]=0 & !corrupted_main[round[act]][1] ) {
+					if (nd_pre1=0) { /* concrete vote for 0 */
+						for(c = 0; c <= 1; c = c + 1)
+							next(pre_votes[round[act]+1][c][0]) := pre_votes[round[act]+1][c][0]=M ?  pre_votes[round[act]+1][c][0] : pre_votes[round[act]+1][c][0]+1;
+					}
+					else { /* coin */
+					for(c = 0; c <= 1; c = c + 1)					
+						next(pre_votes[round[act]+1][c][c]) := pre_votes[round[act]+1][c][c]=M ?  pre_votes[round[act]+1][c][c] : pre_votes[round[act]+1][c][c]+1;
+					}
+				}
+				/* may vote for 1 or coin (cannot decide) */
+				else if ( (main_votes[round[act]][1]>0 | corrupted_main[round[act]][1]) & (main_votes[round[act]][2]>0 | corrupted_main[round[act]][2]) & main_votes[round[act]][0]=0 & !corrupted_main[round[act]][0] ) {
+					if (nd_pre2=1) { /* concrete vote for 1 */
+						for(c = 0; c <= 1; c = c + 1)					
+							next(pre_votes[round[act]+1][c][1]) := pre_votes[round[act]+1][c][1]=M ?  pre_votes[round[act]+1][c][1] : pre_votes[round[act]+1][c][1]+1;
+					}
+					else { /* coin */
+						for(c = 0; c <= 1; c = c + 1)					
+							next(pre_votes[round[act]+1][c][c]) := pre_votes[round[act]+1][c][c]=M ?  pre_votes[round[act]+1][c][c] : pre_votes[round[act]+1][c][c]+1;
+					}
+				}
+				else {
+				/* left with a vote for coin  (cannot decide) */
+					for(c = 0; c <= 1; c = c + 1)					
+						next(pre_votes[round[act]+1][c][c]) := pre_votes[round[act]+1][c][c]=M ?  pre_votes[round[act]+1][c][c] : pre_votes[round[act]+1][c][c]+1;
+				}
+			}
+		}					   
+		COIN : {
+			/* if decided in previous round then done else continue */
+			next(pc[act]) := (round[act]>0 & decide[round[act]-1][act]) ? DONE : MAIN;
+			next(round[act]) := (round[act]>0 & decide[round[act]-1][act]) ? round[act] : round[act]+1; /* increase round */
+			/* toss coin if at least M honest parties have reached this stage and the coin has not been tossed */
+			next(coin[round[act]+1]) := pre[round[act]+1]=M & coin[round[act]+1]=not_tossed  ? {0,1} : coin[round[act]+1];
+		}
+			
+	}
+
+	/* -------------------------CORRUPTED PARTIES------------------------------------------ */
+
+	/* corrupted_pre[v] is true if a corrupted party can have a pre vote for v in round r */
+	corrupted_pre : array ROUNDS of array 0..1 of array 0..1 of boolean;
+	/* corrupted_main[v] is true if a corrupted party can have a main vote for v in round r */
+	corrupted_main : array ROUNDS of array 0..2 of boolean;
+
+	/* INITIAL VALUES */
+	/* initially cannot vote for either */
+	forall(r in ROUNDS){
+		for(c = 0; c <= 1; c = c + 1) for(v = 0; v <= 1; v = v + 1) init(corrupted_pre[r][c][v]) := 0;
+		for(v = 0; v <= 2; v = v + 1) init(corrupted_main[r][v]) := 0;
+	}
+	/* NEXT VALUES */
+	/* pre votes: for round 0 need at least one preprocessing vote from an honest party for a value to vote for that value */ 
+	/* in general to vote v either need a main vote for v (from either an honest or corrupted party) in the previous round */
+	/* or is able to vote for the coin, that is, there are need sufficient abstain main votes in the previous round */
+	forall (r in ROUNDS) {
+		if (r=0) {
+			for(v = 0; v <= 1; v = v + 1) next(corrupted_pre[r][0][v]) := (next(pre_proc_votes[v])>0);
+			for(v = 0; v <= 1; v = v + 1) next(corrupted_pre[r][1][v]) := (next(pre_proc_votes[v])>0);
+		}
+		else {
+			next(corrupted_pre[r][0][0]) := (next(main[r-1])=M & ( (next(main_votes[r-1][0])>0 | next(corrupted_main[r-1][0])) | (next(main_votes[r-1][2])=M & next(corrupted_main[r-1][2])) )) ? 1 : 0;
+			next(corrupted_pre[r][0][1]) := (next(main[r-1])=M & (next(main_votes[r-1][1])>0 | next(corrupted_main[r-1][1]))) ? 1 : 0;
+			next(corrupted_pre[r][1][0]) := (next(main[r-1])=M & (next(main_votes[r-1][0])>0 | next(corrupted_main[r-1][0]))) ? 1 : 0;
+			next(corrupted_pre[r][1][1]) := (next(main[r-1])=M & ( (next(main_votes[r-1][1])>0 | next(corrupted_main[r-1][1])) | (next(main_votes[r-1][2])=M & next(corrupted_main[r-1][2])) )) ? 1 : 0;
+		}
+	}
+	/* main votes: to vote for v (0 or 1) need M pre votes for v from honest parties also pre votes for v from corrupted parties */
+	/* to vote for abstain need a pre vote for 0 and a pre vote for 1 (from either honest or corrupted parties) */
+	forall (r in ROUNDS) {
+		if (next(coin[r])=0) {
+			for(v = 0; v <= 1; v = v + 1) next(corrupted_main[r][v]) := (next(pre[r])=M & next(pre_votes[r][0][v])=M & next(corrupted_pre[r][0][v]) ) ? 1 : 0;
+			next(corrupted_main[r][2]) := ( next(pre[r])=M & (next(pre_votes[r][0][0])>0 | next(corrupted_pre[r][0][0])) & (next(pre_votes[r][0][1])>0 | next(corrupted_pre[r][0][1])) ) ? 1 : 0;
+		}
+		else if (next(coin[r])=1) {
+			for(v = 0; v <= 1; v = v + 1) next(corrupted_main[r][v]) := (next(pre[r])=M & next(pre_votes[r][1][v])=M & next(corrupted_pre[r][1][v]) ) ? 1 : 0;
+			next(corrupted_main[r][2]) := ( next(pre[r])=M & (next(pre_votes[r][1][0])>0 | next(corrupted_pre[r][1][0])) & (next(pre_votes[r][1][1])>0 | next(corrupted_pre[r][1][1])) ) ? 1 : 0;
+		}
+	}
+
+	/* -----------------------END OF PROTOCOL----------------------------------- */
+
+/*-------------------------------HISTORY VARIABLES---------------------------------------*/
+		
+	/* for each round records the first party to have a main-vote for each value */
+	history_main_votes : array ROUNDS of array 0..2 of PROC;
+	forall (r in ROUNDS) for(v = 0; v <= 2; v = v + 1) {
+		init(history_main_votes[r][v]) := act;
+		next(history_main_votes[r][v]) := next(main_votes[r][v])>0 & main_votes[r][v]=0 ? act : history_main_votes[r][v];
+	}
+	/* for each round records the first party to have a pre-vote for each value */
+	history_pre_votes : array ROUNDS of array 0..1 of array 0..1 of PROC;
+	forall (r in ROUNDS) for(c = 0; c <= 1; c = c + 1) for(v = 0; v <= 1; v = v + 1) {
+		init(history_pre_votes[r][c][v]) := act;
+		next(history_pre_votes[r][c][v]) := next(pre_votes[r][c][v])>0 & pre_votes[r][c][v]=0 ? act : history_pre_votes[r][c][v];
+	}
+	/* for each round records the first party to have a pre-vote */
+	history_pre : array ROUNDS of PROC;
+	forall (r in ROUNDS) {
+		init(history_pre[r]) := act;
+		next(history_pre[r]) := next(pre[r])>0 & pre[r]=0 ? act : history_pre[r];
+	}
+	/* records the first party to have a pre-processing-vote for each value */
+	history_pre_proc_votes : array 0..1 of PROC;
+	for(v = 0; v <= 1; v = v + 1) {
+		init(history_pre_proc_votes[v]) := act;
+		next(history_pre_proc_votes[v]) := next(pre_proc_votes[v])>0 & pre_proc_votes[v]=0 ? act : history_pre_proc_votes[v];
+	}
+	/* records the party which flips the coin */
+	history_coin : array ROUNDS of PROC;
+	forall (r in ROUNDS) {
+		init(history_coin[r]) := act;
+		next(history_coin[r]) := !next(coin[r])=not_tossed & coin[r]=not_tossed ? act : history_coin[r];
+	}
+
+	/*---------------------------ASSUMPTIONS-------------------------------------*/
+
+	/* there cannot be M votes for v and M votes for v'  */
+	/* this follows from the fact if this was not true there would be */
+	/* M+M=(N-2T) + (N-2T)=N-T+(N-3T)>N-T honest parties */
+	/* which is a contradiction since there are only N-T honest parties */
+	forall (r in ROUNDS) for(c = 0; c <= 1; c = c + 1) {
+		assumption4[r][c] : assert G !( pre_votes[r][c][0]=M & pre_votes[r][c][1]=M);
+		assume assumption4[r][c];
+	} 	
+
+	/*----------------------ADDITIONAL INVARIANTS-----------------------------------*/
+
+	/* PROPERTIES CONCERNING THE PREPROCESSING STEP */
+	/* total number of pre processing votes for a value not decreasing in one step */
+	for(v = 0; v <= 1; v = v + 1) {
+		lemma1[v] : assert G ( pre_proc_votes[v]>0 -> X (pre_proc_votes[v]>0) );
+		forall (i in PROC) {
+			subcase lemma1[v][i] of lemma1[v] for act=i;
+			using 
+				/* abstractions */
+				PRE_PROC_VOTES->{0,K},
+				/* free variables */
+				pc//free,
+				pre_proc_votes//free,
+				pre_proc_votes[v],
+				start//free
+				prove lemma1[v][i];
+		}
+	}
+	/* total number of pre processing votes for a value not decreasing (need one step first) */
+	for(v = 0; v <= 1; v = v + 1) {
+		lemma2[v] : assert G ( pre_proc_votes[v]>0 -> G (pre_proc_votes[v]>0) );
+		using 
+			(lemma2[v]), /* assume lemma2 at time t-1 */
+			lemma1[v], 
+			/* abstractions */
+			PRE_PROC_VOTES->{0,K}, 
+			/* free variables */
+			pre_proc_votes//free,
+			pre_proc_votes[v]
+			prove lemma2[v];
+	}
+	/* if pre_processing>0 then pre_proc_votes[v] >0 for some v */
+	/* to do this we need to know the first party that is scheduled */
+	/* we therefore introduce the following variable */
+	init_act : PROC;
+	init(init_act) := act;
+	next(init_act) := init_act;
+	/* using this we can prove the property as follows */
+	lemma3 : assert G ( pre_proc>0 -> (pre_proc_votes[0]>0 | pre_proc_votes[1]>0) );
+	forall(i in PROC) {
+		subcase lemma3[i] of lemma3 for init_act=i;
+		using 
+			lemma1[0], 
+			lemma1[1], 
+			/* abstractions */
+			PRE_PROC_VOTES->{0},
+			/* free variables */
+			round//free,
+			start//free
+			prove lemma3[i];
+	}
+	
+	/* PROPERTIES CONCERNING PRE */
+	/* total number of pre votes does not decrease in one step */
+	forall (r in ROUNDS) forall (n in VOTES) {
+		lemma4[r][n] : assert G ( pre[r]>=n -> X (pre[r]>=n) );
+		forall (i in PROC) {
+			subcase lemma4[r][n][i] of lemma4[r][n] for act=i;
+			using 
+				/* abstractions */
+				VOTES->{0,M},
+				ROUNDS->{r-1,r},
+				/* free variables */
+				corrupted_main//free,
+				corrupted_pre//free,
+				decide//free,
+				main//free,
+				main_votes//free,
+				pre_proc//free,
+				pre_proc_votes//free,
+				pre_votes//free,
+				start//free
+				prove lemma4[r][n][i];
+		}
+	}
+	/* total number of pre votes does not decrease (need one step first) */
+	forall (r in ROUNDS) forall (n in VOTES) {
+		lemma5[r][n] : assert G ( pre[r]=n -> G (pre[r]>=n) );
+		using 
+			(lemma5[r][n]), 
+			lemma4[r][n], 
+			/* abstractions */
+			VOTES->{M},
+			/* free variables */
+			main//free,
+			pre_proc//free
+			prove lemma5[r][n];
+	}
+	/* pre can only increase by at most 1 in one step */
+	forall (r in ROUNDS) forall (n in VOTES) {
+		lemma6[r][n] : assert G ( (pre[r]=n  & n<M) -> X (pre[r]<=n+1) );
+		forall (i in PROC) {
+			subcase lemma6[r][n][i] of lemma6[r][n] for act=i;
+			using 
+			/* abstractions */
+			VOTES->{n,n+1},
+			ROUNDS->{r-1,r},
+			/* free variables */
+			coin//free,
+			corrupted_main//free,
+			corrupted_pre//free,
+			decide//free,
+			main//free,
+			main_votes//free,
+			pre_proc//free,
+			pre_proc_votes//free,
+			pre_votes//free,
+			start//free
+			prove lemma6[r][n][i];
+		}
+	}
+	/* dual of this property */
+	forall (r in ROUNDS) forall (n in VOTES) {
+		lemma7[r][n] : assert G ( X(pre[r]=n & n>0) -> pre[r]>=n-1 );
+		forall (i in PROC) {
+			subcase lemma7[r][n][i] of lemma7[r][n] for act=i;
+			using 
+			/* abstractions */
+			VOTES->{n-1,n}, 
+			ROUNDS->{r-1,r},
+			/* free variables */
+			coin//free,
+			corrupted_main//free,
+			corrupted_pre//free,
+			decide//free,
+			main//free,
+			main_votes//free,
+			pre_proc//free,
+			pre_proc_votes//free,
+			pre_votes//free,
+			start//free
+			prove lemma7[r][n];
+		}
+	}
+	/* PROPERTIES CONCERNING PRE_VOTES  */
+	/* total number of pre votes for a value does not decrease in one step */
+	forall (r in ROUNDS) for(c = 0; c <= 1; c = c + 1) for(v = 0; v <= 1; v = v + 1) forall (n in VOTES) {
+		lemma8[r][c][v][n] : assert G ( pre_votes[r][c][v]>=n -> X (pre_votes[r][c][v]>=n) );
+		forall (i in PROC) {
+			subcase lemma8[r][c][v][n][i] of lemma8[r][c][v][n] for act=i;
+			using 				
+				/* abstractions */
+				VOTES->{M},
+				ROUNDS->{r-1,r},
+				/* free variables */
+				corrupted_main//free,
+				corrupted_pre//free,
+				main//free,
+				main_votes//free,
+				pc//free,
+				pre//free,
+				pre_proc//free,
+				pre_proc_votes//free,
+				pre_votes//free,
+				pre_votes[r][c][v]
+				prove lemma8[r][c][v][n][i];
+		}
+	}
+	/* total number of pre votes for a value does not decrease (need one step first) */
+	forall (r in ROUNDS) for(c = 0; c <= 1; c = c + 1) for(v = 0; v <= 1; v = v + 1) forall (n in VOTES) {
+		lemma9[r][c][v][n] : assert G ( pre_votes[r][c][v]>=n -> G (pre_votes[r][c][v]>=n) );
+		using 
+			(lemma9[r][c][v][n]), 
+			lemma8[r][c][v][n],
+			/* abstractions */
+			VOTES->{M}, 
+			/* free variables */
+			corrupted_main//free,
+			corrupted_pre//free,
+			main//free,
+			main_votes//free,
+			pre//free,
+			pre_proc_votes//free,
+			pre_votes//free,
+			pre_votes[r][c][v]
+			prove lemma9[r][c][v][n];
+	}
+	/* variant on the total number of pre votes for a value does not decreasing in one step */
+	forall (r in ROUNDS) for(c = 0; c <= 1; c = c + 1) for(v = 0; v <= 1; v = v + 1) {
+		lemma10[r][c][v] : assert G ( pre_votes[r][c][v]>0 -> X (pre_votes[r][c][v]>0) );
+		forall (i in PROC) {
+			subcase lemma10[r][c][v][i] of lemma10[r][c][v] for act=i;
+			using 
+				/* abstractions */
+				VOTES->{0,M},
+				ROUNDS->{r-1,r},
+				/* free variables */
+				corrupted_main//free,
+				corrupted_pre//free,
+				main//free,
+				main_votes//free,
+				pc//free,
+				pre//free,
+				pre_proc//free,
+				pre_proc_votes//free,
+				pre_votes//free,
+				pre_votes[r][c][v],
+				round//free,
+				start//free
+				prove lemma10[r][c][v][i];
+		}
+	}
+	/* variant on the total number of pre votes for a value not decreasing (need one step first) */
+	forall (r in ROUNDS) for(c = 0; c <= 1; c = c + 1) for(v = 0; v <= 1; v = v + 1) {
+		lemma11[r][c][v] : assert G (pre_votes[r][c][v]>0 -> G (pre_votes[r][c][v]>0) );
+		using 
+			(lemma11[r][c][v]), 
+			lemma10[r][c][v], 
+			VOTES->{0},
+			coin//free,
+			corrupted_main//free,
+			corrupted_pre//free,
+			main//free,
+			main_votes//free,
+			pc//free,
+			pre//free,
+			pre_proc//free,
+			pre_proc_votes//free,
+			pre_votes//free,
+			pre_votes[r][c][v]
+			prove lemma11[r][c][v];
+	}
+	/* pre_votes can increase by at most 1 in one step */
+	forall (r in ROUNDS) for(c = 0; c <= 1; c = c + 1) for(v = 0; v <= 1; v = v + 1) forall (n in VOTES) {
+		lemma12[r][c][v][n] : assert G ( (pre_votes[r][c][v]=n & n<M) -> X (pre_votes[r][c][v]<=n+1) );
+		forall (i in PROC) {
+			subcase lemma12[r][c][v][n][i] of lemma12[r][c][v][n] for act=i;
+			using 
+			/* abstractions */
+			VOTES->{n,n+1},
+			ROUNDS->{r-1,r},
+			/* free variables */
+			corrupted_main//free,
+			decide//free,
+			main//free,
+			main_votes//free,
+			pre//free,
+			pre_proc//free,
+			pre_proc_votes//free,
+			pre_votes//free,
+			pre_votes[r][c][v],
+			start//free
+			prove lemma12[r][c][v][n][i];
+		}
+	}
+	/* dual of above property */
+	forall (r in ROUNDS) for(c = 0; c <= 1; c = c + 1) for(v = 0; v <= 1; v = v + 1) forall (n in VOTES) {
+		lemma13[r][c][v][n] : assert G ( X(pre_votes[r][c][v]=n & n>0) -> pre_votes[r][c][v]>=n-1 );
+		forall (i in PROC) {
+			subcase lemma13[r][c][v][n][i] of lemma13[r][c][v][n] for act=i;
+			using 
+			/* abstractions */
+			VOTES->{n-1,n},
+			ROUNDS->{r-1,r},
+			/* free variables */
+			corrupted_main//free,
+			decide//free,
+			main//free,
+			main_votes//free,
+			pre//free,
+			pre_proc//free,
+			pre_proc_votes//free,
+			pre_votes//free,
+			pre_votes[r][c][v],
+			start//free
+			prove lemma13[r][c][v][n][i];
+		}
+	}
+
+
+	/* PROPERTIES RELATING PRE AND PRE_VOTES */
+	/* if one of pre_votes[r][c][0] or pre_votes[r][c][1] is zero then the other equals pre[r] */
+	/* first we need a one step argument */
+	forall (r in ROUNDS) for(c = 0; c <= 1; c = c + 1) {
+		lemma14[r][c] : assert G ( (pre_votes[r][c][1]=0 -> pre_votes[r][c][0]=pre[r]) -> X ( pre_votes[r][c][1]=0 -> pre_votes[r][c][0]=pre[r]) );
+		forall (n in VOTES) forall (i in PROC) {
+			subcase lemma14[r][c][n][i] of lemma14[r][c] for pre_votes[r][c][0]=n & act=i;
+				using
+					/* abstractions */
+					VOTES->{0,n,n+1,M},
+					ROUNDS->{r-1,r},
+					PRE_PROC_VOTES->{0,K},
+					/* free variables */
+					corrupted_main//free,
+					corrupted_pre//free,
+					decide//free,
+					main//free,
+					main_votes//free,
+					pre//free,
+					pre[r],
+					pre_proc//free,
+					pre_proc_votes//free,
+					pre_votes//free,
+					pre_votes[r][c]
+`					prove lemma14[r][c][n][i];
+		}
+	}
+	forall (r in ROUNDS) for(c = 0; c <= 1; c = c + 1) {
+		lemma15[r][c] : assert G ( (pre_votes[r][c][0]=0 -> pre_votes[r][c][1]=pre[r]) -> X ( pre_votes[r][c][0]=0 -> pre_votes[r][c][1]=pre[r]) );
+		forall (n in VOTES) forall (i in PROC) {
+			subcase lemma15[r][c][n][i] of lemma15[r][c] for pre_votes[r][c][1]=n & act=i;
+				using
+					/* abstractions */
+					VOTES->{0,n,n+1,M},
+					ROUNDS->{r-1,r},
+					PRE_PROC_VOTES->{0,K},
+					/* free variables */
+					corrupted_main//free,
+					corrupted_pre//free,
+					decide//free,
+					main//free,
+					main_votes//free,
+					pre//free,
+					pre[r],
+					pre_proc//free,
+					pre_proc_votes//free,
+					pre_votes//free,
+					pre_votes[r][c]
+					prove lemma15[r][c][n][i];
+		}
+	}
+	/* using the one step arguments we get what we want */
+	forall (r in ROUNDS) for(c = 0; c <= 1; c = c + 1) {
+		lemma16[r][c] : assert G ( pre_votes[r][c][1]=0 -> pre_votes[r][c][0]=pre[r] );
+		forall (n in VOTES) forall (i in PROC) {
+			subcase lemma16[r][c][n] of lemma16[r][c] for pre_votes[r][c][0]=n;
+			using (lemma16[r][c]),
+				lemma5[r],				
+				lemma6[r],
+				lemma7[r],
+				lemma9[r][c][0],
+				lemma12[r][c][0],
+				lemma13[r][c][0],
+				lemma14[r][c],
+				/* abstractions */
+				VOTES->{0,n-1,n,n+1,M},
+				/* free variables */
+				corrupted_main//free,
+				corrupted_pre//free,
+				main//free,
+				main_votes//free,
+				pre_proc//free,
+				pre_proc_votes//free,
+				pre_votes//free,
+				pre_votes[r][c]
+				prove lemma16[r][c][n];
+		}
+	}
+	forall (r in ROUNDS) for(c = 0; c <= 1; c = c + 1) {
+		lemma17[r][c] : assert G ( pre_votes[r][c][0]=0 -> pre_votes[r][c][1]=pre[r] );
+		forall (n in VOTES) forall (i in PROC) {
+			subcase lemma17[r][c][n] of lemma17[r][c] for pre_votes[r][c][1]=n;
+			using (lemma17[r][c]),
+				lemma5[r],				
+				lemma6[r],
+				lemma7[r],
+				lemma9[r][c][1],
+				lemma12[r][c][1],
+				lemma13[r][c][1],
+				lemma15[r][c],
+				/* abstractions */
+				VOTES->{0,n-1,n,n+1,M},
+				/* free variables */
+				corrupted_main//free,
+				corrupted_pre//free,
+				main//free,
+				main_votes//free,
+				pre_proc//free,
+				pre_proc_votes//free,
+				pre_votes//free,
+				pre_votes[r][c]
+				prove lemma17[r][c][n];
+		}
+	}
+
+	/* PROPERTIES CONCERNING MAIN */
+	/* total number of main votes does not decrease in one step */
+	forall (r in ROUNDS) forall (n in VOTES) {
+		lemma18[r][n] : assert G ( main[r]>=n -> X (main[r]>=n) );
+		forall (i in PROC) {
+			subcase lemma18[r][n][i] of lemma18[r][n] for act=i;
+			using 
+				/* abstractions */
+				VOTES->{M},
+				/* free variables */
+				corrupted_main//free,
+				corrupted_pre//free,
+				decide//free,
+				main_votes//free,
+				pre//free,
+				pre_proc//free,
+				pre_proc_votes//free,
+				round//free,
+				start//free
+				prove lemma18[r][n][i];
+		}
+	}
+	/* total number of main votes does not decrease (need one step first) */
+	forall (r in ROUNDS) forall (n in VOTES) {
+		lemma19[r][n] : assert G ( main[r]>=n -> G (main[r]>=n)  );
+		using 
+			(lemma19[r][n]), 
+			lemma18[r][n], 
+			VOTES->{M},
+			/* free variables */
+			pre//free,
+			pre_proc//free
+			prove lemma19[r][n];
+	}
+	/* main can increase by at most 1 in one step */
+	forall (r in ROUNDS) forall (n in VOTES) {
+		lemma20[r][n] : assert G ( (main[r]=n  & n<M) -> X (main[r]<=n+1) );
+		forall (i in PROC) {
+			subcase lemma20[r][n][i] of lemma20[r][n] for act=i;
+			using 
+			/* abstractions */
+			VOTES->{n,n+1},
+			/* free variables */
+			coin//free,
+			corrupted_main//free,
+			corrupted_pre//free,
+			decide//free,
+			main_votes//free,
+			pre//free,
+			pre_proc//free,
+			pre_proc_votes//free,
+			pre_votes//free,
+			round//free,
+			start//free
+			prove lemma20[r][n][i];
+		}
+	}
+	/* dual of above property */
+	forall (r in ROUNDS) forall (n in VOTES) {
+		lemma21[r][n] : assert G ( X(main[r]=n & n>0) -> main[r]>=n-1 );
+		forall (i in PROC) {
+			subcase lemma21[r][n][i] of lemma21[r][n] for act=i;
+			using 
+			/* abstractions */
+			VOTES->{n-1,n}, 
+			/* free variables */
+			coin//free,
+			corrupted_main//free,
+			corrupted_pre//free,
+			decide//free,
+			main_votes//free,
+			pre//free,
+			pre_proc//free,
+			pre_proc_votes//free,
+			pre_votes//free,
+			round//free,
+			start//free
+			prove lemma21[r][n];
+		}
+	}
+
+	/* PROPERTIES CONCERNING MAIN_TOTAL  */
+	/* total number of main votes for a value does not decrease in one step */
+	forall (r in ROUNDS) for(v = 0; v <= 2; v = v + 1) forall (n in VOTES) {
+		lemma22[r][v][n] : assert G ( main_votes[r][v]>=n -> X (main_votes[r][v]>=n) );
+		forall (i in PROC) {
+			subcase lemma22[r][v][n][i] of lemma22[r][v][n] for act=i;
+			using 
+				/* abstractions */
+				VOTES->{M},
+				/* free variables */
+				coin//free,
+				corrupted_main//free,
+				corrupted_pre//free,
+				main//free,
+				main_votes//free,
+				main_votes[r][v],
+				pc//free,
+				pre//free,
+				pre_proc//free,
+				pre_proc_votes//free,
+				pre_votes//free,
+				round//free,
+				start//free
+				prove lemma22[r][v][n][i];
+		}
+	}
+	/* total number of main votes for a value does not decrease (need one step first) */
+	forall (r in ROUNDS) for(v = 0; v <= 2; v = v + 1) forall (n in VOTES) {
+		lemma23[r][v][n] : assert G ( main_votes[r][v]>=n -> G (main_votes[r][v]>=n) );
+		using 
+			(lemma23[r][v][n]), 
+			VOTES->{M}, 
+			lemma22[r][v][n], 
+			/* free variables */
+			coin//free,
+			corrupted_main//free,
+			corrupted_pre//free,
+			main//free,
+			main_votes//free,
+			main_votes[r][v],
+			pc//free,
+			pre//free,
+			pre_proc//free,
+			pre_proc_votes//free,
+			pre_votes//free,
+			round//free,
+			start//free
+			prove lemma23[r][v][n];
+	}
+	/* variant on the total number of main votes for a value not decreasing in one step */
+	forall (r in ROUNDS) for(v = 0; v <= 2; v = v + 1) {
+		lemma24[r][v] : assert G ( main_votes[r][v]>0 -> X (main_votes[r][v]>0) );
+		forall (i in PROC) {
+			subcase lemma24[r][v][i] of lemma24[r][v] for act=i;
+			using 
+				/* abstractions */
+				VOTES->{0,M},
+				/* free variables */
+				coin//free,
+				corrupted_main//free,
+				corrupted_pre//free,
+				main//free,
+				main_votes//free,
+				main_votes[r][v],
+				pc//free,
+				pre//free,
+				pre_proc//free,
+				pre_proc_votes//free,
+				pre_votes//free,
+				round//free,
+				start//free
+				prove lemma24[r][v][i];
+		}
+	}
+	/* variant on the total number of main votes for a value not decreasing (need one step first) */
+	forall (r in ROUNDS) for(v = 0; v <= 2; v = v + 1) {
+		lemma25[r][v] : assert G ( main_votes[r][v]>0 -> G (main_votes[r][v]>0) );
+		using
+			(lemma25[r][v]), 
+			lemma24[r][v], 
+			VOTES->{0},
+			/* free variables */
+			coin//free,
+			corrupted_main//free,
+			corrupted_pre//free,
+			main//free,
+			main_votes//free,
+			main_votes[r][v],
+			pc//free,
+			pre//free,
+			pre_proc//free,
+			pre_proc_votes//free,
+			pre_votes//free,
+			round//free,
+			start//free
+			prove lemma25[r][v];
+	}
+	/* main_votes can increase by at most 1 in one step */
+	forall (r in ROUNDS) for(v = 0; v <= 2; v = v + 1) forall (n in VOTES) {
+		lemma26[r][v][n] : assert G ( (main_votes[r][v]=n & n<M) -> X (main_votes[r][v]<=n+1) );
+		forall (i in PROC) {
+			subcase lemma26[r][v][n][i] of lemma26[r][v][n] for act=i;
+			using 
+			/* abstractions */
+			VOTES->{n,n+1},
+			/* free variables */
+			coin//free,
+			corrupted_main//free,
+			corrupted_pre//free,
+			main//free,
+			main_votes//free,
+			main_votes[r][v],
+			pc//free,
+			pre//free,
+			pre_proc//free,
+			pre_proc_votes//free,
+			pre_votes//free,
+			round//free,
+			start//free
+			prove lemma26[r][v][n][i];
+		}
+	}
+	/* dual of above property */
+	forall (r in ROUNDS) for(v = 0; v <= 2; v = v + 1) forall (n in VOTES) {
+		lemma27[r][v][n] : assert G ( X(main_votes[r][v]=n & n>0) -> main_votes[r][v]>=n-1 );
+		forall (i in PROC) {
+			subcase lemma27[r][v][n][i] of lemma27[r][v][n] for act=i;
+			using 
+			/* abstractions */
+			VOTES->{n-1,n},
+			/* free variables */
+			coin//free,
+			corrupted_main//free,
+			corrupted_pre//free,
+			main//free,
+			main_votes//free,
+			main_votes[r][v],
+			pc//free,
+			pre//free,
+			pre_proc//free,
+			pre_proc_votes//free,
+			pre_votes//free,
+			round//free,
+			start//free
+			prove lemma27[r][v][n][i];
+		}
+	}
+
+	/* PROPERTIES RELATING MAIN AND MAIN_TOTAL */
+	/* if two of main_votes[r][v] for v=0,1,2 are zero then the remaining one equals main[r] */
+	/* first we need a one step argument */
+	forall (r in ROUNDS) {
+		lemma28[r] : assert G ( ((main_votes[r][1]=0 & main_votes[r][2]=0) -> main_votes[r][0]=main[r]) -> X ( (main_votes[r][1]=0 & main_votes[r][2]=0) -> main_votes[r][0]=main[r]) );
+		forall (n in VOTES) forall (i in PROC) {
+			subcase lemma28[r][n][i] of lemma28[r] for main_votes[r][0]=n & act=i;
+				using lemma36[i][r],
+					/* abstractions */
+					VOTES->{0,n,n+1,M},
+					/* free variables */
+					coin//free,
+					corrupted_main//free,
+					corrupted_pre//free,
+					decide//free,
+					pre//free,
+					pre_proc//free,
+					pre_proc_votes//free,
+					pre_votes//free,
+					start//free
+					prove lemma28[r][n][i];
+		}
+	}
+	forall (r in ROUNDS) {
+		lemma29[r] : assert G ( ((main_votes[r][0]=0 & main_votes[r][2]=0) -> main_votes[r][1]=main[r]) -> X ( (main_votes[r][0]=0 & main_votes[r][2]=0) -> main_votes[r][1]=main[r]) );
+		forall (n in VOTES) forall (i in PROC) {
+			subcase lemma29[r][n][i] of lemma29[r] for main_votes[r][1]=n & act=i;
+				using lemma36[i][r],
+					/* abstractions */
+					VOTES->{0,n,n+1,M},
+					/* free variables */
+					coin//free,
+					corrupted_main//free,
+					corrupted_pre//free,
+					decide//free,
+					pre//free,
+					pre_proc//free,
+					pre_proc_votes//free,
+					pre_votes//free,
+					start//free
+					prove lemma29[r][n][i];
+		}
+	}
+	forall (r in ROUNDS) {
+		lemma30[r] : assert G ( ((main_votes[r][0]=0 & main_votes[r][1]=0) -> main_votes[r][2]=main[r]) -> X ( (main_votes[r][0]=0 & main_votes[r][1]=0) -> main_votes[r][2]=main[r]) );
+		forall (n in VOTES) forall (i in PROC) {
+			subcase lemma30[r][n][i] of lemma30[r] for main_votes[r][2]=n & act=i;
+				using lemma36[i][r],
+					/* abstractions */
+					VOTES->{0,n,n+1,M},
+					/* free variables */
+					coin//free,
+					corrupted_main//free,
+					corrupted_pre//free,
+					decide//free,
+					pre//free,
+					pre_proc//free,
+					pre_proc_votes//free,
+					pre_votes//free
+					prove lemma30[r][n][i];
+		}
+	}
+	/* using the one step arguments we get what we want */
+	forall (r in ROUNDS) {
+		lemma31[r] : assert G ( (main_votes[r][1]=0 & main_votes[r][2]=0) -> main_votes[r][0]=main[r] );
+		forall (n in VOTES) forall (i in PROC) {
+			subcase lemma31[r][n] of lemma31[r] for main_votes[r][0]=n;
+			using (lemma31[r]),
+				lemma18[r],				
+				lemma20[r],
+				lemma21[r],
+				lemma22[r][0],
+				lemma26[r][0],
+				lemma27[r][0],
+				lemma28[r],
+				/* abstractions */
+				VOTES->{0,n-1,n,n+1,M},
+				/* free variables */
+				coin//free,
+				corrupted_main//free,
+				corrupted_pre//free,
+				pre//free,
+				pre_proc//free,
+				pre_proc_votes//free,
+				pre_votes//free,
+				start//free
+				prove lemma31[r][n];
+		}
+	}
+	forall (r in ROUNDS) {
+		lemma32[r] : assert G ( (main_votes[r][0]=0 & main_votes[r][2]=0) -> main_votes[r][1]=main[r] );
+		forall (n in VOTES) forall (i in PROC) {
+			subcase lemma32[r][n] of lemma32[r] for main_votes[r][1]=n;
+			using (lemma32[r]),
+				lemma18[r],				
+				lemma20[r],
+				lemma21[r],
+				lemma22[r][1],
+				lemma26[r][1],
+				lemma27[r][1],
+				lemma29[r],
+				/* abstractions */
+				VOTES->{0,n-1,n,n+1,M},
+				/* free variables */
+				coin//free,
+				corrupted_main//free,
+				corrupted_pre//free,
+				pre//free,
+				pre_proc//free,
+				pre_proc_votes//free,
+				pre_votes//free,
+				start//free
+				prove lemma32[r][n];
+		}
+	}
+	forall (r in ROUNDS) {
+		lemma33[r] : assert G ( (main_votes[r][0]=0 & main_votes[r][1]=0) -> main_votes[r][2]=main[r] );
+		forall (n in VOTES) forall (i in PROC) {
+			subcase lemma33[r][n] of lemma33[r] for main_votes[r][2]=n;
+			using (lemma33[r]),
+				lemma18[r],				
+				lemma20[r],
+				lemma21[r],
+				lemma22[r][2],
+				lemma26[r][2],
+				lemma27[r][2],
+				lemma30[r],
+				/* abstractions */
+				VOTES->{0,n-1,n,n+1,M},
+				/* free variables */
+				coin//free,
+				corrupted_main//free,
+				corrupted_pre//free,
+				pre//free,
+				pre_proc//free,
+				pre_proc_votes//free,
+				pre_votes//free,
+				start//free
+				prove lemma33[r][n];
+		}
+	}
+
+	/* PROPERTIES CONCERNING DECIDE PHASE  */
+	/* once a party has decided it stays decided */
+	forall (r in ROUNDS) forall (i in PROC)  {
+		lemma37[r][i] : assert G ( decide[r][i] -> G (decide[r][i]) );
+		using  
+			/* abstraction */
+			VOTES->{M},
+			ROUNDS->{r-1,r},
+			/* free variables */
+			coin//free,
+			corrupted_main//free,
+			corrupted_pre//free,
+			main//free,
+			main_votes//free,
+			pre_proc//free,
+			pre_proc_votes//free,
+			pre_votes//free,
+			start//free
+			prove lemma37[r][i];
+	}
+	/* PROPERTIES OF PARTIES */
+	/* the party that first increases pre[r] has a round greater than or equal to r */
+	forall (r in ROUNDS) {
+		lemma39[r] : assert G ( pre[r]>0 -> round[history_pre[r]]>=r );
+		forall (i in PROC) forall (r1 in ROUNDS) {
+			subcase lemma39[r][i][r1] of lemma39[r] for i=history_pre[r] & round[i]=r;
+			using  (lemma39[r][i]), 
+				/* abstractions */
+				VOTES->{0},
+				/* free variables */
+				coin//free,
+				corrupted_main//free,
+				corrupted_pre//free,
+				decide//free,
+				main//free,
+				main_votes//free,
+				pre//free,
+				pre[r],
+				pre_proc//free,
+				pre_proc_votes//free,
+				pre_votes//free,
+				start//free
+				prove lemma39[r][i][r];
+		}
+	}
+	
+	/* PROPERTIES RELATING MAIN_VOTES AND PRE_VOTES */
+	/* if there are main votes for 0 then there are no main votes for 1 */
+	forall (r in ROUNDS) {
+		lemma40[r] : assert G ( (main_votes[r][0]>0 | corrupted_main[r][0]) -> ( main_votes[r][1]=0 & !corrupted_main[r][1] ) );
+		forall (i in PROC) forall (j in PROC) {
+			subcase lemma40[r][i][j] of lemma40[r] for i=history_main_votes[r][0] & j=history_main_votes[r][1]; 
+			using 
+				lemma9[r], 
+				coin2[r],
+				/* assumptions */
+				assumption4[r],
+				/* abstractions */
+				VOTES->{0,M},
+				/* free variables */
+				coin//free,
+				corrupted_main//free,
+				corrupted_main[r][0],
+				corrupted_main[r][1],
+				corrupted_pre//free,
+				decide//free,
+				main//free,
+				main_votes//free,
+				main_votes[r][0],
+				main_votes[r][1],
+				pc//free,
+				pre//free,
+				pre_proc//free,
+				pre_proc_votes//free,
+				pre_votes//free,
+				start//free
+				prove lemma40[r][i][j];
+		}
+	}
+	/* if there are main votes for 1 then there are no main votes for 0 */
+	forall (r in ROUNDS) {
+		lemma41[r] : assert G ( (main_votes[r][1]>0 | corrupted_main[r][1]) -> ( main_votes[r][0]=0 & !corrupted_main[r][0] ) );
+		forall (i in PROC) forall (j in PROC) {
+			subcase lemma41[r][i][j] of lemma41[r] for i=history_main_votes[r][1] & j=history_main_votes[r][0]; 
+			using 
+				lemma9[r], 
+				coin2[r],
+				/* assumptions */
+				assumption4[r],
+				/* abstractions */
+				VOTES->{0,M},
+				/* free variables */
+				coin//free,
+				corrupted_main//free,
+				corrupted_main[r][0],
+				corrupted_main[r][1],
+				corrupted_pre//free,
+				decide//free,
+				main//free,
+				main_votes//free,
+				main_votes[r][0],
+				main_votes[r][1],
+				pc//free,
+				pre//free,
+				pre_proc//free,
+				pre_proc_votes//free,
+				pre_votes//free,
+				start//free
+				prove lemma41[r][i][j];
+		}
+	}
+
+	/*----------------------PROPERTIES OF CORRUPTED PARTIES---------------------------------------*/
+
+	/* if an honest party has a vote for a value then corrupted parties can also vote for this value */
+	/* first consider the following simple properties */
+	/* if a corrupted party can make a main vote for v it can always do this */
+	forall (r in ROUNDS) for (v = 0; v <= 2; v = v + 1) {
+		corrupted1[r][v] : assert G ( corrupted_main[r][v] -> G (corrupted_main[r][v]) );
+		using corrupted2[r],
+			coin2[r],
+			lemma5[r][M],
+			lemma9[r][0][v][M],
+			lemma9[r][1][v][M],
+			lemma11[r],
+			/* abstractions */
+			VOTES->{0,M},
+			/* free variables */
+			corrupted_main//free,
+			corrupted_main[r][v],
+			corrupted_pre//free,
+			main//free,
+			main_votes//free,
+			pre//free,
+			pre_proc//free,
+			pre_proc_votes//free
+			prove corrupted1[r][v];
+		
+	}
+	/* if a corrupted party can make a pre vote for v it can always do this */
+	forall (r in ROUNDS) for (c = 0; c <= 1; c = c + 1) for (v = 0; v <= 1; v = v + 1) {
+		corrupted2[r][c][v] : assert G ( corrupted_pre[r][c][v] -> G (corrupted_pre[r][c][v]) );
+		using corrupted1[r-1],
+			lemma2[v],
+			lemma19[r-1][M],
+			lemma23[r-1][1][M],
+			lemma23[r-1][2][M],
+			lemma23[r-1][3][M],
+			lemma25[r-1],
+			/* abstractions */
+			ROUNDS->{0,r-1,r},
+			VOTES->{0,M},
+			PRE_PROC_VOTES->{0,K},
+			/* free variables */
+			corrupted_pre//free,
+			corrupted_pre[r][c][v],
+			corrupted_main//free,
+			corrupted_main[r-1][v],
+			main//free,
+			main_votes//free,
+			pre//free,
+			pre_proc_votes//free,
+			pre_votes//free
+			prove corrupted2[r][c][v];
+	}
+
+	/* using these we have what we want */
+	/* for main votes */
+	forall (r in ROUNDS) for (v = 0; v <= 2; v = v + 1) {
+		corrupted5[r][v] : assert G ( main_votes[r][v]>0 -> corrupted_main[r][v] );
+		forall (i in PROC) { 
+			subcase corrupted5[r][v][i] of corrupted5[r][v] for i=history_main_votes[r][v]; 
+			using (corrupted5[r][v][i]),
+			corrupted2[r],
+			corrupted6[r],
+			coin2[r],
+			lemma5[r][M],
+			lemma9[r][0][0][M],
+			lemma9[r][0][1][M],
+			lemma9[r][1][0][M],
+			lemma9[r][1][1][M],
+			lemma11[r],
+			lemma16[r],
+			lemma17[r],
+			/* abstractions */
+			VOTES->{0,M},
+			PRE_PROC_VOTES->{0,K},
+			/* free variables */
+			coin//free,					
+			corrupted_main//free,
+			corrupted_main[r][v],
+			corrupted_pre//free,
+			decide//free,
+			main//free,
+			main_votes//free,
+			main_votes[r][v],
+			pre//free,
+			pre_proc//free,
+			pre_proc_votes//free,
+			pre_votes//free,
+			round//free	
+			prove corrupted5[r][v][i];
+		}	
+	}
+	/* for pre votes */
+	forall (r in ROUNDS) for (c = 0; c <= 1; c = c + 1) for (v = 0; v <= 1; v = v + 1) {
+		corrupted6[r][c][v] : assert G ( pre_votes[r][c][v]>0 -> corrupted_pre[r][c][v] );
+		forall (i in PROC) { 
+			subcase corrupted6[r][c][v][i] of corrupted6[r][c][v] for i=history_pre_votes[r][c][v]; 
+			using (corrupted6[r][c][v][i]),
+			corrupted1[r-1],
+			corrupted5[r-1],
+			lemma2,
+			lemma3,
+			lemma19[r-1][M],
+			lemma23[r-1][0][M],
+			lemma23[r-1][1][M],
+			lemma23[r-1][2][M],
+			lemma25[r-1],
+			lemma31[r-1],
+			lemma32[r-1],
+			lemma33[r-1],
+			/* abstractions */
+			ROUNDS->{0,r-1,r},
+			VOTES->{0,M},
+			PRE_PROC_VOTES->{0,K},
+			/* free variables */
+			corrupted_main//free,
+			corrupted_pre//free,
+			corrupted_pre[r][c][v],
+			decide//free,
+			history_pre_votes//free,
+			history_pre_votes[r][c][v],
+			main//free,
+			main_votes//free,
+			pre//free,
+			pre_proc//free,
+			pre_proc_votes//free,
+			pre_votes//free,
+			pre_votes[r][c][v]
+			prove corrupted6[r][c][v][i];
+		}
+	}
+
+	/* ------------------PROPERTIES OF THE COINS----------------*/
+	
+	/* once a coin has been tossed it does not change value on step first */	
+	forall (r in ROUNDS) for(c = 0; c <= 1; c = c + 1) {
+		coin1[r][c] : assert G ( coin[r]=c  -> X ( coin[r]=c ) );
+		forall (i in PROC) {
+			subcase coin1[r][c][i] of coin1[r][c] for act=i;	
+			using
+				/* abstractions */ 
+				ROUNDS->{0,r-1}, 
+				/* free variables */
+				decide//free,
+				main//free,
+				main_votes//free,
+				pre//free,
+				pre[r],
+				pre_proc//free,
+				pre_proc_votes//free,
+				pre_votes//free,
+				start//free
+				prove coin1[r][c][i];
+		}
+	}
+	/* once a coin has been tossed it does not change value */	
+	forall (r in ROUNDS) for(c = 0; c <= 1; c = c + 1) {
+		coin2[r][c] : assert G ( coin[r]=c  -> G ( coin[r]=c ) );
+			using (coin2[r][c]), coin1[r][c] prove coin2[r][c];
+	}
+
+
+
+
+
+
+}
+

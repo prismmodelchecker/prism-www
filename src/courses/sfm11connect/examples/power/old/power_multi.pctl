@@ -1,0 +1,12 @@
+// constraints
+const double Q; // av queue size (multiply by expected time (1000) to convert to total reward prop)
+const double L; // expected number of lost customers
+
+// just a constraint on queue size
+multi(R{"power"}min=?[F bat=0],R{"queue"}<=Q*1000[F true])
+
+// just a constraint on lost customers
+multi(R{"power"}min=?[F bat=0],R{"lost"}<=L[F true])
+
+// constraint on both
+multi(R{"power"}min=?[F bat=0],R{"lost"}<=L[F true],R{"queue"}<=Q*1000[F true])

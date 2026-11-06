@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE chartFormat SYSTEM "chartformat.dtd">
+<chartFormat graphTitle="" legendFontColourB="0" legendFontColourG="0" legendFontColourR="0" legendFontName="SansSerif" legendFontSize="11" legendFontStyle="0" legendPosition="right" legendVisible="true" titleFontColourB="0" titleFontColourG="0" titleFontColourR="0" titleFontName="SansSerif" titleFontSize="14" titleFontStyle="0" versionString="3.2.dev">
+<layout/>
+<axis autoscale="false" heading="N" headingFontColourB="0" headingFontColourG="0" headingFontColourR="0" headingFontName="SansSerif" headingFontSize="11" headingFontStyle="0" logBase="10.0" logStyle="1" logarithmic="false" majorColourB="204" majorColourG="204" majorColourR="204" majorGridInterval="1.0" maxValue="10.0" maximumPower="2.0" minValue="1.0" minimumPower="0.0" numberFontColourB="0" numberFontColourG="0" numberFontColourR="0" numberFontName="SansSerif" numberFontSize="11" numberFontStyle="0" showMajor="true"/>
+<axis autoscale="true" heading="Probability" headingFontColourB="0" headingFontColourG="0" headingFontColourR="0" headingFontName="SansSerif" headingFontSize="11" headingFontStyle="0" logBase="10.0" logStyle="1" logarithmic="false" majorColourB="204" majorColourG="204" majorColourR="204" majorGridInterval="0.1" maxValue="1.0" maximumPower="0.0" minValue="0.0" minimumPower="-7.0" numberFontColourB="0" numberFontColourG="0" numberFontColourR="0" numberFontName="SansSerif" numberFontSize="11" numberFontStyle="0" showMajor="true"/>
+<graph lineStyle="normal" lineWidth="1.0" seriesColourB="180" seriesColourG="0" seriesColourR="0" seriesHeading="party A (EGL )" seriesShape="square" showLines="true" showPoints="true">
+<point x="1.0" y="1.0"/>
+<point x="2.0" y="1.0"/>
+<point x="3.0" y="1.0"/>
+<point x="4.0" y="1.0"/>
+<point x="5.0" y="1.0"/>
+<point x="6.0" y="1.0"/>
+<point x="7.0" y="1.0"/>
+<point x="8.0" y="1.0"/>
+<point x="9.0" y="1.0"/>
+<point x="10.0" y="1.0"/>
+<point x="11.0" y="1.0"/>
+<point x="12.0" y="1.0"/>
+<point x="13.0" y="1.0"/>
+<point x="14.0" y="1.0"/>
+<point x="15.0" y="1.0"/>
+<point x="16.0" y="1.0"/>
+<point x="17.0" y="1.0"/>
+<point x="18.0" y="1.0"/>
+<point x="19.0" y="1.0"/>
+<point x="20.0" y="1.0"/>
+</graph>
+<graph lineStyle="normal" lineWidth="1.0" seriesColourB="0" seriesColourG="150" seriesColourR="0" seriesHeading="party A (EGL 2)" seriesShape="square" showLines="true" showPoints="true">
+<point x="1.0" y="0.75"/>
+<point x="2.0" y="0.8125"/>
+<point x="3.0" y="0.890625"/>
+<point x="4.0" y="0.94140625"/>
+<point x="5.0" y="0.9697265625"/>
+<point x="6.0" y="0.984619140625"/>
+<point x="7.0" y="0.99224853515625"/>
+<point x="8.0" y="0.9961090087890625"/>
+<point x="9.0" y="0.9980506896972656"/>
+<point x="10.0" y="0.9990243911743164"/>
+<point x="11.0" y="0.9995119571685791"/>
+<point x="12.0" y="0.9997559189796448"/>
+<point x="13.0" y="0.9998779445886612"/>
+<point x="14.0" y="0.9999389685690403"/>
+<point x="15.0" y="0.9999694833531976"/>
+<point x="16.0" y="0.9999847414437681"/>
+<point x="17.0" y="0.9999923706636764"/>
+<point x="18.0" y="0.9999961853172863"/>
+<point x="19.0" y="0.9999980926550052"/>
+<point x="20.0" y="0.9999990463256836"/>
+</graph>
+<graph lineStyle="normal" lineWidth="1.0" seriesColourB="0" seriesColourG="0" seriesColourR="255" seriesHeading="party A (EGL 3)" seriesShape="square" showLines="true" showPoints="true">
+<point x="1.0" y="0.75"/>
+<point x="2.0" y="0.6875"/>
+<point x="3.0" y="0.671875"/>
+<point x="4.0" y="0.66796875"/>
+<point x="5.0" y="0.6669921875"/>
+<point x="6.0" y="0.666748046875"/>
+<point x="7.0" y="0.66668701171875"/>
+<point x="8.0" y="0.6666717529296875"/>
+<point x="9.0" y="0.6666679382324219"/>
+<point x="10.0" y="0.6666669845581055"/>
+<point x="11.0" y="0.6666667461395264"/>
+<point x="12.0" y="0.6666666269302368"/>
+<point x="13.0" y="0.6666666567325592"/>
+<point x="14.0" y="0.6666666641831398"/>
+<point x="15.0" y="0.666666666045785"/>
+<point x="16.0" y="0.6666666665114462"/>
+<point x="17.0" y="0.6666666666278616"/>
+<point x="18.0" y="0.6666666666569654"/>
+<point x="19.0" y="0.6666666666642413"/>
+<point x="20.0" y="0.6666666666660603"/>
+</graph>
+<graph lineStyle="normal" lineWidth="1.0" seriesColourB="180" seriesColourG="180" seriesColourR="0" seriesHeading="party A (EGL 4)" seriesShape="square" showLines="true" showPoints="true">
+<point x="1.0" y="0.75"/>
+<point x="2.0" y="0.625"/>
+<point x="3.0" y="0.5625"/>
+<point x="4.0" y="0.53125"/>
+<point x="5.0" y="0.515625"/>
+<point x="6.0" y="0.5078125"/>
+<point x="7.0" y="0.50390625"/>
+<point x="8.0" y="0.501953125"/>
+<point x="9.0" y="0.5009765625"/>
+<point x="10.0" y="0.50048828125"/>
+<point x="11.0" y="0.500244140625"/>
+<point x="12.0" y="0.5001220703125"/>
+<point x="13.0" y="0.50006103515625"/>
+<point x="14.0" y="0.500030517578125"/>
+<point x="15.0" y="0.5000152587890625"/>
+<point x="16.0" y="0.5000076293945312"/>
+<point x="17.0" y="0.5000038146972656"/>
+<point x="18.0" y="0.5000019073486328"/>
+<point x="19.0" y="0.5000009536743164"/>
+<point x="20.0" y="0.5000004768371582"/>
+</graph>
+<graph lineStyle="dashed" lineWidth="1.0" seriesColourB="180" seriesColourG="180" seriesColourR="0" seriesHeading="party B (EGL 4)" seriesShape="triangle" showLines="true" showPoints="true">
+<point x="1.0" y="0.25"/>
+<point x="2.0" y="0.375"/>
+<point x="3.0" y="0.4375"/>
+<point x="4.0" y="0.46875"/>
+<point x="5.0" y="0.484375"/>
+<point x="6.0" y="0.4921875"/>
+<point x="7.0" y="0.49609375"/>
+<point x="8.0" y="0.498046875"/>
+<point x="9.0" y="0.4990234375"/>
+<point x="10.0" y="0.49951171875"/>
+<point x="11.0" y="0.499755859375"/>
+<point x="12.0" y="0.4998779296875"/>
+<point x="13.0" y="0.49993896484375"/>
+<point x="14.0" y="0.499969482421875"/>
+<point x="15.0" y="0.4999847412109375"/>
+<point x="16.0" y="0.49999237060546875"/>
+<point x="17.0" y="0.4999961853027344"/>
+<point x="18.0" y="0.4999980926513672"/>
+<point x="19.0" y="0.4999990463256836"/>
+<point x="20.0" y="0.4999995231628418"/>
+</graph>
+<graph lineStyle="dashed" lineWidth="1.0" seriesColourB="0" seriesColourG="0" seriesColourR="255" seriesHeading="party B (EGL 3)" seriesShape="triangle" showLines="true" showPoints="true">
+<point x="1.0" y="0.25"/>
+<point x="2.0" y="0.3125"/>
+<point x="3.0" y="0.328125"/>
+<point x="4.0" y="0.33203125"/>
+<point x="5.0" y="0.3330078125"/>
+<point x="6.0" y="0.333251953125"/>
+<point x="7.0" y="0.33331298828125"/>
+<point x="8.0" y="0.3333282470703125"/>
+<point x="9.0" y="0.3333320617675781"/>
+<point x="10.0" y="0.33333301544189453"/>
+<point x="11.0" y="0.33333301544189453"/>
+<point x="12.0" y="0.33333301544189453"/>
+<point x="13.0" y="0.33333301544189453"/>
+<point x="14.0" y="0.33333301544189453"/>
+<point x="15.0" y="0.33333301544189453"/>
+<point x="16.0" y="0.33333301544189453"/>
+<point x="17.0" y="0.33333301544189453"/>
+<point x="18.0" y="0.33333301544189453"/>
+<point x="19.0" y="0.33333301544189453"/>
+<point x="20.0" y="0.33333301544189453"/>
+</graph>
+<graph lineStyle="dashed" lineWidth="1.0" seriesColourB="0" seriesColourG="150" seriesColourR="0" seriesHeading="party B (EGL 2)" seriesShape="triangle" showLines="true" showPoints="true">
+<point x="1.0" y="0.25"/>
+<point x="2.0" y="0.1875"/>
+<point x="3.0" y="0.109375"/>
+<point x="4.0" y="0.05859375"/>
+<point x="5.0" y="0.0302734375"/>
+<point x="6.0" y="0.015380859375"/>
+<point x="7.0" y="0.00775146484375"/>
+<point x="8.0" y="0.0038909912109375"/>
+<point x="9.0" y="0.001949310302734375"/>
+<point x="10.0" y="9.756088256835938E-4"/>
+<point x="11.0" y="4.8804283142089844E-4"/>
+<point x="12.0" y="2.440810203552246E-4"/>
+<point x="13.0" y="1.2205541133880615E-4"/>
+<point x="14.0" y="6.103143095970154E-5"/>
+<point x="15.0" y="3.0516646802425385E-5"/>
+<point x="16.0" y="1.5258556231856346E-5"/>
+<point x="17.0" y="7.6293363235890865E-6"/>
+<point x="18.0" y="3.8146827137097716E-6"/>
+<point x="19.0" y="1.907344994833693E-6"/>
+<point x="20.0" y="9.536734069115482E-7"/>
+</graph>
+<graph lineStyle="dashed" lineWidth="1.0" seriesColourB="180" seriesColourG="0" seriesColourR="0" seriesHeading="party A (EGL)" seriesShape="triangle" showLines="true" showPoints="true">
+<point x="1.0" y="0.0"/>
+<point x="2.0" y="0.0"/>
+<point x="3.0" y="0.0"/>
+<point x="4.0" y="0.0"/>
+<point x="5.0" y="0.0"/>
+<point x="6.0" y="0.0"/>
+<point x="7.0" y="0.0"/>
+<point x="8.0" y="0.0"/>
+<point x="9.0" y="0.0"/>
+<point x="10.0" y="0.0"/>
+<point x="11.0" y="0.0"/>
+<point x="12.0" y="0.0"/>
+<point x="13.0" y="0.0"/>
+<point x="14.0" y="0.0"/>
+<point x="15.0" y="0.0"/>
+<point x="16.0" y="0.0"/>
+<point x="17.0" y="0.0"/>
+<point x="18.0" y="0.0"/>
+<point x="19.0" y="0.0"/>
+<point x="20.0" y="0.0"/>
+</graph>
+</chartFormat>

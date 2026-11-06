@@ -1,0 +1,35 @@
+---
+layout: layouts/base.njk
+---
+{#- A page of the manual, or a section's contents page (which leads on to the section's first page) #}
+{%- set current = manual.pages | neighbourUrl(page.url, 0) %}
+{%- set sectionPage = manual.sections | neighbourUrl(page.url, 0) %}
+{%- if sectionPage %}
+{%- set prev = null %}
+{%- set next = sectionPage.pages[0] %}
+{%- else %}
+{%- set prev = manual.pages | neighbourUrl(page.url, -1) %}
+{%- set next = manual.pages | neighbourUrl(page.url, 1) %}
+{%- endif %}
+
+{%- if current and current.section %}
+<p class="breadcrumb" data-pagefind-ignore><a href="/manual/">Manual</a> › <a href="{{ current.sectionUrl }}">{{ current.section }}</a></p>
+{%- elif sectionPage %}
+<p class="breadcrumb" data-pagefind-ignore><a href="/manual/">Manual</a> ›</p>
+{%- endif %}
+
+{#- The contents pages only list other pages, so keep them out of search results #}
+<article class="manual-page"{% if page.url == "/manual/" or sectionPage %} data-pagefind-ignore="all"{% endif %}>
+{{ content | safe }}
+</article>
+
+{%- if page.url == "/manual/" %}
+<p data-pagefind-ignore>The whole manual is also available <a href="{{ manualSingleUrl }}">on one page</a>, for printing or searching within it.</p>
+{%- endif %}
+
+<p class="edit-link" data-pagefind-ignore><a href="https://github.com/prismmodelchecker/prism/blob/master/doc/manual/{{ manualSource }}">Edit this page on GitHub</a></p>
+
+<nav class="pager" aria-label="Previous and next page" data-pagefind-ignore>
+	{%- if prev %}<a class="pager__prev" href="{{ prev.url }}" rel="prev"><span>Previous</span> {{ prev.title }}</a>{% endif %}
+	{%- if next %}<a class="pager__next" href="{{ next.url }}" rel="next"><span>Next</span> {{ next.title }}</a>{% endif %}
+</nav>

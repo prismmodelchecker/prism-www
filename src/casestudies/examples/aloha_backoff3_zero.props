@@ -1,0 +1,11 @@
+// minimum expected time user 1 can guarantee to eventually send a packet
+<<usr1>>R{"time"}min=?[F s1=3]
+
+// minimum expected time users 2 and 3 can guarantee to eventually send their packets
+<<usr2,usr3>>R{"time"}min=?[F s2=3 & s3=3]
+
+// maximum probability user 1 can guarantee to send a packet within a deadline
+<<usr1>>Pmax=?[F (s1=3 & t<=D)]
+
+// maximum probability users 2 and 3 can guarantee to send their packets within a deadline
+<<usr2,usr3>>Pmax=?[F (s2=3 & s3=3 & t<=D)]

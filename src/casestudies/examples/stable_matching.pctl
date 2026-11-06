@@ -1,0 +1,7 @@
+// probability of reaching a stable matching within r rounds
+const int r;
+P=?[ F<=r "deadlock" ]
+
+// expected rounds to reach a stable matching
+filter(max,R=?[ F "deadlock" ],"init") // maximum value over initial states
+filter(avg,R=?[ F "deadlock" ],"init") // average value over initial states

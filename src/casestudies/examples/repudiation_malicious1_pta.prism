@@ -1,0 +1,35 @@
+const int DECODE=8; // time to decode
+
+module malicious_recipient
+
+	r : [0..5];
+	// 0 - request
+	// 1 - wait
+	// 2 - ack
+	// 3 - try to decode
+	// 4 - gains information (message was last)
+	// 5 - does not gain information (message not last)
+
+	y : clock; // local clock
+
+	invariant
+		(r=0 => y<=0) &
+		(r=1 => true) &
+		(r=2 => true) &
+		(r=3 => y<=10) &
+		(r=4 => true) &
+		(r=5 => true)
+	endinvariant
+
+	[req] r=0 & y=0 -> (r'=1); // initiate protocol
+	[message] r=1 -> (r'=2) & (y'=0); // receive message
+	[ack] r=2 -> (r'=1); // send ack (no time bound now as malicious)
+	[] r=2 -> (r'=3) & (y'=0); // try and decode
+	[] r=3 & y>=DECODE -> p : (r'=4) & (y'=0) // decode and last
+	                + (1-p) : (r'=5) & (y'=0); // decode and not last
+	[ack] r=5 -> (r'=1) & (y'=0); // unsuccessful so try and continue
+
+endmodule
+
+// decodes last (nth) message
+label "gains_information" = r=4;

@@ -1,0 +1,45 @@
+{#- A publication list in one of its orders (bibViews, from LIST_VIEWS in _lib/bib.js), with "Sort by" links
+    and a search box that filters the list (js/bib-filter.js). Needs: items, view, listUrl (the list's main URL) -#}
+{%- set groups = items | bibGroups(view.id, bib.types) %}
+<div class="bib-tools" data-pagefind-ignore>
+<p class="bib-sort">Sort by:
+{%- for v in bibViews %} {% if v.id == view.id %}<strong aria-current="page">{{ v.name }}</strong>{% else %}<a href="{{ listUrl }}{% if v.id != 'date' %}by-{{ v.id }}/{% endif %}" data-keep-search>{{ v.name }}</a>{% endif %}{% if not loop.last %} ·{% endif %}{% endfor %}</p>
+<form class="bib-filter" role="search" hidden>
+<label for="bib-filter-input">Search this list</label>
+<input id="bib-filter-input" type="search" name="search" autocomplete="off" spellcheck="false" placeholder="e.g. robust">
+<p class="bib-filter-status" aria-live="polite"></p>
+</form>
+</div>
+{%- if groups.length > 1 %}
+<nav aria-label="Sections of this list">
+<ul class="year-nav">
+{%- for g in groups %}<li><a href="#{{ g.id }}">{{ g.title }}</a></li>{% endfor %}
+</ul>
+</nav>
+{%- endif %}
+{%- for g in groups %}
+<section class="bib-group" data-bib-group>
+{%- if g.title %}
+<h2 id="{{ g.id }}" class="bib-head">{{ g.title }} <small>(<span data-count>{{ g.items.length }}</span>)</small></h2>
+{%- endif %}
+{%- if g.groups %}
+{%- for y in g.groups %}
+<section class="bib-group" data-bib-group>
+<h3 id="{{ y.id }}" class="bib-head">{{ y.title }} <small>(<span data-count>{{ y.items.length }}</span>)</small></h3>
+<ul class="bib-list">
+{%- for item in y.items %}
+<li>{{ item | citation | safe }}</li>
+{%- endfor %}
+</ul>
+</section>
+{%- endfor %}
+{%- else %}
+<ul class="bib-list">
+{%- for item in g.items %}
+<li>{{ item | citation | safe }}</li>
+{%- endfor %}
+</ul>
+{%- endif %}
+</section>
+{%- endfor %}
+<script src="/js/bib-filter.js?v={{ build.version }}" defer></script>

@@ -1,0 +1,7 @@
+// Expected time of completing the mission (covering waypoints w1, w2 and w6)
+<<p1>> R{"time"}min=? [ Fc w1&w2&w6 ]
+
+// Pareto curve: minimising the expected mission completion time vs. minimising ROZ visits
+const double v_ROZ;
+const double v_time;
+<<p1>> (R{"ROZ"}<=v_ROZ [ C ] & R{"time"}<=v_time [ C ])

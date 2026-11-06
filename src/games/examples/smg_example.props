@@ -1,0 +1,14 @@
+// player 1 can ensure that within 3 steps 
+// a state in which the variable c equals 2 is reached
+// no matter the behaviour of the other players
+<<1>> P>=0.84 [ F<=3 c=2 ]
+
+// what is the minimum probability player 1 can ensure that 
+// within 3 steps a state in which the variable c equals 2 is reached
+// no matter the behaviour of the other players
+<<1>> Pmin=? [ F<=3 c=2 ]
+
+// what is the maximum probability player 1 can ensure that
+// eventually a state in which the variable h equals 2 and variable c equals 0 is reached
+// no matter the behaviour of the other players
+<<1>> Pmax=? [ F (h=2 & c=0) ]

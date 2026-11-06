@@ -1,0 +1,47 @@
+const int DECODE1=8; // time to decode correctly
+const int DECODE2=4; // time to decode probabilistically
+
+module malicious_recipient
+
+	r : [0..6];
+	// 0 - request
+	// 1 - wait
+	// 2 - ack
+	// 3 - try to decode correctly
+	// 4 - try to decode quickly (probabilistically)
+	// 5 - decode correctly
+	// 6 - failed to decode or decoded and not last
+
+	y : clock;
+
+	invariant
+		(r=0 => y<=0) &
+		(r=1 => true) &
+		(r=2 => true) &
+		(r=3 => y<=DECODE1) &
+		(r=4 => y<=DECODE2) &
+		(r=5 => true) &
+		(r=6 => true)
+	endinvariant
+
+	[req] r=0 & y=0 -> (r'=1); // initiate protocol
+	[message] r=1 -> (r'=2) & (y'=0); // receive message
+	[ack] r=2 -> (r'=1); // send ack (no time bound now as malicious)
+	[] r=2 -> (r'=3) & (y'=0); // try and decode correctly
+	[] r=2 -> (r'=4) & (y'=0); // try and decode fast
+	[] r=3 & y>=DECODE1 -> p : (r'=5) & (y'=0) // decode and last
+	                 + (1-p) : (r'=6) & (y'=0); // decode and not last
+	[] r=4 & y>=DECODE2 -> p*0.25 : (r'=5) & (y'=0) // decode and last
+	                 + (1-p)*0.25 : (r'=6) & (y'=0) // decode and not last 
+	                       + 0.75 : (r'=6) & (y'=0); // fail to decode
+
+	// decoded and not last (continue by sending ack)
+	// could combine with location 2, but would have the opportunity of decoding again 
+	// which is obviously a stupid thing to do so keep separate
+	[ack] r=6 -> (r'=1) & (y'=0);
+
+endmodule
+
+// decodes last (nth) message
+label "gains_information" = r=5;
+

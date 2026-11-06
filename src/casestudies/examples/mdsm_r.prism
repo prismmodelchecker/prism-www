@@ -1,0 +1,11 @@
+rewards "value1"
+	sched!=0 & job1>0 : 1/jobs_running;
+endrewards
+
+rewards "value12"
+	sched!=0 & (job1>0|job2>0) : 1/jobs_running;
+endrewards
+
+rewards "value123"
+	sched!=0 & (job1>0|job2>0|job3>0) : 1/jobs_running;
+endrewards

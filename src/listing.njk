@@ -1,0 +1,21 @@
+---
+layout: layouts/base.njk
+pagination:
+  data: listings
+  size: 1
+  alias: listing
+permalink: "/{{ listing.dir }}/"
+eleventyComputed:
+  title: "Files in {{ listing.dir }}"
+---
+{#- A page listing the files in a folder that has no page of its own (see _data/listings.js) -#}
+<p class="breadcrumb" data-pagefind-ignore><a href="/{{ listing.dir | parentDir }}">Up one level</a></p>
+<h1>Files in <code>/{{ listing.dir }}/</code></h1>
+<ul class="file-list">
+{%- for d in listing.dirs %}
+<li><a href="{{ d }}/">{{ d }}/</a></li>
+{%- endfor %}
+{%- for f in listing.files %}
+<li><a href="{{ f.name }}">{{ f.name }}</a> <span class="file-size">{{ f.size | fileSize }}</span></li>
+{%- endfor %}
+</ul>

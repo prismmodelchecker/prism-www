@@ -1,0 +1,2 @@
+// minimum probability process 1 enters the criticial section next
+Pmin=?[ !"one_critical" U (p1=2) {draw1=1 & !"one_critical"}{min} ]

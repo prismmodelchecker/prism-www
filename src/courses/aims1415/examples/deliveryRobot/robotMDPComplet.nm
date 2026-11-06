@@ -1,0 +1,83 @@
+mdp
+
+const int batteryCharge=4;
+const int chargeSpeed = 4;
+const double f = 0.5;
+const int T=200;
+
+module controller
+	p: [0..8] init 0;
+	
+	[move] p=0&c>0 -> (p'=0);
+	[move] p=0&c>0 -> (p'=4);
+
+	[move] p=4&c>0 -> (p'=0);
+	[move] p=4&c>0 -> (p'=1);
+	[move] p=4&c>0 -> (p'=4);
+	[move] p=4&c>0 -> (p'=6);
+
+	[move] p=1&c>0 -> (p'=4);
+	[move] p=1&c>0 -> (p'=1);
+	[move] p=1&c>0 -> (p'=2);
+
+	[move] p=2&c>0 -> (p'=1);
+	[move] p=2&c>0 -> (p'=2);
+	[move] p=2&c>0 -> (p'=3);
+
+	[move] p=3&c>0 -> (p'=2);
+	[move] p=3&c>0 -> (p'=3);
+	[move] p=3&c>0 -> (p'=5);
+
+	[move] p=5&c>0 -> (p'=3);
+	[move] p=5&c>0 -> (p'=5);
+	[move] p=5&c>0 -> (p'=8);
+
+	[move] p=6&c>0 -> (p'=4);
+	[move] p=6&c>0 -> (p'=6);
+	[move] p=6&c>0 -> (p'=7);
+
+	[move] p=7&c>0 -> (p'=6);
+	[move] p=7&c>0 -> (p'=7);
+	[move] p=7&c>0 -> (p'=8);
+
+	[move] p=8&c>0 -> (p'=5);
+	[move] p=8&c>0 -> (p'=7);
+	[move] p=8&c>0 -> (p'=8);
+
+	[] c=0 -> 1.0 : true;
+endmodule
+
+module battery
+	c:   [0..batteryCharge] init batteryCharge;
+
+	[move] c<=batteryCharge-chargeSpeed & p=0 -> 1.0 : (c'=c+chargeSpeed);
+	[move] c> batteryCharge-chargeSpeed & p=0 -> 1.0 : (c'=batteryCharge);
+	[move] c>0 & p!=0 -> 1.0 : (c'=c-1);
+endmodule
+
+module task
+	fd:[0..2] init 0;
+	g: [1..8] init 1;
+
+	[move] fd=0 ->   f/8:(g'=1)&(fd'=1) + f/8:(g'=2)&(fd'=1) + f/8:(g'=3)&(fd'=1)
+		 	+f/8:(g'=4)&(fd'=1) + f/8:(g'=5)&(fd'=1) + f/8:(g'=6)&(fd'=1)
+			+f/8:(g'=7)&(fd'=1) + f/8:(g'=8)&(fd'=1) + 1-f:true;
+	[move] fd>0 & g!=p -> 1.0:true;
+	[] g=p & fd=1 -> 
+ 		 1/7*(g=1?0:1):(g'=1)&(fd'=2) + 1/7*(g=2?0:1):(g'=2)&(fd'=2) 
+		+1/7*(g=3?0:1):(g'=3)&(fd'=2) + 1/7*(g=4?0:1):(g'=4)&(fd'=2)
+		+1/7*(g=5?0:1):(g'=5)&(fd'=2) + 1/7*(g=6?0:1):(g'=6)&(fd'=2)
+		+1/7*(g=7?0:1):(g'=7)&(fd'=2) + 1/7*(g=8?0:1):(g'=8)&(fd'=2);
+	[delivery] g=p & fd=2 -> 1 : (fd'=0); 
+endmodule
+
+label "outOfPower" = c=0; 
+label "delivering" = g=p & fd=2;
+
+rewards "nbmove"
+	[move] true :1.0 ;
+endrewards
+
+rewards "nbdelivery"
+	[delivery] true :1.0 ;
+endrewards

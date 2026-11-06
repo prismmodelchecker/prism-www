@@ -1,0 +1,7 @@
+const int x;
+
+// Probability of throwing x?
+P=? [ F s=7&d=x ]
+
+// Expected number of steps to complete?
+R{"steps"}=? [ F s=7 ]

@@ -1,0 +1,7 @@
+const int T;
+
+P=? [ F<=T "queue_full" ]
+
+R{"time"}=? [ F "queue_full" ]
+
+R{"queue"}=? [ I=T ]

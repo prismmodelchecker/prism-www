@@ -1,0 +1,19 @@
+const int T;
+
+// What is the probability of the queue being full at time T?
+P=? [ F[T,T] q=q_max ]
+
+// What is the long-run probability of the queue being full?
+S=? [ q=q_max ]
+
+// What is the expected size of the queue at time T?
+R{"queue_size"}=? [ I=T ]
+
+// What is the long-run expected size of the queue?
+R{"queue_size"}=? [ S ]
+
+// What is expected number of lost requests by time T?
+R{"lost"}=? [ C<=T ]
+
+// What is expected energy consumption by time T?
+R{"power"}=? [ C<=T ]

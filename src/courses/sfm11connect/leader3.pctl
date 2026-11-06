@@ -1,0 +1,16 @@
+const int L;
+
+// A leader is eventually elected with probability 1
+P=? [ F "elected" ]
+
+// Probability that a leader is eventually elected
+P=? [ F "elected" ]
+
+// Probability that a leader is elected within L steps
+P=? [ F<=L "elected" ]
+
+// Probability that a leader is elected within L rounds
+P=? [ F<=(L*(N+1)) "elected" ]
+
+// Expected time (num. rounds) to elect a leader
+R{"num_rounds"}=? [ F "elected" ]

@@ -1,0 +1,11 @@
+mdp
+
+module proc1
+	s1: [0..1];
+	[] true -> (s1'=1-s1);
+endmodule
+
+module proc2 = proc1 [ s1=s2 ] endmodule
+module proc3 = proc1 [ s1=s3 ] endmodule
+module proc4 = proc1 [ s1=s4 ] endmodule
+

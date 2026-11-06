@@ -1,0 +1,30 @@
+// simple tptg model from
+// Verification and Control of Turn-Based Probabilistic Real-Time Games
+
+tptg
+
+player sender [send], [timeout] endplayer
+player medium [arrive1], [arrive2] endplayer
+
+module protocol
+
+	l : [0..3] init 0;
+	// 0 - send
+	// 1 - medium
+	// 2 - fail
+	// 3 - done
+	
+	x : clock;
+	y : clock;
+	
+	invariant
+		(l=0 => (y<=24)) &
+		(l=1 => (x<=4))
+	endinvariant
+		
+	[send] l=0 & x>=1 & y<=22 -> (l'=1) & (x'=0);
+	[timeout] l=0 & y=24 -> (l'=2);
+	[arrive1] l=1 & x>=1 & x<=2 -> 0.9 : (l'=3) + 0.1 : (l'=0) & (x'=0);
+	[arrive2] l=1 & x=4 -> (l'=3);
+	
+endmodule

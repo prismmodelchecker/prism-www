@@ -1,0 +1,12 @@
+Pmax=? [ G F (((g=p)&fd=0) U (g=p&fd=1)) ]
+
+R{"nbdelivery"}max=? [ C<=T ] /T
+
+R{"nbmove"}=? [ F "outOfPower" ]
+
+Pmin=? [ F "outOfPower" ]
+
+Pmax=? [ G F (g=p)&(fd=0) U (((g!=p)|(fd=0))&(p!=0) U (g=p)&(fd=1)) ]
+
+multi(R{"nbdelivery"}max=? [ C<=T ] /T , P>=1 [ G F (g=p)&(fd=0) U (((g!=p)|(fd=0))&(p!=0) U (g=p)&(fd=1)) ])
+

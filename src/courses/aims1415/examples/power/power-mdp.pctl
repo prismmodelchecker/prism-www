@@ -1,0 +1,20 @@
+const int T;
+const int K;
+
+// What is the minimum expected number of lost requests up to time T?
+R{"lost"}min=? [ C<=T ]
+// What is the maximum expected number of lost requests up to time T?
+R{"lost"}max=? [ C<=T ]
+
+// What is the minimum expected energy consumption up to time T?
+R{"energy"}min=? [ C<=T ]
+// What is the maximum expected energy consumption up to time T?
+R{"energy"}max=? [ C<=T ]
+
+// What is the minimum possible expected energy consumption within time 250,
+// whilst keeping the expected number of lost requests below K?
+multi(R{"energy"}min=? [ C<=250 ], R{"lost"}<=K [ C<=250 ])
+
+// Pareto query for the minimum  expected energy consumption within time 250,
+// and the expected number of lost requests in the same timeframe
+multi(R{"energy"}min=? [ C<=250 ], R{"lost"}min=? [ C<=250 ])

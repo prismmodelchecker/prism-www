@@ -1,0 +1,7 @@
+// Players agent1 and scheduler have a strategy to ensure
+// that the probability of reaching "end" is exactly 0.35
+<<agent1,scheduler>> P=0.35 [ F "end" ]
+
+// Players p2 and p5 have a strategy to ensure that the
+// expected reward accumulated before reaching "success" is exactly 100
+<<p2,p5>> R=100 [ Fc "success" ]

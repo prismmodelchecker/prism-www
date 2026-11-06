@@ -1,0 +1,84 @@
+---
+layout: layouts/base.njk
+title: PRISM
+description: PRISM is a probabilistic model checker, a tool for formal modelling and analysis of systems that exhibit random or probabilistic behaviour.
+---
+<h1 class="visually-hidden">PRISM probabilistic model checker</h1>
+
+<p class="lead">
+<strong>PRISM</strong> is a <em>probabilistic model checker</em>, a tool for formal modelling and analysis of systems
+that exhibit random or probabilistic behaviour.
+It has been used to analyse systems from many different <a href="/casestudies/">application domains</a>, including
+communication and multimedia protocols, randomised distributed algorithms, security protocols,
+biological systems and many others.
+</p>
+
+<p>
+<a class="download-cta" href="/download/">Download PRISM {{ site.version }}</a>
+</p>
+
+<figure class="figure-float">
+<img src="/images/ss_graph.png" width="198" height="183" alt="Graph of results from a PRISM experiment, plotted in the PRISM user interface">
+</figure>
+
+<p>PRISM can build and analyse many types of probabilistic models:</p>
+<ul>
+<li>discrete-time and continuous-time Markov chains (DTMCs and CTMCs)</li>
+<li>Markov decision processes (MDPs) and probabilistic automata (PAs)</li>
+<li>probabilistic timed automata (PTAs)</li>
+<li>partially observable MDPs and PTAs (POMDPs and POPTAs)</li>
+<li>interval Markov chains and MDPs (IDTMCs and IMDPs)</li>
+</ul>
+<p>plus extensions of these models with costs and rewards.</p>
+
+<p>
+Models are described using the
+<a href="/manual/ThePRISMLanguage/Introduction/">PRISM language</a>,
+a simple, state-based language.
+PRISM provides support for automated analysis of a wide range of quantitative properties of these models, e.g.
+“what is the probability of a failure causing the system to shut down within 4 hours?”,
+“what is the worst-case probability of the protocol terminating in error, over all possible initial configurations?”,
+“what is the expected size of the message queue after 30 minutes?”, or
+“what is the worst-case expected time taken for the algorithm to terminate?”.
+The <a href="/manual/PropertySpecification/Introduction">property specification language</a>
+incorporates the temporal logics PCTL, CSL, LTL and PCTL*,
+as well as extensions for quantitative specifications and costs/rewards.
+</p>
+
+<p>
+PRISM incorporates state-of-the-art <em>symbolic</em> data structures and algorithms,
+based on BDDs (Binary Decision Diagrams) and MTBDDs (Multi-Terminal Binary Decision Diagrams)
+{% cite "KNP04b", "Par02" %}.
+It also includes a <em>discrete-event simulation</em> engine,
+providing support for <em>approximate/statistical model checking</em>,
+and implementations of various different analysis techniques,
+such as <em>quantitative abstraction refinement</em> and <em>symmetry reduction</em>.
+</p>
+
+<p>
+PRISM is <em>free</em> and <em>open source</em>, <a href="/download.php">released</a> under the
+GNU General Public License (<a href="https://www.gnu.org/licenses/gpl.html">GPL</a>).
+</p>
+
+<aside class="callout" aria-labelledby="games-heading">
+<h2 id="games-heading">PRISM-games</h2>
+<p><a href="/games/">PRISM-games</a> is an extension of PRISM for probabilistic model checking of
+<em>stochastic multi-player games</em>. See the <a href="/games/">website</a>
+and read the <a href="/games/publ.php">papers</a> for more information.</p>
+</aside>
+
+<section aria-labelledby="cite-heading">
+<h2 id="cite-heading">Citing PRISM</h2>
+<p>To cite PRISM, please use the most recent tool paper, from CAV’11:</p>
+<p class="bib-entry">{{ bib.items | bibItem("KNP11") | citation | safe }}</p>
+</section>
+
+<section aria-labelledby="news-heading">
+<h2 id="news-heading">Latest news</h2>
+<ul class="news">
+{%- for item in news | limit(4) %}
+<li><time datetime="{{ item.date }}">{{ item.date | monthYear }}</time> {{ item.html | safe }}</li>
+{%- endfor %}
+</ul>
+<p><a href="/news/">All news</a></p>
+</section>

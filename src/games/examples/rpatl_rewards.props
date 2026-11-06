@@ -1,0 +1,23 @@
+// The maximum expected (state) reward "r" at the k step
+// that can be guaranteed by player 1
+<<1>> R{"r"}max=? [ C<=k ]
+
+// The minimum expected reward "r" accumulated over the first k steps
+// that can be guaranteed by player p2
+<<p2>> R{"r"}min=? [ C<=k ]
+
+// The expected total value for reward structure "r"
+// that can be guaranteed by player 1 is at least 2.5
+<<1>> R{"r"}>=2.5 [ C ]
+
+// The maximum expected value of reward "r" accumulated before
+// reaching "success" that can be guaranteed by player p1
+<<p1>> R{"r"}max=? [ F "success" ]
+
+// Under any possible strategy (for all players),
+// the expected reward accumulated before reaching "finished" is > 100
+<<>> R>100 [ F0 "finished" ]
+
+// The minimum expected reward accumulated before reaching "fail"
+// that can be guaranteed by players p2 and p5
+<<p2,p5>> Rmin=? [ Fc "fail" ]

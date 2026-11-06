@@ -1,0 +1,41 @@
+// SERVICE PROVIDER
+// assume: SP automatically
+// moves from idle to busy when ever a request arrives
+// moves from busy to idle when ever a request is served
+
+// rates of local state changes
+const double sleep2standby=10/6;
+const double sleep2idle=10/16;
+const double standby2sleep=10/3;
+const double standby2idle=10/12;
+const double idle2sleep=100/67;
+const double idle2standby=10/4;
+// rate of service
+const double service=1000/8; 
+
+module SP
+
+	sp : [0..3]; // 0 - sleep, 1 - standby, 2 - idle, 3 - busy
+	
+	// SLEEP TO STANDBY
+	[sleep2standby] sp=0 -> sleep2standby : (sp'=1);
+	// SLEEP TO IDLE
+	[sleep2idle] sp=0 & q=0 -> sleep2idle : (sp'=2); // go to idle
+	[sleep2idle] sp=0 & q>0 -> sleep2idle : (sp'=3); // start serving immediately
+	// STANDBY TO SLEEP
+	[standby2sleep] sp=1 -> standby2sleep : (sp'=0);
+	// STANDBY TO IDLE
+	[standby2idle] sp=1 & q=0 -> standby2idle : (sp'=2); // go to idle
+	[standby2idle] sp=1 & q>0 -> standby2idle : (sp'=3); // start serving immediately	
+	// IDLE TO SLEEP (only if queue is empty)
+	[idle2sleep] sp=2 & q=0 -> idle2sleep : (sp'=0);
+	// IDLE TO STANDBY (only if queue is empty)
+	[idle2standby] sp=2 & q=0 -> idle2standby : (sp'=1);
+	// idle to serve (add loops when not in idle)
+	[request] sp=2  -> (sp'=3);
+	[request] sp!=2 -> true;
+	// SERVICE REQUESTS (move to idle if queues empty)
+	[serve] sp=3 & q>1 -> service : (sp'=3); 
+	[serve] sp=3 & q=1 -> service : (sp'=2); 
+
+endmodule

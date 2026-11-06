@@ -1,0 +1,89 @@
+// invader game
+mdp
+
+// probabilities
+const double protect_weak=0.5; // probability that Player 1 army protects town
+const double protect_medium=0.6; // probability that Player 1 army protects town
+const double protect_strong=0.7; // probability that Player 1 army protects town
+const double conquer_weak=0.7; // probability that Player 2 conquers town
+const double conquer_medium=0.6; // probability that Player 2 conquers town
+const double conquer_strong=0.5; // probability that Player 2 conquers town
+
+// weak towns
+const double protect11=protect_weak; 
+const double protect12=protect_weak; 
+const double protect32=protect_weak;  
+const double conquer11=conquer_weak; 
+const double conquer12=conquer_weak; 
+const double conquer32=conquer_weak;  
+
+// medium-strength towns
+const double protect21=protect_medium; 
+const double protect23=protect_medium; 
+const double protect31=protect_medium;  
+const double conquer21=conquer_medium; 
+const double conquer23=conquer_medium; 
+const double conquer31=conquer_medium;
+
+// strong towns
+const double protect13=protect_strong; 
+const double protect22=protect_strong; 
+const double protect33=protect_strong;   
+const double conquer13=conquer_strong; 
+const double conquer22=conquer_strong; 
+const double conquer33=conquer_strong;
+
+// weak towns
+
+module T11
+	s11 : [0..2] init 2; // town ruled by Player 2
+	// 0 - town ruled by Player 1
+	// 1 - Player 1 army defeated by Player 2, but town not yet conquered
+	// 2 - town conquered by Player 2
+	// town attacked, from a neighbouring town ruled by Player 2
+	[attack11_21] (s11=0) ->  ...
+	[attack11_12] (s11=0) ->  ...
+	// if Player 1 army has been defeated, Player 2 tries to conquer the town	
+	[invade11] (s11=1) -> ...
+	// if the town is conquered, Player 2 tries to attack the neighbouring towns
+	[attack21_11] (s11=2) -> ...
+	[attack12_11] (s11=2) -> ...
+endmodule
+
+module T12
+	s12 : [0..2]; // town ruled by Player 1
+	// 0 - town ruled by Player 1
+	// 1 - Player 1 army defeated by Player 2, but town not yet conquered
+	// 2 - town conquered by Player 2 
+	// town attacked, from a neighbouring town ruled by Player 2
+	[attack12_11] (s12=0) -> ...
+	[attack12_22] (s12=0) -> ...
+	[attack12_13] (s12=0) -> ...
+	// if Player 1 army has been defeated, Player 2 tries to conquer the town	
+	[invade12] (s12=1) -> ...
+	// if the town is conquered, Player 2 tries to attack the neighbouring towns
+	[attack11_12] (s12=2) -> ...
+	[attack22_12] (s12=2) -> ...
+	[attack13_12] (s12=2) -> ...
+endmodule
+
+module T32=T12[
+	s12=s32,
+	protect12=protect32,
+	conquer12=conquer32,
+	attack12_11=attack32_33,
+	attack12_22=attack32_22,
+	attack12_13=attack32_31,
+	invade12=invade32,
+	attack11_12=attack33_32,
+	attack22_12=attack22_32,
+	attack13_12=attack31_32
+	] endmodule
+
+// medium-strength towns 
+
+...
+
+// strong towns
+
+...

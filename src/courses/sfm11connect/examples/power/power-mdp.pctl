@@ -1,0 +1,12 @@
+const int K;
+
+R{"energy"}=? [ C<=K ]
+
+R{"lost"}=? [ C<=K ]
+
+R{"served"}=? [ C<=K ]
+
+R{"queue"}min=? [ I=K ]
+
+R{"queue"}max=? [ I=K ]
+

@@ -1,0 +1,16 @@
+// The expected long-run average (mean payoff) value for reward structure "r"
+// that can be guaranteed by player 1 is at least 2.5
+<<1>> R{"r"}>=2.5 [ S ]
+
+// The ratio of expected long-run average (mean payoff) values for reward structures "r" and "c"
+// that can be guaranteed by player 1 is at least 0.5
+<<1>> R{"r"}/{"c"}>=0.5 [ S ]
+
+// Player 1 can guarantee that, with probability 1,
+// the expected long-run average (mean payoff) value for reward structure "r" is at least 1.5
+<<1>>  P>=1 [ R(path){"r"}>=1.5 [ S ] ]
+
+// Player 1 can guarantee that, with probability 1,
+// the ratio of expected long-run average (mean payoff) values
+// for reward structures "r" and "c" is at least 0.5
+<<1>>  P>=1 [ R(path){"r"}/{"c"}>=0.5 [ S ] ]

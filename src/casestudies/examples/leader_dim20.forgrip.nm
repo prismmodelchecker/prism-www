@@ -1,0 +1,34 @@
+nondeterministic
+
+module process1
+
+  s1 : [0..2] init 2;
+
+  [] s1=2 -> 1:(s1'=0);
+  [] s1=2 -> 1:(s1'=1);
+  [] s1=0 & (s1!=2 & s2!=2 & s3!=2 & s4!=2 & s5!=2 & s6!=2 & s7!=2 & s8!=2 & s9!=2 & s10!=2 & s11!=2 & s12!=2 & s13!=2 & s14!=2 & s15!=2 & s16!=2 & s17!=2 & s18!=2 & s19!=2 & s20!=2) & (s1=0 & s2=0 & s3=0 & s4=0 & s5=0 & s6=0 & s7=0 & s8=0 & s9=0 & s10=0 & s11=0 & s12=0 & s13=0 & s14=0 & s15=0 & s16=0 & s17=0 & s18=0 & s19=0 & s20=0) -> 0.5:(s1'=0) + 0.5:(s1'=1);
+  [] s1=0 & (s1!=2 & s2!=2 & s3!=2 & s4!=2 & s5!=2 & s6!=2 & s7!=2 & s8!=2 & s9!=2 & s10!=2 & s11!=2 & s12!=2 & s13!=2 & s14!=2 & s15!=2 & s16!=2 & s17!=2 & s18!=2 & s19!=2 & s20!=2) & (s2=1 | s3=1 | s4=1 | s5=1 | s6=1 | s7=1 | s8=1 | s9=1 | s10=1 | s11=1 | s12=1 | s13=1 | s14=1 | s15=1 | s16=1 | s17=1 | s18=1 | s19=1 | s20=1) -> 1:(s1'=0);
+  [] s1=1 & (s1!=2 & s2!=2 & s3!=2 & s4!=2 & s5!=2 & s6!=2 & s7!=2 & s8!=2 & s9!=2 & s10!=2 & s11!=2 & s12!=2 & s13!=2 & s14!=2 & s15!=2 & s16!=2 & s17!=2 & s18!=2 & s19!=2 & s20!=2) & (s2=1 | s3=1 | s4=1 | s5=1 | s6=1 | s7=1 | s8=1 | s9=1 | s10=1 | s11=1 | s12=1 | s13=1 | s14=1 | s15=1 | s16=1 | s17=1 | s18=1 | s19=1 | s20=1) -> 0.5:(s1'=0) + 0.5:(s1'=1);
+  [] s1=1 & (s1!=2 & s2!=2 & s3!=2 & s4!=2 & s5!=2 & s6!=2 & s7!=2 & s8!=2 & s9!=2 & s10!=2 & s11!=2 & s12!=2 & s13!=2 & s14!=2 & s15!=2 & s16!=2 & s17!=2 & s18!=2 & s19!=2 & s20!=2) & (s2=0 & s3=0 & s4=0 & s5=0 & s6=0 & s7=0 & s8=0 & s9=0 & s10=0 & s11=0 & s12=0 & s13=0 & s14=0 & s15=0 & s16=0 & s17=0 & s18=0 & s19=0 & s20=0) -> 1:(s1'=1);
+
+endmodule
+
+module process2 = process1 [ s1 = s2, s2 = s1 ] endmodule
+module process3 = process1 [ s1 = s3, s3 = s1 ] endmodule
+module process4 = process1 [ s1 = s4, s4 = s1 ] endmodule
+module process5 = process1 [ s1 = s5, s5 = s1 ] endmodule
+module process6 = process1 [ s1 = s6, s6 = s1 ] endmodule
+module process7 = process1 [ s1 = s7, s7 = s1 ] endmodule
+module process8 = process1 [ s1 = s8, s8 = s1 ] endmodule
+module process9 = process1 [ s1 = s9, s9 = s1 ] endmodule
+module process10 = process1 [ s1 = s10, s10 = s1 ] endmodule
+module process11 = process1 [ s1 = s11, s11 = s1 ] endmodule
+module process12 = process1 [ s1 = s12, s12 = s1 ] endmodule
+module process13 = process1 [ s1 = s13, s13 = s1 ] endmodule
+module process14 = process1 [ s1 = s14, s14 = s1 ] endmodule
+module process15 = process1 [ s1 = s15, s15 = s1 ] endmodule
+module process16 = process1 [ s1 = s16, s16 = s1 ] endmodule
+module process17 = process1 [ s1 = s17, s17 = s1 ] endmodule
+module process18 = process1 [ s1 = s18, s18 = s1 ] endmodule
+module process19 = process1 [ s1 = s19, s19 = s1 ] endmodule
+module process20 = process1 [ s1 = s20, s20 = s1 ] endmodule

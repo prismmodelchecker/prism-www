@@ -1,0 +1,32 @@
+const double T; // time bound
+
+// the probability that Grb2 is bound to FRS2 at the time instant T
+P=? [ F[T,T] FRS2_GRB>0 & relocFRS2=0 & degFRS2=0 ]
+
+// the expected number of times that Grb2 binds to FRS2 by time T
+R{"bindings"}=? [ C<=T ]
+
+// the expected time that Grb2 spends bound to FRS2 within the first T time units
+R{"bound"}=? [ C<=T ]
+
+// the long-run probability that Grb2 is bound to FRS2
+S=? [ FRS2_GRB>0 & relocFRS2=0 & degFRS2=0 ]
+
+// the expected number of times Grb2 binds to FRS2 before either degradation or relocation occurs
+R{"bindings"}=? [ F relocFRS2=1 | degFRS2=1 | degFGFR=1 ]
+
+// the expected time Grb2 spends bound to FRS2 before either degradation or relocation occurs
+R{"bound"}=? [ F relocFRS2=1 | degFRS2=1 | degFGFR=1 ]
+
+// the probability that each possible cause of degradation/relocation has occurred by time T
+P=? [ relocFRS2=0 & degFRS2=0 & degFGFR=0 U[0,T] relocFRS2=1 ]
+P=? [ relocFRS2=0 & degFRS2=0 & degFGFR=0 U[0,T] degFRS2=1  ]
+P=? [ relocFRS2=0 & degFRS2=0 & degFGFR=0 U[0,T] degFGFR=1  ]
+
+// the probability that each possible cause of degradation/relocation occurs first
+P=? [ relocFRS2=0 & degFRS2=0 & degFGFR=0 U relocFRS2=1 ]
+P=? [ relocFRS2=0 & degFRS2=0 & degFGFR=0 U degFRS2=1 ]
+P=? [ relocFRS2=0 & degFRS2=0 & degFGFR=0 U degFGFR=1 ]
+
+// the expected time until either degradation or relocation occurs in the pathway
+R{"time"}=? [ F relocFRS2=1 | degFRS2=1 | degFGFR=1 ]

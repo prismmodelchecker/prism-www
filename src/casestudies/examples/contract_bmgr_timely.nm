@@ -1,0 +1,3 @@
+	// parties can continue sending messages after the coin has been flipped
+	[] turn=0 -> pA'=min(k,pA+1) & turn'=1;
+	[] turn=1 -> pB'=min(k,pB+1) & turn'=0;

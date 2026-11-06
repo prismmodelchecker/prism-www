@@ -1,0 +1,15 @@
+// What is the sum of the individual expected costs of the players p1 and p2
+// over the first k steps when the player collaborate to minimize these costs
+<<p1:p2>>max=? ( R{"c1"}[ C<=k ] + R{"c2"}[ C<=k ] )
+
+// Can the players guarantee the sum of the individual rewards at
+// steps 8 for player 1 and step 10 for player 2 is at least 4.5
+<<p1:p2>> >=4.5 ( R{"r1"}[ I=8 ] + R{"r2"}[ I=10 ] )
+
+// What is the maximum sum of the expected time of player 1 eventually sending its packet
+// and the expected time for the coalition of players two and three to send their packets
+<<p1:p2,p3>>min=? ( R{"time"}[F "sent1" ] + R{"time"}[F "sent2" & "sent3" ] )
+
+// What is the minimum sum of the expected cost of player 1 eventually reaching its goal
+// and the expected costs for the coalition of players two and three over the first 100 steps
+<<p1:p2,p3>>min=? ( R{"c1"}[ F "goal1" ] + R{"c23"}[ C<=100 ])

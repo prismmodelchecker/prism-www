@@ -1,0 +1,95 @@
+
+//// Provide initial values like: **********************
+//const int init_conflict=BT;
+//const int init_TSAFE_cnt=2;
+//const int init_TSAFE_res=2;
+//const int init_AR_res1=0;
+////****************************************************
+	
+// TSAFE automaton
+// NC : no conflict
+// PC : potential conflicts in future 
+// AT : AT conflict
+// BT : BT conflict
+const int NC=0;
+const int PC=1;
+const int AR=2;
+const int BH=3;		// BOTH detected.
+const int AT=4;
+const int BT=5;
+
+module aircraft1
+	
+	TSAFE_cmd1 : [0..1] init TSAFE_cmd1_init;
+	CTR_cmd1 : [0..2] init CTR_cmd1_init;
+
+	[CTR_CMD_sent1] (CTR_cmd1=0) -> 1 : (CTR_cmd1'=1);
+	[TSAFE_CMD_sent] (TSAFE_cmd1=0) -> 1 : (TSAFE_cmd1'=1);
+	[TSAFE_BT_sent1] (TSAFE_cmd1=0) -> 1 : (TSAFE_cmd1'=1);
+
+	[TSAFE_CMD_step1] (TSAFE_cmd1=1) -> Pilot_TSAFE_rate : (TSAFE_cmd1'=0);
+	[TSAFE_CMD_done1] (TSAFE_cmd1=1) -> Pilot_TSAFE_rate : (TSAFE_cmd1'=0);
+
+	[CTR_CMD_done1] (TSAFE_cmd1=0)&(CTR_cmd1=1) -> Pilot_AR_rate : (CTR_cmd1'=0);
+
+endmodule
+
+module aircraft2 = aircraft1 [
+	TSAFE_cmd1_init=TSAFE_cmd2_init,
+	CTR_cmd1_init=CTR_cmd2_init,
+	TSAFE_cmd1=TSAFE_cmd2, 
+	CTR_cmd1=CTR_cmd2, 
+	CTR_CMD_sent1=CTR_CMD_sent2,
+	TSAFE_CMD_step1=TSAFE_CMD_step2,
+	TSAFE_CMD_sent=TSAFE_CMD_sent,
+	TSAFE_BT_sent1=TSAFE_BT_sent2,
+	TSAFE_CMD_done1=TSAFE_CMD_done2,
+	CTR_CMD_done1=CTR_CMD_done2 ] 
+endmodule
+
+
+module Environment
+
+	conflict12 : [0..BT] init init_conflict;
+	TSAFE_cnt : [0..2] init init_TSAFE_cnt;
+	TSAFE_res1 : [0..2] init init_TSAFE_res;
+	TSAFE_res2 : [0..2] init init_TSAFE_res;
+	AR_res1 : [0..1] init init_AR_res1;
+	AR_res2 : [0..1] init 0;
+	
+	[] (conflict12=PC) -> strategic_cft_free_rate : (conflict12'=AT) & (TSAFE_res1'=1) & (TSAFE_res2'=1) & (TSAFE_cnt'=2);
+
+	[CTR_CMD_done1] true -> (AR_res1'=0) & (conflict12'=NC);
+	[CTR_CMD_done2] true -> (AR_res2'=0) & (conflict12'=NC);
+
+	[TSAFE_CMD_step1] (TSAFE_cnt=2) -> 1: (TSAFE_res1'=0) & (TSAFE_cnt'=1); 
+	[TSAFE_CMD_done1] (TSAFE_cnt=1) -> 
+		(1-second_cft_prob) : (conflict12'=NC) & (TSAFE_res1'=0) & (TSAFE_cnt'=0) + 
+		second_cft_prob : (conflict12'=PC) & (TSAFE_res1'=0) & (TSAFE_cnt'=0); 
+
+	[TSAFE_CMD_step2] (TSAFE_cnt=2) -> (TSAFE_res2'=0) & (TSAFE_cnt'=1); 
+	[TSAFE_CMD_done2] (TSAFE_cnt=1) -> 
+		(1-second_cft_prob) : (conflict12'=NC) & (TSAFE_res2'=0) & (TSAFE_cnt'=0) + 
+		second_cft_prob : (conflict12'=PC) & (TSAFE_res2'=0) & (TSAFE_cnt'=0); 
+endmodule	
+
+module TSAFE
+
+	[TSAFE_CMD_sent] (TSAFE_res1=1)&(TSAFE_res2=1) -> CTR_trans_rate : true; 
+	//[TSAFE_CMD_sent2] (TSAFE_res2=1) -> CTR_trans_rate : true; 
+	[TSAFE_BT_sent1] (TSAFE_res1=2) -> TSAFE_trans_rate : true; 
+	[TSAFE_BT_sent2] (TSAFE_res2=2) -> TSAFE_trans_rate : true; 
+
+endmodule
+
+module Controller
+
+	[CTR_CMD_sent1] (AR_res1=1)&(TSAFE_res1 <2) -> CTR_trans_rate : true; 
+	[CTR_CMD_sent2] (AR_res2=1)&(TSAFE_res2 <2) -> CTR_trans_rate : true; 
+
+endmodule
+
+rewards "all"
+	true : 1;
+endrewards
+

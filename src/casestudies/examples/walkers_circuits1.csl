@@ -1,0 +1,9 @@
+// Probability for the walker to deadlock at T=200 min
+P=? [ F[200*60,200*60] "deadlock" ]
+// Expected number of step for the walker at T=200 min
+R{"steps"}=? [ C<=200*60 ]
+
+// Probability for the walker to be on the second anchorage
+P=? [ F[12000,12000] (w1=2) ]
+// Probability for the walker to be on the final anchorage
+P=? [ F[12000,12000] (w1=8) ]

@@ -1,0 +1,57 @@
+{#- Tables of the benchmark suite's models and properties (see src/_data/benchmarks.js) -#}
+{%- set suiteUrl = "https://github.com/prismmodelchecker/prism-benchmarks/tree/master/models/" %}
+
+{%- macro paramList(params) %}
+{%- for param in params %}{{ param | benchmarkParam | safe }}{% if not loop.last %}<br>{% endif %}
+{% endfor %}
+{%- endmacro %}
+
+{%- macro modelTable(type) %}
+<div class="table-scroll">
+<table class="prism-table">
+<thead><tr class="prism-th">
+<th>Name</th><th>Full name</th><th>Model reference</th><th>Type</th>
+<th>Parameters <br> (+ explanation &amp; suggested values)</th><th>Links</th><th>Notes &amp; <br> other references</th>
+</tr></thead>
+<tbody>
+{%- for m in type.models %}
+<tr>
+<td><em><a href="{{ suiteUrl }}{{ type.id }}s/{{ m.name }}/">{{ m.name }}</a></em></td>
+<td>{{ m["full-name"] }}</td>
+<td>{{ m.reference | benchmarkCite | safe }}</td>
+<td>{{ m["model-type"] }}</td>
+<td>{{ paramList(m.params) }}</td>
+<td>{% if m.www %}<a href="{{ m.www }}">www</a>{% endif %}</td>
+<td>{{ m.notes | benchmarkText | safe }}</td>
+</tr>
+{%- endfor %}
+</tbody>
+</table>
+</div>
+{%- endmacro %}
+
+{%- macro propertyTable(type, category) %}
+<div class="table-scroll">
+<table class="prism-table">
+<thead><tr class="prism-th">
+<th>Model</th><th>Property</th><th>PRISM property <br> &amp; description</th><th>Extra<br>parameters</th>
+{%- if type.hasMinMax %}<th>Min/max</th>{% endif %}<th>Notes</th>
+</tr></thead>
+<tbody>
+{%- for p in type.properties %}{% if p.category == category %}
+<tr>
+<td><em><a href="{{ suiteUrl }}{{ type.id }}s/{{ p.model }}/">{{ p.model }}</a></em></td>
+<td><em>{{ p.name }}</em></td>
+<td class="benchmark-property"><code>{{ p.prism | prism | safe }}</code><br>
+{{ p.description | benchmarkText | safe }}</td>
+<td>{{ paramList(p.params) }}</td>
+{%- if type.hasMinMax %}
+<td>{{ p["min-max"] }}</td>
+{%- endif %}
+<td>{{ p.notes | benchmarkText | safe }}</td>
+</tr>
+{%- endif %}{% endfor %}
+</tbody>
+</table>
+</div>
+{%- endmacro %}

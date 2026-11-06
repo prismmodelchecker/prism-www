@@ -1,0 +1,177 @@
+N - number of pairs of secrets
+vary between 1 and 10
+
+L - number of bits in each secret
+fixed at 2 
+could vary this but it has little influence on most properties
+and more importantly has is a major factor on the size of the state space
+
+Idea give students one or two of the different scheduling of the
+messages and they must construct the remaining (or their own). Also
+only give one or two properties and they must construct the remaining -
+this involves writing formulae,adding reward structures and in some
+cases changing the model.
+
+Look for ways to add nondeterminism as well?
+
+==========================================================================
+
+when model checking....
+use MTBDD engine
+using "nopre" speeds up verification
+
+==========================================================================
+
+give two/one version(s) of the ordering of the messages
+then students must come up with other 2/3 or their own
+(have an additional ordering from one of the reviewers 
+of the paper)
+
+egl1:
+...
+party A sends bit l for secrets 1..2N
+party B sends bit l for secrets 1..2N
+...
+
+egl2:
+...
+party A sends bit l for secrets 1..N
+party B sends bit l for secrets 1..N
+party A sends bit l for secrets N+1..2N
+party B sends bit l for secrets N+1..2N
+...
+
+egl3:
+...
+party A sends bit l for secrets 1
+party B sends bit l for secrets 1
+...
+party A sends bit l for secrets i
+party B sends bit l for secrets i
+party A sends bit l for secrets i+1
+party B sends bit l for secrets i+1
+...
+party A sends bit l for secrets 2N
+party B sends bit l for secrets 2N
+...
+
+egl4:
+...
+party A sends bit l for secrets 1
+party B sends bit l for secrets 1..N
+party A sends bit l for secrets 2..N
+party A sends bit l for secrets N+1
+party B sends bit l for secrets N+1..2N
+party A sends bit l for secrets N+2..2N
+...
+
+
+egl5 (idea no party ahead by more than one bit):
+party A sends bit l for secrets 1
+party B sends bit l for secrets 1,2
+party A sends bit l for secrets 2,3
+party B sends bit l for secrets 3,4
+...
+party A sends bit l for secrets i,i+1
+party B sends bit l for secrets i+1,i+2
+...
+
+The above only changes the module "scheduler". The final change concerns
+changing the protocol such that if a party sends a sequence of bits in a
+row then these get combined into a single message. To model this we must
+change the modules of the hosts as all the bits included in the message
+must get updated when the message is sent.
+
+Note that this means that for some of the different versions of the
+schedulers the modules for the different parties are no longer symmetric
+(i.e. we cannot use renaming). This is true for the ordering egl4 and egl5.
+Also note that egl3 does not change (neither party sends more than one bit 
+in a row).
+
+==========================================================================
+PROPERTIES:
+
+- The probability of reaching a state where A (B) does not knows a pair 
+  while B (A) does knows a pair.
+
+P=?[ true U !"knowA" & "knowB" {"init"} ]
+P=?[ true U "knowA" & !"knowB" {"init"} ]
+
+==========================================================================
+- The expected number of bits that A needs to know a pair  once B (A) 
+  knows a pair.
+
+add rewards which is the minimum number of bits that the 
+party requires in the case of B
+
+formula costB = min(L-min(a1_0,a2_0),
+                    L-min(a1_1,a2_1),
+                    L-min(a1_2,a2_2),
+                    L-min(a1_3,a2_3),
+                    L-min(a1_4,a2_4),
+                    L-min(a1_5,a2_5),
+                    L-min(a1_6,a2_6),
+                    L-min(a1_7,a2_7),
+                    L-min(a1_8,a2_8),
+                    L-min(a1_9,a2_9));
+
+then change the protocol such that when the other party knows a pair we
+jump out of the protocol and get the cost. Probably a number of ways of
+doing this action or state based so need to have both?
+
+property R=?[F ... ]
+
+==========================================================================
+
+- The expected number of messages from B (A) that A (B) needs to knows a 
+  pair once B (A) knows a pair.
+
+Add a reward of one to all transitions corresponding to a message when
+the other party knows a pair. Best to do this with conditionals e.g.
+
+rewards "messA"
+	 [receiveA] phase=2..3 : ((kB & !kA)?1:0);
+endrewards
+rewards "messB"
+	 [receiveB] phase=2..3 : ((!kB & kA)?1:0);
+endrewards
+
+then R{r}=?[ F phase=4 {"init"} ]
+
+check no other ways.
+
+==========================================================================
+- The expected number of messages that need to be sent (by either party) 
+  before A (B) knows a pair once B (A) knows a pair.
+
+can extend this to other cases, giving the following reward structures:
+
+rewards "time_A_knows"
+	[receiveA] true : (!kA?1:0);
+	[receiveB] true : (!kA?1:0);
+endrewards
+
+rewards "time_B_knows"
+	[receiveA] true : (!kB?1:0);
+	[receiveB] true : (!kB?1:0);
+endrewards
+
+rewards "time_either_knows"
+	[receiveA] true : ((!kA & !kB)?1:0);
+	[receiveB] true : ((!kA & !kB)?1:0);
+endrewards
+
+rewards "time_both_know"
+	[receiveA] true : ((!kA | !kB)?1:0);
+	[receiveB] true : ((!kA | !kB)?1:0);
+endrewards
+
+then R{r}=?[ F phase=4 {"init"} ]
+
+it is the results for this property that changed when bits are combined into
+a single message (if one makes this change to the model then the results
+relating to the number of bits will be wrong if one tries to verify them as
+above - the reward structure for that property would need to be changed)
+
+==========================================================================
+

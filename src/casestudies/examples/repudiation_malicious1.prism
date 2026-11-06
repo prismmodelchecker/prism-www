@@ -1,0 +1,76 @@
+// non-repudiation protocol (with malicious recipient version 1) 
+// Markowitch & Roggeman [MR99]
+// extended version of the PTA model from
+// R. Lanotte, A. Maggiolo-Schettini and A. Troina
+// Second Workshop Quantitative Aspects of Programming Languages (QAPL 2004), 
+// ENTCS, vol. 112, pp. 113–129 (2005)
+
+pta
+
+// constants
+const double p; // parameter of geometric distribution (to generate number of messages)
+const int ad = 1; // min time to send an ack
+const int AD = 5; // deadline (if ack not arrived then end protocol)
+const int DECODE=8; // time to decode
+
+module originator
+
+	o : [0..4];
+	// 0 - init
+	// 1 - send
+	// 2 - waiting
+	// 3 - finished
+	// 4 - error
+
+	x : clock; // local clock
+
+	invariant
+		(o=0 => true) &
+		(o=1 => x<=0) &
+		(o=2 => x<=AD) &
+		(o=3 => true) &
+		(o=4 => true)
+	endinvariant
+
+	
+	[req] o=0 -> (o'=1) & (x'=0); // init (receive a request from the recipient)
+	[message] o=1 & x<=0 -> (o'=2); // send (send first message immediately)
+	[ack]  o=2 & x<AD -> 1-p : (o'=1) & (x'=0) // received an ack and not last
+	                     + p : (o'=3) & (x'=0); // receive an ack and last
+	[] o=2 & x>=AD -> (o'=4) & (x'=0); // ack not arrived within expected interval (stop)
+	
+endmodule
+
+module malicious_recipient
+
+	r : [0..5];
+	// 0 - request
+	// 1 - wait
+	// 2 - ack
+	// 3 - try to decode
+	// 4 - gains information (message was last)
+	// 5 - does not gain information (message not last)
+
+	y : clock; // local clock
+
+	invariant
+		(r=0 => y<=0) &
+		(r=1 => true) &
+		(r=2 => true) &
+		(r=3 => y<=10) &
+		(r=4 => true) &
+		(r=5 => true)
+	endinvariant
+
+	[req] r=0 & y=0 -> (r'=1); // initiate protocol
+	[message] r=1 -> (r'=2) & (y'=0); // receive message
+	[ack] r=2 -> (r'=1); // send ack (no time bound now as malicious)
+	[] r=2 -> (r'=3) & (y'=0); // try and decode
+	[] r=3 & y>=DECODE -> p : (r'=4) & (y'=0) // decode and last
+					+ (1-p) : (r'=5) & (y'=0); // decode and not last
+	[ack] r=5 -> (r'=1) & (y'=0); // unsuccessful so try and continue
+
+endmodule
+
+// decodes last (nth) message
+label "gains_information" = r=4;

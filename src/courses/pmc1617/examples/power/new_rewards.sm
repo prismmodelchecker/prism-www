@@ -1,0 +1,16 @@
+rewards "lost"
+	[request] q=q_max : 1;
+endrewards
+
+R{"lost"}=?[C<=t]
+
+rewards "power"
+	sp=0 : 0.13;
+	sp=1 : 0.95;
+	sp=2 : 2.15;
+	[sleep2idle] true : 7;
+	[idle2sleep] true : 0.067;
+endrewards
+
+R{"power"}=?[C<=t]
+

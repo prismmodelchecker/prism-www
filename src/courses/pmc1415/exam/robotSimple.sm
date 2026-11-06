@@ -1,0 +1,50 @@
+ctmc
+
+const double mvF = 10;
+const double mvB = 20;
+const double scan = 30;
+const double exitsec = 100;
+const double loadunload = 1;
+
+const int N=6;
+
+formula lsi = min(position,direction ? position+1 :position-1);
+formula lso = min(position,direction ? position-1 :position+1);
+
+module robot
+	position: [1..N];
+	direction: bool init false;
+	clearance: [0..2] init 0;
+
+	[load]   position=1 & !direction & clearance=0 -> loadunload : (direction'= !direction);
+	[unload] position=N &  direction & clearance=0 -> loadunload : (direction'= !direction);
+
+	[] position<N & clearance=1 & direction -> mvF : (position'=position+1) & (clearance'=2);
+        [] position>1 & clearance=1 & !direction -> mvB : (position'=position-1) & (clearance'=2);
+
+	[stepin1] lsi=1  & clearance=0 -> scan : (clearance'=1);
+	[stepout1] lso=1 & (clearance=2) -> exitsec : (clearance'=0);
+
+	[stepin2] lsi=2  & clearance=0 -> scan : (clearance'=1);
+	[stepout2] lso=2 & clearance=2 -> exitsec : (clearance'=0);
+
+	[stepin3] lsi=3  & clearance=0 -> scan : (clearance'=1);
+	[stepout3] lso=3 & clearance=2 -> exitsec : (clearance'=0);
+
+	[stepin4] lsi=4  & clearance=0 -> scan : (clearance'=1);
+	[stepout4] lso=4 & clearance=2 -> exitsec : (clearance'=0);
+
+	[stepin5] lsi=5  & clearance=0 -> scan : (clearance'=1);
+	[stepout5] lso=5 & clearance=2 -> exitsec : (clearance'=0);
+endmodule
+
+module semaphore1
+	state1: bool init false;
+	[stepin1] !state1 -> 1.0: (state1'=!state1);
+	[stepout1] state1 -> 1.0: (state1'=!state1);
+endmodule
+
+module semaphore2 = semaphore1[state1=state2, stepin1=stepin2,stepout1=stepout2] endmodule
+module semaphore3 = semaphore1[state1=state3, stepin1=stepin3,stepout1=stepout3] endmodule
+module semaphore4 = semaphore1[state1=state4, stepin1=stepin4,stepout1=stepout4] endmodule
+module semaphore5 = semaphore1[state1=state5, stepin1=stepin5,stepout1=stepout5] endmodule

@@ -1,0 +1,21 @@
+
+Pmax=?[true U (s1=4)&(s2=4)&(s3=4)&(s4=4)&(s5=4)&(s6=4)&(s7=4)&(s8=4)]
+
+// message of any station eventually delivered before i backoffs
+//Pmax=?[true U (cd1<=1 & s1=4)|(cd2<=1 & s2=4)|(cd3<=1 & s3=4)|(cd4<=1 & s4=4)|(cd5<=1 & s5=4)|(cd6<=1 & s6=4)|(cd7<=1 & s7=4)|(cd8<=1 & s8=4)]
+//Pmax=?[true U (cd1<=2 & s1=4)|(cd2<=2 & s2=4)|(cd3<=2 & s3=4)|(cd4<=2 & s4=4)|(cd5<=2 & s5=4)|(cd6<=2 & s6=4)|(cd7<=2 & s7=4)|(cd8<=2 & s8=4)]
+
+// all messages eventually delivered
+//Pmin=?[true U s1=4&s2=4&s3=4&s4=4&s5=4&s6=4&s7=4&s8=4 ]
+
+// probability that a station suffers i collisions
+//Pmax=?[true U (cd1=1)|(cd2=1)|(cd3=1)|(cd4=1)|(cd5=1)|(cd6=1)|(cd7=1)|(cd8=1)]
+//Pmax=?[true U (cd1=2)|(cd2=2)|(cd3=2)|(cd4=2)|(cd5=2)|(cd6=2)|(cd7=2)|(cd8=2)]
+
+// expected time for all messages to be delivered
+//Rmin=?[ F s1=4&s2=4&s3=4&s4=4&s5=4&s6=4&s7=4&s8=4 ]
+//Rmax=?[ F s1=4&s2=4&s3=4&s4=4&s5=4&s6=4&s7=4&s8=4 ]
+
+// expected time for at least one message to be delivered
+//Rmin=?[ F s1=4|s2=4|s3=4|s4=4|s5=4|s6=4|s7=4|s8=4 ]
+//Rmax=?[ F s1=4|s2=4|s3=4|s4=4|s5=4|s6=4|s7=4|s8=4 ]

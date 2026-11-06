@@ -1,0 +1,290 @@
+// FGF model
+// gxn/dxp 10/02/06
+
+// model is a CTMC
+ctmc
+
+// formulae
+formula frs = relocFRS2=0 & degFRS2=0; // frs2 not degraded or relocated
+formula fgfr = degFGFR=0; // fgfr not degraded or relocated
+
+//-----------------------------------------------------------------------
+// modules for the different components
+
+module FGF
+	
+	FGF : [0..1] init 1; // free
+	
+	// fgfr+fgf <-> fgfr:fgf [1]
+	[fgf_bind] FGF=1 -> (FGF'=0);
+	[fgf_rel]  FGF=0 -> (FGF'=1);
+	
+endmodule
+
+module FGFR
+	
+	FGFR     : [0..1] init 1; // FGFR unbound to FRS2
+	degFGFR  : [0..1] init 0; // FGFR degraded
+	FGFR_FGF : [0..1] init 0; // FGF bound
+	FGFR_PLC : [0..1] init 0; // PLC bound
+	// phosporilation of receptors
+	Y653P : [0..1] init 0;
+	Y654P : [0..1] init 0;
+	Y766P : [0..1] init 0;
+
+	// fgfr+fgf <-> fgfr:fgf [1]
+	[fgf_bind] fgfr & FGFR_FGF=0 -> 5000  : (FGFR_FGF'=1);
+	[fgf_rel]  fgfr & FGFR_FGF=1 -> 0.002 : (FGFR_FGF'=0);
+	// phosporilation of receptors
+	[] fgfr & FGFR_FGF=1 & Y653P=0 -> 0.1 : (Y653P'=1); // FGFR653 -> FGFR653P [2]
+	[] fgfr & FGFR_FGF=1 & Y654P=0 -> 0.1 : (Y654P'=1); // FGFR654 -> FGFR654P [2]
+	[] fgfr & Y653P=1 & Y654P=1 & Y766P=0 -> 70 : (Y766P'=1); // FGFR766 -> FGFR766P [3]
+	// fgfr+frs2 <-> fgfr:frs2 [4]
+	[fgfr_bind] fgfr & FGFR=1 -> (FGFR'=0);
+	[fgfr_rel]  fgfr & FGFR=0 -> (FGFR'=1);
+	// PLC + FGFR766P <-> PLC:FGFR [9]
+	[plc_bind] fgfr & Y766P=1 & FGFR_PLC=0 ->   10 : (FGFR_PLC'=1);
+	[plc_rel]  fgfr & FGFR_PLC=1           -> 0.02 : (FGFR_PLC'=0);
+	// PLC:FGFR -> degFGFR [9]
+	[] fgfr & FGFR_PLC=1 -> 1/(60*60) : (degFGFR'=1);
+	
+endmodule
+
+module PLC
+	
+	PLC : [0..1] init 1; // free
+	
+	// PLC + FGFR766P <-> PLC:FGFR [9]
+	[plc_bind] PLC=1 -> (PLC'=0);
+	[plc_rel]  PLC=0 -> (PLC'=1);
+	
+endmodule
+
+module FRS2
+	
+	relocFRS2 : [0..1] init 0; // ubiquitin mdification of FRS2
+	degFRS2   : [0..1] init 0; // FRS2 relocated
+	FRS2_Ubi  : [0..1] init 0; // FRS2 degraded
+	// phosporilation of receptors
+	Y196P : [0..1] init 0;
+ 	Y306P : [0..1] init 0;
+	Y471P : [0..1] init 0;
+	// compounds:FRS2
+	FRS2_FGFR : [0..1] init 0; // 0 - FGFR not bound, 1 - FGFR bound
+	FRS2_GRB  : [0..2] init 0; // 0 - GRB2 not bound, 1 - GRB2 bound, 2 - GRB2:SOS bound
+	FRS2_SHP  : [0..1] init 0; // 0 - SHP2 not bound, 1 - SHP2 bound
+	FRS2_SRC  : [0..8] init 0;
+	// 0 - SRC not bound
+	// 1 - SRC bound
+	// 2 - SRC:SPRY bound
+	// 3 - SRC:SPRYP bound
+	// 4 - SRC:SPRYP:CBL bound
+	// 5 - SRC:SPRYP:GRB bound
+	// 6 - SRC:SPRYP:GRB:CBL bound
+	// 7 - SRC:SPRYP:GRB:SOS bound
+	// 8 - SRC:SPRYP:GRB:SOS:CBL bound
+
+	// fgfr+frs2 <-> fgfr:frs2 [4]
+	[fgfr_bind] frs & FRS2_FGFR=0 -> 10    : (FRS2_FGFR'=1);
+	[fgfr_rel]  frs & FRS2_FGFR=1 -> 0.001 : (FRS2_FGFR'=0);
+	// phosporilation of receptors
+	[] frs & Y653P=1 & Y654P=1 & FRS2_FGFR=1 & Y196P=0 -> 0.2 : (Y196P'=1); // FRS2196 -> FRS2196P [5]
+ 	[] frs & Y653P=1 & Y654P=1 & FRS2_FGFR=1 & Y306P=0 -> 0.2 : (Y306P'=1); // FRS2306 -> FRS2306P [5]
+	[] frs & Y653P=1 & Y654P=1 & FRS2_FGFR=1 & Y471P=0 -> 0.2 : (Y471P'=1); // FRS2471 -> FRS2471P [5]
+	// FRS2196 <- FRS2196P [6]
+	[]        frs & FRS2_SHP=1 & Y196P=1 & FRS2_SRC=0 -> 12 : (Y196P'=0); // src not bound
+	[src_rel] frs & FRS2_SHP=1 & Y196P=1 & FRS2_SRC>0 -> 12 : (Y196P'=0) & (FRS2_SRC'=0); // src bound
+	// FRS2306 <- FRS2306P [6]
+	[]        frs & FRS2_SHP=1 & Y306P=1 & FRS2_GRB=0 -> 12 : (Y306P'=0); // grb2 not bound
+	[grb_rel] frs & FRS2_SHP=1 & Y306P=1 & FRS2_GRB>0 -> 12 : (Y306P'=0) & (FRS2_GRB'=0); // grb2 bound
+	// FRS2471 <- FRS2471P [6]
+	[shp_rel] frs & FRS2_SHP=1 & Y471P=1 -> 12 : (Y471P'=0) & (FRS2_SHP'=0);
+	// SRC + FRS2196P <-> SRC:FRS2 [7]
+	[src_bind] frs & Y196P=1 & FRS2_SRC=0 -> 10   : (FRS2_SRC'=SRC);
+	[src_rel]  frs & FRS2_SRC>0           -> 0.02 : (FRS2_SRC'=0);
+	// GRB2 + FRS2306P <-> GRB2:FRS2 [7]
+	[grb_bind] frs & Y306P=1 & FRS2_GRB=0 -> 10   : (FRS2_GRB'=GRB);
+	[grb_rel]  frs & FRS2_GRB>0           -> 0.02 : (FRS2_GRB'=0);
+	// SHP2 + FRS2471P <-> SHP2:FRS2 [7]
+	[shp_bind] frs & Y471P=1 & FRS2_SHP=0 -> 10   : (FRS2_SHP'=SHP); 
+	[shp_rel]  frs & FRS2_SHP=1           -> 0.02 : (FRS2_SHP'=0);
+	// Src:FRS2 -> degFRS2 [8]
+	[] frs & FRS2_SRC>0 -> 1/(15*60) : (relocFRS2'=1);
+	// Spry + Src -> Spry55:Src/Spryp + Src -> Spry55p:Src [11]
+	[spry_bind_frs] frs & FRS2_SRC=1 -> 1      : (FRS2_SRC'=SPRY+1);
+	// Spry + Src <- Spry55:Src [11]
+	[spry_rel_frs] frs & FRS2_SRC=2 -> 0.01 : (FRS2_SRC'=1);
+	// Spryp + Src <- Spry55p:Src [11]
+	[spry_rel_frs] frs & FRS2_SRC>2 -> 0.0001 : (FRS2_SRC'=1);
+	// Spry55:Src -> Spry55p:Src [11]
+	[] frs & FRS2_SRC=2 -> 10 : (FRS2_SRC'=3);
+	// Spry55p + Cbl <-> Spry55p:Cbl [11]
+	[cbl_bind_frs] frs & (FRS2_SRC=3|FRS2_SRC=5|FRS2_SRC=7)-> 1      : (FRS2_SRC'=FRS2_SRC+1);
+	[cbl_rel_frs]  frs & (FRS2_SRC=4|FRS2_SRC=6|FRS2_SRC=8)-> 0.0001 : (FRS2_SRC'=FRS2_SRC-1);
+	// Spry55p + Grb2 <-> Spry55p:Grb2 [11]
+	[grb_bind_frs] frs & (FRS2_SRC=3|FRS2_SRC=4)-> 1      : (FRS2_SRC'=FRS2_SRC+2*GRB);
+	[grb_rel_frs]  frs & (FRS2_SRC=5|FRS2_SRC=6)-> 0.0001 : (FRS2_SRC'=FRS2_SRC-2); // not sos:grb2
+	[grb_rel_frs]  frs & (FRS2_SRC=7|FRS2_SRC=8)-> 0.0001 : (FRS2_SRC'=FRS2_SRC-4); // sos:grb2
+	// Spry55p:Cbl +FRS2 -> Frs-Ubi [12]
+	[] frs & (FRS2_SRC=4|FRS2_SRC=6|FRS2_SRC=8)& FRS2_Ubi=0 -> 0.00085 : (FRS2_Ubi'=1);
+	// FRS2-Ubi -> degFRS2 [12]
+	[] frs & FRS2_Ubi=1 -> 1/(5*60) : (degFRS2'=1);
+	// Spry55p -> Spry55 [13]
+	[spry_dephos] frs & FRS2_SHP=1 & FRS2_SRC>2 -> 12 : (FRS2_SRC'=2);
+	// Grb2 + Sos <-> Grb2:Sos [14]
+	[sos_bind_frs] frs & FRS2_GRB=1   -> 1      : (FRS2_GRB'=2);// grb2:frs2
+	[sos_rel_frs]  frs & FRS2_GRB=2   -> 0.0001 : (FRS2_GRB'=1); // grb2:frs2
+	[sos_bind_frs] frs & (FRS2_SRC=5|FRS2_SRC=6)-> 1      : (FRS2_SRC'=FRS2_SRC+2); // grb2:spry
+	[sos_rel_frs]  frs & (FRS2_SRC=7|FRS2_SRC=8)-> 0.0001 : (FRS2_SRC'=FRS2_SRC-2); // grb2:spry
+	
+endmodule
+
+
+module SRC
+	
+	SRC : [0..8] init 1;
+	// 0 - bound elsewhere
+	// 1 - SRC
+	// 2 - SRC_SPRY
+	// 3 - SRC_SPRYP
+	// 4 - SRC_SPRYP_CBL
+	// 5 - SRC_SPRYP_GRB
+	// 6 - SRC_SPRYP_GRB_CBL
+	// 7 - SRC_SPRYP_GRB_SOS
+	// 8 - SRC_SPRYP_GRB_SOS_CBL
+	
+	// SRC + FRS2196P <-> SRC:FRS2 [7]
+	[src_bind] SRC>0 -> (SRC'=0);
+	[src_rel] SRC=0 -> (SRC'=FRS2_SRC);
+	// Spry + Src -> Spry55:Src/Spryp + Src -> Spry55p:Src [11]
+	[spry_bind] SRC=1 -> 1      : (SRC'=SPRY+1);
+	// Spry + Src <- Spry55:Src [11]
+	[spry_rel] SRC=2 -> 0.01 : (SRC'=1);
+	// Spryp + Src <- Spry55p:Src [11]
+	[spry_rel] SRC>2 -> 0.0001 : (SRC'=1);
+	// Spry55:Src -> Spry55p:Src [11]
+	[] SRC=2 -> 10 : (SRC'=3);
+	// Spry55p + Cbl <-> Spry55p:Cbl [11]
+	[cbl_bind_src] (SRC=3|SRC=5|SRC=7)-> 1      : (SRC'=SRC+1);
+	[cbl_rel_src] (SRC=4|SRC=6|SRC=8)-> 0.0001 : (SRC'=SRC-1);
+	// Spry55p + Grb2 <-> Spry55p:Grb2 [11]
+	[grb_bind_src] (SRC=3|SRC=4)-> 1      : (SRC'=SRC+2*GRB);
+	[grb_rel_src] (SRC=5|SRC=6)-> 0.0001 : (SRC'=SRC-2); // not sos:grb2
+	[grb_rel_src] (SRC=7|SRC=8)-> 0.0001 : (SRC'=SRC-4); // sos:grb2
+	// Grb2 + Sos <-> Grb2:Sos [14]
+	[sos_bind_src] (SRC=5|SRC=6)-> 1      : (SRC'=SRC+2);
+	[sos_rel_src] (SRC=7|SRC=8)-> 0.0001 : (SRC'=SRC-2);
+	
+endmodule
+
+module SPRY
+	
+	SPRY : [0..7] init 0;
+	// 0 - bound elsewhere or not appeared
+	// 1 SPRY
+	// 2 SPRYP
+	// 3 SPRYP_CBL
+	// 4 SPRYP_GRB
+	// 5 SPRYP_GRB_CBL
+	// 6 SPRYP_GRB_SOS
+	// 7 SPRYP_GRB_SOS_CBL
+	app : [0..1] init 0; // has spry entered the system yet
+	
+	// Spry + Src <-> Spry55:Src/Spryp + Src -> Spry55p:Src [11]
+	[spry_bind]     SPRY>0 -> (SPRY'=0); // src free
+	[spry_bind_frs] SPRY>0 -> (SPRY'=0); // src:frs2
+	[spry_rel]      SPRY=0 & SRC>0 -> (SPRY'=SRC-1); // src free
+	[spry_rel_frs]  SPRY=0 & FRS2_SRC>0 -> (SPRY'=FRS2_SRC-1); // src:frs2
+	// -> Spry [10]
+	[] SPRY=0 & app=0 -> 1/(15*60) : (SPRY'=1) & (app'=1);
+	// Spry55p + Cbl <-> Spry55p:Cbl [11]
+	[cbl_bind] (SPRY=2|SPRY=4|SPRY=6)-> 1      : (SPRY'= SPRY+1);
+	[cbl_rel] (SPRY=3|SPRY=5|SPRY=7)-> 0.0001 : (SPRY'= SPRY-1);
+	// Spry55p + Grb2 <-> Spry55p:Grb2 [11]
+	[grb_bind_spry] (SPRY=2|SPRY=3)-> 1      : (SPRY'= SPRY+2*GRB);
+	[grb_rel_spry] (SPRY=4|SPRY=5)-> 0.0001 : (SPRY'= SPRY-2); // not sos:grb2
+	[grb_rel_spry] (SPRY=6|SPRY=7)-> 0.0001 : (SPRY'= SPRY-4); // sos:grb2
+	// Grb2 + Sos <-> Grb2:Sos [14]
+	[sos_bind_spry] (SPRY=4|SPRY=5)-> 1      : (SPRY'=SPRY+2); 
+	[sos_rel_spry] (SPRY=6|SPRY=7)-> 0.0001 : (SPRY'=SPRY-2);
+	
+endmodule
+
+module CBL
+	
+	CBL : [0..1] init 1; // free
+	
+	// Spry55p + Cbl <-> Spry55p:Cbl [11]
+	[cbl_bind]     CBL=1 -> (CBL'=0); // spryp free
+	[cbl_bind_src] CBL=1 -> (CBL'=0); // spryp:src and not src:frs2
+	[cbl_bind_frs] CBL=1 -> (CBL'=0); // spryp:src and src:frs2
+	[cbl_rel]      CBL=0 -> (CBL'=1); // spryp free
+	[cbl_rel_src]  CBL=0 -> (CBL'=1); // spryp:src and not src:frs2
+	[cbl_rel_frs]  CBL=0 -> (CBL'=1); // spryp:src and src:frs2
+	// Spry55p -> Spry55 [13]
+	[spry_dephos] true -> (CBL'=1);
+
+endmodule
+
+module SHP
+	
+	SHP : [0..1] init 1; // free
+	
+	// SHP2 + FRS2471P <-> SHP2:FRS2 [7]
+	[shp_bind] SHP=1 -> (SHP'=0);
+	[shp_rel] SHP=0 -> (SHP'=1);
+	
+endmodule
+
+module GRB
+	
+	GRB : [0..2] init 1; // 1 free and 2 grb2:sos
+	
+	// Grb2 + Sos <-> Grb2:Sos [14]
+	[sos_bind] GRB=1 -> 1      : (GRB'=2);
+	[sos_rel]  GRB=2 -> 0.0001 : (GRB'=1);
+	// GRB2 + FRS2306P <-> GRB2:FRS2 [7]
+	[grb_bind] GRB>0 -> (GRB'=0);
+	[grb_rel] GRB=0 -> (GRB'=FRS2_GRB);
+	// Spry55p + Grb2 <-> Spry55p:Grb2 [11]
+	[grb_bind_spry] GRB>0 -> (GRB'=0); // spryp free
+	[grb_bind_src]  GRB>0 -> (GRB'=0); // spryp:src and not src:frs2
+	[grb_bind_frs]  GRB>0 -> (GRB'=0); // spryp:src and src:frs2
+	[grb_rel_spry]  GRB=0 -> (GRB'=(SPRY<6)?1:2); // spryp free
+	[grb_rel_src]   GRB=0 -> (GRB'=(SRC<7)?1:2); // spryp:src and not src:frs2
+	[grb_rel_frs]   GRB=0 -> (GRB'=(FRS2_SRC<7)?1:2); // spryp:src and src:frs2
+	// Spry55p -> Spry55 [13]
+	[spry_dephos] true -> (GRB'=(FRS2_SRC<7)?1:2);
+	
+endmodule
+
+module SOS
+	
+	SOS : [0..1] init 1;
+	
+	// Grb2 + Sos <-> Grb2:Sos [14]
+	[sos_bind]      SOS=1 -> (SOS'=0); // grb2 free
+	[sos_bind_spry] SOS=1 -> (SOS'=0); // grb2:spryp and not spryp:src
+	[sos_bind_src]  SOS=1 -> (SOS'=0); // grb2:spryp and spryp:src and not src:frs2
+	[sos_bind_frs]  SOS=1 -> (SOS'=0); // grb2:spryp and spryp:src and src:frs2
+	[sos_rel]       SOS=0 -> (SOS'=1); // grb2 free
+	[sos_rel_spry]  SOS=0 -> (SOS'=1); // grb2:spryp and not spryp:src
+	[sos_rel_src]   SOS=0 -> (SOS'=1); // grb2:spryp and spryp:src and not src:frs2
+	[sos_rel_frs]   SOS=0 -> (SOS'=1); // grb2:spryp and spryp:src and src:frs2
+	
+endmodule
+
+// reward structure: number of bindings
+rewards "bindings"
+	[grb_bind] degFGFR=0 & relocFRS2=0 & degFRS2=0 : 1;
+endrewards
+
+// reward structure: time bound
+rewards "bound"
+	FRS2_GRB>0 & relocFRS2=0 & degFRS2=0 : 1;
+endrewards
+
+// reward structure: time
+rewards "time"
+	true : 60;	
+endrewards

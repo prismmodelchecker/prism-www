@@ -1,0 +1,5 @@
+// constraints on prob. of lost customers
+const double l;
+
+// minimize expected power subject to constraint on probability L lost requests (L appears in the model file)
+multi(R{"power"}min=?[F bat=0],P<=l[F (lost=L) & (bat=0)])

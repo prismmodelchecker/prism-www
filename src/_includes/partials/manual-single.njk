@@ -1,0 +1,35 @@
+{#- The whole manual on one page: its contents, then each page in order, a section's contents page
+    before the section's pages. Links between pages become links within this page (see singlePageContent
+    in src/_lib/manual.js). Set `offline` for the self-contained copy. -#}
+{%- macro manualPage(items, url, shift, offline) %}
+{%- set item = items | manualPageItem(url) %}
+{%- if item %}{{ item | manualSingle(shift, offline) | safe }}{% endif %}
+{%- endmacro %}
+<h1 id="contents">PRISM Manual <span class="manual-single__version">{{ manualVersion or site.version }}</span></h1>
+<nav class="manual-single__contents" aria-label="Contents">
+<ul>
+{%- for s in manual.sections %}
+	{%- if s.url %}
+	<li><a href="#{{ s.file | manualAnchor }}">{{ s.title }}</a></li>
+	{%- else %}{% for p in s.pages %}
+	<li><a href="#{{ p.file | manualAnchor }}">{{ p.title }}</a></li>
+	{%- endfor %}{% endif %}
+{%- endfor %}
+</ul>
+</nav>
+{%- for s in manual.sections %}
+{%- if s.url %}
+<section class="manual-single__section" id="{{ s.file | manualAnchor }}">
+{{ manualPage(collections.manualPage, s.url, 1, offline) }}
+{%- for p in s.pages %}
+<section class="manual-single__page" id="{{ p.file | manualAnchor }}">
+{{ manualPage(collections.manualPage, p.url, 2, offline) }}
+</section>
+{%- endfor %}
+</section>
+{%- else %}{% for p in s.pages %}
+<section class="manual-single__page" id="{{ p.file | manualAnchor }}">
+{{ manualPage(collections.manualPage, p.url, 1, offline) }}
+</section>
+{%- endfor %}{% endif %}
+{%- endfor %}

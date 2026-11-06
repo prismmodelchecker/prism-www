@@ -1,0 +1,67 @@
+mdp
+
+// Model parameters 
+const double p = 0.1;
+
+const int M = 5;
+const int N = 6;
+
+// Goal
+formula goal = (x = 1 & y = N);
+
+// Obstacles 
+formula crashed = (x = 2 & y = 3) | (x = 3 & y = 3) | (x = 3 & y = 4);
+
+// Parcel
+formula parcel = (x = 5 & y = 4);
+
+// Costs
+const int moving_cost = 1;
+const int crash_cost = 200;
+
+// UAV Behaviour
+module env
+    x : [1..M] init 1;
+    y : [1..N] init 1;
+
+    done : bool init false;
+
+    // Move up
+    [up]    !crashed & !done & y < N ->
+              (1 - 3*p) : (y' = min(y+1,N))
+            + p         : (y' = min(y+1,N)) & (x' = max(x-1,1))
+            + p         : (y' = min(y+1,N)) & (x' = min(x+1,M))
+            + p         : (x' = x) & (y' = y);
+
+    // Move right
+    [right] !crashed & !done & x < M ->
+              (1 - 3*p) : (x' = min(x+1,M))
+            + p         : (x' = min(x+1,M)) & (y' = min(y+1,N))
+            + p         : (x' = max(x-1,1))
+            + p         : (x' = x) & (y' = y);
+
+    // Move left
+    [left]  !crashed & !done & x > 1 ->
+              (1 - 3*p) : (x' = max(x-1,1))
+            + p         : (x' = max(x-1,1)) & (y' = min(y+1,N))
+            + p         : (x' = min(x+1,M))
+            + p         : (x' = x) & (y' = y);
+
+    [] (crashed | goal) & !done -> (done' = true);
+    [] done -> (done' = true);
+endmodule
+
+// Your handcrafted policy
+module policy
+	[up]    x < 3  -> true;
+	[left]  x >= 3 -> true;
+	[right] false -> true;
+endmodule
+
+// Cost Structure
+rewards "costs"
+    [up]    !crashed & !goal & !done : moving_cost;
+    [right] !crashed & !goal & !done : moving_cost;
+    [left]  !crashed & !goal & !done : moving_cost; 
+    crashed : crash_cost;
+endrewards

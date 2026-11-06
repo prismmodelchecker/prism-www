@@ -1,0 +1,7 @@
+// min max probability of L lost requests (L specified in model file
+Pmin=?[ F (lost=L) & (bat=0) ]
+Pmax=?[ F (lost=L) & (bat=0) ]
+
+// min/max power consumption
+R{"power"}min=?[F bat=0] 
+R{"power"}max=?[F bat=0] 

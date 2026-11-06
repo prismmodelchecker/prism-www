@@ -1,0 +1,17 @@
+nondeterministic
+
+
+formula no_2 = (20-(no_0+no_1));    // No modules in state (2)
+
+module generic_process
+ no_0 : [0..20] init 0;    // No modules in state (0)
+ no_1 : [0..20] init 0;    // No modules in state (1)
+
+  [] (no_2>0) -> 1:(no_0'=no_0+1);
+  [] (no_2>0) -> 1:(no_1'=no_1+1);
+  [] (no_0>0) & (no_0+no_1=20)&(no_0=20) -> 0.5:true + 0.5:(no_0'=no_0-1)&(no_1'=no_1+1);
+  [] (no_0>0) & (no_0+no_1=20)&(no_1>0) -> 1:true;
+  [] (no_1>0) & (no_0+no_1=20)&(no_1>1) -> 0.5:(no_1'=no_1-1)&(no_0'=no_0+1) + 0.5:true;
+  [] (no_1>0) & (no_0+no_1=20)&(no_0=19) -> 1:true;
+
+endmodule

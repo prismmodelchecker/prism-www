@@ -1,0 +1,39 @@
+ctmc
+
+const int Servers_max;
+const int Chunks_store;
+const int Chunks_total;
+
+module master
+  Master_up        : bool init true;
+  Master_hard_down : bool init false;
+  Master_soft_down : bool init false;
+
+  [master_soft_fail] Master_up ->
+    0.0005 * 0.95 : (Master_up'=false) & (Master_soft_down'=true);
+  [master_hard_fail] ...
+  [master_soft_repair] ...
+  [master_hard_repair] ...
+endmodule
+
+module copies
+  Copies_present : [0..3] init 3;
+  Copies_lost    : [0..3] init 0;
+
+  [replicate] ...
+  [server_hard_destroy] ...
+  [server_soft_destroy] ...
+endmodule
+
+module servers
+  Servers_up : [0..Servers_max] init Servers_max;
+  Servers_soft_down : [0..Servers_max] init 0;
+  Servers_hard_down : [0..Servers_max] init 0;
+
+  [server_hard_destroy] ...
+  [server_soft_destroy] ...
+  [server_soft_keep] ...
+  [server_hard_keep] ...
+  [server_soft_repair] ...
+  [server_hard_repair] ...
+endmodule

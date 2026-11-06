@@ -1,0 +1,84 @@
+#states 12
+#trans 20  
+#clocks 2
+X Y
+
+state: 0
+prop: start_start
+invar: X<=360
+trans:
+TRUE => P_05; reset{}; goto 1
+TRUE => P_05; reset{}; goto 2
+TRUE => Q_05; reset{}; goto 3
+TRUE => Q_05; reset{}; goto 4
+
+state: 1
+prop: fast_start
+invar: X<=360
+trans:
+TRUE => P_05; reset{X}; goto 5
+TRUE => P_05; reset{X}; goto 6
+
+state: 2
+prop: slow_start
+invar: X<=360
+trans:
+TRUE => P_05; reset{X}; goto 7
+TRUE => P_05; reset{X}; goto 8
+
+state: 3
+prop: start_fast
+invar: X<=360
+trans:
+TRUE => P_05; reset{X}; goto 5
+TRUE => P_05; reset{X}; goto 7
+
+state: 4
+prop: start_slow
+invar: X<=360
+trans:
+TRUE => P_05; reset{X}; goto 6
+TRUE => P_05; reset{X}; goto 8
+
+state: 5
+prop: fast_fast
+invar: X<=850
+trans:
+X>=760 => P_1; reset{X}; goto 0
+X>=400 => Q_1; reset{X}; goto 9
+
+state: 6
+prop: fast_slow
+invar: X<=1670
+trans:
+X>=1230 => P_1; reset{X}; goto 9
+
+state: 7
+prop: slow_fast
+invar: X<=1670
+trans:
+X>=1230 => P_1; reset{X}; goto 9
+
+state: 8
+prop: slow_slow
+invar: X<=1670
+trans:
+X>=1590 => P_1; reset{X}; goto 0
+X>=1230 => Q_1; reset{X}; goto 9
+
+state: 9
+prop: sel_done
+invar: X=0
+trans:
+X=0 AND Y<10000 => P_1; reset{X,Y}; goto 10
+X=0 AND Y>=10000 => Q_1; reset{X,Y}; goto 11
+
+state: 10
+prop: done_before
+invar: TRUE
+trans:
+
+state: 11
+prop: done_after
+invar: TRUE
+trans:

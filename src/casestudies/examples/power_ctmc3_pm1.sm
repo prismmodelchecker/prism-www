@@ -1,0 +1,21 @@
+// POWER MANAGER performance constraint 1
+// when the SRQ is full and the SP is in sleep go to idle
+// when the SRQ is empty and the SP is in idle:
+// go to sleep with probability 0.008963 and stay in idle with probability 0.991037
+
+module PM
+
+	p : [0..1];
+	// p=0 - loop or go sleep to idle
+	// p=1 - idle to sleep
+
+	// queue is full so go from sleep to idle
+	[sleep2idle] q=QMAX -> (p'=p);
+	// probabilistic choice when queue becomes empty
+	[serve] q=1 -> 0.008963 : (p'=1);
+	[serve] q=1 -> 0.991037 : (p'=0);
+	[serve] q>1 -> true; // loops for remaining states
+	[request] true -> (p'=0); // idle to sleep
+	[idle2sleep] p=1 -> (p'=0); // reset p when queue is no longer empty
+	
+endmodule

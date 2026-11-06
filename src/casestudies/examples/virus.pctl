@@ -1,0 +1,11 @@
+// eventually node 11 is infected
+Pmin=?[F s11=2]
+
+//probability node 11 is infected within k steps
+const int k;
+Pmin=?[ F<=k s11=2]
+Pmax=?[ F<=k s11=2]
+
+// expected number of attacks before node 11 is infected
+R{"attacks"}min=?[F s11=2]
+R{"attacks"}max=?[F s11=2]

@@ -1,0 +1,25 @@
+Bugs
+----
+
+Reference change in PTA case studies DKN+06 -> DKN+07 (08?)
+
+
+Topics that could be added:
+---------------------------
+
+Costs/rewards:
+ * figures to explain cumulative rewards
+ * model checking algorithms
+
+MDPs:
+ * more details (e.g. algorithms) for fairness
+ * adversary generation
+ * long-run average for MDPs
+
+Other:
+ * conditional probabilities
+ * linear vs. branching time
+ * counterexamples
+ * more details on precomputation (e.g. Prob0 algorithm, etc.)
+ * other models: CTMDPs, IMCs, LMPs
+ * other formalisms: process algebras, pi, Petric nets
