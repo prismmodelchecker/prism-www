@@ -43,6 +43,26 @@ document.addEventListener("DOMContentLoaded", () => {
 		sidebar.scrollTop = current.offsetTop - sidebar.clientHeight / 3; // offsetTop is relative to the (sticky) sidebar
 	}
 
+	// The slideshow on the home page: a new image slides in every 5 seconds, except while the pointer
+	// is over it or the page isn't in view. Without JS, or for people who prefer less motion, it stays on the first
+	const show = document.querySelector(".slideshow");
+	if (show && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+		const slides = [...show.children];
+		let current = 0;
+		let paused = false;
+		slides[0].classList.add("is-current");
+		show.classList.add("is-running");
+		show.addEventListener("mouseenter", () => { paused = true; });
+		show.addEventListener("mouseleave", () => { paused = false; });
+		setInterval(() => {
+			if (paused || document.hidden) return;
+			for (const s of slides) s.classList.remove("is-leaving");
+			slides[current].classList.replace("is-current", "is-leaving");
+			current = (current + 1) % slides.length;
+			slides[current].classList.add("is-current");
+		}, 5000);
+	}
+
 	const button = document.querySelector(".menu-toggle");
 	const nav = document.getElementById("site-nav");
 	if (!button || !nav) return;

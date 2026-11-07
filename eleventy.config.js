@@ -46,7 +46,7 @@ export default function (eleventyConfig) {
 		md.use(tables);
 		// Styles for site pages, defined in site.css: "::: answer" around a block, {.note} after an element
 		// (the others are the panels of the home page; a block inside another has fewer colons)
-		for (const name of ["answer", "banner", "columns", "box", "questions"]) md.use(markdownItContainer, name);
+		for (const name of ["answer", "banner", "slideshow", "columns", "box", "questions"]) md.use(markdownItContainer, name);
 		md.use(classes);
 		// Images alone in a paragraph are figures, side by side if there are several; not in the manual, which has its own style
 		md.core.ruler.push("figures", (state) => {

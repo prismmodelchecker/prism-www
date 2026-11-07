@@ -12,43 +12,45 @@ It has been used to formally verify
 the correctness, safety and reliability
 of, for example, communication protocols, distributed consensus algorithms, mobile robot navigation and [much more](/casestudies/).
 
-::: banner
-![Surface plot of the maximum probability of a robot reaching its goal](/images/home-plot.png)
+:::: banner
+::: slideshow
+![Surface plot of the maximum probability of a robot reaching its goal](/images/home/robots-surface.png)
 
-**Formal modelling and analysis of systems with random or probabilistic behaviour**
+![Surface plot of the minimum expected time for a user to send a packet](/images/home/aloha-surface.png)
+
+![Graph of the minimum probability of reaching a stable configuration within k steps](/images/home/self-stabilisation.png)
+
+![A road network for UAV missions](/images/home/uav-map.png)
+
+![The FGF signalling pathway](/images/home/fgf-pathway.png)
+
+![The stepping mechanics of a DNA walker](/images/home/dna-walker.png)
+:::
+
+## Applications of PRISM
+
+PRISM has been used for formal verification and analysis
+of systems from a huge range of [application domains](/casestudies/).
 
 It has been used to analyse systems from many different [application domains](/casestudies/), including communication and multimedia protocols, randomised distributed algorithms, security protocols, biological systems and many others.
-:::
+::::
 
 :::: columns
 ::: box
-## Describe a model
+## Probabilistic models
 
-Models are written in the [PRISM language](/manual/ThePRISMLanguage/Introduction/), a simple, state-based language:
+PRISM can build and analyse many types of probabilistic models:
+**Markov chains** (in either discrete or continuous time)
+and **Markov decision processes**,
+plus extensions for **real time**, **partial observability** and **epistemic uncertainty**.
+(/games)[PRISM-games] adds multi-agent models:
+turn-based or concurrent **stochastic games**.
 
-```prism
-dtmc
-
-module die
-
-	s : [0..7] init 0;
-	d : [0..6] init 0;
-
-	[] s=0 -> 0.5 : (s'=1) + 0.5 : (s'=2);
-	[] s=1 -> 0.5 : (s'=3) + 0.5 : (s'=4);
-	[] s=2 -> 0.5 : (s'=5) + 0.5 : (s'=6);
-	[] s=3 -> 0.5 : (s'=1) + 0.5 : (s'=7) & (d'=1);
-	[] s=4 -> 0.5 : (s'=7) & (d'=2) + 0.5 : (s'=7) & (d'=3);
-	[] s=5 -> 0.5 : (s'=7) & (d'=4) + 0.5 : (s'=7) & (d'=5);
-	[] s=6 -> 0.5 : (s'=2) + 0.5 : (s'=7) & (d'=6);
-	[] s=7 -> (s'=7);
-
-endmodule
-```
+![Word cloud of the model types supported by PRISM and PRISM-games: MDP, DTMC, CTMC, PTA, POMDP, SMG, IMDP, POPTA, CSG, IDTMC, TPTG, LTS, PA and TSG](/images/home/model-types.svg)
 :::
 
 ::: questions
-## Ask quantitative questions
+## Quantitative guarantees
 
 What is the probability of a failure causing the system to shut down within 4 hours?
 

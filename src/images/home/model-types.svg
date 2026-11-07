@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="40.8 20.0 360.1 173.8" role="img">
+<title>Types of probabilistic model supported by PRISM and PRISM-games</title>
+<style>
+	text { font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; font-weight: 800; text-anchor: middle; }
+	.a { fill: #272582; } .b { fill: #6260c1; } .c { fill: #1f7a8c; } .d { fill: #8a3fa8; } .e { fill: #3f6fd1; }
+	@media (prefers-color-scheme: dark) { .a { fill: #a9a7ff; } .b { fill: #c4c3ff; } .c { fill: #6fd0e0; } .d { fill: #d9a6ec; } .e { fill: #8fb4ff; } }
+</style>
+	<text class="a" x="230.0" y="137.3" font-size="62" textLength="130.2" lengthAdjust="spacingAndGlyphs">MDP</text>
+	<text class="b" x="272.1" y="179.4" font-size="50" textLength="140.0" lengthAdjust="spacingAndGlyphs">DTMC</text>
+	<text class="c" x="168.0" y="84.9" font-size="50" textLength="140.0" lengthAdjust="spacingAndGlyphs">CTMC</text>
+	<text class="d" x="117.1" y="138.0" font-size="38" textLength="79.8" lengthAdjust="spacingAndGlyphs">PTA</text>
+	<text class="e" x="315.5" y="85.2" font-size="36" textLength="126.0" lengthAdjust="spacingAndGlyphs">POMDP</text>
+	<text class="c" x="158.3" y="166.5" font-size="31" textLength="65.1" lengthAdjust="spacingAndGlyphs">SMG</text>
+	<text class="a" x="354.3" y="112.2" font-size="28" textLength="78.4" lengthAdjust="spacingAndGlyphs">IMDP</text>
+	<text class="b" x="228.0" y="43.0" font-size="26" textLength="91.0" lengthAdjust="spacingAndGlyphs">POPTA</text>
+	<text class="d" x="330.0" y="137.2" font-size="26" textLength="54.6" lengthAdjust="spacingAndGlyphs">CSG</text>
+	<text class="e" x="147.9" y="189.6" font-size="24" textLength="84.0" lengthAdjust="spacingAndGlyphs">IDTMC</text>
+	<text class="c" x="89.0" y="162.7" font-size="22" textLength="61.6" lengthAdjust="spacingAndGlyphs">TPTG</text>
+	<text class="d" x="67.9" y="102.7" font-size="22" textLength="46.2" lengthAdjust="spacingAndGlyphs">LTS</text>
+	<text class="b" x="381.5" y="137.4" font-size="22" textLength="30.8" lengthAdjust="spacingAndGlyphs">PA</text>
+	<text class="a" x="312.1" y="49.5" font-size="20" textLength="42.0" lengthAdjust="spacingAndGlyphs">TSG</text>
+</svg>
