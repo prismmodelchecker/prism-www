@@ -1,10 +1,10 @@
 ---
 layout: layouts/base.njk
-title: "Bounded Retransmission Protocol"
+title: "Bounded retransmission protocol"
 section: casestudies
 permalink: /casestudies/brp/
 ---
-# Bounded Retransmission Protocol
+# Bounded retransmission protocol
 
 (D'Argenio, Jeannet, Jensen & Larsen)
 

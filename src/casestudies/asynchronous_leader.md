@@ -1,10 +1,10 @@
 ---
 layout: layouts/base.njk
-title: "Asynchronous Leader Election"
+title: "Asynchronous leader election protocol"
 section: casestudies
 permalink: /casestudies/asynchronous_leader/
 ---
-# Asynchronous Leader Election Protocol
+# Asynchronous leader election protocol
 
 (Itai & Rodeh)
 

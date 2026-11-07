@@ -1,10 +1,10 @@
 ---
 layout: layouts/base.njk
-title: "Network Virus Infection"
+title: "Network virus infection"
 section: casestudies
 permalink: /casestudies/virus/
 ---
-# Network Virus Infection
+# Network virus infection
 
 ## Contents
 

@@ -1,10 +1,10 @@
 ---
 layout: layouts/base.njk
-title: "NAND Multiplexing"
+title: "NAND multiplexing"
 section: casestudies
 permalink: /casestudies/nand/
 ---
-# NAND Multiplexing
+# NAND multiplexing
 
 (von Neumann)
 

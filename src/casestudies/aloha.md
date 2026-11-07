@@ -1,10 +1,10 @@
 ---
 layout: layouts/base.njk
-title: "Aloha Protocol"
+title: "Aloha protocol"
 section: casestudies
 permalink: /casestudies/aloha/
 ---
-# Aloha Protocol
+# Aloha protocol
 
 ## Contents
 

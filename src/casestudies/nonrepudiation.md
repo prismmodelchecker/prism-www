@@ -1,10 +1,10 @@
 ---
 layout: layouts/base.njk
-title: "Non-Repudiation Protocol (Markowitch &amp; Roggeman)"
+title: "Non-repudiation protocol"
 section: casestudies
 permalink: /casestudies/nonrepudiation/
 ---
-# Non-Repudiation Protocol
+# Non-repudiation protocol
 
 (Markowitch & Roggeman)
 

@@ -1,10 +1,10 @@
 ---
 layout: layouts/base.njk
-title: "Simple Peer-To-Peer Protocol"
+title: "Simple peer-to-peer protocol"
 section: casestudies
 permalink: /casestudies/peer2peer/
 ---
-# Simple Peer-To-Peer Protocol
+# Simple peer-to-peer protocol
 
 ## Contents
 

@@ -1,10 +1,10 @@
 ---
 layout: layouts/base.njk
-title: "Dining Philosophers"
+title: "Randomised dining philosophers (Lehmann & Rabin)"
 section: casestudies
 permalink: /casestudies/phil/
 ---
-# Randomised Dining Philosophers
+# Randomised dining philosophers (Lehmann & Rabin)
 
 (Lehmann and Rabin)
 

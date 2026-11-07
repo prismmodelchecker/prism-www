@@ -1,10 +1,10 @@
 ---
 layout: layouts/base.njk
-title: "IEEE 802.15.4 CSMA-CA Protocol (ZigBee)"
+title: "IEEE 802.15.4 CSMA-CA protocol (ZigBee)"
 section: casestudies
 permalink: /casestudies/zigbee/
 ---
-# IEEE 802.15.4 CSMA-CA Protocol (ZigBee)
+# IEEE 802.15.4 CSMA-CA protocol (ZigBee)
 
 ## Contents
 

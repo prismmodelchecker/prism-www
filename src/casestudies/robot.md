@@ -1,10 +1,10 @@
 ---
 layout: layouts/base.njk
-title: "Grid World Robot"
+title: "Grid world robot"
 section: casestudies
 permalink: /casestudies/robot/
 ---
-# Grid World Robot
+# Grid world robot
 
 ## Contents
 

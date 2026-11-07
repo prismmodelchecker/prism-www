@@ -1,10 +1,10 @@
 ---
 layout: layouts/base.njk
-title: "Futures Market Investor"
+title: "Futures market investor"
 section: casestudies
 permalink: /casestudies/investor/
 ---
-# Futures Market Investor
+# Futures market investor
 
 (McIver and Morgan)
 

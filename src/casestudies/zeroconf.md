@@ -1,10 +1,10 @@
 ---
 layout: layouts/base.njk
-title: "IPv4 Zeroconf Protocol"
+title: "IPv4 Zeroconf protocol"
 section: casestudies
 permalink: /casestudies/zeroconf/
 ---
-# IPv4 Zeroconf Protocol
+# IPv4 Zeroconf protocol
 
 (Cheshire, Adoba and Guttman)
 

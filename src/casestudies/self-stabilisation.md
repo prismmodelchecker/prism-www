@@ -1,10 +1,10 @@
 ---
 layout: layouts/base.njk
-title: "Randomised Self-Stabilising Algorithms"
+title: "Randomised self-stabilising algorithms"
 section: casestudies
 permalink: /casestudies/self-stabilisation/
 ---
-# Randomised Self-Stabilising Algorithms
+# Randomised self-stabilising algorithms
 
 ## Contents
 

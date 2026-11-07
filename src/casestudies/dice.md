@@ -1,12 +1,12 @@
 ---
 layout: layouts/base.njk
-title: "Case study: Dice programs"
+title: "Dice programs"
 section: casestudies
 permalink: /casestudies/dice/
 ---
 <p class="breadcrumb" data-pagefind-ignore><a href="/casestudies/">Case studies</a></p>
 
-# Dice programs (Knuth &amp; Yao)
+# Dice programs
 
 This case study considers two probabilistic programs, due to Knuth and Yao {% cite "KY76" %},
 which model fair dice using only fair coins.

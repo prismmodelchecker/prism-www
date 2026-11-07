@@ -1,10 +1,10 @@
 ---
 layout: layouts/base.njk
-title: "FireWire"
+title: "IEEE 1394 FireWire root contention protocol"
 section: casestudies
 permalink: /casestudies/firewire/
 ---
-# IEEE 1394 FireWire Root Contention Protocol
+# IEEE 1394 FireWire root contention protocol
 
 ## Contents
 

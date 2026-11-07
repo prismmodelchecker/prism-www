@@ -1,10 +1,10 @@
 ---
 layout: layouts/base.njk
-title: "Randomised Consensus Protocol"
+title: "Randomised consensus protocol"
 section: casestudies
 permalink: /casestudies/consensus/
 ---
-# Randomised Consensus Protocol
+# Randomised consensus protocol
 
 (Aspnes & Herlihy)
 

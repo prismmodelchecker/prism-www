@@ -1,10 +1,10 @@
 ---
 layout: layouts/base.njk
-title: "Flexible Manufacturing System"
+title: "Flexible manufacturing system"
 section: casestudies
 permalink: /casestudies/fms/
 ---
-# Flexible Manufacturing System
+# Flexible manufacturing system
 
 (Ciardo & Trivedi)
 

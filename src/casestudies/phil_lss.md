@@ -1,10 +1,10 @@
 ---
 layout: layouts/base.njk
-title: "Dining Philosophers (Lynch, Saias and Segala)"
+title: "Randomised dining philosophers (Lynch, Saias & Segala)"
 section: casestudies
 permalink: /casestudies/phil_lss/
 ---
-# Randomised Dining Philosophers
+# Randomised dining philosophers (Lynch, Saias & Segala)
 
 (Lynch, Saias and Segala)
 

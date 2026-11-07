@@ -1,10 +1,10 @@
 ---
 layout: layouts/base.njk
-title: "Air Traffic Control Systems"
+title: "Air traffic control systems"
 section: casestudies
 permalink: /casestudies/airtraffic/
 ---
-# Air Traffic Control Systems
+# Air traffic control systems
 
 *[Contributed by Yang Zhao &amp; Kristin Yvonne Rozier]*{.note}
 

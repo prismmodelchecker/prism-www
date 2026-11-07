@@ -1,10 +1,10 @@
 ---
 layout: layouts/base.njk
-title: "Human-in-the-Loop UAV Mission Planning"
+title: "Human-in-the-loop UAV mission planning"
 section: casestudies
 permalink: /casestudies/human-uav/
 ---
-# Human-in-the-Loop UAV Mission Planning
+# Human-in-the-loop UAV mission planning
 
 *[work with Lu Feng, Laura Humphrey and Ufuk Topcu]*{.note}
 

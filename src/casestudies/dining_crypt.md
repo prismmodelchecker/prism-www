@@ -1,10 +1,10 @@
 ---
 layout: layouts/base.njk
-title: "Dining Cryptographers"
+title: "Dining cryptographers"
 section: casestudies
 permalink: /casestudies/dining_crypt/
 ---
-# Dining Cryptographers
+# Dining cryptographers
 
 (Chaum)
 

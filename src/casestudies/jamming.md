@@ -1,10 +1,10 @@
 ---
 layout: layouts/base.njk
-title: "Jamming Multi-Channel Radio Systems"
+title: "Jamming multi-channel radio systems"
 section: casestudies
 permalink: /casestudies/jamming/
 ---
-# Jamming Multi-Channel Radio Systems
+# Jamming multi-channel radio systems
 
 (Q. Zhu, H. Li, Z. Han and T. Başar)
 

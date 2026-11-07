@@ -1,10 +1,10 @@
 ---
 layout: layouts/base.njk
-title: "Byzantine Agreement & Cadence SMV"
+title: "Byzantine agreement (Cadence SMV)"
 section: casestudies
 permalink: /casestudies/byzantine_smv/
 ---
-# Byzantine Agreement & Cadence SMV
+# Byzantine agreement (Cadence SMV)
 
 (Cachin, Kursawe & Shoup)
 

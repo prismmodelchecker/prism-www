@@ -1,10 +1,10 @@
 ---
 layout: layouts/base.njk
-title: "Dynamic Power Managament - 4 State Fujitsu Disk Drive - Results"
+title: "Dynamic power management: results for the 4-state Fujitsu disk drive"
 section: casestudies
 permalink: /casestudies/power_ctmc4_graphs/
 ---
-# Dynamic Power Management - 4 State Fujitsu Disk Drive - Results
+# Dynamic power management: results for the 4-state Fujitsu disk drive
 
 (Qiu, Wu and Pedram)
 

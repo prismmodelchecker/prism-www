@@ -1,10 +1,10 @@
 ---
 layout: layouts/base.njk
-title: "Probabilistic Contract Signing (Even, Goldreich & Lempel)"
+title: "Probabilistic contract signing (Even, Goldreich & Lempel)"
 section: casestudies
 permalink: /casestudies/contract_egl/
 ---
-# Probabilistic Contract Signing Protocol
+# Probabilistic contract signing (Even, Goldreich & Lempel)
 
 (Even, Goldreich & Lempel)
 

@@ -1,10 +1,10 @@
 ---
 layout: layouts/base.njk
-title: "Alternating Offers Protocol (Rubinstein)"
+title: "Alternating offers protocol"
 section: casestudies
 permalink: /casestudies/negotiation/
 ---
-# Alternating Offers Protocol
+# Alternating offers protocol
 
 (Rubinstein)
 

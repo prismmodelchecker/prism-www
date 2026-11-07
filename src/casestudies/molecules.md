@@ -1,10 +1,10 @@
 ---
 layout: layouts/base.njk
-title: "Molecular Reactions"
+title: "Simple molecular reactions"
 section: casestudies
 permalink: /casestudies/molecules/
 ---
-# Simple Molecular Reactions
+# Simple molecular reactions
 
 (Shapiro)
 

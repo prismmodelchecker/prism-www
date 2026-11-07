@@ -1,10 +1,10 @@
 ---
 layout: layouts/base.njk
-title: "Embedded Control System"
+title: "Embedded control system"
 section: casestudies
 permalink: /casestudies/embedded/
 ---
-# Embedded Control System
+# Embedded control system
 
 (Muppala, Ciardo & Trivedi)
 

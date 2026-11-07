@@ -1,10 +1,10 @@
 ---
 layout: layouts/base.njk
-title: "IEEE 802.11 Wireless LAN"
+title: "IEEE 802.11 wireless LAN"
 section: casestudies
 permalink: /casestudies/wlan/
 ---
-# IEEE 802.11 Wireless LAN
+# IEEE 802.11 wireless LAN
 
 ## Contents
 

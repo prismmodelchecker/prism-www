@@ -1,10 +1,10 @@
 ---
 layout: layouts/base.njk
-title: "Mutual Exclusion"
+title: "Randomised mutual exclusion (Pnueli & Zuck)"
 section: casestudies
 permalink: /casestudies/mutual/
 ---
-# Randomised Mutual Exclusion
+# Randomised mutual exclusion (Pnueli & Zuck)
 
 (Pnueli & Zuck)
 

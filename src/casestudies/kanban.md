@@ -1,10 +1,10 @@
 ---
 layout: layouts/base.njk
-title: "Kanban Manufacturing System"
+title: "Kanban manufacturing system"
 section: casestudies
 permalink: /casestudies/kanban/
 ---
-# Kanban Manufacturing System
+# Kanban manufacturing system
 
 (Ciardo & Tilgner)
 

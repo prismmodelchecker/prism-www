@@ -1,10 +1,10 @@
 ---
 layout: layouts/base.njk
-title: "Rabin’s Choice Coordination Problem"
+title: "Rabin’s choice coordination problem"
 section: casestudies
 permalink: /casestudies/rabin_choice/
 ---
-# Rabin’s Choice Coordination Problem
+# Rabin’s choice coordination problem
 
 *[Contributed by Ukachukwu Ndukwu and Annabelle McIver]*{.note}
 

@@ -1,10 +1,10 @@
 ---
 layout: layouts/base.njk
-title: "Mutual Exclusion"
+title: "Randomised mutual exclusion (Rabin)"
 section: casestudies
 permalink: /casestudies/rabin/
 ---
-# Randomised Mutual Exclusion
+# Randomised mutual exclusion (Rabin)
 
 (Rabin)
 

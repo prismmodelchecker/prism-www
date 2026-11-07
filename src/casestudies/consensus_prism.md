@@ -1,10 +1,10 @@
 ---
 layout: layouts/base.njk
-title: "Randomised Consensus Shared Coin Protocol"
+title: "Randomised consensus shared coin protocol"
 section: casestudies
 permalink: /casestudies/consensus_prism/
 ---
-# Randomised Consensus Shared Coin Protocol
+# Randomised consensus shared coin protocol
 
 (Aspnes & Herlihy)
 

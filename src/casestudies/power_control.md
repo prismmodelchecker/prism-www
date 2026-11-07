@@ -1,10 +1,10 @@
 ---
 layout: layouts/base.njk
-title: "Power Control in Cellular Networks"
+title: "Power control in cellular networks"
 section: casestudies
 permalink: /casestudies/power_control/
 ---
-# Power Control in Cellular Networks
+# Power control in cellular networks
 
 (R. Brenguier)
 

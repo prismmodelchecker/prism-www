@@ -1,10 +1,10 @@
 ---
 layout: layouts/base.njk
-title: "Trust Models for User-Centric Networks"
+title: "Trust models for user-centric networks"
 section: casestudies
 permalink: /casestudies/user-centric/
 ---
-# Trust Models for User-Centric Networks
+# Trust models for user-centric networks
 
 (A. Bogliolo, P. Polidori, A. Aldini, W. Moreira, P. Mendes, M. Yildiz, C. Ballester & J. Seigneur)
 

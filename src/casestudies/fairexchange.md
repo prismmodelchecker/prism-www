@@ -1,10 +1,10 @@
 ---
 layout: layouts/base.njk
-title: "Probabilistic Fair Exchange"
+title: "Probabilistic fair exchange"
 section: casestudies
 permalink: /casestudies/fairexchange/
 ---
-# Probabilistic Fair Exchange
+# Probabilistic fair exchange
 
 (Rabin)
 

@@ -1,10 +1,10 @@
 ---
 layout: layouts/base.njk
-title: "Random Graphs"
+title: "Random graphs"
 section: casestudies
 permalink: /casestudies/graph_connected/
 ---
-# Random Graphs
+# Random graphs
 
 ## Contents
 

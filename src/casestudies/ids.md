@@ -1,10 +1,10 @@
 ---
 layout: layouts/base.njk
-title: "Intrusion Detection Policies"
+title: "Intrusion detection policies"
 section: casestudies
 permalink: /casestudies/ids/
 ---
-# Intrusion Detection Policies
+# Intrusion detection policies
 
 (Q. Zhu and T. Başar)
 

@@ -1,10 +1,10 @@
 ---
 layout: layouts/base.njk
-title: "Randomised Two Process Wait-Free Test-and-Set"
+title: "Randomised two-process wait-free test-and-set"
 section: casestudies
 permalink: /casestudies/test-and-set/
 ---
-# Randomised Two Process Wait-Free Test-and-Set
+# Randomised two-process wait-free test-and-set
 
 (Tromp and Vitanyi)
 

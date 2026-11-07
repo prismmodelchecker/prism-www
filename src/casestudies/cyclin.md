@@ -1,10 +1,10 @@
 ---
 layout: layouts/base.njk
-title: "Cell Cycle Control in Eukaryotes"
+title: "Cell cycle control in eukaryotes"
 section: casestudies
 permalink: /casestudies/cyclin/
 ---
-# Cell Cycle Control in Eukaryotes
+# Cell cycle control in eukaryotes
 
 (Lecca and Priami)
 

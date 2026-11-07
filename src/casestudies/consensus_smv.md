@@ -1,10 +1,10 @@
 ---
 layout: layouts/base.njk
-title: "Randomised Consensus Protocol (with Cadence SMV)"
+title: "Randomised consensus protocol (Cadence SMV)"
 section: casestudies
 permalink: /casestudies/consensus_smv/
 ---
-# Randomised Consensus Protocol (with Cadence SMV)
+# Randomised consensus protocol (Cadence SMV)
 
 (Aspnes & Herlihy)
 

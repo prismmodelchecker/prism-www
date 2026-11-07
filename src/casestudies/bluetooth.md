@@ -1,10 +1,10 @@
 ---
 layout: layouts/base.njk
-title: "Bluetooth Device Discovery"
+title: "Bluetooth device discovery"
 section: casestudies
 permalink: /casestudies/bluetooth/
 ---
-# Bluetooth Device Discovery
+# Bluetooth device discovery
 
 ## Contents
 

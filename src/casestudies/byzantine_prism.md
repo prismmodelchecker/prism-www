@@ -1,10 +1,10 @@
 ---
 layout: layouts/base.njk
-title: "Byzantine Agreement"
+title: "Byzantine agreement (PRISM)"
 section: casestudies
 permalink: /casestudies/byzantine_prism/
 ---
-# Byzantine Agreement
+# Byzantine agreement (PRISM)
 
 (Cachin, Kursawe & Shoup)
 

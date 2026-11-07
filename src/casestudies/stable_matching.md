@@ -1,10 +1,10 @@
 ---
 layout: layouts/base.njk
-title: "Stable Matchings"
+title: "Stable matchings"
 section: casestudies
 permalink: /casestudies/stable_matching/
 ---
-# Stable Matchings
+# Stable matchings
 
 ## Contents
 

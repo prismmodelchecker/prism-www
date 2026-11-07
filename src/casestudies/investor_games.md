@@ -1,10 +1,10 @@
 ---
 layout: layouts/base.njk
-title: "Futures Market Investor"
+title: "Futures market investor (stochastic games)"
 section: casestudies
 permalink: /casestudies/investor_games/
 ---
-# Futures Market Investor
+# Futures market investor (stochastic games)
 
 (McIver and Morgan)
 

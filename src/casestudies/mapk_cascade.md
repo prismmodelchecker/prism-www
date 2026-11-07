@@ -1,10 +1,10 @@
 ---
 layout: layouts/base.njk
-title: "MAPK Cascade"
+title: "MAPK cascade"
 section: casestudies
 permalink: /casestudies/mapk_cascade/
 ---
-# MAPK Cascade
+# MAPK cascade
 
 (Huang and Ferrell)
 

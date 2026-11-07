@@ -1,10 +1,10 @@
 ---
 layout: layouts/base.njk
-title: "Dynamic Power Managament"
+title: "Dynamic power management"
 section: casestudies
 permalink: /casestudies/power/
 ---
-# Dynamic Power Management
+# Dynamic power management
 
 ## Contents
 

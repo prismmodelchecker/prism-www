@@ -1,10 +1,10 @@
 ---
 layout: layouts/base.njk
-title: "Workstation Cluster"
+title: "Workstation cluster"
 section: casestudies
 permalink: /casestudies/cluster/
 ---
-# Workstation Cluster
+# Workstation cluster
 
 (Haverkort, Hermanns & Katoen)
 

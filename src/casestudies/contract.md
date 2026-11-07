@@ -1,10 +1,10 @@
 ---
 layout: layouts/base.njk
-title: "Probabilistic Contract Signing"
+title: "Probabilistic contract signing (Ben-Or, Goldreich, Micali & Rivest)"
 section: casestudies
 permalink: /casestudies/contract/
 ---
-# Probabilistic Contract Signing Protocol
+# Probabilistic contract signing (Ben-Or, Goldreich, Micali & Rivest)
 
 (Ben-Or, Goldreich, Micali & Rivest)
 

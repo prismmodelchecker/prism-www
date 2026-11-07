@@ -1,10 +1,10 @@
 ---
 layout: layouts/base.njk
-title: "KRONOS and PRISM - Case Studies - FireWire"
+title: "IEEE 1394 FireWire root contention protocol (KRONOS)"
 section: casestudies
 permalink: /casestudies/firewire_kronos/
 ---
-# IEEE 1394 FireWire Root Contention Protocol
+# IEEE 1394 FireWire root contention protocol (KRONOS)
 
 ## Contents
 

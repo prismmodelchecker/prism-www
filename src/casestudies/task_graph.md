@@ -1,10 +1,10 @@
 ---
 layout: layouts/base.njk
-title: "Task-Graph Scheduling (Bouyer, Fahrenberg, Larsen &amp; Markey)"
+title: "Task-graph scheduling"
 section: casestudies
 permalink: /casestudies/task_graph/
 ---
-# Task-Graph Scheduling
+# Task-graph scheduling
 
 (Bouyer, Fahrenberg, Larsen & Markey)
 

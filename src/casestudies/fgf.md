@@ -1,10 +1,10 @@
 ---
 layout: layouts/base.njk
-title: "FGF (Fibroblast Growth Factor) Signalling"
+title: "FGF (fibroblast growth factor) signalling"
 section: casestudies
 permalink: /casestudies/fgf/
 ---
-# FGF (Fibroblast Growth Factor) Signalling
+# FGF (fibroblast growth factor) signalling
 
 ## Contents
 

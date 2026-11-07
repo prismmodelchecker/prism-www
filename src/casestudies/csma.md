@@ -1,10 +1,10 @@
 ---
 layout: layouts/base.njk
-title: "IEEE 802.3 CSMA/CD PROTOCOL"
+title: "IEEE 802.3 CSMA/CD protocol"
 section: casestudies
 permalink: /casestudies/csma/
 ---
-# IEEE 802.3 CSMA/CD Protocol
+# IEEE 802.3 CSMA/CD protocol
 
 ## Contents
 

@@ -1,10 +1,10 @@
 ---
 layout: layouts/base.njk
-title: "Cyclic Server Polling System"
+title: "Cyclic server polling system"
 section: casestudies
 permalink: /casestudies/polling/
 ---
-# Cyclic Server Polling System
+# Cyclic server polling system
 
 (Ibe and Trivedi)
 

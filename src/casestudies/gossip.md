@@ -1,10 +1,10 @@
 ---
 layout: layouts/base.njk
-title: "Gossip Protocol"
+title: "Gossip protocol"
 section: casestudies
 permalink: /casestudies/gossip/
 ---
-# Gossip Protocol
+# Gossip protocol
 
 ## Contents
 

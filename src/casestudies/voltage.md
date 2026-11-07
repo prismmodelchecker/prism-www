@@ -1,10 +1,10 @@
 ---
 layout: layouts/base.njk
-title: "Real-Time Dynamic Voltage Scaling"
+title: "Real-time dynamic voltage scaling"
 section: casestudies
 permalink: /casestudies/voltage/
 ---
-# Real-Time Dynamic Voltage Scaling
+# Real-time dynamic voltage scaling
 
 (Pillai and Shin)
 

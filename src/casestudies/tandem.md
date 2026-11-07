@@ -1,10 +1,10 @@
 ---
 layout: layouts/base.njk
-title: "Tandem Queueing Network"
+title: "Tandem queueing network"
 section: casestudies
 permalink: /casestudies/tandem/
 ---
-# Tandem Queueing Network
+# Tandem queueing network
 
 (Hermanns, Meyer-Kayser & Siegle)
 

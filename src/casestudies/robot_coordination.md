@@ -1,10 +1,10 @@
 ---
 layout: layouts/base.njk
-title: "Robot Coordination"
+title: "Robot coordination"
 section: casestudies
 permalink: /casestudies/robot_coordination/
 ---
-# Robot Coordination
+# Robot coordination
 
 ## Contents
 

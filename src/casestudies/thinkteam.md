@@ -1,10 +1,10 @@
 ---
 layout: layouts/base.njk
-title: "thinkteam"
+title: "The thinkteam user interface"
 section: casestudies
 permalink: /casestudies/thinkteam/
 ---
-# The thinkteam User Interface
+# The thinkteam user interface
 
 *[contributed by Maurice ter Beek, Mieke Massink, Diego Latella, Stefania Gnesi, Alessandro Forghieri and Maurizio Sebastianis]*{.note}
 

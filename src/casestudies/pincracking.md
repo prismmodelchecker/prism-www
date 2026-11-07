@@ -1,10 +1,10 @@
 ---
 layout: layouts/base.njk
-title: "PIN Cracking Schemes"
+title: "PIN cracking schemes"
 section: casestudies
 permalink: /casestudies/pincracking/
 ---
-# PIN Cracking Schemes
+# PIN cracking schemes
 
 *[Contributed by Graham Steel]*{.note}
 

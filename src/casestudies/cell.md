@@ -1,10 +1,10 @@
 ---
 layout: layouts/base.njk
-title: "Wireless Communication Cell"
+title: "Wireless communication cell"
 section: casestudies
 permalink: /casestudies/cell/
 ---
-# Wireless Communication Cell
+# Wireless communication cell
 
 (Haring, Marie, Puigjaner and Trivedi)
 

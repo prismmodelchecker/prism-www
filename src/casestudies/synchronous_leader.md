@@ -1,10 +1,10 @@
 ---
 layout: layouts/base.njk
-title: "Synchronous Leader Election"
+title: "Synchronous leader election protocol"
 section: casestudies
 permalink: /casestudies/synchronous_leader/
 ---
-# Synchronous Leader Election Protocol
+# Synchronous leader election protocol
 
 (Itai & Rodeh)
 

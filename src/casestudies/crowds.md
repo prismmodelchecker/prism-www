@@ -1,10 +1,10 @@
 ---
 layout: layouts/base.njk
-title: "Crowds"
+title: "Crowds protocol"
 section: casestudies
 permalink: /casestudies/crowds/
 ---
-# Crowds Protocol
+# Crowds protocol
 
 (Reiter & Rubin)
 

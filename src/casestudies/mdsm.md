@@ -1,10 +1,10 @@
 ---
 layout: layouts/base.njk
-title: "Microgrid Demand Side Management"
+title: "Microgrid demand-side management"
 section: casestudies
 permalink: /casestudies/mdsm/
 ---
-# Microgrid Demand Side Management
+# Microgrid demand-side management
 
 ## Contents
 

@@ -1,10 +1,10 @@
 ---
 layout: layouts/base.njk
-title: "DNA Walkers"
+title: "DNA walkers"
 section: casestudies
 permalink: /casestudies/dna_walkers/
 ---
-# DNA Walkers
+# DNA walkers
 
 ## Contents
 

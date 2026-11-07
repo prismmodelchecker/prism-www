@@ -1,10 +1,10 @@
 ---
 layout: layouts/base.njk
-title: "Public Good Game"
+title: "Public good game"
 section: casestudies
 permalink: /casestudies/public_good_game/
 ---
-# Public Good Game
+# Public good game
 
 ## Contents
 

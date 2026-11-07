@@ -1,10 +1,10 @@
 ---
 layout: layouts/base.njk
-title: "Dynamic Power Managament - IBM Disk Drive"
+title: "Dynamic power management: IBM disk drive"
 section: casestudies
 permalink: /casestudies/power_dtmc/
 ---
-# Dynamic Power Management - IBM Disk Drive
+# Dynamic power management: IBM disk drive
 
 (Benini, Bogliolo, Paleologo and De Micheli)
 

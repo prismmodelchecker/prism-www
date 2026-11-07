@@ -1,10 +1,10 @@
 ---
 layout: layouts/base.njk
-title: "Probabilistic Broadcast Protocols"
+title: "Probabilistic broadcast protocols"
 section: casestudies
 permalink: /casestudies/prob_broadcast/
 ---
-# Probabilistic Broadcast Protocols
+# Probabilistic broadcast protocols
 
 *[Contributed by Ansgar Fehnker and Peng Gao]*{.note}
 
