@@ -209,7 +209,7 @@ button, .button {
 	cursor: pointer;
 }
 button:hover { background: var(--accent-bg); }
-.site-search button { background: var(--prism-dark); border-color: var(--prism-dark); color: #fff; }
+.site-search button { background: var(--prism-dark); border-color: var(--prism-dark); color: #fff; display: flex; align-items: center; }
 .site-search button:hover { background: var(--prism-light); border-color: var(--prism-light); }
 .menu-toggle { color: var(--link); }
 
