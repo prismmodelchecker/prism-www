@@ -39,7 +39,7 @@
 
 {%- set sectionNav = site.nav | sectionMenu(section) %}
 
-<div class="page{% if sectionNav or isManual %} page--with-nav{% endif %}{% if isManual %} page--manual{% endif %}">
+<div class="page{% if sectionNav or isManual or newsSidebar %} page--with-nav{% endif %}{% if isManual %} page--manual{% endif %}{% if newsSidebar %} page--home{% endif %}">
 	{%- if isManual %}
 	{% include "partials/manual-nav.njk" %}
 	{%- elif sectionNav %}
@@ -53,6 +53,18 @@
 		{%- endfor %}
 		</ul>
 		</details>
+	</nav>
+	{%- elif newsSidebar %}
+	<nav class="local-nav" aria-label="Latest news">
+		<h2 class="local-nav__title"><a href="/news/">Latest news</a></h2>
+		<div class="news-panel">
+		<ul class="news">
+		{%- for item in news | limit(3) %}
+			<li><time datetime="{{ item.date }}">{{ item.date | monthYear }}</time> {{ item.html | safe }}</li>
+		{%- endfor %}
+		</ul>
+		<p><a href="/news/">All news</a></p>
+		</div>
 	</nav>
 	{%- endif %}
 	<main id="main" class="content"{% if searchExclude != "true" %} data-pagefind-body{% endif %}>

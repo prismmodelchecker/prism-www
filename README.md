@@ -50,7 +50,7 @@ Node is installed in `~/opt/node` there (not the system's).
   `{% prismCode "casestudies/examples/die.pm" %}`, `{% task %}`, `{{ releases.prism.version }}`); the manual is plain Markdown
   An image alone in a paragraph is shown as a figure, and a heading can set its own anchor (`## Introduction { #intro }`;
   the space matters, as `{#` starts a Nunjucks comment). The manual uses neither
-  Styles from `site.css` can be added to blocks (`::: answer` ... `:::`) and to inline elements (`*(by ...)*{.note}`).
+  Styles from `site.css` can be added to blocks (`::: answer` ... `:::`; the home page's panels are done the same way) and to inline elements (`*(by ...)*{.note}`).
   Tables can have merged cells, row groups and column groups (see `src/_lib/tables.js`). The manual uses none of these,
   so that it reads properly on GitHub
 - `src/htaccess.njk` – generates the server's redirects from old URLs

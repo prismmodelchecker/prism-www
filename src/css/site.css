@@ -288,16 +288,18 @@ body.files-page { max-width: 60rem; margin: 0 auto; padding: 1rem 1rem 3rem; ove
 :root {
 	--side-bg: var(--bg-subtle);
 	--side-head: #eaeaf2;
-	--side-border: #e1e2ec;
+	--side-border: var(--border);
+	--box-shadow: 0 2px 8px rgba(30, 30, 90, 0.08);
 }
 @media (prefers-color-scheme: dark) {
-	:root { --side-head: #2b2b3b; --side-border: #2b2b3b; }
+	:root { --side-head: #2b2b3b; --box-shadow: none; }
 }
 
 .local-nav {
 	background: var(--side-bg);
 	border: 1px solid var(--side-border);
 	border-radius: 10px;
+	box-shadow: var(--box-shadow);
 	overflow: hidden;
 }
 .local-nav, .manual-nav { font-size: 0.95rem; }
@@ -347,35 +349,6 @@ body.files-page { max-width: 60rem; margin: 0 auto; padding: 1rem 1rem 3rem; ove
 .pager__next { margin-left: auto; text-align: right; }
 
 /* Content elements */
-
-.lead { font-size: 1.15rem; }
-
-.download-cta {
-	display: inline-block;
-	padding: 0.5rem 1.1rem;
-	border-radius: 6px;
-	background: var(--prism-dark);
-	color: #fff;
-	font-weight: 600;
-	text-decoration: none;
-}
-.download-cta:visited { color: #fff; }
-.download-cta:hover { background: var(--prism-light); }
-
-.callout {
-	background: var(--accent-bg);
-	border-left: 4px solid var(--prism-light);
-	padding: 0.75rem 1rem;
-	margin: 1.5rem 0;
-	border-radius: 0 6px 6px 0;
-}
-.callout > :first-child { margin-top: 0; }
-.callout > :last-child { margin-bottom: 0; }
-
-.figure-float { float: right; margin: 0 0 1rem 1.5rem; max-width: 40%; }
-@media (max-width: 40rem) {
-	.figure-float { float: none; margin: 1rem 0; max-width: 100%; }
-}
 
 figure { margin: 1.5rem 0; }
 figcaption { font-size: 0.9rem; color: var(--text-muted); }
@@ -506,7 +479,7 @@ mark.bib-highlight { background: var(--bib-mark-bg); color: inherit; border-bott
 
 /* Manual: full contents in a sidebar (as in the Rust book), current page's headings nested under it */
 
-.manual-nav { background: var(--side-bg); border: 1px solid var(--side-border); border-radius: 10px; }
+.manual-nav { background: var(--side-bg); border: 1px solid var(--side-border); border-radius: 10px; box-shadow: var(--box-shadow); }
 .manual-nav__head { background: var(--side-bg); }
 .manual-nav__search { padding: 0.6rem 0.5rem 0; }
 .manual-nav__version {
@@ -550,6 +523,9 @@ mark.bib-highlight { background: var(--bib-mark-bg); color: inherit; border-bott
 
 .content hr { border: 0; border-top: 1px solid var(--border); margin: 2rem 0 1rem; height: 0; }
 .content img.prism-image { display: block; margin: 1rem auto; padding: 4px; border: 1px solid var(--border); background: #fff; }
+/* Search page: a filter with nothing to choose from for these results (Year or Type, when no papers match) */
+#search .pagefind-ui__filter-block:not(:has(input)) { display: none; }
+
 /* "How to cite" boxes */
 .content .prism-citebox { margin: 1.5rem 0; border: 1px solid var(--border); border-radius: 6px; background: var(--accent-bg); font-size: 0.9rem; overflow: auto; }
 .content .prism-citeboxheader { padding: 0.35rem 0.8rem; background: var(--bg-subtle); border-bottom: 1px solid var(--border); font-weight: 600; }
@@ -614,3 +590,56 @@ mark.bib-highlight { background: var(--bib-mark-bg); color: inherit; border-bott
 .manual-single__version { color: var(--text-muted); font-weight: 400; font-size: 0.7em; }
 .manual-single__page, .manual-single__section > :first-child { border-top: 1px solid var(--border); margin-top: 2.5rem; padding-top: 0.5rem; }
 .manual-single [id] { scroll-margin-top: 1rem; }
+
+/* Home page (src/index.md): news in the side panel, and Markdown blocks (::: banner, ...) as panels.
+   All the main text is one size, and all the headings another */
+.page--home .content { max-width: none; font-size: 1rem; }
+.page--home .content h2 { font-size: 1.2rem; margin: 0 0 0.4rem; }
+.page--home .content pre, .page--home .content code { font-size: 0.85rem; }
+.page--home .content hr { margin: 2rem 0 1rem; }
+.page--home .bib-entry { font-size: 1rem; }
+.page--home .visually-hidden + p { margin: 0 0 0.6rem; }
+.news-panel { padding: 0.75rem 0.9rem; }
+.news-panel p { margin: 0; }
+.news-panel .news li { margin-bottom: 0.8rem; }
+.local-nav .news-panel a, .local-nav .news-panel a:hover { display: inline; padding: 0; color: var(--link); text-decoration: underline; background: none; }
+@media (max-width: 59.99rem) {
+	.page--home > .local-nav { order: 2; margin-top: 1.5rem; } /* news after the main content */
+}
+@media (min-width: 60rem) {
+	.page--home > .local-nav { position: static; max-height: none; }
+	/* The tops of the first line's letters line up with the top of the news panel */
+	.page--home .content { padding-top: calc(0.7 * var(--h1-size) - 0.4rem); }
+}
+
+.page--home .banner {
+	display: flow-root; margin: 1.2rem 0 1.5rem; padding: 1.5rem 1.8rem; border-radius: 12px;
+	background: linear-gradient(120deg, var(--prism-dark), var(--prism-light)); color: #fff;
+}
+.page--home .banner p { margin: 0 0 0.7rem; }
+.page--home .banner > :last-child { margin-bottom: 0; }
+.page--home .banner a, .page--home .banner a:visited { color: #fff; }
+.page--home .banner > p:has(> img) { float: right; width: 40%; margin: 0 0 0 1.5rem; }
+.page--home .banner img.prism-image { width: 100%; max-height: 14rem; margin: 0; padding: 6px; border: 0; border-radius: 8px; object-fit: contain; }
+@media (max-width: 47.99rem) {
+	.page--home .banner { display: flex; flex-direction: column; }
+	.page--home .banner > p:has(> img) { float: none; order: 1; width: 100%; margin: 0.8rem 0 0; }
+}
+
+.page--home .columns { display: grid; grid-template-columns: minmax(0, 1fr); gap: 1.5rem; margin: 1.5rem 0; }
+@media (min-width: 52rem) {
+	.page--home .columns { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+}
+.page--home .box, .page--home .questions {
+	padding: 1rem 1.2rem; border: 1px solid var(--border); border-radius: 10px;
+	background: var(--bg); box-shadow: var(--box-shadow);
+}
+.page--home .box p { margin: 0.3rem 0; }
+.page--home .box pre { margin: 0; }
+/* Each question and its formula, with a line down the side of both */
+.page--home .questions > p { margin: 1rem 0 0; padding: 0 0 0.3rem 0.9rem; border-left: 3px solid var(--prism-light); }
+.page--home .questions > h2 + p { margin-top: 0; }
+.page--home .questions > pre {
+	margin: 0; padding: 0 0 0 0.9rem; overflow: visible; white-space: pre-wrap;
+	border: 0; border-left: 3px solid var(--prism-light); border-radius: 0; background: none;
+}
