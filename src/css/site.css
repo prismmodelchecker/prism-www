@@ -320,7 +320,7 @@ body.files-page { max-width: 60rem; margin: 0 auto; padding: 1rem 1rem 3rem; ove
    Item text lines up with the title text (0.5rem box padding + 0.5rem item padding = the title's 1rem). */
 .local-nav ul, .manual-nav ul { list-style: none; margin: 0; padding: 0; }
 .local-nav li, .manual-nav li { margin: 0; }
-.local-nav details, .manual-nav details { padding: 0.5rem 0.5rem 0.75rem; }
+.local-nav__details { padding: 0.5rem 0.5rem 0.75rem; }
 .local-nav a, .manual-nav a {
 	display: block; padding: 0.2rem 0.5rem; border-radius: 4px;
 	text-decoration: none; color: var(--text);
@@ -329,9 +329,13 @@ body.files-page { max-width: 60rem; margin: 0 auto; padding: 1rem 1rem 3rem; ove
 .local-nav a[aria-current="page"], .manual-nav a[aria-current="page"] {
 	background: var(--accent-bg); color: var(--link); font-weight: 600;
 }
-.local-nav summary { cursor: pointer; color: var(--text-muted); margin-bottom: 0.25rem; }
-@media (min-width: 60rem) {
-	.local-nav summary { display: none; }
+/* On small screens, the title bar shows and hides the menu (see site.js), with a triangle to say so */
+@media (max-width: 59.99rem) {
+	.js :is(.local-nav, .manual-nav):has(.local-nav__details) :is(.local-nav__title, .manual-nav__title) { position: relative; padding-right: 2.5rem; cursor: pointer; }
+	.js :is(.local-nav, .manual-nav):has(.local-nav__details) :is(.local-nav__title, .manual-nav__title)::after {
+		content: "▾"; position: absolute; top: 0.6rem; right: 1rem; color: var(--text-muted);
+	}
+	.js :is(.local-nav, .manual-nav):has(.local-nav__details:not([hidden])) :is(.local-nav__title, .manual-nav__title)::after { transform: rotate(180deg); }
 }
 
 .breadcrumb { font-size: 0.9rem; color: var(--text-muted); margin: 0; }
@@ -500,16 +504,11 @@ mark.bib-highlight { background: var(--bib-mark-bg); color: inherit; border-bott
 .manual-nav .manual-nav__section a { color: inherit; }
 .manual-nav .manual-nav__headings { margin: 0.15rem 0 0.4rem 0.5rem; border-left: 2px solid var(--border); }
 .manual-nav .manual-nav__headings a { font-size: 0.88rem; color: var(--text-muted); padding-left: 0.6rem; }
-.manual-nav summary { cursor: pointer; color: var(--text-muted); }
 
 @media (min-width: 60rem) {
 	.page--manual { grid-template-columns: 17rem minmax(0, 1fr); }
-	.manual-nav summary { display: none; }
 	/* title and search stay in view while the contents scroll */
 	.manual-nav__head { position: sticky; top: 0; z-index: 1; }
-}
-@media (max-width: 59.99rem) {
-	.manual-nav summary { padding: 0.25rem 0; }
 }
 
 .manual-page h1 { margin-top: 0.3em; }
@@ -599,13 +598,10 @@ mark.bib-highlight { background: var(--bib-mark-bg); color: inherit; border-bott
 .page--home .content hr { margin: 2rem 0 1rem; }
 .page--home .bib-entry { font-size: 1rem; }
 .page--home .visually-hidden + p { margin: 0 0 0.6rem; }
-.news-panel { padding: 0.75rem 0.9rem; }
+.news-panel { padding: 0.25rem 0.4rem 0; }
 .news-panel p { margin: 0; }
 .news-panel .news li { margin-bottom: 0.8rem; }
 .local-nav .news-panel a, .local-nav .news-panel a:hover { display: inline; padding: 0; color: var(--link); text-decoration: underline; background: none; }
-@media (max-width: 59.99rem) {
-	.page--home > .local-nav { order: 2; margin-top: 1.5rem; } /* news after the main content */
-}
 @media (min-width: 60rem) {
 	.page--home > .local-nav { position: static; max-height: none; }
 	/* The tops of the first line's letters line up with the top of the news panel */

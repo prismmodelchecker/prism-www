@@ -1,12 +1,40 @@
-// Small-screen behaviour: collapsible section contents and menu toggle. Without JS, everything is shown.
+// Small-screen behaviour: collapsible side menus and menu toggle. Without JS, everything is shown.
 
 document.documentElement.classList.add("js");
 
 document.addEventListener("DOMContentLoaded", () => {
-	// On small screens, start the section contents (e.g. manual) collapsed so the page text comes first
-	if (window.matchMedia("(max-width: 59.99rem)").matches) {
-		for (const d of document.querySelectorAll(".local-nav__details")) d.open = false;
+	// On small screens, side menus start collapsed so the page text comes first, and their title bars
+	// show and hide them instead of linking to the section's index page (which is in the main menu)
+	const small = window.matchMedia("(max-width: 59.99rem)");
+	const menus = [];
+	for (const list of document.querySelectorAll(".local-nav__details")) {
+		const title = list.parentElement.querySelector(".local-nav__title, .manual-nav__title");
+		const link = title.querySelector("a");
+		menus.push({ list, link });
+		title.addEventListener("click", (e) => {
+			if (!small.matches) return;
+			e.preventDefault();
+			list.hidden = !list.hidden;
+			link.setAttribute("aria-expanded", String(!list.hidden));
+		});
+		link.addEventListener("keydown", (e) => {
+			if (small.matches && e.key === " ") { e.preventDefault(); link.click(); }
+		});
 	}
+	const fitMenus = () => {
+		for (const { list, link } of menus) {
+			list.hidden = small.matches;
+			if (small.matches) {
+				link.setAttribute("role", "button");
+				link.setAttribute("aria-expanded", "false");
+			} else {
+				link.removeAttribute("role");
+				link.removeAttribute("aria-expanded");
+			}
+		}
+	};
+	fitMenus();
+	small.addEventListener("change", fitMenus);
 
 	// Keep the current page visible in a long, independently scrolling contents sidebar
 	const current = document.querySelector(".manual-nav a[aria-current=page]");

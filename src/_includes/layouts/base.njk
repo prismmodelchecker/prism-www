@@ -45,18 +45,18 @@
 	{%- elif sectionNav %}
 	<nav class="local-nav" aria-label="{{ sectionNav.title }}">
 		<h2 class="local-nav__title"><a href="{{ sectionNav.url }}">{{ sectionNav.title }}</a></h2>
-		<details class="local-nav__details" open>
-		<summary>Contents</summary>
+		<div class="local-nav__details">
 		<ul>
 		{%- for child in sectionNav.children %}
 			<li><a href="{{ child.url }}"{% if child.url == page.url or child.url == listUrl %} aria-current="page"{% endif %}>{{ child.title }}</a></li>
 		{%- endfor %}
 		</ul>
-		</details>
+		</div>
 	</nav>
 	{%- elif newsSidebar %}
 	<nav class="local-nav" aria-label="Latest news">
 		<h2 class="local-nav__title"><a href="/news/">Latest news</a></h2>
+		<div class="local-nav__details">
 		<div class="news-panel">
 		<ul class="news">
 		{%- for item in news | limit(3) %}
@@ -64,6 +64,7 @@
 		{%- endfor %}
 		</ul>
 		<p><a href="/news/">All news</a></p>
+		</div>
 		</div>
 	</nav>
 	{%- endif %}

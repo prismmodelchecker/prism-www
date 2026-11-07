@@ -10,8 +10,7 @@
 			<input type="hidden" name="section" value="Documentation">
 		</form>
 	</div>
-	<details class="local-nav__details" open>
-		<summary>Contents</summary>
+	<div class="local-nav__details">
 		{%- for section in manual.sections %}
 		{%- if section.title %}<h2 class="manual-nav__section"><a href="{{ section.url }}"{% if section.url == page.url %} aria-current="page"{% endif %}>{{ section.title }}</a></h2>{% endif %}
 		<ul{% if not section.title %} class="manual-nav__top"{% endif %}>
@@ -28,5 +27,5 @@
 			{%- endfor %}
 		</ul>
 		{%- endfor %}
-	</details>
+	</div>
 </nav>
