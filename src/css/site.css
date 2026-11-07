@@ -334,7 +334,7 @@ body.files-page { max-width: 60rem; margin: 0 auto; padding: 1rem 1rem 3rem; ove
 	text-decoration: none; color: var(--text);
 }
 .local-nav a:hover, .manual-nav a:hover { background: var(--side-head); }
-.local-nav a[aria-current="page"], .manual-nav a[aria-current="page"] {
+.local-nav a[aria-current], .manual-nav a[aria-current="page"] {
 	background: var(--accent-bg); color: var(--link); font-weight: 600;
 }
 /* On small screens, the title bar shows and hides the menu (see site.js), with a triangle to say so */

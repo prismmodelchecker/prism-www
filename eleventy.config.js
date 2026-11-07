@@ -142,6 +142,15 @@ export default function (eleventyConfig) {
 		return new Date(Date.UTC(+y, +m - 1)).toLocaleDateString("en-GB", { month: "long", year: "numeric", timeZone: "UTC" });
 	});
 
+	// The side menu entry to mark for a page: the page itself (or its list, for the bibliography's other views),
+	// or else the entry whose URL is the longest start of the page's URL (/lectures/ for /lectures/pmc/)
+	eleventyConfig.addFilter("menuCurrent", (children, url, listUrl) => {
+		const exact = children.find((c) => c.url === url || c.url === listUrl);
+		if (exact) return exact.url;
+		const within = children.filter((c) => c.url.endsWith("/") && url.startsWith(c.url));
+		return within.sort((a, b) => b.url.length - a.url.length)[0]?.url;
+	});
+
 	// Menu entry for the current section, if it has sub-pages
 	// (with any=true, return the entry even if it has no sub-pages)
 	eleventyConfig.addFilter("sectionMenu", (nav, section, any = false) =>

@@ -46,9 +46,10 @@
 	<nav class="local-nav" aria-label="{{ sectionNav.title }}">
 		<h2 class="local-nav__title"><a href="{{ sectionNav.url }}">{{ sectionNav.title }}</a></h2>
 		<div class="local-nav__details">
+		{%- set current = sectionNav.children | menuCurrent(page.url, listUrl) %}
 		<ul>
 		{%- for child in sectionNav.children %}
-			<li><a href="{{ child.url }}"{% if child.url == page.url or child.url == listUrl %} aria-current="page"{% endif %}>{{ child.title }}</a></li>
+			<li><a href="{{ child.url }}"{% if child.url == current %} aria-current="{{ 'page' if child.url == page.url else 'true' }}"{% endif %}>{{ child.title }}</a></li>
 		{%- endfor %}
 		</ul>
 		</div>
