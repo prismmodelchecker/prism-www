@@ -1,11 +1,11 @@
 ---
 layout: layouts/base.njk
-title: "Properties (PTAs)"
+title: "Benchmark properties for PTAs"
 section: downloads
 permalink: /benchmarks/props-pta/
 ---
 {% from "partials/benchmark-tables.njk" import propertyTable %}
-# PRISM Benchmark Suite - Properties (PTAs)
+# Benchmark properties for PTAs
 
 ## PTA time-bounded reachability { #pta-timebounded-reachability }
 

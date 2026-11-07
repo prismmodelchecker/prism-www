@@ -1,10 +1,10 @@
 ---
 layout: layouts/base.njk
-title: "Other Downloads"
+title: "Other downloads"
 section: downloads
 permalink: /other-downloads/
 ---
-# Other Downloads
+# Other downloads
 
 PRISM includes or adapts several pieces of software developed elsewhere. This pages lists them, and provides links and downloads.
 

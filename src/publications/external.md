@@ -13,7 +13,7 @@ eleventyComputed:
   searchExclude: "{% if view.id != 'date' %}true{% endif %}"
 ---
 {% set items = bib.items | bibSelect({ cats: ["prismbib"] }) %}
-# PRISM bibliography (external)
+# External PRISM publications
 
 The {{ items.length }} PRISM-related papers by authors outside the PRISM team.
 See also the full [PRISM bibliography](/publications/bibliography/)

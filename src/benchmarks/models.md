@@ -1,11 +1,11 @@
 ---
 layout: layouts/base.njk
-title: "Models"
+title: "Benchmark models"
 section: downloads
 permalink: /benchmarks/models/
 ---
 {% from "partials/benchmark-tables.njk" import modelTable %}
-# PRISM Benchmark Suite - Models
+# Benchmark models
 
 Below are details of all the models in the benchmark suite, grouped by type.
 Click on the name of a model to browse the model/property files.

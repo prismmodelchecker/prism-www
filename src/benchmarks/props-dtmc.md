@@ -1,11 +1,11 @@
 ---
 layout: layouts/base.njk
-title: "Properties (DTMCs)"
+title: "Benchmark properties for DTMCs"
 section: downloads
 permalink: /benchmarks/props-dtmc/
 ---
 {% from "partials/benchmark-tables.njk" import propertyTable %}
-# PRISM Benchmark Suite - Properties (DTMCs)
+# Benchmark properties for DTMCs
 
 ## DTMC quantitative reachability { #dtmcs-reachability-quantitative }
 

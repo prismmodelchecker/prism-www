@@ -4,7 +4,7 @@ title: "Documentation"
 section: doc
 permalink: /doc/
 ---
-# PRISM documentation
+# Documentation
 
 For information about using installing and running PRISM, please see:
 

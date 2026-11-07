@@ -4,7 +4,7 @@ title: "People"
 section: about
 permalink: /people/
 ---
-# PRISM - People
+# People
 
 PRISM was created and is still actively maintained by:
 

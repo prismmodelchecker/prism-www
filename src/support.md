@@ -4,7 +4,7 @@ title: "Support"
 section: support
 permalink: /support/
 ---
-# PRISM support
+# Support
 
 ## Need help?
 

@@ -1,11 +1,11 @@
 ---
 layout: layouts/base.njk
-title: "Properties (SMGs)"
+title: "Benchmark properties for SMGs"
 section: downloads
 permalink: /benchmarks/props-smg/
 ---
 {% from "partials/benchmark-tables.njk" import propertyTable %}
-# PRISM Benchmark Suite - Properties (SMGs)
+# Benchmark properties for SMGs
 
 ## SMG quantitative reachability { #smgs-reachability-quantitative }
 

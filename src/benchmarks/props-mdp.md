@@ -1,11 +1,11 @@
 ---
 layout: layouts/base.njk
-title: "Properties (MDPs)"
+title: "Benchmark properties for MDPs"
 section: downloads
 permalink: /benchmarks/props-mdp/
 ---
 {% from "partials/benchmark-tables.njk" import propertyTable %}
-# PRISM Benchmark Suite - Properties (MDPs)
+# Benchmark properties for MDPs
 
 ## MDP quantitative reachability { #mdps-reachability-quantitative }
 

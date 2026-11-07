@@ -1,6 +1,6 @@
 ---
 layout: layouts/base.njk
-title: "What's In PRISM"
+title: "What's in PRISM"
 section: doc
 permalink: /doc/whatsinprism-mod/
 ---

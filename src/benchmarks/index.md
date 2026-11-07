@@ -1,10 +1,10 @@
 ---
 layout: layouts/base.njk
-title: "Benchmarks"
+title: "PRISM benchmark suite"
 section: downloads
 permalink: /benchmarks/
 ---
-# PRISM Benchmark Suite
+# PRISM benchmark suite
 
 The **PRISM benchmark suite** is a collection of PRISM models and associated properties, that can be used for benchmarking or testing of a new probabilistic model checking implementation or technique. These are already [widely used](https://scholar.google.com/scholar?hl=en&as_sdt=2005&sciodt=0,5&cites=7638455775515697190&scipsc=&q=&scisbd=1) in the verification community for this purpose.
 

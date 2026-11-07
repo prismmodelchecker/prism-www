@@ -1,10 +1,10 @@
 ---
 layout: layouts/base.njk
-title: "Symmetry Reduction"
+title: "Symmetry reduction (PRISM-symm)"
 section: downloads
 permalink: /symm/
 ---
-# PRISM - Symmetry Reduction
+# Symmetry reduction (PRISM-symm)
 
 Here you can find details about the prototype implementation of symmetry reduction in PRISM, as described in our CAV'06 paper {% cite "KNP06a" %}.
 

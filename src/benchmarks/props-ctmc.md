@@ -1,11 +1,11 @@
 ---
 layout: layouts/base.njk
-title: "Properties (CTMCs)"
+title: "Benchmark properties for CTMCs"
 section: downloads
 permalink: /benchmarks/props-ctmc/
 ---
 {% from "partials/benchmark-tables.njk" import propertyTable %}
-# PRISM Benchmark Suite - Properties (CTMCs)
+# Benchmark properties for CTMCs
 
 ## CTMC steady-state { #ctmcs-steady-state }
 

@@ -1,10 +1,10 @@
 ---
 layout: layouts/base.njk
-title: "Tutorial"
+title: "PRISM tutorial"
 section: doc
 permalink: /tutorial/
 ---
-# PRISM Tutorial
+# PRISM tutorial
 
 This tutorial will introduce you to the PRISM tool using a selection of example models.
 

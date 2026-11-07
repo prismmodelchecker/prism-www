@@ -1,10 +1,10 @@
 ---
 layout: layouts/base.njk
-title: "Case Studies"
+title: "Case studies"
 section: casestudies
 permalink: /casestudies/
 ---
-# PRISM case studies
+# Case studies
 
 PRISM has been used to analyse a wide range of case studies in many different application domains. A non-exhaustive list of these is given below. In many cases, we provide detailed information about the case study, including PRISM language source code and experimental results. For others, we just include links to the relevant publication.
 
