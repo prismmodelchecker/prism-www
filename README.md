@@ -93,6 +93,22 @@ Inline:
 - Images: an image alone in a paragraph is a figure (several are shown side by side); `{.right}` floats it right,
   and a size class sets its width, as a percentage (`{.w40}`) or in pixels (`{.px400}`): the sizes are listed in `site.css`
 
+## Page titles
+
+Each page has a `title` in its front matter (the browser tab, as "Title – PRISM", and search results)
+and its own `# Heading` at the top of the body; the two match.
+
+- **Sentence case**: "Bounded retransmission protocol", "Installing PRISM-games". Proper nouns, product
+  names and acronyms keep their capitals (PRISM, PRISM-games, IEEE 802.11, FireWire, Zeroconf, Knuth & Yao).
+- **No "PRISM" prefix** just to say where you are ("PRISM - People" is "People"); keep it where it means
+  something ("Download PRISM", "PRISM publications" next to "External publications").
+- **Self-contained**: a title makes sense on its own in a browser tab or a search result, without
+  "Section: page" or "Section - page" ("PRISM-games: Installation" is "Installing PRISM-games",
+  "PRISM Benchmark Suite - Models" is "Benchmark models"). Pages that would otherwise share a title
+  say how they differ ("Randomised dining philosophers (Lynch, Saias & Segala)").
+- **No separators** inside a title; where one is unavoidable, a colon ("Dynamic power management: IBM disk drive").
+- The heading is plain text: links (e.g. to a summer school's site) and badges go in the text below it.
+
 ## Large files
 
 Files that belong to a page (course handouts, slides, figures as PDF) are in git, next to the page.
