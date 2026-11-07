@@ -43,7 +43,7 @@ PRISM can build and analyse many types of probabilistic models:
 **Markov chains** (in either discrete or continuous time)
 and **Markov decision processes**,
 plus extensions for **real time**, **partial observability** and **epistemic uncertainty**.
-(/games)[PRISM-games] adds multi-agent models:
+[PRISM-games](/games/) adds multi-agent models:
 turn-based or concurrent **stochastic games**.
 
 ![Word cloud of the model types supported by PRISM and PRISM-games: MDP, DTMC, CTMC, PTA, POMDP, SMG, IMDP, POPTA, CSG, IDTMC, TPTG, LTS, PA and TSG](/images/home/model-types.svg)

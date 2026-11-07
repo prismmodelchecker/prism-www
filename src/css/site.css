@@ -291,10 +291,12 @@ body.files-page { max-width: 60rem; margin: 0 auto; padding: 1rem 1rem 3rem; ove
 	--side-head: #e0e0ea;
 	--side-border: #c2c2d0;
 	--search-bg: #fafafc;
+	--news-stripe: #eaeaf2;
+	--question-bg: #f0f2fc;
 	--box-shadow: 0 2px 8px rgba(30, 30, 90, 0.08);
 }
 @media (prefers-color-scheme: dark) {
-	:root { --side-head: #2b2b3b; --side-border: var(--border); --search-bg: var(--bg-subtle); --box-shadow: none; }
+	:root { --side-head: #2b2b3b; --side-border: var(--border); --search-bg: var(--bg-subtle); --news-stripe: #262632; --question-bg: var(--accent-bg); --box-shadow: none; }
 }
 
 .local-nav {
@@ -596,14 +598,17 @@ mark.bib-highlight { background: var(--bib-mark-bg); color: inherit; border-bott
 /* Home page (src/index.md): news in the side panel, and Markdown blocks (::: banner, ...) as panels.
    All the main text is one size, and all the headings another */
 .page--home .content { max-width: none; font-size: 1rem; }
-.page--home .content h2 { font-size: 1.2rem; margin: 0 0 0.4rem; }
+.page--home .content h2 { font-size: 1.2rem; margin: 0 0 1rem; }
 .page--home .content pre, .page--home .content code { font-size: 0.85rem; }
 .page--home .content hr { margin: 2rem 0 1rem; }
 .page--home .bib-entry { font-size: 1rem; }
 .page--home .visually-hidden + p { margin: 0 0 0.6rem; }
-.news-panel { padding: 0.25rem 0.4rem 0; }
-.news-panel p { margin: 0; }
-.news-panel .news li { margin-bottom: 0.8rem; }
+/* News items run the full width of the panel, with every second one a little darker */
+.local-nav__details:has(> .news-panel) { padding: 0; }
+.news-panel .news { margin: 0; }
+.news-panel .news li { margin: 0; padding: 0.6rem 0.9rem; }
+.news-panel .news li:nth-child(even) { background: var(--news-stripe); }
+.news-panel p { margin: 0; padding: 0.6rem 0.9rem; }
 .local-nav .news-panel a, .local-nav .news-panel a:hover { display: inline; padding: 0; color: var(--link); text-decoration: underline; background: none; }
 @media (min-width: 60rem) {
 	.page--home > .local-nav { position: static; max-height: none; }
@@ -643,9 +648,9 @@ mark.bib-highlight { background: var(--bib-mark-bg); color: inherit; border-bott
 .page--home .box pre { margin: 0; }
 .page--home .box img.prism-image { width: 100%; max-width: 23rem; margin: 0.8rem auto 0; padding: 0; border: 0; background: none; }
 /* Each question and its formula, with a line down the side of both */
-.page--home .questions > p { margin: 1rem 0 0; padding: 0 0 0.3rem 0.9rem; border-left: 3px solid var(--prism-light); }
+.page--home .questions > p { margin: 1rem 0 0; padding: 0.4rem 0.7rem 0.3rem 0.9rem; border-left: 3px solid var(--prism-light); background: var(--question-bg); }
 .page--home .questions > h2 + p { margin-top: 0; }
 .page--home .questions > pre {
-	margin: 0; padding: 0 0 0 0.9rem; overflow: visible; white-space: pre-wrap;
-	border: 0; border-left: 3px solid var(--prism-light); border-radius: 0; background: none;
+	margin: 0; padding: 0 0.7rem 0.5rem 0.9rem; overflow: visible; white-space: pre-wrap;
+	border: 0; border-left: 3px solid var(--prism-light); border-radius: 0; background: var(--question-bg);
 }
