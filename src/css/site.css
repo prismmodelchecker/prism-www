@@ -21,6 +21,8 @@
 	--bib-box-head: #fbefbc; /*   #f3ebd2 */
 	--bib-box-border: #eedc8c; /*   #ded0a6 */
 	--bib-bar: #e6c443;      /*   #cfb466 */
+	--bib-stripe: var(--bg-subtle); /* as the sort and search box above the list */
+	--bib-synop: #6e6e80;
 	--bib-mark-bg: #ccff99;
 	--bib-mark-border: #669966;
 
@@ -76,6 +78,8 @@
 		--bib-box-head: #3a3519;
 		--bib-box-border: #6c6024;
 		--bib-bar: #d2b23e;
+		--bib-stripe: var(--bg-subtle);
+		--bib-synop: #8c8ca0;
 		--bib-mark-bg: #223d18;
 		--bib-mark-border: #7fcf6a;
 
@@ -435,14 +439,16 @@ pre code { background: none; } /* (some old pages style all code elements, meani
 }
 
 .bib-list { list-style: none; padding: 0; }
-.bib-list li { margin: 0 0 1rem; }
+/* entries on alternate pale grey bands (counting only those shown when the list is filtered) */
+.bib-list li { margin: 0; padding: 0.6rem 0.75rem; border-radius: var(--radius-sm); }
+.bib-list li:nth-child(even of :not([hidden])) { background: var(--bib-stripe); }
 .bib-list li > span, .bib-entry > span, .bib-cite > span { margin-right: 0.25em; }
 .bib-key { color: var(--bib-key); font-weight: 700; }
 .bib-title { font-weight: 700; }
 .bib-files a { font-size: 0.9rem; }
 .bib-files a::before { content: "["; color: var(--text-muted); }
 .bib-files a::after { content: "]"; color: var(--text-muted); }
-.bib-synop { color: var(--text-muted); }
+.bib-synop { color: var(--bib-synop); }
 
 /* In lists, key, authors, title and synopsis each get their own line (as on the old site) */
 .bib-list .bib-key, .bib-list .bib-auth, .bib-list .bib-title, .bib-list .bib-synop { display: block; }
@@ -461,14 +467,19 @@ pre code { background: none; } /* (some old pages style all code elements, meani
 .bib-cite { font-size: 1.05rem; }
 .bib-cite .bib-title { font-weight: 400; }
 .bib-cite .bib-files { display: none; }
-.bib-cite .bib-synop { display: block; margin-top: 0.5rem; }
+.bib-cite .bib-synop { display: none; } /* (synopses are for the lists) */
 .bib-item dl { margin: 1.5rem 0; }
 .bib-item dt { font-weight: 700; margin-top: 1rem; }
 .bib-item dd { margin: 0.25rem 0 0; }
-.bib-downloads { display: flex; flex-wrap: wrap; gap: 0.25rem 1.25rem; }
-.bib-downloads a { font-weight: 700; }
-.bib-downloads img { vertical-align: -0.15em; }
-.bib-downloads .size { color: var(--text-muted); }
+/* Item pages: each download as a pale rounded chip with its file icon, type and size */
+.bib-downloads { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.bib-downloads a {
+	display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.35rem 0.8rem 0.35rem 0.55rem; line-height: 1.2;
+	background: var(--bg-subtle); border: 1px solid var(--border); border-radius: 999px;
+	color: var(--text); font-weight: 600; text-decoration: none;
+}
+.bib-downloads a:hover { border-color: var(--link); color: var(--link); }
+.bib-downloads small { font-weight: 400; font-size: 0.8rem; color: var(--text-muted); }
 /* The abstract: a gold panel like the side menus, its heading in a darker band across the top */
 .bib-abstract {
 	margin: 1.5rem 0;
@@ -499,7 +510,11 @@ pre code { background: none; } /* (some old pages style all code elements, meani
 .bib-group > .bib-group > h3 { font-size: 1.05rem; }
 mark.bib-highlight { background: var(--bib-mark-bg); color: inherit; border-bottom: 1px solid var(--bib-mark-border); padding: 0; }
 
-.year-nav { display: flex; flex-wrap: wrap; gap: 0.25rem 0.75rem; padding: 0; list-style: none; }
+/* Links to a list's sections (years, ...), separated by "·" as other inline lists of links are. Each bullet hangs
+   to the left of its link, so the one starting each line is clipped off rather than left dangling */
+.year-nav { display: flex; flex-wrap: wrap; row-gap: 0.25rem; padding: 0; list-style: none; overflow: hidden; }
+.year-nav li { margin: 0 1.4em 0 -1.4em; }
+.year-nav li::before { content: "·"; display: inline-block; width: 1.4em; text-align: center; color: var(--text-muted); }
 
 /* Footer */
 

@@ -177,7 +177,7 @@ function byYear(items) {
 	return [...groups].map(([year, items]) => ({ id: "y" + year, title: year, items }));
 }
 
-// Items grouped for one view: [{id, title, items, groups?}] (subject groups are split by year again).
+// Items grouped for one view: [{id, title, items, groups?}] (groups: subgroups, which no view uses at present).
 // A view with a single group of untitled items (title) has title "".
 export function groupItems(items, view, types) {
 	const sorted = [...items].sort(byDate);
@@ -201,10 +201,7 @@ export function groupItems(items, view, types) {
 	case "subject": {
 		const groups = [...SUBJECTS.map((s) => ({ ...s, items: [] })), { cat: null, title: "Others", items: [] }];
 		for (const item of sorted) groups.find((g) => !g.cat || item.cats.includes(g.cat)).items.push(item);
-		return groups.filter((g) => g.items.length).map((g) => ({
-			id: g.cat || "others", title: g.title, items: g.items,
-			groups: byYear(g.items).map((y) => ({ ...y, id: `${g.cat || "others"}-${y.id}` })),
-		}));
+		return groups.filter((g) => g.items.length).map((g) => ({ id: g.cat || "others", title: g.title, items: g.items }));
 	}
 	default:
 		return byYear(sorted);
