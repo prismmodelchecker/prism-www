@@ -8,7 +8,7 @@ pagination:
 permalink: "/bibitem/{{ item.key }}/"
 parent: /publications/references/
 listUrl: /publications/references/
-fileIcons: { pdf: pdf, ps: ps, "ps.gz": ps, bib: tex }
+fileIcons: { pdf: file-pdf, ps: file-ps, "ps.gz": file-ps, bib: file-bib }
 fileNames: { pdf: PDF, ps: PostScript, "ps.gz": PostScript, bib: BibTeX }
 ---
 <article class="bib-item">
@@ -21,7 +21,7 @@ fileNames: { pdf: PDF, ps: PostScript, "ps.gz": PostScript, bib: BibTeX }
 <dl>
 {%- if item.files.length %}
 <dt>Downloads</dt>
-<dd class="bib-downloads">{% for f in item.files %}<a href="{{ f.url }}"><img src="/images/{{ fileIcons[f.ext] or "pdf" }}.png" alt="" width="16" height="16">{{ fileNames[f.ext] or f.ext }}{% if f.size %} <small>{{ f.size }}</small>{% endif %}</a>{% endfor %}</dd>
+<dd class="bib-downloads">{% for f in item.files %}<a href="{{ f.url }}"><img src="/images/{{ fileIcons[f.ext] or "file-pdf" }}.svg" alt="" width="18" height="18">{{ fileNames[f.ext] or f.ext }}{% if f.size %} <small>{{ f.size }}</small>{% endif %}</a>{% endfor %}</dd>
 {%- endif %}
 {%- set itemNotes = item | bibNotes %}
 {%- if itemNotes.length %}
