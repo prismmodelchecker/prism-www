@@ -1,6 +1,6 @@
 ---
 layout: layouts/base.njk
-title: "Probabilistic Model Checking - Practicals - Practical 2"
+title: "Probabilistic Model Checking - Practicals - Practical 3"
 section: doc
 permalink: /courses/pmc2526/practical3/
 ---

@@ -1,10 +1,10 @@
 ---
 layout: layouts/base.njk
-title: "AIMS-QuantVer'15 - PRISM Lab Session - Part B"
+title: "MPP Model Checking Workshop 2015: Probabilistic Model Checking - PRISM Lab Session - Mail delivery robot"
 section: doc
 permalink: /courses/mpp-mc15/deliveryRobot/
 ---
-# [AIMS-QuantVer'15](/courses/aims1415/): Quantitative verification, part of the Systems Verification course of the AIMS CDT
+# [MPP](http://molecular-programming.org/) Model Checking Workshop 2015 : Probabilistic Model Checking
 
 ## PRISM Lab Session, Part B: Mail Delivery Robot
 

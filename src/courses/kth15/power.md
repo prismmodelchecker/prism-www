@@ -4,7 +4,7 @@ title: "KTH'15 - PRISM Lab Session - Part C"
 section: doc
 permalink: /courses/kth15/power/
 ---
-# [KTH'15](/courses/kth15/): Probabilistic model checking with PRISM
+# [KTH'15](/courses/kth15/): Probabilistic verification and synthesis
 
 ## PRISM Lab Session, Part C: Dynamic Power Management
 

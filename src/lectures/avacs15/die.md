@@ -1,10 +1,10 @@
 ---
 layout: layouts/base.njk
-title: "SSFT'14 - PRISM Lab Session - Part A"
+title: "2nd AVACS Autumn School - PRISM Lab Session - Part A"
 section: doc
 permalink: /lectures/avacs15/die/
 ---
-# [SSFT'14](/courses/ssft14/): Probabilistic model checking with PRISM
+# [2nd AVACS Autumn School](/lectures/avacs15/): Probabilistic Model Checking and Controller Synthesis
 
 ## PRISM Lab Session, Part A: An introduction to PRISM
 

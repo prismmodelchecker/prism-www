@@ -4,7 +4,7 @@ title: "KTH'15 - PRISM Lab Session - Part A"
 section: doc
 permalink: /courses/kth15/die/
 ---
-# [KTH'15](/courses/kth15/): Probabilistic model checking with PRISM
+# [KTH'15](/courses/kth15/): Probabilistic verification and synthesis
 
 ## PRISM Lab Session, Part A: An introduction to PRISM
 

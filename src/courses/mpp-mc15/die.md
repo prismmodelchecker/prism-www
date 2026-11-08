@@ -1,6 +1,6 @@
 ---
 layout: layouts/base.njk
-title: "MPP Model Checking Workshop 2015: Probabilistic Model Checking"
+title: "MPP Model Checking Workshop 2015: Probabilistic Model Checking - PRISM Lab Session - Part A"
 section: doc
 permalink: /courses/mpp-mc15/die/
 ---

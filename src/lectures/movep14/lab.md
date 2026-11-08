@@ -1,10 +1,10 @@
 ---
 layout: layouts/base.njk
-title: "SSFT'14 - PRISM Lab Session"
+title: "MOVEP'14 - PRISM Lab Session"
 section: doc
 permalink: /lectures/movep14/lab/
 ---
-# [SSFT'14](/courses/ssft14/): Probabilistic model checking with PRISM
+# [MOVEP'14](/lectures/movep14/): Probabilistic Real-time Systems
 
 ## PRISM Lab Session
 

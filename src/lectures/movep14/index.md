@@ -1,6 +1,6 @@
 ---
 layout: layouts/base.njk
-title: "MOVEP'14 - Probabilistic model checking with PRISM"
+title: "MOVEP'14 - Probabilistic Real-time Systems"
 section: doc
 permalink: /lectures/movep14/
 ---

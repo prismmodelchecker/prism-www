@@ -1,10 +1,10 @@
 ---
 layout: layouts/base.njk
-title: "KTH'15 - PRISM Lab Session - Part C"
+title: "IMT'16 - PRISM Lab Session - Part C"
 section: doc
 permalink: /courses/imt16/power/
 ---
-# [KTH'15](/courses/kth15/): Probabilistic model checking with PRISM
+# [IMT'16](/courses/imt16/): Probabilistic model checking with PRISM
 
 ## PRISM Lab Session, Part C: Dynamic Power Management
 

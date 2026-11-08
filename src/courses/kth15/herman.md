@@ -1,10 +1,10 @@
 ---
 layout: layouts/base.njk
-title: "KTH'15 - PRISM Lab Session - Part A"
+title: "KTH'15 - PRISM Lab Session - Part B"
 section: doc
 permalink: /courses/kth15/herman/
 ---
-# [KTH'15](/courses/kth15/): Probabilistic model checking with PRISM
+# [KTH'15](/courses/kth15/): Probabilistic verification and synthesis
 
 ## PRISM Lab Session, Part B: Herman's self-stabilisation algorithm
 
