@@ -45,6 +45,9 @@ RewriteRule ^courses/aims(2425|2526|2627)/(prism-4\.8\.1\.dev-.*\.tar\.gz)$ /dl/
 # Developer pages moved to GitHub
 RewriteRule ^(wiki|manual/Developers)(/.*)?$ {{ legacy.githubWiki }} [R=301,L]
 
+# GRIP: its page and downloads are gone; its source is on GitHub
+RewriteRule ^grip(/.*)?$ {{ legacy.gripUrl }} [R=301,L]
+
 # Manual: renamed pages, old section and contents pages, and the old upload folder
 # (NE: targets can have an anchor, which must reach the browser as it is)
 {%- for from, to in legacy.manual %}

@@ -1,4 +1,0 @@
-const double T = 0.5;
-
-P=? [ true U[0,T] ((b_a_1+b_a_2+b_a_3+b_a_4)+(b_b_1+b_b_2+b_b_3+b_b_4)+(b_c_1+b_c_2+b_c_3+b_c_4)+(b_d_1+b_d_2+b_d_3+b_d_4)+(b_e_1+b_e_2+b_e_3+b_e_4)) =20 ]
-

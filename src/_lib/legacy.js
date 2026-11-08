@@ -64,6 +64,8 @@ export const OLD_PATHS = {
 	"/courses/aims1819/marta-qver-p2.pdf": "/talks/marta-aims1819-qver-p2.pdf",
 };
 export const GITHUB_WIKI = "https://github.com/prismmodelchecker/prism/wiki";
+// GRIP (a symmetry reduction tool for PRISM, from Glasgow) used to have a page and downloads here: now its source on GitHub
+export const GRIP_URL = "https://github.com/afd/symmetrytools/tree/master/GRIP";
 
 // Old manual page names -> new URLs: the manual's own list (its redirects/ folder), plus the old
 // "all on one page" versions of the manual and its sections
@@ -90,6 +92,7 @@ export function mapLegacyUrl(url, manual = manualRedirects()) {
 	if (OLD_PATHS[p]) return OLD_PATHS[p] + rest;
 	if (PAGE_URLS[p]) return PAGE_URLS[p] + (rest.startsWith("#") ? rest : "");
 	if (/^\/(wiki|manual\/Developers)\//.test(p)) return GITHUB_WIKI;
+	if (/^\/grip(\/|$)/.test(p)) return GRIP_URL;
 	let m;
 	if ((m = p.match(/^\/manual\/uploads\/(.+)$/))) return `/manual/files/${m[1]}${rest}`;
 	if ((m = p.match(/^\/manual\/([^/]+)\/?([^/]*)\/?$/)) && !/\.\w+$/.test(p)) {
