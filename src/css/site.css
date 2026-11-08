@@ -113,6 +113,9 @@ body {
 	font-size: 1.0625rem;
 	line-height: 1.6;
 }
+/* The page fills at least the window, so the footer sits at the bottom on short pages */
+body:not(.files-page) { display: flex; flex-direction: column; min-height: 100vh; }
+.site-footer { margin-top: auto; }
 
 img { max-width: 100%; height: auto; }
 
@@ -286,6 +289,7 @@ button:hover { background: var(--accent-bg); }
 /* Page layout: optional local menu + content */
 
 .page {
+	width: 100%; /* (in the body's column, auto margins would otherwise shrink it to its content) */
 	max-width: 80rem;
 	margin: 0 auto;
 	padding: 1rem var(--gutter) 3rem;
