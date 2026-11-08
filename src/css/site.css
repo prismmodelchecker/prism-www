@@ -15,9 +15,10 @@
 	--focus: #e8a400;
 	--accent-bg: #ececf8;
 	--code-bg: #f6f6fa;
-	/* publications: a soft gold, the site's second colour (with green for matches when filtering a list) */
-	--bib-key: #8a5d00;
+	/* publications: a soft gold, the site's second colour (with green for keys, and matches when filtering a list) */
+	--bib-key: #006600;
 	--bib-box-bg: #fdf5d3;
+	--bib-box-head: #f6e5a6;
 	--bib-box-border: #e3c867;
 	--bib-bar: #e3b93c;
 	--bib-mark-bg: #ccff99;
@@ -70,8 +71,9 @@
 		--link-visited: #d0a8ff;
 		--accent-bg: #23233a;
 		--code-bg: #1c1c26;
-		--bib-key: #e0b85a;
+		--bib-key: #7fcf6a;
 		--bib-box-bg: #2a2614;
+		--bib-box-head: #3a3318;
 		--bib-box-border: #6b5a22;
 		--bib-bar: #c9a23a;
 		--bib-mark-bg: #223d18;
@@ -463,14 +465,17 @@ pre code { background: none; } /* (some old pages style all code elements, meani
 .bib-downloads a { font-weight: 700; }
 .bib-downloads img { vertical-align: -0.15em; }
 .bib-downloads .size { color: var(--text-muted); }
+/* The abstract: a gold panel like the side menus, its heading in a darker band across the top */
 .bib-abstract {
 	margin: 1.5rem 0;
-	padding: 0.25rem 1.25rem 0.5rem;
+	padding: 0 1rem 0.75rem;
 	background: var(--bib-box-bg);
 	border: 1px solid var(--bib-box-border);
-	border-radius: var(--radius-sm);
+	border-radius: var(--radius);
+	box-shadow: var(--box-shadow);
+	overflow: hidden;
 }
-.bib-abstract h2 { font-size: 1.1rem; margin: 0.75rem 0 0.25rem; }
+.bib-abstract h2 { font-size: 1.1rem; margin: 0 -1rem 0.6rem; padding: 0.6rem 1rem; background: var(--bib-box-head); }
 .bib-entry { font-size: 1.05rem; padding: 1rem; background: var(--bg-subtle); border-radius: var(--radius-sm); }
 
 /* Publication lists: sort links, and the search box that filters the list (js/bib-filter.js) */
