@@ -44,6 +44,8 @@ export const OLD_PATHS = {
 	"/power/": "/casestudies/power/",
 	"/power/index.php": "/casestudies/power/",
 	"/wiki/Developers/SettingUpEclipse": "https://github.com/prismmodelchecker/prism/wiki/Setting-up-Eclipse",
+	"/dev": "https://github.com/prismmodelchecker/prism",
+	"/dev/": "https://github.com/prismmodelchecker/prism",
 	"/casestudies/examples/two_dice.php": "/view/?f=/casestudies/examples/two_dice.nm",
 	"/casestudies/examples/cell100.php": "/view/?f=/casestudies/examples/cell.sm",
 	"/casestudies/examples/kronos10000.php": "/casestudies/examples/abs.kronos10000",
