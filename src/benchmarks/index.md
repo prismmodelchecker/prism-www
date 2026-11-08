@@ -44,6 +44,10 @@ If you need the benchmarks in another format, don't forget that PRISM can [expor
 
 Comments or suggestions regarding this benchmark set, as well as contributed models, are [welcome](/contact/).
 
-<div class="prism-citebox"><div class="prism-citeboxheader">To cite the PRISM benchmark suite, please use:</div><ul><li><a href="http://www.cs.ox.ac.uk/people/marta.kwiatkowska/">Marta Kwiatkowska</a>, <a href="http://www.dcs.gla.ac.uk/people/personal/gethin/">Gethin Norman</a> and <a href="http://www.cs.bham.ac.uk/~parkerdx/">David Parker</a>. <a href="/bibitem/KNP12b/">The PRISM Benchmark Suite</a>. In <em>Proc. 9th International Conference on Quantitative Evaluation of SysTems (QEST'12)</em>, IEEE CS Press, 2012. [<a href="/papers/qest12.pdf">pdf</a>] [<a href="/bibtex/KNP12b.bib">bib</a>]</li></ul></div>
-
 The contents of the PRISM benchmark suite are distributed under the [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/) license: you are free to copy, edit and redistribute it, but please give appropriate credit.
+
+## Citing the PRISM benchmark suite
+
+To reference the benchmark suite, please cite this paper:
+
+<p class="bib-entry">{{ bib.items | bibItem("KNP12b") | citation | safe }}</p>
