@@ -15,6 +15,6 @@ searchExclude: "true"
 {% set items = bib.items | bibSelect({}) %}
 # References
 
-A full list of {{ items.length }} related reference.
+A full list of {{ items.length }} related references.
 
 {% include "partials/bib-views.njk" %}
