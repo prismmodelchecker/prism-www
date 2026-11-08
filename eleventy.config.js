@@ -71,7 +71,7 @@ export default function (eleventyConfig) {
 	// {% task %}: the icon that marks something to do in practicals and tutorials
 	eleventyConfig.addShortcode("task", () => '<img class="prism-task" src="/images/task.png" alt="Task">');
 
-	// {% prismCode "casestudies/examples/die.pm" %}: highlighted listing of a model file, with download link.
+	// {% prismCode "casestudies/examples/die.pm" %}: highlighted listing of a model file, with a download link below it.
 	// scroll=true limits the height of long listings; links=false leaves out the download link.
 	eleventyConfig.addShortcode("prismCode", (file, scroll = false, links = true) => {
 		const name = file.split("/").pop();
@@ -80,11 +80,11 @@ export default function (eleventyConfig) {
 			return `<p class="todo">[Missing example file: ${name}]</p>`;
 		}
 		const code = fs.readFileSync(`src/${file}`, "utf8").replace(/\s+$/, "");
-		const caption = links ? `<figcaption><a href="/${file}" download>Download ${name}</a></figcaption>` : "";
+		const caption = links ? `<figcaption>Download: <a href="/${file}" download>${name}</a></figcaption>` : "";
 		// All on one line (newlines in the code as &#10;): in Markdown pages, a blank line would
 		// otherwise end the HTML block and the rest of the listing would be read as Markdown
 		const listing = highlightPrism(code).replace(/\n/g, "&#10;");
-		return `<figure class="code">${caption}<pre class="language-prism${scroll ? " code-scroll" : ""}" tabindex="0"><code>${listing}</code></pre></figure>`;
+		return `<figure class="code"><pre class="language-prism${scroll ? " code-scroll" : ""}" tabindex="0"><code>${listing}</code></pre>${caption}</figure>`;
 	});
 
 	// {% cite "KNP04b", "Par02" %}: links into the bibliography, like prism_cite() did

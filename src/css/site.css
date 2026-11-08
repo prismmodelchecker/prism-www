@@ -385,7 +385,14 @@ pre {
 	line-height: 1.45;
 	tab-size: 4;
 }
-figure.code figcaption { margin-bottom: 0.3rem; }
+/* A listing of a file (prismCode, and the file viewer): the code in a box, with the file's download link
+   in a darker band along the bottom */
+figure.code { border: 1px solid var(--border); border-radius: var(--radius-sm); overflow: hidden; }
+figure.code pre { margin: 0; border: 0; border-radius: 0; }
+figure.code figcaption {
+	padding: 0.3rem 1rem; background: var(--side-head); border-top: 1px solid var(--border);
+	font-size: 0.85rem; color: var(--text-muted);
+}
 pre code { background: none; } /* (some old pages style all code elements, meaning inline code) */
 .tok-keyword { color: var(--tok-keyword); font-weight: 700; }
 .tok-ident { color: var(--tok-ident); }
