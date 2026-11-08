@@ -23,7 +23,7 @@ For an introductory guide to using PRISM, please see:
 
 If you have problems or questions, see [getting help](/support/).
 
-For some pointers to useful talks, papers, etc. see [here](/about/).
+For some pointers to useful talks, papers, etc. see [About PRISM](/about/).
 
 Information for developers is here:
 
