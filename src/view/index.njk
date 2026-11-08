@@ -4,7 +4,6 @@ title: File viewer
 searchExclude: "true"
 ---
 {#- Shows a model or properties file from this site with PRISM highlighting: /view/?f=/files/tacas11/power.nm -#}
-<p class="breadcrumb" id="view-up" hidden>Up one level: <a href="/"></a>/</p>
 <h1 id="view-title">File viewer</h1>
 <figure class="code">
 <figcaption id="view-download" hidden>Download: <a download></a></figcaption>
@@ -23,13 +22,8 @@ if (!/^\/[^/?#][^?#]*$/.test(f) || !MODEL_FILE.test(f) || f.split("/").includes(
 	code.textContent = "This page shows PRISM model and properties files from this site.";
 } else {
 	const name = f.split("/").pop();
-	const dir = f.slice(0, -name.length);
 	document.title = `${name} – ${document.title.split(" – ").pop()}`;
 	document.getElementById("view-title").textContent = name;
-	const up = document.getElementById("view-up");
-	up.querySelector("a").href = dir;
-	up.querySelector("a").textContent = dir.split("/").filter(Boolean).pop() || "";
-	up.hidden = false;
 	const download = document.getElementById("view-download");
 	download.querySelector("a").href = f;
 	download.querySelector("a").textContent = name;

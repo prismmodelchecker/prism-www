@@ -4,7 +4,6 @@ title: "Dice programs"
 section: casestudies
 permalink: /casestudies/dice/
 ---
-<p class="breadcrumb" data-pagefind-ignore><a href="/casestudies/">Case studies</a></p>
 
 # Dice programs
 

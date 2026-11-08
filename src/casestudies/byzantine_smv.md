@@ -3,6 +3,7 @@ layout: layouts/base.njk
 title: "Byzantine agreement (Cadence SMV)"
 section: casestudies
 permalink: /casestudies/byzantine_smv/
+parent: /casestudies/byzantine/
 ---
 # Byzantine agreement (Cadence SMV)
 

@@ -3,6 +3,7 @@ layout: layouts/base.njk
 title: "Randomised consensus protocol (Cadence SMV)"
 section: casestudies
 permalink: /casestudies/consensus_smv/
+parent: /casestudies/consensus/
 ---
 # Randomised consensus protocol (Cadence SMV)
 

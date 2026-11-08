@@ -3,6 +3,7 @@ layout: layouts/base.njk
 title: "Dynamic power management: IBM disk drive"
 section: casestudies
 permalink: /casestudies/power_dtmc/
+parent: /casestudies/power/
 ---
 # Dynamic power management: IBM disk drive
 

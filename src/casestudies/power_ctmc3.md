@@ -3,6 +3,7 @@ layout: layouts/base.njk
 title: "Dynamic power management: 3-state Fujitsu disk drive"
 section: casestudies
 permalink: /casestudies/power_ctmc3/
+parent: /casestudies/power/
 ---
 # Dynamic power management: 3-state Fujitsu disk drive
 

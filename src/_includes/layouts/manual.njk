@@ -13,7 +13,7 @@ layout: layouts/base.njk
 {%- endif %}
 
 {%- if current and current.section %}
-<p class="breadcrumb" data-pagefind-ignore><a href="/manual/">Manual</a> › <a href="{{ current.sectionUrl }}">{{ current.section }}</a></p>
+<p class="breadcrumb" data-pagefind-ignore><a href="/manual/">Manual</a> › <a href="{{ current.sectionUrl }}">{{ current.section }}</a> ›</p>
 {%- elif sectionPage %}
 <p class="breadcrumb" data-pagefind-ignore><a href="/manual/">Manual</a> ›</p>
 {%- endif %}

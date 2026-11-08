@@ -6,12 +6,12 @@ pagination:
   size: 1
   alias: item
 permalink: "/bibitem/{{ item.key }}/"
+parent: /publications/
 fileIcons: { pdf: pdf, ps: ps, "ps.gz": ps, bib: tex }
 ---
 <article class="bib-item">
 {%- if item.year %}<span hidden data-pagefind-filter="Year">{{ item.year }}</span>{% endif %}
 <span hidden data-pagefind-filter="Type">{{ bib.types | typeName(item.type) }}</span>
-<p class="breadcrumb" data-pagefind-ignore><a href="/publications/">Publications</a> › {{ item.key }}</p>
 <h1>{{ item | bibTitle }}</h1>
 
 <p class="bib-cite">{{ item | citation({ link: false }) | safe }}</p>

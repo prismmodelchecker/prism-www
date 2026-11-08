@@ -71,6 +71,10 @@
 	{%- endif %}
 	<main id="main" class="content"{% if searchExclude != "true" %} data-pagefind-body{% endif %}>
 		{%- if section %}<span hidden data-pagefind-filter="Section">{{ (site.nav | sectionMenu(section, true)).title }}</span>{% endif %}
+		{%- if not isManual and breadcrumb != false %}{% set crumbs = page.url | breadcrumbs(parent, collections.all) %}
+		{%- if crumbs.length %}
+		<p class="breadcrumb" data-pagefind-ignore>{% for c in crumbs %}<a href="{{ c.url }}">{{ c.title }}</a> › {% endfor %}</p>
+		{%- endif %}{% endif %}
 		{{ content | safe }}
 	</main>
 </div>

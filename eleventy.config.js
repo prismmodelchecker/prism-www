@@ -113,6 +113,23 @@ export default function (eleventyConfig) {
 	eleventyConfig.addGlobalData("bibViews", LIST_VIEWS);
 
 	eleventyConfig.addFilter("limit", (arr, n) => arr.slice(0, n));
+	// Breadcrumb for a page: the pages above it, from its URL (each folder above it that has a page), or from
+	// `parent` (a URL in its front matter) for a page that belongs under one outside its folder.
+	// Labels are each page's `crumb` (if it sets one) or its title. [] for top-level pages.
+	eleventyConfig.addFilter("breadcrumbs", (url, parent, pages) => {
+		const byUrl = pageIndex(pages);
+		const chain = (u) => {
+			const out = [];
+			for (let p = u.replace(/[^/]+\/$/, ""); p.length > 1; p = p.replace(/[^/]+\/$/, "")) {
+				const d = byUrl.get(p);
+				if (d) out.unshift({ url: p, title: d.crumb || d.title });
+			}
+			return out;
+		};
+		if (!parent) return chain(url);
+		const d = byUrl.get(parent);
+		return d ? [...chain(parent), { url: parent, title: d.crumb || d.title }] : chain(url);
+	});
 	// A path as a mod_rewrite pattern: escape regex characters
 	eleventyConfig.addFilter("regexPath", (p) => p.replace(/[.+?()[\]^$|]/g, "\\$&"));
 	eleventyConfig.addFilter("prism", highlightPrism);
@@ -237,4 +254,11 @@ function staticFiles(dir) {
 		} else if (!/\.(njk|md|js|json)$/.test(f)) out.push(p);
 	}
 	return out;
+}
+
+// URL -> page data, for breadcrumbs (built once per build: the collection is the same array for every page)
+const pageIndexes = new WeakMap();
+function pageIndex(pages) {
+	if (!pageIndexes.has(pages)) pageIndexes.set(pages, new Map(pages.filter((p) => p.url).map((p) => [p.url, p.data])));
+	return pageIndexes.get(pages);
 }

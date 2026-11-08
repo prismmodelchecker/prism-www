@@ -3,8 +3,8 @@ layout: layouts/base.njk
 title: "FGF signalling pathway: reactions"
 section: casestudies
 permalink: /casestudies/fgf.reactions/
+parent: /casestudies/fgf/
 ---
-<p class="breadcrumb" data-pagefind-ignore=""><a href="/casestudies/fgf/">FGF signalling pathway</a></p>
 
 # FGF signalling pathway: reactions
 
