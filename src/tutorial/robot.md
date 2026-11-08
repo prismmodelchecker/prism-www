@@ -1,12 +1,10 @@
 ---
 layout: layouts/base.njk
-title: "Robot navigation"
+title: "Robot navigation (PRISM tutorial)"
 section: doc
 permalink: /tutorial/robot/
 ---
-# PRISM Tutorial
-
-## Robot navigation
+# Robot navigation
 
 This example illustrates the use of Markov decision processes to solve a simple probabilistic planning problem.
 
@@ -75,5 +73,3 @@ We now consider a second property:
 {% task %} Now check your answers for the previous part with PRISM. You can create a constant by right-clicking in the "Constants" panel below the properties and changing the default name provided. Similarly, to create a new property, right click in the properties panel. What does the output for the optimal policies look like and how do you interpret it? It may help to explore the policies in the simulator again.
 
 {% task %} Does the optimal policy change for different values of `k`? Explain.
-
-\[ [Back to index](/tutorial/) \]

@@ -1,12 +1,10 @@
 ---
 layout: layouts/base.njk
-title: "Circadian Clock"
+title: "Circadian clock (PRISM tutorial)"
 section: doc
 permalink: /tutorial/circadian/
 ---
-# PRISM Tutorial
-
-## Circadian Clock
+# Circadian clock
 
 This example illustrate the use of PRISM for a small biological case study. We model *circadian rhythms* which are used by a wide range of organisms, from bacteria to mammals, to keep a sense of daily time and regulate behaviour accordingly. In particular, we use the abstract circadian clock model of Barkai and Leiber. See the following links for background reading on this example: {% cite "BL00", "VKBL02" %}.
 
@@ -99,5 +97,3 @@ Finally, we will look at a more general model where initially there is more than
 {% task %} Add an integer constant `M` to the model and rewrite the `activator_gene` module to model the case where there are initially `M` activator genes. Note that since the repressor gene is constructed by renaming the activator gene you are in fact changing the model so that the initial number of repressor genes is also `M`. To ensure that you have modified the model correctly, use the simulation engine to generate some random paths and check that the behaviour is as you expect.
 
 {% task %} What effect does increasing the initial numbers of genes to `2`, `3` and `4` have on the oscillations of the activator protein? You can fix `k` at 1 for this experiment. The results should again show that the clock runs accurately under fluctuations: changing the initial numbers of genes does influence the values of the peaks, but does not change the period of the oscillations.
-
-\[ [Back to index](/tutorial/) \]

@@ -337,6 +337,9 @@ body.files-page { max-width: 60rem; margin: 0 auto; padding: 1rem 1rem 3rem; ove
 .local-nav a[aria-current], .manual-nav a[aria-current="page"] {
 	background: var(--accent-bg); color: var(--link); font-weight: 600;
 }
+/* A page's own sub-pages (the tutorial's parts), under it, as the manual's headings are under its page */
+.local-nav .local-nav__sub { margin: 0.15rem 0 0.4rem 0.5rem; border-left: 2px solid var(--border); }
+.local-nav .local-nav__sub a { font-size: 0.9rem; padding-left: 0.6rem; }
 /* On small screens, the title bar shows and hides the menu (see site.js), with a triangle to say so */
 @media (max-width: 59.99rem) {
 	.js :is(.local-nav, .manual-nav):has(.local-nav__details) :is(.local-nav__title, .manual-nav__title) { position: relative; padding-right: 2.5rem; cursor: pointer; }

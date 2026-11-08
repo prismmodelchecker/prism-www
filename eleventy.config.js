@@ -164,6 +164,14 @@ export default function (eleventyConfig) {
 		return within.sort((a, b) => b.url.length - a.url.length)[0]?.url;
 	});
 
+	eleventyConfig.addFilter("menuItem", (children, url) => children.find((c) => c.url === url) || {});
+	// Previous and next entries around a page in a menu's list of sub-pages (the tutorial's parts);
+	// on the list's own page (not in it), the first is next
+	eleventyConfig.addFilter("prevNext", (items, url) => {
+		const i = items.findIndex((c) => c.url === url);
+		return i < 0 ? { next: items[0] } : { prev: items[i - 1], next: items[i + 1] };
+	});
+
 	// Menu entry for the current section, if it has sub-pages
 	// (with any=true, return the entry even if it has no sub-pages)
 	eleventyConfig.addFilter("sectionMenu", (nav, section, any = false) =>

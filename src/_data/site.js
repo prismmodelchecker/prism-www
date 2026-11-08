@@ -26,7 +26,17 @@ export default {
 			{ title: "Installation", url: "/manual/InstallingPRISM/Instructions/" },
 			{ title: "Manual", url: "/manual/" },
 			{ title: "FAQ", url: "/manual/FrequentlyAskedQuestions/" },
-			{ title: "Tutorial", url: "/tutorial/" },
+			// (the tutorial's parts, in order: shown under it on its pages, with previous/next links)
+			{ title: "Tutorial", url: "/tutorial/", children: [
+				{ title: "Knuth's die algorithm", url: "/tutorial/die/" },
+				{ title: "Herman's self-stabilisation", url: "/tutorial/herman/" },
+				{ title: "Robot navigation", url: "/tutorial/robot/" },
+				{ title: "Autonomous drone", url: "/tutorial/drone/" },
+				{ title: "Dynamic power management", url: "/tutorial/power/" },
+				{ title: "Circadian clock", url: "/tutorial/circadian/" },
+				{ title: "EGL contract signing", url: "/tutorial/egl/" },
+				{ title: "Dining philosophers", url: "/tutorial/phil/" },
+			] },
 			{ title: "Lectures", url: "/lectures/" },
 		] },
 		{ id: "publ", title: "Publications", url: "/publications/", children: [

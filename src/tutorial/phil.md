@@ -1,12 +1,10 @@
 ---
 layout: layouts/base.njk
-title: "The dining philosophers"
+title: "Dining philosophers problem (PRISM tutorial)"
 section: doc
 permalink: /tutorial/phil/
 ---
-# PRISM Tutorial
-
-## The Dining philosophers problem
+# Dining philosophers problem
 
 This example applies PRISM to the specification and analysis of a Markov decision process (MDP) model.
 
@@ -25,7 +23,7 @@ A solution to this problem is an algorithm for each of the philosophers to follo
 
 For an example of a situation that can lead to deadlock, suppose that all philosophers become hungry at the same time and reach out and take their left fork, then if all reach for the right fork no one can move.
 
-## A Randomised Solution
+## A randomised solution
 
 We now consider Lehmann and Rabin's randomised solution to this problem {% cite "LR81" %}. It ensures that the system is deadlock-free, i.e. that, if a philosopher is hungry, then eventually a philosopher eats.
 
@@ -58,7 +56,7 @@ The basics steps of the algorithm for each philosopher are:
 
 {% task %} For each of the models, add labels corresponding to whether each individual philosopher is hungry/eating.
 
-## Analysing Lehmann and Rabin's Solution
+## Analysing Lehmann and Rabin's solution
 
 We will now use PRISM to analyse the above model.
 
@@ -74,7 +72,7 @@ We will now use PRISM to analyse the above model.
 
 {% task %} Then construct reward structures and properties to find both the minimum and maximum *expected time* for a philosopher to eat from the state where all philosophers are thinking. Verify these properties on the models of three and four philosophers. Describe a strategy that achieves the minimum expected time.
 
-## A Resource Starvation-Free Solution
+## A resource starvation-free solution
 
 Lehmann and Rabin solved the resource-starvation problem by extending the above approach so that the philosophers are courteous. More precisely: a philosopher will not pick up his/her neighbour’s fork (when it has no forks) if that neighbour is trying to eat and has not eaten since the philosopher's most recent meal.
 
@@ -129,10 +127,8 @@ Next, we will add a number of constants, variables and formulas that will be nee
 
 {% task %} Using the above constants, variables and formulas modify the commands of `phil1` to match the pseudo code for the courteous dining philosophers defined above. Note that you will probably have to extend the range of `p1` and you will also have to change the labels at the end of the file to match your modifications. Notice since you have already changed the renaming to match the new variables and formulas the modules `phil2` and `phil3` should also now correctly model the courteous dining philosophers.
 
-## Analysing the Courteous Philosophers
+## Analysing the courteous philosophers
 
 {% task %} Check the protocol is resource starvation-free and deadlock-free.
 
 {% task %} From any state where *all* philosophers are hungry, find the minimum and maximum expected time for any philosopher to eat and, for each philosopher, from any state where he/she is hungry, the minimum and maximum expected time for that philosopher to eat.
-
-\[ [Back to index](/tutorial/) \]

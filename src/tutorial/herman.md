@@ -1,12 +1,10 @@
 ---
 layout: layouts/base.njk
-title: "Herman's self-stabilisation algorithm"
+title: "Herman's self-stabilisation algorithm (PRISM tutorial)"
 section: doc
 permalink: /tutorial/herman/
 ---
-# PRISM Tutorial
-
-## Herman's self-stabilisation algorithm
+# Herman's self-stabilisation algorithm
 
 This example concerns a self-stabilisation algorithm due to Herman. A self-stabilisation algorithm for a network of processes is a protocol which, when started from some possibly "illegal" start state, returns to a "legal" state without any outside intervention and within some finite number of steps. We call a "legal" state a **stable** state.
 
@@ -75,5 +73,3 @@ There is an [unproven conjecture](/bibitem/MM05a/) that, for any number `N` of p
 {% task %} For which value of `k` is the expected time lowest? Why? For which value is it highest? Look at the [page](/casestudies/self-stabilisation/) for this example in the case studies section of the PRISM web site if you want to find out more about this.
 
 {% task %} Create another PRISM property which computes the **minimum** expected time to reach a stable state, starting from any initial configurations in which there are `k` tokens. Plot this value for the same values of `k` on the same graph.
-
-\[ [Back to index](/tutorial/) \]

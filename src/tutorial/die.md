@@ -1,14 +1,12 @@
 ---
 layout: layouts/base.njk
-title: "The die example"
+title: "Knuth's die algorithm (PRISM tutorial)"
 section: doc
 permalink: /tutorial/die/
 ---
-# PRISM Tutorial
+# Knuth's die algorithm
 
 If you haven't done so already, [download](/download/) and [install](/manual/InstallingPRISM/Instructions) PRISM.
-
-## The die example
 
 Our first example is a PRISM model of a simple probabilistic algorithm due to Knuth and Yao {% cite "KY76" %}. for emulating a 6-sided die with a fair coin. Here is a graphical illustration of the algorithm:
 
@@ -95,5 +93,3 @@ which means "what is the expected value of the rewards cumulated, from the initi
 {% task %} What should `phi` be in order to compute the expected number of steps that the algorithm requries to compute a value for the die?
 
 {% task %} Go to the "Properties" tab, add this new property to the list of properties, and then verify it. What is the result? The precise answer is 11/3. If you get a result of infinity, you have not got the right expression for `phi` (take a look at [this question](/manual/FrequentlyAskedQuestions/PRISMProperties#inf_rewards) to see why the reward might be infinite).
-
-\[ [Back to index](/tutorial/) \]

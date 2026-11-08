@@ -1,12 +1,10 @@
 ---
 layout: layouts/base.njk
-title: "Autonomous drone"
+title: "Autonomous drone (PRISM tutorial)"
 section: doc
 permalink: /tutorial/drone/
 ---
-# PRISM Tutorial
-
-## Autonomous drone
+# Autonomous drone
 
 This tutorial introduces the use of **uncertain models** for situations where the details of a model are not fully known. More precisely, these models incorporate **epistemic uncertainty** regarding the transition probabilities between states, for example because they have been learnt from data.
 
@@ -105,5 +103,3 @@ This can be interpreted as having less knowledge about the actual strength/influ
 {% task %} Now, use PRISM to extract the optimal robust policies for different values of epistemic uncertainty. (You'll need to remove your policy module)
 
 {% task %} Are the results similar to what you obtained for your own policies? What is the inflection point of epistemic uncertainty for which you obtain a higher performance when flying straight through the obstacle? Can you explain? Plot your results and explain them.
-
-\[ [Back to index](/tutorial/) \]

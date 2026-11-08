@@ -1,12 +1,10 @@
 ---
 layout: layouts/base.njk
-title: "Dynamic power management"
+title: "Dynamic power management (PRISM tutorial)"
 section: doc
 permalink: /tutorial/power/
 ---
-# PRISM Tutorial
-
-## Dynamic power management
+# Dynamic power management
 
 This example concerns *dynamic power management (DPM)* schemes, which are sets of instructions used to switch between different power states of computing devices. This example is actually based on a specific case study from the literature - a Fujitsu disk drive with 3 power states - but in the following, we describe the DPM system in a fairly generic way.
 
@@ -112,5 +110,3 @@ endmodule
 {% task %} How well does this power management system perform? What effect does the value of the probability `p_sleep` have?
 
 {% task %} Can you think of any ways of improving these power management strategies? Implement them in the PRISM model and see how well they perform.
-
-\[ [Back to index](/tutorial/) \]

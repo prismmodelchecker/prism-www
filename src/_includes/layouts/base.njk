@@ -47,9 +47,17 @@
 		<h2 class="local-nav__title"><a href="{{ sectionNav.url }}">{{ sectionNav.title }}</a></h2>
 		<div class="local-nav__details">
 		{%- set current = sectionNav.children | menuCurrent(page.url, listUrl) %}
+		{%- set subNav = (sectionNav.children | menuItem(current)).children %}
 		<ul>
 		{%- for child in sectionNav.children %}
-			<li><a href="{{ child.url }}"{% if child.url == current %} aria-current="{{ 'page' if child.url == page.url else 'true' }}"{% endif %}>{{ child.title }}</a></li>
+			<li><a href="{{ child.url }}"{% if child.url == current %} aria-current="{{ 'page' if child.url == page.url else 'true' }}"{% endif %}>{{ child.title }}</a>
+			{%- if child.children and child.url == current %}
+			<ul class="local-nav__sub">
+			{%- for sub in child.children %}
+				<li><a href="{{ sub.url }}"{% if sub.url == page.url %} aria-current="page"{% endif %}>{{ sub.title }}</a></li>
+			{%- endfor %}
+			</ul>
+			{%- endif %}</li>
 		{%- endfor %}
 		</ul>
 		</div>
@@ -76,6 +84,12 @@
 		<p class="breadcrumb" data-pagefind-ignore>{% for c in crumbs %}<a href="{{ c.url }}">{{ c.title }}</a> › {% endfor %}</p>
 		{%- endif %}{% endif %}
 		{{ content | safe }}
+		{%- if subNav %}{% set pn = subNav | prevNext(page.url) %}{% if pn.prev or pn.next %}
+		<nav class="pager" aria-label="Previous and next page" data-pagefind-ignore>
+			{%- if pn.prev %}<a class="pager__prev" href="{{ pn.prev.url }}" rel="prev"><span>Previous</span> {{ pn.prev.title }}</a>{% endif %}
+			{%- if pn.next %}<a class="pager__next" href="{{ pn.next.url }}" rel="next"><span>Next</span> {{ pn.next.title }}</a>{% endif %}
+		</nav>
+		{%- endif %}{% endif %}
 	</main>
 </div>
 
