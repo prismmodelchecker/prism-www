@@ -22,4 +22,8 @@ The tool can be downloaded from [here](/games/download/). If you have questions 
 
 PRISM-games has been developed by: [Dave Parker](http://www.cs.bham.ac.uk/~parkerdx/), [Marta Kwiatkowska](http://www.cs.ox.ac.uk/people/marta.kwiatkowska/), [Gethin Norman](http://www.dcs.gla.ac.uk/people/personal/gethin/), [Gabriel Santos](https://www.cs.ox.ac.uk/people/gabriel.santos/), [Clemens Wiltsche](http://www.cs.ox.ac.uk/people/Clemens.wiltsche/), [Mateusz Ujma](http://www.cs.ox.ac.uk/people/mateusz.ujma/), [Vojtěch Forejt](http://www.cs.ox.ac.uk/people/vojtech.forejt/) and [Aistis Simaitis](http://www.cs.ox.ac.uk/people/aistis.simatis/). It builds upon PRISM, for which there is also a [list of contributors](/people/). Details of those that have worked on the techniques implemented in PRISM-games can be found in this [publication list](/games/publ/).
 
-<div class="prism-citebox"><div class="prism-citeboxheader">To cite PRISM-games, please use the most recent tool paper:</div><ul><li>Marta Kwiatkowska, Gethin Norman, David Parker and Gabriel Santos. <a href="/bibitem/KNPS20/">PRISM-games 3.0: Stochastic Game Verification with Concurrency, Equilibria and Time</a>. In <em>Proc. 32nd International Conference on Computer Aided Verification (CAV'20)</em>, Springer, 2020. [<a href="/papers/cav20pg3.pdf">pdf</a>] [<a href="/bibtex/KNPS20.bib">bib</a>]</li></ul></div>
+## Citing PRISM-games
+
+To reference PRISM-games, please cite this tool paper:
+
+<p class="bib-entry">{{ bib.items | bibItem("KNPS20") | citation | safe }}</p>

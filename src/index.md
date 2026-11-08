@@ -86,10 +86,8 @@ Pmax=? [ !"hazard" U ("room1" & (F "room2")) ]
 ::::
 :::::
 
-::: box
 ## Citing PRISM
 
 To reference PRISM, please cite this tool paper:
 
 <p class="bib-entry">{{ bib.items | bibItem("KNP11") | citation | safe }}</p>
-::::
