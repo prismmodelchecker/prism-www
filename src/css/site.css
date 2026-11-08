@@ -17,10 +17,10 @@
 	--code-bg: #f6f6fa;
 	/* publications: a soft gold, the site's second colour (with green for keys, and matches when filtering a list) */
 	--bib-key: #006600;
-	--bib-box-bg: #fdf5d3;
-	--bib-box-head: #f6e5a6;
-	--bib-box-border: #e3c867;
-	--bib-bar: #e3b93c;
+	--bib-box-bg: #fffbe5;   /* "butter"; a quieter alternative, "pale cream": #fcf9f0 */
+	--bib-box-head: #fbefbc; /*   #f3ebd2 */
+	--bib-box-border: #eedc8c; /*   #ded0a6 */
+	--bib-bar: #e6c443;      /*   #cfb466 */
 	--bib-mark-bg: #ccff99;
 	--bib-mark-border: #669966;
 
@@ -72,10 +72,10 @@
 		--accent-bg: #23233a;
 		--code-bg: #1c1c26;
 		--bib-key: #7fcf6a;
-		--bib-box-bg: #2a2614;
-		--bib-box-head: #3a3318;
-		--bib-box-border: #6b5a22;
-		--bib-bar: #c9a23a;
+		--bib-box-bg: #2a2714;
+		--bib-box-head: #3a3519;
+		--bib-box-border: #6c6024;
+		--bib-bar: #d2b23e;
 		--bib-mark-bg: #223d18;
 		--bib-mark-border: #7fcf6a;
 
@@ -445,10 +445,10 @@ pre code { background: none; } /* (some old pages style all code elements, meani
 .bib-list .bib-synop { margin-top: 0.15rem; }
 .bib-entry .bib-synop { display: none; }
 
-/* Section heads of publication lists (years, types, ...): a gold bar down the left, its tint fading out to the right */
+/* Section heads of publication lists (years, types, ...): a gold bar down the left, its tint fading to half strength on the right */
 .bib-head, :is(h2, h3):has(+ .bib-list) {
 	padding: 0.25rem 0.75rem;
-	background: linear-gradient(to right, var(--bib-box-bg), transparent 70%);
+	background: linear-gradient(to right, var(--bib-box-head), color-mix(in srgb, var(--bib-box-head) 50%, transparent));
 	border-left: 4px solid var(--bib-bar);
 }
 .bib-head small, :is(h2, h3):has(+ .bib-list) small { color: var(--text-muted); font-size: 0.7em; font-weight: 400; }
