@@ -1,12 +1,10 @@
 ---
 layout: layouts/base.njk
-title: "Probabilistic Model Checking - Practicals - Practical 1"
+title: "Practical 1 (PMC practicals 2025–26)"
 section: doc
 permalink: /courses/pmc2526/practical1/
 ---
-# [Probabilistic Model Checking Practicals](/courses/pmc2526/)
-
-## Practical 1
+# Practical 1
 
 This practical introduces the basics of the PRISM modelling language and the PRISM tool.
 

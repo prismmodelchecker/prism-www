@@ -1,12 +1,10 @@
 ---
 layout: layouts/base.njk
-title: "MPP Model Checking Workshop 2015: Probabilistic Model Checking - PRISM Lab Session - Part B"
+title: "PRISM lab session, part B: circadian clock (MPP'15)"
 section: doc
 permalink: /courses/mpp-mc15/circadian/
 ---
-# [MPP](http://molecular-programming.org/) Model Checking Workshop 2015 : Probabilistic Model Checking
-
-## PRISM Lab Session, Part B:Circadian Clock
+# PRISM lab session, part B: circadian clock
 
 This example illustrate the use of PRISM for a small biological case study. We model *circadian rhythms* which are used by a wide range of organisms, from bacteria to mammals, to keep a sense of daily time and regulate behaviour accordingly. In particular, we use the abstract circadian clock model of Barkai and Leiber. See the following links for background reading on this example: {% cite "BL00", "VKBL02" %}.
 

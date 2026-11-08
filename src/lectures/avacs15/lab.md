@@ -1,12 +1,10 @@
 ---
 layout: layouts/base.njk
-title: "2nd AVACS Autumn School - PRISM Lab Session"
+title: "PRISM lab session (AVACS'15)"
 section: doc
 permalink: /lectures/avacs15/lab/
 ---
-# [2nd AVACS Autumn School](/lectures/avacs15/): Probabilistic Model Checking and Controller Synthesis
-
-## PRISM Lab Session
+# PRISM lab session
 
 This hands-on tool session will introduce you to [PRISM](/). To get started, [download](/download/) and [install](/manual/InstallingPRISM/Instructions) it. It is best to make sure that you are running the latest version (currently 4.2), but any version from 4.1 onwards should be fine.
 

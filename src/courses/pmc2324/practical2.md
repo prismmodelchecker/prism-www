@@ -1,12 +1,10 @@
 ---
 layout: layouts/base.njk
-title: "Probabilistic Model Checking - Practicals - Practical 2"
+title: "Practical 2 (PMC practicals 2023–24)"
 section: doc
 permalink: /courses/pmc2324/practical2/
 ---
-# [Probabilistic Model Checking Practicals](/courses/pmc2324/)
-
-## Practical 2
+# Practical 2
 
 This practical concerns using the PRISM tool for the specification and analysis of discrete time Markov chain models.
 

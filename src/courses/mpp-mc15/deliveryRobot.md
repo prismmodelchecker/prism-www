@@ -1,12 +1,10 @@
 ---
 layout: layouts/base.njk
-title: "MPP Model Checking Workshop 2015: Probabilistic Model Checking - PRISM Lab Session - Mail delivery robot"
+title: "PRISM lab session: mail delivery robot (MPP'15)"
 section: doc
 permalink: /courses/mpp-mc15/deliveryRobot/
 ---
-# [MPP](http://molecular-programming.org/) Model Checking Workshop 2015 : Probabilistic Model Checking
-
-## PRISM Lab Session, Part B: Mail Delivery Robot
+# PRISM lab session: mail delivery robot
 
 ## 1\. Background
 

@@ -1,12 +1,10 @@
 ---
 layout: layouts/base.njk
-title: "Probabilistic Model Checking - Practicals - Practical 4"
+title: "Practical 4 (PMC practicals 2025–26)"
 section: doc
 permalink: /courses/pmc2526/practical4/
 ---
-# [Probabilistic Model Checking Practicals](/courses/pmc2526/)
-
-## Practical 4
+# Practical 4
 
 This practical concerns using PRISM for analysis and planning in Markov decision processes.
 

@@ -1,10 +1,11 @@
 ---
 layout: layouts/base.njk
-title: "Probabilistic Model Checking - Practicals"
+title: "Probabilistic Model Checking practicals 2024–25"
 section: doc
 permalink: /courses/pmc2425/
+crumb: "PMC practicals 2024–25"
 ---
-# [Probabilistic Model Checking Practicals](/courses/pmc2425/)
+# Probabilistic Model Checking practicals 2024–25
 
 ## Michaelmas Term 2024
 

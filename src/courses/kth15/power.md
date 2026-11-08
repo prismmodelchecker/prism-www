@@ -1,12 +1,10 @@
 ---
 layout: layouts/base.njk
-title: "KTH'15 - PRISM Lab Session - Part C"
+title: "PRISM lab session, part C: dynamic power management (KTH'15)"
 section: doc
 permalink: /courses/kth15/power/
 ---
-# [KTH'15](/courses/kth15/): Probabilistic verification and synthesis
-
-## PRISM Lab Session, Part C: Dynamic Power Management
+# PRISM lab session, part C: dynamic power management
 
 ## 1\. Background
 

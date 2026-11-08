@@ -1,12 +1,10 @@
 ---
 layout: layouts/base.njk
-title: "SFM-11:CONNECT Summer-School - PRISM session"
+title: "Lab session: modelling and compositional verification of probabilistic component-based systems using PRISM (SFM-11)"
 section: doc
 permalink: /courses/sfm11connect/lab/
 ---
-# [SFM-11:CONNECT](http://www.sti.uniurb.it/events/sfm11connect/) Summer-School
-
-## Lab session: Modelling and Compositional Verification of Probabilistic Component-Based Systems using PRISM
+# Lab session: modelling and compositional verification of probabilistic component-based systems using PRISM
 
 This hands-on tool session will introduce you to [PRISM](/). The software should already be installed on the PC lab machines, but if you want to use your own machine, it is easy to [download](/download/) and [install](/manual/InstallingPRISM/Instructions).
 

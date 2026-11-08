@@ -1,12 +1,10 @@
 ---
 layout: layouts/base.njk
-title: "MOVEP'14 - PRISM Lab Session"
+title: "PRISM lab session (MOVEP'14)"
 section: doc
 permalink: /lectures/movep14/lab/
 ---
-# [MOVEP'14](/lectures/movep14/): Probabilistic Real-time Systems
-
-## PRISM Lab Session
+# PRISM lab session
 
 This hands-on tool session will introduce you to [PRISM](/). To get started, [download](/download/) and [install](/manual/InstallingPRISM/Instructions) it. It is best to make sure that you are running the latest version (currently 4.2), but any version from 4.1 onwards should be fine.
 

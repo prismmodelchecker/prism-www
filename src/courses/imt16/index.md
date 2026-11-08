@@ -1,10 +1,11 @@
 ---
 layout: layouts/base.njk
-title: "IMT'16 - Probabilistic model checking with PRISM"
+title: "IMT'16: Probabilistic model checking with PRISM"
 section: doc
 permalink: /courses/imt16/
+crumb: "IMT'16"
 ---
-# [IMT'16](/courses/imt16/): Probabilistic model checking with PRISM
+# IMT'16: Probabilistic model checking with PRISM
 
 The site contains various resources for the Probabilistic Model Checking with PRISM course taught at IMT, Lucca (May 2016).
 

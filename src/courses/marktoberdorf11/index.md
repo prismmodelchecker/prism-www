@@ -1,10 +1,13 @@
 ---
 layout: layouts/base.njk
-title: "Marktoberdorf 2011 Summer-School - Advances in Probabilistic Model Checking"
+title: "Marktoberdorf 2011 Summer School"
 section: doc
 permalink: /courses/marktoberdorf11/
+crumb: "Marktoberdorf 2011"
 ---
-# [Marktoberdorf 2011](http://asimod.in.tum.de/2011/) Summer-School
+# Marktoberdorf 2011 Summer School
+
+*[Event website](http://asimod.in.tum.de/2011/)*{.note}
 
 ## Advances in Probabilistic Model Checking
 

@@ -1,12 +1,10 @@
 ---
 layout: layouts/base.njk
-title: "GSSI'15 - PRISM Lab Session - Part A"
+title: "PRISM lab session, part A: an introduction to PRISM (GSSI'15)"
 section: doc
 permalink: /courses/gran-sasso15/die/
 ---
-# [GSSI'15](/courses/gran-sasso15/): Probabilistic model checking with PRISM
-
-## PRISM Lab Session, Part A: An introduction to PRISM
+# PRISM lab session, part A: an introduction to PRISM
 
 ## 1\. The die example
 

@@ -1,12 +1,10 @@
 ---
 layout: layouts/base.njk
-title: "KTH'15 - PRISM Lab Session - Part B"
+title: "PRISM lab session, part B: Herman's self-stabilisation algorithm (KTH'15)"
 section: doc
 permalink: /courses/kth15/herman/
 ---
-# [KTH'15](/courses/kth15/): Probabilistic verification and synthesis
-
-## PRISM Lab Session, Part B: Herman's self-stabilisation algorithm
+# PRISM lab session, part B: Herman's self-stabilisation algorithm
 
 We now consider a second example: a self-stabilisation algorithm due to Herman. A self-stabilisation algorithm for a network of processes is a protocol which, when started from some possibly "illegal" start state, returns to a "legal" state without any outside intervention and within some finite number of steps. We call a "legal" state a **stable** state.
 

@@ -1,12 +1,10 @@
 ---
 layout: layouts/base.njk
-title: "Probabilistic Model Checking - Practicals"
+title: "Installing PRISM on your own machine (PMC practicals 2024–25)"
 section: doc
 permalink: /courses/pmc2425/prism/
 ---
-# [Probabilistic Model Checking Practicals](/courses/pmc2425/)
-
-## Installing PRISM on your own machine
+# Installing PRISM on your own machine
 
 * * *
 

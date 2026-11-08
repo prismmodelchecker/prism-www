@@ -1,14 +1,10 @@
 ---
 layout: layouts/base.njk
-title: "SFM-11:CONNECT Summer-School - PRISM session - Part B"
+title: "Lab session, part B: dynamic power management (SFM-11)"
 section: doc
 permalink: /courses/sfm11connect/power/
 ---
-# [SFM-11:CONNECT](http://www.sti.uniurb.it/events/sfm11connect/) Summer-School
-
-## Lab session: Modelling and Compositional Verification of Probabilistic Component-Based Systems using PRISM
-
-## Part B: Dynamic Power Management
+# Lab session, part B: dynamic power management
 
 ## 1\. Background
 

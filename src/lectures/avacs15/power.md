@@ -1,12 +1,10 @@
 ---
 layout: layouts/base.njk
-title: "2nd AVACS Autumn School - PRISM Lab Session - Part B"
+title: "PRISM lab session, part B: dynamic power management (AVACS'15)"
 section: doc
 permalink: /lectures/avacs15/power/
 ---
-# [2nd AVACS Autumn School](/lectures/avacs15/): Probabilistic Model Checking and Controller Synthesis
-
-## PRISM Lab Session, Part B: Dynamic Power Management
+# PRISM lab session, part B: dynamic power management
 
 ## 1\. Background
 

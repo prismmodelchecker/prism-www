@@ -1,12 +1,10 @@
 ---
 layout: layouts/base.njk
-title: "KTH'15 - PRISM Lab Session - Part A"
+title: "PRISM lab session, part A: an introduction to PRISM (KTH'15)"
 section: doc
 permalink: /courses/kth15/die/
 ---
-# [KTH'15](/courses/kth15/): Probabilistic verification and synthesis
-
-## PRISM Lab Session, Part A: An introduction to PRISM
+# PRISM lab session, part A: an introduction to PRISM
 
 ## 1\. The die example
 

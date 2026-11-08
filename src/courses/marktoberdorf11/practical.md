@@ -1,12 +1,10 @@
 ---
 layout: layouts/base.njk
-title: "Marktoberdorf 2011 Summer-School - Advances in Probabilistic Model Checking: Practical Exercise"
+title: "Advances in probabilistic model checking: practical exercise (Marktoberdorf 2011)"
 section: doc
 permalink: /courses/marktoberdorf11/practical/
 ---
-# [Marktoberdorf 2011](http://asimod.in.tum.de/2011/) Summer-School
-
-## Advances in Probabilistic Model Checking: Practical Exercise
+# Advances in probabilistic model checking: practical exercise
 
 This hands-on exercise will introduce you to the [PRISM](/) probabilistic model checker. You will need to [download](/download/) and [install](/manual/InstallingPRISM/Instructions) PRISM on your own laptop. If you already have (Oracle) [Java](http://www.oracle.com/technetwork/java/javase/downloads/index.html), this should be relatively straightforward.
 

@@ -1,12 +1,10 @@
 ---
 layout: layouts/base.njk
-title: "MOVEP'14 - PRISM Lab Session - Part A"
+title: "PRISM lab session, part A: an introduction to PRISM (MOVEP'14)"
 section: doc
 permalink: /lectures/movep14/die/
 ---
-# [MOVEP'14](/lectures/movep14/): Probabilistic Real-time Systems
-
-## PRISM Lab Session, Part A: An introduction to PRISM
+# PRISM lab session, part A: an introduction to PRISM
 
 ## 1\. The die example
 

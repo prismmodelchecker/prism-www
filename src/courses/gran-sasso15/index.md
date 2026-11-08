@@ -1,10 +1,11 @@
 ---
 layout: layouts/base.njk
-title: "GSSI'15 - Probabilistic model checking with PRISM"
+title: "GSSI'15: Probabilistic model checking with PRISM"
 section: doc
 permalink: /courses/gran-sasso15/
+crumb: "GSSI'15"
 ---
-# [GSSI'15](/courses/gran-sasso15/): Probabilistic model checking with PRISM
+# GSSI'15: Probabilistic model checking with PRISM
 
 The site contains various resources for [GSSI'15](http://cs.gssi.infn.it/phd-program/courses), [PhD course](http://cs.gssi.infn.it/phd-program/courses) taught at the Gran Sasso Institute
 

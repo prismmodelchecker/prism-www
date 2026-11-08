@@ -1,12 +1,10 @@
 ---
 layout: layouts/base.njk
-title: "MPP Model Checking Workshop 2015: Probabilistic Model Checking - PRISM Lab Session - Part A"
+title: "PRISM lab session, part A: an introduction to PRISM (MPP'15)"
 section: doc
 permalink: /courses/mpp-mc15/die/
 ---
-# [MPP](http://molecular-programming.org/) Model Checking Workshop 2015 : Probabilistic Model Checking
-
-## PRISM Lab Session, Part A: An introduction to PRISM
+# PRISM lab session, part A: an introduction to PRISM
 
 ## 1\. The die example
 

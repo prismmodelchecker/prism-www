@@ -1,12 +1,10 @@
 ---
 layout: layouts/base.njk
-title: "KTH'15 - PRISM Lab Session"
+title: "PRISM lab session (KTH'15)"
 section: doc
 permalink: /courses/kth15/lab/
 ---
-# [KTH'15](/courses/kth15/): Probabilistic verification and synthesis
-
-## PRISM Lab Session
+# PRISM lab session
 
 To practice the material taught in the lectures you should attempt exercises [here](/courses/kth15/kth15-class1.pdf) for Markov chains and [here](/courses/kth15/kth15-class2.pdf) for Markov decision processes.
 

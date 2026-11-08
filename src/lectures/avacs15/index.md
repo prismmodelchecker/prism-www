@@ -1,10 +1,11 @@
 ---
 layout: layouts/base.njk
-title: "2nd AVACS Autumn School - Probabilistic Model Checking and Controller Synthesis"
+title: "2nd AVACS Autumn School: Probabilistic Model Checking and Controller Synthesis"
 section: doc
 permalink: /lectures/avacs15/
+crumb: "AVACS'15"
 ---
-# [2nd AVACS Autumn School](http://www.avacs.org/autumn2015/): Probabilistic Model Checking and Controller Synthesis
+# 2nd AVACS Autumn School: Probabilistic Model Checking and Controller Synthesis
 
 Here are some resources for the "Probabilistic Model Checking and Controller Synthesis" lecture,  
 given by [Dave Parker](http://www.cs.bham.ac.uk/~parkerdx/) at the [2nd AVACS Autumn School](http://www.avacs.org/autumn2015/), October 2015, Oldenburg.

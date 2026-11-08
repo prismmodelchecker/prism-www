@@ -1,12 +1,10 @@
 ---
 layout: layouts/base.njk
-title: "MOVEP'14 - PRISM Lab Session - Part B"
+title: "PRISM lab session, part B: dynamic power management (MOVEP'14)"
 section: doc
 permalink: /lectures/movep14/power/
 ---
-# [MOVEP'14](/lectures/movep14/): Probabilistic Real-time Systems
-
-## PRISM Lab Session, Part B: Dynamic Power Management
+# PRISM lab session, part B: dynamic power management
 
 ## 1\. Background
 

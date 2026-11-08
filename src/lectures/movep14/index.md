@@ -1,10 +1,11 @@
 ---
 layout: layouts/base.njk
-title: "MOVEP'14 - Probabilistic Real-time Systems"
+title: "MOVEP'14: Probabilistic Real-time Systems"
 section: doc
 permalink: /lectures/movep14/
+crumb: "MOVEP'14"
 ---
-# [MOVEP'14](http://movep14.irccyn.ec-nantes.fr/): Probabilistic Real-time Systems
+# MOVEP'14: Probabilistic Real-time Systems
 
 Here are some resources for the "Probabilistic Real-time Systems" session at [MOVEP'14](http://movep14.irccyn.ec-nantes.fr/), given by [Dave Parker](http://www.cs.bham.ac.uk/~parkerdx/):
 

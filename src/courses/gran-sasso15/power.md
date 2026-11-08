@@ -1,12 +1,10 @@
 ---
 layout: layouts/base.njk
-title: "GSSI'15 - PRISM Lab Session - Part B"
+title: "PRISM lab session, part B: dynamic power management (GSSI'15)"
 section: doc
 permalink: /courses/gran-sasso15/power/
 ---
-# [GSSI'15](/courses/gran-sasso15/): Probabilistic model checking with PRISM
-
-## PRISM Lab Session, Part B: Dynamic Power Management
+# PRISM lab session, part B: dynamic power management
 
 ## 1\. Background
 

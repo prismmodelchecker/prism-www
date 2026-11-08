@@ -1,12 +1,10 @@
 ---
 layout: layouts/base.njk
-title: "MPP Model Checking Workshop 2015: Probabilistic Model Checking - PRISM Lab Session - Part C"
+title: "PRISM lab session, part C: dynamic power management (MPP'15)"
 section: doc
 permalink: /courses/mpp-mc15/power/
 ---
-# [MPP](http://molecular-programming.org/) Model Checking Workshop 2015 : Probabilistic Model Checking
-
-## PRISM Lab Session, Part C: Dynamic Power Management
+# PRISM lab session, part C: dynamic power management
 
 ## 1\. Background
 

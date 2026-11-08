@@ -1,12 +1,10 @@
 ---
 layout: layouts/base.njk
-title: "Probabilistic Model Checking - Practicals - Practical 3"
+title: "Practical 3 (PMC practicals 2023–24)"
 section: doc
 permalink: /courses/pmc2324/practical3/
 ---
-# [Probabilistic Model Checking Practicals](/courses/pmc2324/)
-
-## Practical 3
+# Practical 3
 
 This practical concerns using the PRISM tool for the specification and analysis of continuous-time Markov chain (CTMC) models.
 

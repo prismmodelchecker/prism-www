@@ -1,12 +1,10 @@
 ---
 layout: layouts/base.njk
-title: "SSFT'14 - PRISM Lab Session - Part B"
+title: "PRISM lab session, part B: dynamic power management (SSFT'14)"
 section: doc
 permalink: /courses/ssft14/power/
 ---
-# [SSFT'14](/courses/ssft14/): Probabilistic model checking with PRISM
-
-## PRISM Lab Session, Part B: Dynamic Power Management
+# PRISM lab session, part B: dynamic power management
 
 ## 1\. Background
 

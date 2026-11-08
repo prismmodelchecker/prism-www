@@ -1,10 +1,13 @@
 ---
 layout: layouts/base.njk
-title: "SFM-11:CONNECT Summer-School - PRISM session"
+title: "SFM-11:CONNECT Summer School"
 section: doc
 permalink: /courses/sfm11connect/
+crumb: "SFM-11"
 ---
-# [SFM-11:CONNECT](http://www.sti.uniurb.it/events/sfm11connect/) Summer-School
+# SFM-11:CONNECT Summer School
+
+*[Event website](http://www.sti.uniurb.it/events/sfm11connect/)*{.note}
 
 ## Automated Verification Techniques for Probabilistic Systems
 

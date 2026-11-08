@@ -1,12 +1,10 @@
 ---
 layout: layouts/base.njk
-title: "SSFT'14 - PRISM Lab Session - Part A"
+title: "PRISM lab session, part A: an introduction to PRISM (SSFT'14)"
 section: doc
 permalink: /courses/ssft14/die/
 ---
-# [SSFT'14](/courses/ssft14/): Probabilistic model checking with PRISM
-
-## PRISM Lab Session, Part A: An introduction to PRISM
+# PRISM lab session, part A: an introduction to PRISM
 
 ## 1\. The die example
 

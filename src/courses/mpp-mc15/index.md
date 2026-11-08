@@ -3,8 +3,11 @@ layout: layouts/base.njk
 title: "MPP Model Checking Workshop 2015: Probabilistic Model Checking"
 section: doc
 permalink: /courses/mpp-mc15/
+crumb: "MPP'15"
 ---
-# [MPP](http://molecular-programming.org/) Model Checking Workshop 2015 : Probabilistic Model Checking
+# MPP Model Checking Workshop 2015: Probabilistic Model Checking
+
+*[Event website](http://molecular-programming.org/)*{.note}
 
 The site contains various resources for the Probabilistic Model Checking tutorial given at the MPP Model Checking Workshop at Caltech, 26-27th February 2015.
 

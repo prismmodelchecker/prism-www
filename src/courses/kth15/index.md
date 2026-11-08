@@ -1,10 +1,11 @@
 ---
 layout: layouts/base.njk
-title: "KTH'15 - Probabilistic verification and synthesis"
+title: "KTH'15: Probabilistic verification and synthesis"
 section: doc
 permalink: /courses/kth15/
+crumb: "KTH'15"
 ---
-# [KTH'15](/courses/kth15/): Probabilistic verification and synthesis
+# KTH'15: Probabilistic verification and synthesis
 
 The site contains various resources for the Probabilistic Verification and Synthesis course taught at KTH Institute of Technology (August 2015).
 

@@ -108,6 +108,13 @@ and its own `# Heading` at the top of the body; the two match.
   say how they differ ("Randomised dining philosophers (Lynch, Saias & Segala)").
 - **No separators** inside a title; where one is unavoidable, a colon ("Dynamic power management: IBM disk drive").
 - The heading is plain text: links (e.g. to a summer school's site) and badges go in the text below it.
+- Pages inside a course or lecture series: the heading is the page's own ("Practical 1"), and the title adds
+  the course's short name in brackets ("Practical 1 (PMC practicals 2025–26)"), as several years have the same pages.
+
+Above the heading, the layout adds a breadcrumb: the pages above this one, from its URL (each folder above it that
+has a page). Front matter can change it: `crumb: "PMC practicals 2025–26"` on a page gives it a shorter label in
+the breadcrumbs of the pages below it; `parent: /casestudies/power/` puts a page under one outside its folder;
+`breadcrumb: false` leaves it out.
 
 ## Large files
 

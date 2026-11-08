@@ -1,12 +1,10 @@
 ---
 layout: layouts/base.njk
-title: "2nd AVACS Autumn School - PRISM Lab Session - Part A"
+title: "PRISM lab session, part A: an introduction to PRISM (AVACS'15)"
 section: doc
 permalink: /lectures/avacs15/die/
 ---
-# [2nd AVACS Autumn School](/lectures/avacs15/): Probabilistic Model Checking and Controller Synthesis
-
-## PRISM Lab Session, Part A: An introduction to PRISM
+# PRISM lab session, part A: an introduction to PRISM
 
 ## 1\. The die example
 

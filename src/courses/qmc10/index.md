@@ -1,10 +1,13 @@
 ---
 layout: layouts/base.njk
-title: "Quantitative Model Checking (QMC) PhD School - PRISM session"
+title: "Quantitative Model Checking PhD School (QMC'10)"
 section: doc
 permalink: /courses/qmc10/
+crumb: "QMC'10"
 ---
-# [Quantitative Model Checking](http://www.artist-embedded.org/artist/Overview,2048.html) PhD School
+# Quantitative Model Checking PhD School (QMC'10)
+
+*[Event website](http://www.artist-embedded.org/artist/Overview,2048.html)*{.note}
 
 ## PRISM session
 

@@ -1,14 +1,10 @@
 ---
 layout: layouts/base.njk
-title: "SFM-11:CONNECT Summer-School - PRISM session - Part A"
+title: "Lab session, part A: an introduction to PRISM (SFM-11)"
 section: doc
 permalink: /courses/sfm11connect/die/
 ---
-# [SFM-11:CONNECT](http://www.sti.uniurb.it/events/sfm11connect/) Summer-School
-
-## Lab session: Modelling and Compositional Verification of Probabilistic Component-Based Systems using PRISM
-
-## Part A: An introduction to PRISM
+# Lab session, part A: an introduction to PRISM
 
 ## 1\. The die example
 

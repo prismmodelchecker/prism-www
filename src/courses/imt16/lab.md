@@ -1,12 +1,10 @@
 ---
 layout: layouts/base.njk
-title: "IMT'16 - PRISM Lab Session"
+title: "PRISM lab session (IMT'16)"
 section: doc
 permalink: /courses/imt16/lab/
 ---
-# [IMT'16](/courses/imt16/): Probabilistic model checking with PRISM
-
-## PRISM Lab Session
+# PRISM lab session
 
 This hands-on tool session will introduce you to [PRISM](/). To get started, [download](/download/) and [install](/manual/InstallingPRISM/Instructions) it. It is best to make sure that you are running the latest version (currently 4.3), but any version from 4.1 onwards should be fine.
 

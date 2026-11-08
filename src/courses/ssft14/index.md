@@ -1,10 +1,11 @@
 ---
 layout: layouts/base.njk
-title: "SSFT'14 - Probabilistic model checking with PRISM"
+title: "SSFT'14: Probabilistic model checking with PRISM"
 section: doc
 permalink: /courses/ssft14/
+crumb: "SSFT'14"
 ---
-# [SSFT'14](/courses/ssft14/): Probabilistic model checking with PRISM
+# SSFT'14: Probabilistic model checking with PRISM
 
 The site contains various resources for [SSFT'14](http://fm.csl.sri.com/SSFT14/), the Fourth Summer School on Formal Techniques
 
