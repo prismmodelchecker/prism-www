@@ -23,9 +23,7 @@ export default {
 			{ title: "Other downloads", url: "/other-downloads/" },
 		] },
 		{ id: "doc", title: "Documentation", url: "/doc/", children: [
-			{ title: "Installation", url: "/manual/InstallingPRISM/Instructions/" },
 			{ title: "Manual", url: "/manual/" },
-			{ title: "FAQ", url: "/manual/FrequentlyAskedQuestions/" },
 			// (the tutorial's parts, in order: shown under it on its pages, with previous/next links)
 			{ title: "Tutorial", url: "/tutorial/", children: [
 				{ title: "Knuth's die algorithm", url: "/tutorial/die/" },
@@ -42,8 +40,8 @@ export default {
 			{ title: "Developers", url: "https://github.com/prismmodelchecker/prism/wiki" },
 		] },
 		{ id: "publ", title: "Publications", url: "/publications/", children: [
-			{ title: "Selected publications", url: "/publications/selected/" },
 			{ title: "PRISM publications", url: "/publications/" },
+			{ title: "Selected publications", url: "/publications/selected/" },
 			{ title: "PRISM bibliography", url: "/publications/bibliography/" },
 			{ title: "External publications", url: "/publications/external/" },
 			{ title: "References", url: "/publications/references/" },
