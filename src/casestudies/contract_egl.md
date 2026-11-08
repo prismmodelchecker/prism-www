@@ -133,7 +133,7 @@ We now consider a number of alternative protocols to EGL where the only differen
 
 -   In the original EGL protocol, the message schedule in step 2 involves *A* sending the jth bit for all of his secrets before *B* does the same, and then moving to the next bit.
     
--   The scheduling scheme used in EGL2 differs from the original protocol by having *B* send a bit for each of the secrets 1,...,n after *A* has done this, and before either party has sent the bits for the secrets n+1,...,2n. The PRISM code for this protocol when n=5 and L=2 can be found [here](/casestudies/contract_egl2_5/).
+-   The scheduling scheme used in EGL2 differs from the original protocol by having *B* send a bit for each of the secrets 1,...,n after *A* has done this, and before either party has sent the bits for the secrets n+1,...,2n. The PRISM code for this protocol when n=5 and L=2 can be found [here](/view/?f=/casestudies/examples/contract_egl2_5.pm).
     
 
 The other two schemes we consider (EGL3 and EGL4) separate the sending of the bits for the secrets 1,...,n from those for the secrets n+1,...,2n. More precisely, in these schemes both parties send all the bits for the secrets 1,...,n before they start sending the bits for the secrets n+1,...,2n.
