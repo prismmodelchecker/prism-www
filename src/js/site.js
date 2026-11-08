@@ -64,6 +64,12 @@ document.addEventListener("DOMContentLoaded", () => {
 		}, 5000);
 	}
 
+	// Download pages: highlight the row for the visitor's operating system (from the browser; not phones and tablets)
+	const ua = navigator.userAgentData?.platform || navigator.userAgent;
+	const os = /Android|iPhone|iPad/.test(navigator.userAgent) ? null
+		: /win/i.test(ua) ? "windows" : /mac/i.test(ua) ? "mac" : /linux/i.test(ua) ? "linux" : null;
+	if (os) document.querySelector(`.downloads__row[data-os="${os}"]`)?.classList.add("is-yours");
+
 	const button = document.querySelector(".menu-toggle");
 	const nav = document.getElementById("site-nav");
 	if (!button || !nav) return;

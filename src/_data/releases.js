@@ -18,12 +18,19 @@ export default {
 		previous: "3.1",
 		github: "prismmodelchecker/prism-games",
 	},
-	// Pre-built binaries, as /dl/<file>-<version>-<id><ext>
+	// Pre-built binaries, as /dl/<file>-<version>-<id><ext>, grouped by operating system
+	// (os: as the download page's script recognises the visitor's system)
 	platforms: [
-		{ id: "linux64-x86", label: "Linux (64-bit, x86)", ext: ".tar.gz" },
-		{ id: "linux64-arm", label: "Linux (64-bit, Arm)", ext: ".tar.gz" },
-		{ id: "mac64-x86", label: "macOS (64-bit, x86)", ext: ".tar.gz" },
-		{ id: "mac64-arm", label: "macOS (64-bit, Arm)", ext: ".tar.gz" },
-		{ id: "win64-x86-installer", label: "Windows installer (64-bit, x86)", ext: ".exe" },
+		{ os: "linux", name: "Linux", files: [
+			{ id: "linux64-x86", label: "x86", note: "64-bit", ext: ".tar.gz" },
+			{ id: "linux64-arm", label: "Arm", note: "64-bit", ext: ".tar.gz" },
+		] },
+		{ os: "mac", name: "macOS", files: [
+			{ id: "mac64-arm", label: "Apple silicon", note: "Arm", ext: ".tar.gz" },
+			{ id: "mac64-x86", label: "Intel", note: "x86", ext: ".tar.gz" },
+		] },
+		{ os: "windows", name: "Windows", files: [
+			{ id: "win64-x86-installer", label: "Installer", note: "64-bit x86", ext: ".exe" },
+		] },
 	],
 };

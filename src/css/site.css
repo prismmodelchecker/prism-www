@@ -693,7 +693,8 @@ mark.bib-highlight { background: var(--bib-mark-bg); color: inherit; border-bott
 .page--home .content h2 { font-size: 1.2rem; margin: 0 0 1rem; }
 .page--home .content pre, .page--home .content code { font-size: 0.85rem; }
 .page--home .content hr { margin: 2rem 0 1rem; }
-/* The current release, with links to download it, the manual and the tutorial: a tinted strip under the introduction */
+/* The current release, as a tinted strip: on the home page with links to download it, the manual and the tutorial;
+   on the download pages with a link to what's new */
 .release-strip {
 	display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.75rem 1.25rem;
 	margin: 1rem 0 1.5rem; padding: 0.7rem 1rem;
@@ -702,6 +703,26 @@ mark.bib-highlight { background: var(--bib-mark-bg); color: inherit; border-bott
 .release-strip p { margin: 0; }
 .release-strip strong { font-size: 1.05rem; }
 .release-strip span { font-size: 0.85rem; color: var(--text-muted); }
+
+/* Download pages (partials/download-list.njk): a box of rows, one per operating system (the visitor's tinted), and one for the source code */
+.downloads { margin: 1rem 0; border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+.downloads__row { display: flex; align-items: center; gap: 0.5rem 1rem; padding: 0.65rem 1rem; border-top: 1px solid var(--border); }
+.downloads__row:first-child { border-top: 0; }
+.downloads__os { flex: 0 0 8rem; font-weight: 700; }
+.downloads__files { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.downloads__file {
+	display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.45rem 0.9rem; line-height: 1.2;
+	border: 1.5px solid var(--link); border-radius: var(--radius-sm); background: var(--bg);
+	color: var(--link); font-weight: 600; text-decoration: none;
+}
+.downloads__file:hover { background: var(--accent-bg); }
+.downloads__file small { font-weight: 400; font-size: 0.8rem; color: var(--text-muted); }
+.downloads__row.is-yours { background: var(--accent-bg); }
+.downloads__row.is-yours .downloads__os::after { content: "your system"; display: block; font-size: 0.75rem; font-weight: 400; color: var(--text-muted); }
+@media (max-width: 30rem) {
+	.downloads__row { flex-direction: column; align-items: flex-start; }
+	.downloads__os { flex-basis: auto; }
+}
 .release-strip__links { display: flex; flex-wrap: wrap; gap: 0.6rem; }
 .release-strip__links a {
 	display: inline-flex; align-items: center; gap: 0.45rem; padding: 0.5rem 1.1rem; line-height: 1.2;

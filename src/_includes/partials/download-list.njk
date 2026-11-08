@@ -1,17 +1,26 @@
-{#- Download links for the current release of a tool. Needs: release (releases.prism or releases.games) -#}
-<p>We distribute various pre-built binaries:</p>
-
-<ul>
+{#- Downloads of the current release of a tool, one row per operating system (the visitor's highlighted by site.js),
+    then the source code. Needs: release (releases.prism or releases.games) -#}
+{%- set icon = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg>' %}
+<div class="downloads">
 {%- for p in releases.platforms %}
-<li><a href="/dl/{{ release.file }}-{{ release.version }}-{{ p.id }}{{ p.ext }}">{{ release.name }} {{ release.version }} {{ p.label }}</a></li>
+<div class="downloads__row" data-os="{{ p.os }}">
+<span class="downloads__os">{{ p.name }}</span>
+<span class="downloads__files">
+{%- for f in p.files %}
+<a class="downloads__file" href="/dl/{{ release.file }}-{{ release.version }}-{{ f.id }}{{ f.ext }}">{{ icon | safe }}<span class="visually-hidden">{{ release.name }} {{ release.version }}, {{ p.name }} </span>{{ f.label }} <small>{{ f.note }}</small></a>
 {%- endfor %}
-</ul>
+</span>
+</div>
+{%- endfor %}
+</div>
+<div class="downloads">
+<div class="downloads__row">
+<span class="downloads__os">Source code</span>
+<span class="downloads__files">
+<a class="downloads__file" href="/dl/{{ release.file }}-{{ release.version }}-src.tar.gz">{{ icon | safe }}{{ release.file }}-{{ release.version }}-src.tar.gz</a>
+<a class="downloads__file" href="https://github.com/{{ release.github }}">Latest on GitHub ↗</a>
+</span>
+</div>
+</div>
 
-<p>For non-Windows platforms, it is usually easy to build from source code:</p>
-
-<ul>
-<li><a href="/dl/{{ release.file }}-{{ release.version }}-src.tar.gz">{{ release.name }} {{ release.version }} source code</a></li>
-<li>See <a href="https://github.com/{{ release.github }}">GitHub</a> for the newest code</li>
-</ul>
-
-<p>Older versions are available on the <a href="https://github.com/{{ release.github }}/releases">GitHub releases</a> page.</p>
+<p>Older versions are on the <a href="https://github.com/{{ release.github }}/releases">GitHub releases</a> page.</p>

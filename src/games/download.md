@@ -11,15 +11,14 @@ permalink: /games/download/
 PRISM-games is **free** and **open source** software,
 distributed under the [GNU General Public License](https://www.gnu.org/licenses/) (GPL), version 2.
 
-## Download
-
-PRISM-games should run on 32/64-bit versions of all major operating systems.
+<div class="release-strip">
+<p><strong>{{ release.name }} {{ release.version }}</strong> <span>released {{ release.released | longDate }}</span></p>
+<p><a href="#new">What's new in {{ release.version }}</a></p>
+</div>
 
 {% include "partials/download-list.njk" %}
 
-## Latest version: {{ release.version }}
-
-The current version of PRISM-games is **{{ release.version }}** (first released {{ release.released | longDate }}).
+## What's new in {{ release.version }} { #new }
 
 The main changes since the last major release ({{ release.previous }}) are listed below.
 See the [CHANGELOG](https://github.com/prismmodelchecker/prism-games/blob/master/CHANGELOG.txt) for full details.
