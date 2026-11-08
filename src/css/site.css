@@ -693,6 +693,28 @@ mark.bib-highlight { background: var(--bib-mark-bg); color: inherit; border-bott
 .page--home .content h2 { font-size: 1.2rem; margin: 0 0 1rem; }
 .page--home .content pre, .page--home .content code { font-size: 0.85rem; }
 .page--home .content hr { margin: 2rem 0 1rem; }
+/* The current release, with links to download it, the manual and the tutorial: a tinted strip under the introduction */
+.release-strip {
+	display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.75rem 1.25rem;
+	margin: 1rem 0 1.5rem; padding: 0.7rem 1rem;
+	background: var(--accent-bg); border: 1px solid var(--border); border-radius: var(--radius);
+}
+.release-strip p { margin: 0; }
+.release-strip strong { font-size: 1.05rem; }
+.release-strip span { font-size: 0.85rem; color: var(--text-muted); }
+.release-strip__links { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+.release-strip__links a {
+	display: inline-flex; align-items: center; gap: 0.45rem; padding: 0.5rem 1.1rem; line-height: 1.2;
+	border: 1.5px solid var(--link); border-radius: var(--radius-sm); background: var(--bg);
+	color: var(--link); font-weight: 600; text-decoration: none;
+}
+.release-strip__links a:hover { background: var(--accent-bg); }
+.release-strip__links .release-strip__download { background: var(--prism-dark); border-color: var(--prism-dark); color: #fff; }
+.release-strip__links .release-strip__download:hover { background: var(--prism-light); border-color: var(--prism-light); }
+@media (max-width: 30rem) {
+	.release-strip__links { width: 100%; gap: 0.5rem; }
+	.release-strip__links a { flex: 1; justify-content: center; padding: 0.5rem 0.4rem; }
+}
 .page--home .bib-entry { font-size: 1rem; }
 .page--home .visually-hidden + p { margin: 0 0 0.6rem; }
 .local-nav__details:has(> .news-panel) { padding: 0; }

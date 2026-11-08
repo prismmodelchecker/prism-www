@@ -12,6 +12,11 @@ It can formally verify many quantitative aspects of system behaviour,
 such as correctness, safety, reliability or timeliness,
 and can synthesise policies or controllers to optimise them.
 
+<div class="release-strip">
+<p><strong>PRISM {{ releases.prism.version }}</strong> <span>released {{ releases.prism.released | monthYear }}</span></p>
+<p class="release-strip__links"><a class="release-strip__download" href="/download/"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg>Download</a> <a href="/manual/">Manual</a> <a href="/tutorial/">Tutorial</a></p>
+</div>
+
 :::: banner
 ::: slideshow
 ![Surface plot of the maximum probability that a robot can ensure it reaches its goal within a deadline](/images/home/robot-deadline.png)
