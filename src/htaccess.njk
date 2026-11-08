@@ -63,3 +63,10 @@ RewriteRule ^(.*/)?index\.php$ /$1 [R=301,L]
 RewriteRule ^((files|subm)/.+\.\w+)\.php$ /$1 [R=301,L]
 RewriteRule ^((files|subm)/.+)\.php$ /$1.html [R=301,L]
 RewriteRule ^(.+)\.php$ /$1/ [R=301,L]
+
+# Folders without an index page aren't browsable (e.g. /courses/, examples and images folders, and the folders
+# of files /dl/, /files/, /papers/, /talks/): 404, rather than the server's own listing or a blank page.
+# (Last, so that the redirects above apply first.)
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteCond %{REQUEST_FILENAME}/index.html !-f
+RewriteRule ^ - [R=404,L]
