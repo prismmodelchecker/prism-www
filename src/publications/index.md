@@ -6,6 +6,7 @@ pagination:
   size: 1
   alias: view
 listUrl: /publications/
+crumb: "Publications"
 permalink: "{{ listUrl }}{% if view.id != 'date' %}by-{{ view.id }}/{% endif %}"
 eleventyComputed:
   title: "PRISM publications{% if view.id != 'date' %} (by {{ view.name }}){% endif %}"
