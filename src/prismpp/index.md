@@ -1,10 +1,10 @@
 ---
 layout: layouts/base.njk
-title: "The PRISM preprocessor"
+title: "The PRISM preprocessor (beta)"
 section: downloads
 permalink: /prismpp/
 ---
-# The PRISM preprocessor (<span style="color:red">beta</span>)
+# The PRISM preprocessor (beta)
 
 We have developed a simple preprocessor tool for PRISM files, which can be used to automate generation of PRISM model and properties files that contain a lot of repetition. Instructions for the preprocessor are embedded in a PRISM file and identified by placing them within a pair of hash symbols (`#...#`). Here is a simple example:
 
