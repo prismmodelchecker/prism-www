@@ -20,9 +20,6 @@ export default {
 			{ title: "PRISM-games", url: "/games/download/" },
 			{ title: "Benchmarks", url: "/benchmarks/" },
 			{ title: "GitHub", url: "https://github.com/prismmodelchecker" },
-			{ title: "PRISM-symm", url: "/symm/" },
-			{ title: "The PRISM preprocessor", url: "/prismpp/" },
-			{ title: "GRIP", url: "/grip/" },
 			{ title: "Other downloads", url: "/other-downloads/" },
 		] },
 		{ id: "doc", title: "Documentation", url: "/doc/", children: [
