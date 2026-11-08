@@ -19,8 +19,8 @@ Here are slides from the 5 lectures:
 
 Here are the [PRISM](/) files for the robot running example from lectures 1-3:
 
--   MDP robot model [robot-mdp.prism](/courses/essai23/examples/robot-mdp.prism) and properties [robot-mdp.props](/courses/essai23/examples/robot-mdp.props)
--   Interval MDP robot model [robot-imdp.prism](/courses/essai23/examples/robot-imdp.prism) and properties [robot-imdp.props](/courses/essai23/examples/robot-imdp.props)
+-   MDP robot model [robot-mdp.prism](/view/?f=/courses/essai23/examples/robot-mdp.prism) and properties [robot-mdp.props](/view/?f=/courses/essai23/examples/robot-mdp.props)
+-   Interval MDP robot model [robot-imdp.prism](/view/?f=/courses/essai23/examples/robot-imdp.prism) and properties [robot-imdp.props](/view/?f=/courses/essai23/examples/robot-imdp.props)
 
 See [here](/manual/ThePRISMLanguage/UncertainModels) and [here](/manual/PropertySpecification/UncertainModels) for more details about modelling uncertainty in PRISM.
 

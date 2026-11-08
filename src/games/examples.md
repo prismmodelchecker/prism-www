@@ -87,7 +87,7 @@ Possible non-zero sum properties for this model include both players trying to m
 
 {% prismCode "games/examples/medium_access2.props", false, true %}
 
-We can extend this CSG by counting the number of successful transmissions of each user. To do this we add an additional undefined integer constant (the maximum count), a variable to the modules representing the users and increment the new variables when a successful transition occurs. Again renaming can be used when specifying the module for the second player. The changes to the model file are shown below (or the full version of the modified model is here: [medium\_access\_count2.prism](/games/examples/medium_access_count2.prism)).
+We can extend this CSG by counting the number of successful transmissions of each user. To do this we add an additional undefined integer constant (the maximum count), a variable to the modules representing the users and increment the new variables when a successful transition occurs. Again renaming can be used when specifying the module for the second player. The changes to the model file are shown below (or the full version of the modified model is here: [medium\_access\_count2.prism](/view/?f=/games/examples/medium_access_count2.prism)).
 
 {% prismCode "games/examples/medium_access_changes2.prism", false, true %}
 

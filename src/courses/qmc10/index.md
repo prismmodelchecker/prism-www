@@ -15,7 +15,7 @@ This hands-on tool session will introduce you to [PRISM](/). The software should
 
 This tutorial is self-contained, but if you want information about running PRISM, the best source of information is the online [manual](/manual/).
 
-Also available are the [slides](/talks/dave-qmc10.pdf) and [model](/courses/qmc10/leader3_2full.pm)/[property](/courses/qmc10/leader3.pctl) files from the introductory talk.
+Also available are the [slides](/talks/dave-qmc10.pdf) and [model](/view/?f=/courses/qmc10/leader3_2full.pm)/[property](/view/?f=/courses/qmc10/leader3.pctl) files from the introductory talk.
 
 ## 1\. The die example
 

@@ -139,10 +139,10 @@ To translate the CADP output into the PRISM language we wrote a simple translato
 
 In the case when **DEADLINE=4,000**, the KRONOS source code can be found [here](/casestudies/examples/impl.kronos4000) and the output files when using the different encodings and compaction algorithms are listed below.
 
--   The output file when using the **explicit** encoding can be found [here](/casestudies/examples/impl.kronos4000.exp.nm).
--   The output file when using the **instances** encoding and **absolute** compaction algorithm can be found [here](/casestudies/examples/impl.kronos4000.inst.abs.nm).
--   The output file when using the **instances** encoding and **relative** compaction algorithm can be found [here](/casestudies/examples/impl.kronos4000.inst.rel.nm).
--   The output file when using the **instances** encoding and the **absolute** and **relative** compaction algorithms can be found [here](/casestudies/examples/impl.kronos4000.inst.abs.rel.nm).
+-   The output file when using the **explicit** encoding can be found [here](/view/?f=/casestudies/examples/impl.kronos4000.exp.nm).
+-   The output file when using the **instances** encoding and **absolute** compaction algorithm can be found [here](/view/?f=/casestudies/examples/impl.kronos4000.inst.abs.nm).
+-   The output file when using the **instances** encoding and **relative** compaction algorithm can be found [here](/view/?f=/casestudies/examples/impl.kronos4000.inst.rel.nm).
+-   The output file when using the **instances** encoding and the **absolute** and **relative** compaction algorithms can be found [here](/view/?f=/casestudies/examples/impl.kronos4000.inst.abs.rel.nm).
 
 Also in the case when **DEADLINE=4,000**, the input and output files from CADP can be found [here](/casestudies/examples/impl.kronos4000.aut) and [here](/casestudies/examples/impl.kronos4000_s.aut) respectively.
 
@@ -177,10 +177,10 @@ Furthermore, the graph below shows the evolution of the number of lines of the g
 
 In the case when **DEADLINE=10,000**, the KRONOS source code can be found [here](/casestudies/examples/abs.kronos10000) and the output files when using the different encodings and compaction algorithms are listed below.
 
--   The output file when using the **explicit** encoding can be found [here](/casestudies/examples/abs.kronos10000.exp.nm).
--   The output file when using the **instances** encoding and **absolute** compaction algorithm can be found [here](/casestudies/examples/abs.kronos10000.inst.abs.nm).
--   The output file when using the **instances** encoding and **relative** compaction algorithm can be found [here](/casestudies/examples/abs.kronos10000.inst.rel.nm).
--   The output file when using the **instances** encoding and the **absolute** and **relative** compaction algorithms can be found [here](/casestudies/examples/abs.kronos10000.inst.abs.rel.nm).
+-   The output file when using the **explicit** encoding can be found [here](/view/?f=/casestudies/examples/abs.kronos10000.exp.nm).
+-   The output file when using the **instances** encoding and **absolute** compaction algorithm can be found [here](/view/?f=/casestudies/examples/abs.kronos10000.inst.abs.nm).
+-   The output file when using the **instances** encoding and **relative** compaction algorithm can be found [here](/view/?f=/casestudies/examples/abs.kronos10000.inst.rel.nm).
+-   The output file when using the **instances** encoding and the **absolute** and **relative** compaction algorithms can be found [here](/view/?f=/casestudies/examples/abs.kronos10000.inst.abs.rel.nm).
 
 Also in the case when **DEADLINE=10,000**, the input and output files from CADP can be found [here](/casestudies/examples/abs.kronos10000.aut) and [here](/casestudies/examples/abs.kronos10000_s.aut) respectively.
 

@@ -9,7 +9,7 @@ The exercise involves building and analysing a model in the [PRISM](/) tool. You
 
 It is recommended that you start by looking at the PRISM [tutorial](/tutorial/). You can find information about all aspects of the tool in the [manual](/manual/). If you have further questions or problems, please use the [discussion group](http://groups.google.com/group/prismmodelchecker).
 
--   Study the existing PRISM case study of a [workstation cluster](/casestudies/cluster/). For this exercise, we will assume that there are **N**\=8 workstations in each sub-cluster. You can find the PRISM files here: \[[cluster.sm](/casestudies/examples/cluster.sm)\] \[[cluster.csl](/casestudies/examples/cluster.csl)\]  
+-   Study the existing PRISM case study of a [workstation cluster](/casestudies/cluster/). For this exercise, we will assume that there are **N**\=8 workstations in each sub-cluster. You can find the PRISM files here: \[[cluster.sm](/view/?f=/casestudies/examples/cluster.sm)\] \[[cluster.csl](/view/?f=/casestudies/examples/cluster.csl)\]  
       
     
 -   Add a constant **rw** to the model representing the rate at which the repairman repairs a workstation (currently, this is 2). Then plot graphs for two of the time-bounded properties for various **rw**. Let time **T** range from 0-80 and let **rw** take the following values: 0.5, 1, 2, 2.5. For the remainder of the exercise, fix **rw** at 2 as before.  

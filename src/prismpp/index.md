@@ -39,8 +39,8 @@ Some other points:
 
 Here are some examples of preprocessor files:
 
--   [hermanN.pm.pp](/casestudies/examples/hermanN.pm.pp)
--   [rabinN.nm.pp](/casestudies/examples/rabinN.nm.pp)
+-   [hermanN.pm.pp](/view/?f=/casestudies/examples/hermanN.pm.pp)
+-   [rabinN.nm.pp](/view/?f=/casestudies/examples/rabinN.nm.pp)
 
 ## Running the preprocessor
 

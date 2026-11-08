@@ -43,7 +43,7 @@ The battery module records the charge of the battery in the variable `c`. It syn
 
 {% task %} Read the section on [synchronisation](/manual/ThePRISMLanguage/Synchronisation) in the manual.
 
-{% task %} Download the model file [DeliveryRobot.pm](/courses/mpp-mc15/examples/deliveryRobot/DeliveryRobot.pm) and load it into PRISM. Execute some paths through the model using the simulator. You will see that there is also a label "outOfPower" in the model, indicating that the battery is empty. For the moment you can ignore the `task` module.
+{% task %} Download the model file [DeliveryRobot.pm](/view/?f=/courses/mpp-mc15/examples/deliveryRobot/DeliveryRobot.pm) and load it into PRISM. Execute some paths through the model using the simulator. You will see that there is also a label "outOfPower" in the model, indicating that the battery is empty. For the moment you can ignore the `task` module.
 
 {% task %} Compute the probability to reach a state where the robot runs out of power. Can you compute it by hand?
 
@@ -87,7 +87,7 @@ A more systematic approach to build an efficient controller for the robot is to 
 
 {% prismCode "courses/mpp-mc15/examples/deliveryRobot/robotMDP.nm", false, true %}
 
-{% task %}Download the file [robotMDP](/courses/mpp-mc15/examples/deliveryRobot/robotMDP.nm) and load it into PRISM. Identify differences with the previous model.
+{% task %}Download the file [robotMDP](/view/?f=/courses/mpp-mc15/examples/deliveryRobot/robotMDP.nm) and load it into PRISM. Identify differences with the previous model.
 
 The two things that changed compared to the previous model are the `mdp` keyword and the kind of model used for the controller module. Probabilities have been removed in the transitions and guards of transitions overlap.
 
