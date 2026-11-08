@@ -6,13 +6,13 @@ permalink: /doc/
 ---
 # Documentation
 
-For information about using installing and running PRISM, please see:
+For information about installing and running PRISM, please see:
 
 -   the online [PRISM manual](/manual/)
 
 (a local copy is also included when you [download](/download/) PRISM)
 
-In particular, you may may find these two sections useful:
+In particular, you may find these two sections useful:
 
 -   [Installation instructions](/manual/InstallingPRISM/)
 -   [Frequently asked questions](/manual/FrequentlyAskedQuestions/)
