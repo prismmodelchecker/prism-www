@@ -38,6 +38,8 @@ export default {
 				{ title: "Dining philosophers", url: "/tutorial/phil/" },
 			] },
 			{ title: "Lectures", url: "/lectures/" },
+			{ title: "Getting help", url: "/support/" },
+			{ title: "Developers", url: "https://github.com/prismmodelchecker/prism/wiki" },
 		] },
 		{ id: "publ", title: "Publications", url: "/publications/", children: [
 			{ title: "Selected publications", url: "/publications/selected/" },
@@ -58,13 +60,6 @@ export default {
 			{ title: "CTMC benchmarks", url: "/casestudies/#benchmarks" },
 			{ title: "Miscellaneous", url: "/casestudies/#misc" },
 		] },
-		{ id: "support", title: "Support", url: "/support/", children: [
-			{ title: "Installation FAQ", url: "/manual/InstallingPRISM/CommonProblemsAndQuestions/" },
-			{ title: "PRISM FAQ", url: "/manual/FrequentlyAskedQuestions/" },
-			{ title: "Forum (Google Groups)", url: "https://groups.google.com/group/prismmodelchecker" },
-			{ title: "Bug reports", url: "https://github.com/prismmodelchecker/prism/issues" },
-		] },
-		{ id: "dev", title: "Developers", url: "https://github.com/prismmodelchecker/prism/wiki" },
 		{ id: "games", title: "PRISM-games", url: "/games/", children: [
 			{ title: "PRISM-games", url: "/games/" },
 			{ title: "Download", url: "/games/download/" },

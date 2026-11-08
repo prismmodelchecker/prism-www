@@ -21,6 +21,8 @@ For an introductory guide to using PRISM, please see:
 
 -   the [PRISM tutorial](/tutorial/)
 
+If you have problems or questions, see [getting help](/support/).
+
 For some pointers to useful talks, papers, etc. see [here](/about/).
 
 Information for developers is here:

@@ -6,7 +6,7 @@ permalink: /contact/
 ---
 # Contact
 
-If you have problems or questions regarding the tool, please first check the [support](/support/) section.
+If you have problems or questions regarding the tool, please first see [getting help](/support/).
 
 If you have further queries or comments, please email:
 
