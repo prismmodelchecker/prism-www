@@ -596,7 +596,6 @@ mark.bib-highlight { background: var(--bib-mark-bg); color: inherit; border-bott
 
 .content iframe { max-width: 100%; height: auto; aspect-ratio: 4 / 3; } /* embedded videos */
 
-.file-size { color: var(--text-muted); font-family: var(--font-body); font-size: 0.85rem; margin-left: 0.5rem; }
 
 /* The manual on one page (src/manual-all.njk) */
 .manual-single__version { color: var(--text-muted); font-weight: 400; font-size: 0.7em; }

@@ -115,10 +115,6 @@ export default function (eleventyConfig) {
 	eleventyConfig.addFilter("limit", (arr, n) => arr.slice(0, n));
 	// A path as a mod_rewrite pattern: escape regex characters
 	eleventyConfig.addFilter("regexPath", (p) => p.replace(/[.+?()[\]^$|]/g, "\\$&"));
-	// Index pages of the folders under /courses/, newest first (folder names end in a year, e.g. pmc2526 or aims1415)
-	eleventyConfig.addFilter("coursePages", (pages) => pages
-		.filter((p) => /^\/courses\/[^/]+\/$/.test(p.url))
-		.sort((a, b) => courseYear(b.url) - courseYear(a.url) || a.url.localeCompare(b.url)));
 	eleventyConfig.addFilter("prism", highlightPrism);
 
 	// Group items into [{year, items}], newest first; year comes from field (number or "YYYY-MM")
@@ -241,11 +237,4 @@ function staticFiles(dir) {
 		} else if (!/\.(njk|md|js|json)$/.test(f)) out.push(p);
 	}
 	return out;
-}
-
-// Start year of a course from its folder name: "pmc2526" -> 2025, "kth15" -> 2015, "essai23" -> 2023
-function courseYear(url) {
-	const d = url.match(/(\d{2,4})\/$/)?.[1] || "0";
-	const yy = d.length === 4 ? +d.slice(0, 2) : +d.slice(-2);
-	return yy + (yy > 70 ? 1900 : 2000);
 }

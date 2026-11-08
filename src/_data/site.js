@@ -31,7 +31,6 @@ export default {
 			{ title: "FAQ", url: "/manual/FrequentlyAskedQuestions/" },
 			{ title: "Tutorial", url: "/tutorial/" },
 			{ title: "Lectures", url: "/lectures/" },
-			{ title: "Courses", url: "/courses/" },
 		] },
 		{ id: "publ", title: "Publications", url: "/publications/", children: [
 			{ title: "Selected publications", url: "/publications/selected/" },
