@@ -48,11 +48,11 @@ These property can be computed by PRISM through the following specifications:
 
 {% prismCode "casestudies/examples/virus.pctl", false, true %}
 
--   **The minimum and maximum probability that the node at grid position **(1,1)** becomes infected.**
+-   **The minimum and maximum probability that the node at grid position (1,1) becomes infected.**
     
     Model checking this property demonstrates that, if firewalls of the barrier nodes are completely secure (the probability of detection for the barrier nodes equals 1), then the virus cannot pass from the \`low' nodes to the \`high' nodes, and hence, the minimum probability of the node in grid position **(1,1)** becoming infected is 0. On the other hand, if this detection probability is greater than 0, then with probability 1 the virus will eventually infect all the 'high' nodes.
     
--   **The minimum and maximum probability that the node at grid position **(1,1)** becomes infected within **k** steps.**
+-   **The minimum and maximum probability that the node at grid position (1,1) becomes infected within *k* steps.**
     
     The graphs below, presents results for the time bounded property as both the probability of detection and number of steps vary.
     
@@ -74,7 +74,7 @@ These property can be computed by PRISM through the following specifications:
     
     The difference between the minimum and maximum probabilities of infection is because the virus chooses nondeterministically which node to infect next, and in the maximum case the virus finds the quickest route to infect the node **(1,1)**, while in the minimum case the virus attempts to infect all other nodes before infecting the node **(1,1)**.
     
--   **The minimum and maximum expected number of attacks until the node at grid position **(1,1)** becomes infected.**
+-   **The minimum and maximum expected number of attacks until the node at grid position (1,1) becomes infected.**
     
     The graphs below plot the expected number of attacks until the node in grid position **(1,1)** becomes infected.
     

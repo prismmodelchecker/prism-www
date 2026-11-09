@@ -41,7 +41,7 @@ In the BGMR protocol, it can never be the case that the contract is binding on o
 
 Privilege is a fundamental notion in the BGMR protocol. A party is privileged if it has the power to cause the judge to rule that the contract is binding. The protocol is unfair if it reaches a state where one party is privileged (that is, it can cause the judge to declare the contract binding), and the other is not.
 
-**Definition.** *A contract signing protocol is (**v**,**e**)-fair for *A* if, for any contract *C*, if *A* follows the protocol, then at any step of the protocol in which the probability that *B* is privileged is greater than **v**, the conditional probability that *A* is not privileged given that *B* is privileged is at most **e**.*
+**Definition.** *A contract signing protocol is (**v**,**e**)-fair for A if, for any contract C, if A follows the protocol, then at any step of the protocol in which the probability that B is privileged is greater than **v**, the conditional probability that A is not privileged given that B is privileged is at most **e**.*
 
 Probabilistic fairness implies that at any step of the protocol where one of the parties has acquired the evidence that will cause the judge to declare the contract binding with probability ***p***, the other party should possess the evidence that will cause the judge to issue the same ruling with probability of no less than ***p-e***.
 

@@ -63,15 +63,10 @@ We verify the following properties corresponding to successful termination.
 
 We find that the protocol does terminate with probability 1 and the following plots both the minimum and maximum probability of terminating by time *T* for *p*\=0.01 and *p*\=0.1. We see that increasing the parameter p improves the performance of the protocol when the parties behave honestly. However, as we shall see below, when the recipient behaves maliciously, increasing this parameter comes at a cost since it also increases the likelihood that the recipient gains an advantage.
 
-![plot: probability that the protocol terminates successfully by time T (p=0.01)](/images/graphs/repudiation_honest001.png){.medium}
-
-*Min/max probability of terminating by time *T* for *p*=0.01*{.caption}
-
-  
-  
-![plot: probability that the protocol terminates successfully by time T (p=0.1)](/images/graphs/repudiation_honest01.png){.medium}
-
-*Min/max probability of terminating by time *T* for *p*=0.1*{.caption}
+::: plots pairs
+![plot: probability that the protocol terminates successfully by time T (p=0.01)](/images/graphs/repudiation_honest001.png "Min/max probability of terminating by time *T*, *p* = 0.01")
+![plot: probability that the protocol terminates successfully by time T (p=0.1)](/images/graphs/repudiation_honest01.png "Min/max probability of terminating by time *T*, *p* = 0.1")
+:::
 
 We next consider two versions of the protocol where the recipient can act maliciously In the first, the recipient can act maliciously (i.e., stop early by not returning an acknowledgement and trying to decode the message). We assume the time to decode the message is *DECODE1*. This corresponds to the PTA described in {% cite "LMST04" %}, where the only malicious behaviour corresponds to stopping early.
 

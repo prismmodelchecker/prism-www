@@ -229,15 +229,15 @@ Analysing these properties in PRISM we find the expected number of rounds equals
 
 We now compare the performance characteristics of a number of different instances of the **SM** problem, as the number of men and women *k*(=*n*/2) varies between 4 and 8.
 
--   **Symmetric*:* in this instance the preferences of the men and women are of the form:
+-   *Symmetric*: in this instance the preferences of the men and women are of the form:
     
     -   mj : wj,...,wk,w1,...,w(j-1)
     -   wj : mj,...,mk,m1,...,m(j-1).
--   **Uncoord*:* this instance is used in {% cite "AGM+08" %} to show an exponential lower bound for the convergence time. The preference lists in this instance are given by:
+-   *Uncoord*: this instance is used in {% cite "AGM+08" %} to show an exponential lower bound for the convergence time. The preference lists in this instance are given by:
     
     -   mj : w(j+1),...,wk,w1,...,wj
     -   wj : mj,m(j+1),...,mk,m1,..,m(j-1).
--   **Uniform*:* in this case the preference lists of all men and all women are the same and equal w1,w2,...,wk and m1,m2,...,m\_k respectively.
+-   *Uniform*: in this case the preference lists of all men and all women are the same and equal w1,w2,...,wk and m1,m2,...,m\_k respectively.
     
 
 For comparison, in our results we also includes the minimum, average and maximum values obtained from a sample of 1,000 random instances for *k* equal to 4, 5, 6 and 7.
