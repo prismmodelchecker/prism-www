@@ -17,7 +17,7 @@ Here is a list of cases studies, for which we have developed web pages to explai
 -   [Power control in cellular networks](/casestudies/power_control/) {% cite "KNPS19" %} <span class="tag">CSG</span>
 -   [Public good game](/casestudies/public_good_game/) {% cite "KNPS20" %} <span class="tag">CSG</span>
 -   [Trust models for user-centric networks](/casestudies/user-centric/) {% cite "KPS13", "KNPS18" %} <span class="tag">SMG</span> <span class="tag">CSG</span>
--   [Robot coordination {% cite "KNPS19" %} <span class="tag">CSG</span>](/casestudies/robot_coordination/)
+-   [Robot coordination](/casestudies/robot_coordination/) {% cite "KNPS19" %} <span class="tag">CSG</span>
 -   [Intrusion detection policies](/casestudies/ids/) {% cite "KNPS18" %} <span class="tag">CSG</span>
 -   [Aloha protocol](/casestudies/aloha/) {% cite "KNPS19", "KNPS20" %} <span class="tag">CSG</span>
 

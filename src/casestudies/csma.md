@@ -9,7 +9,7 @@ permalink: /casestudies/csma/
 ## Contents
 
 -   [Introduction](#intro)
--   [Prototype Implementation of {% cite "KNSW04", "KNSW07" %}](#impl)
+-   [Prototype Implementation](#impl) of {% cite "KNSW04", "KNSW07" %}
 -   [Probabilistic Timed Automata Model](#model)
 -   [Analysis Results](#results)
     -   [Probabilistic reachability](#prob)
