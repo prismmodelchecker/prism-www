@@ -243,6 +243,20 @@ button, .button {
 button:hover { background: var(--accent-bg); }
 .site-search button { background: var(--prism-dark); border-color: var(--prism-dark); color: #fff; display: flex; align-items: center; }
 .site-search button:hover { background: var(--prism-light); border-color: var(--prism-light); }
+/* The search box on the "page not found" page */
+.search-404 { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; margin: 1.25rem 0; }
+.search-404 input {
+	flex: 1 1 14rem;
+	max-width: 24rem;
+	padding: 0.4rem 0.7rem;
+	border: 1px solid var(--border);
+	border-radius: var(--radius-sm);
+	background: var(--search-bg);
+	color: var(--text);
+	font: inherit;
+}
+.search-404 button { background: var(--prism-dark); border-color: var(--prism-dark); color: #fff; }
+.search-404 button:hover { background: var(--prism-light); border-color: var(--prism-light); }
 .menu-toggle { color: var(--link); }
 
 .site-nav { background: var(--nav-bg); }

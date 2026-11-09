@@ -1,0 +1,42 @@
+---
+layout: layouts/base.njk
+title: Page not found
+permalink: /404.html
+eleventyExcludeFromCollections: true
+searchExclude: "true"
+breadcrumb: false
+---
+{#- The server's page for missing URLs (ErrorDocument in src/htaccess.njk). It is shown at the missing
+    page's own URL, so every link here is absolute. -#}
+<h1>Page not found</h1>
+<p>There's no page at <code id="missing-url">this address</code>. It may have moved when the site was
+rebuilt, or the link may have a typo.</p>
+
+<form class="search-404" role="search" action="/search/" method="get">
+	<label for="search-404-q">Search the site:</label>
+	<input id="search-404-q" name="q" type="search">
+	<button type="submit">Search</button>
+</form>
+
+<p>Or try one of these:</p>
+<ul>
+	<li><a href="/">Home page</a></li>
+	<li><a href="/download/">Download PRISM</a></li>
+	<li><a href="/manual/">Manual</a> and <a href="/tutorial/">tutorial</a></li>
+	<li><a href="/casestudies/">Case studies</a></li>
+	<li><a href="/publications/">Publications</a></li>
+	<li><a href="/games/">PRISM-games</a></li>
+</ul>
+<p>If you followed a link on this site, please <a href="/contact/">let us know</a>.</p>
+
+<script>
+// Show the missing address, and start the search box with the words in it (e.g. /casestudies/dice.php -> "dice")
+{
+	let path = location.pathname;
+	try { path = decodeURIComponent(path); } catch {}
+	document.getElementById("missing-url").textContent = path;
+	const skip = new Set(["casestudies", "manual", "php", "html", "index", "www"]);
+	const words = path.split(/[^A-Za-z0-9]+/).filter((w) => w.length > 1 && !skip.has(w.toLowerCase()));
+	document.getElementById("search-404-q").value = words.join(" ");
+}
+</script>

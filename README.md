@@ -53,7 +53,9 @@ Node is installed in `~/opt/node` there (not the system's).
   Styles from `site.css` can be added to blocks and inline elements: see "Styles for Markdown pages" below.
   Tables can have merged cells, row groups and column groups (see `src/_lib/tables.js`). The manual uses none of these,
   so that it reads properly on GitHub
-- `src/htaccess.njk` – generates the server's redirects from old URLs
+- `src/htaccess.njk` – generates the server's `.htaccess`: redirects from old URLs, the "page not found" page
+  (`src/404.njk`), and, on any host but www.prismmodelchecker.org (the test server), a `robots.txt` that
+  disallows everything (`src/robots-test.txt`) and a `noindex` header
 - `scripts/` – `sync-manual.js` and `manual-offline.js` (manual), `diagrams.py` (case study diagrams, as SVG), `export-bib.php` and `export-bib.js` (database export),
   `prism-www-build.sh` and `linked-folders.txt` (publishing), `check-links.js`
 - `archive/` – old material kept with the source but not published (extract into `src/courses/` to build it):

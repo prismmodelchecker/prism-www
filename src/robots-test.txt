@@ -1,0 +1,4 @@
+# robots.txt for any host but www.prismmodelchecker.org (e.g. the test server): nothing to index.
+# The .htaccess serves this in place of robots.txt there.
+User-agent: *
+Disallow: /
