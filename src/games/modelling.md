@@ -6,7 +6,7 @@ permalink: /games/modelling/
 ---
 # PRISM-games: Modelling Language
 
-PRISM-games extends the existing [PRISM modelling language](/manual/ThePRISMLanguage/Introduction) to support the specification of stochastic multi-player games. This works differently for the three types of games supported, each of which is explained below. We assume familiarity with the main PRISM modelling language.
+PRISM-games extends the existing [PRISM modelling language](/manual/ThePRISMLanguage/) to support the specification of stochastic multi-player games. This works differently for the three types of games supported, each of which is explained below. We assume familiarity with the main PRISM modelling language.
 
 -   [Turn-based stochastic multi-player games (SMGs or TSGs)](#smgs)
 -   [Concurrent stochastic multi-player games (CSGs)](#csgs)

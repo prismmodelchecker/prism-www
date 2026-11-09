@@ -168,12 +168,15 @@ export function rewriteLinks(html, sourceDir) {
 // A rendered page (its links already site URLs), for the manual on one page: links between manual pages become links within
 // the page, and the page's ids are prefixed with its name ("Group/Page/heading"), so they stay unique.
 // Headings move down by `shift` levels. For the offline copy (offline=true), files are local and
-// other links go to the website.
+// other links go to the website. The front page (README.md) opens the single page: its ids stay as they are
+// (its "Contents" heading is where links to /manual/ go), and its title is left to the single page's own.
 export function singlePageContent(html, sourceFile, shift = 0, offline = false) {
 	const own = manualUrl(sourceFile).replace(/^\/manual\//, "").replace(/\/$/, "");
+	const prefix = own ? `${own}/` : "";
+	if (!own) html = html.replace(/<h1\b[^>]*>[\s\S]*?<\/h1>\s*/, "");
 	html = html
-		.replace(/\bid="([^"]+)"/g, (m, id) => `id="${own}/${id}"`)
-		.replace(/\bhref="#([^"]+)"/g, (m, id) => `href="#${own}/${id}"`)
+		.replace(/\bid="([^"]+)"/g, (m, id) => `id="${prefix}${id}"`)
+		.replace(/\bhref="#([^"]+)"/g, (m, id) => `href="#${prefix}${id}"`)
 		.replace(/\bhref="\/manual\/([^"#.]*?)\/?(#[^"]*)?"/g, (m, page, anchor = "") =>
 			page === "" && !anchor ? 'href="#contents"' : `href="#${[page, anchor.slice(1)].filter(Boolean).join("/")}"`)
 		.replace(/<(\/?)h([1-6])\b/g, (m, close, n) => `<${close}h${Math.min(6, +n + shift)}`);
@@ -183,8 +186,8 @@ export function singlePageContent(html, sourceFile, shift = 0, offline = false) 
 	return html;
 }
 
-// Citations: links to an entry of the References page, [[KNP11](../Main/References.md#KNP11)]
-const CITATION = /\]\((?:\.\.\/)*(?:Main\/)?References\.md#([^)\s]+)\)/g;
+// Citations: links to an entry of the References page, [[KNP11](../Reference/References.md#KNP11)]
+const CITATION = /\]\((?:\.\.\/)*(?:Reference\/)?References\.md#([^)\s]+)\)/g;
 
 // Keys cited anywhere in the manual in dir (default: the copy in src/manual), and those listed on its References page
 export function citations(dir = MANUAL_DIR) {
@@ -193,13 +196,13 @@ export function citations(dir = MANUAL_DIR) {
 		for (const f of fs.readdirSync(d, { withFileTypes: true })) {
 			const p = path.join(d, f.name);
 			if (f.isDirectory()) walk(p);
-			else if (f.name.endsWith(".md") && p !== path.join(dir, "Main", "References.md")) {
+			else if (f.name.endsWith(".md") && p !== path.join(dir, "Reference", "References.md")) {
 				for (const m of fs.readFileSync(p, "utf8").matchAll(CITATION)) cited.add(m[1]);
 			}
 		}
 	};
 	walk(dir);
-	const refs = path.join(dir, "Main", "References.md");
+	const refs = path.join(dir, "Reference", "References.md");
 	const listed = new Set(fs.existsSync(refs) ? [...fs.readFileSync(refs, "utf8").matchAll(/<a id="([^"]+)"><\/a>/g)].map((m) => m[1]) : []);
 	return { cited, listed };
 }

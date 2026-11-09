@@ -8,7 +8,7 @@ permalink: /support/
 
 If you have problems [installing](/manual/InstallingPRISM/) PRISM, please read "[Common problems and questions](/manual/InstallingPRISM/CommonProblemsAndQuestions)".
 
-For issues regarding the use of PRISM, please first look in the [FAQ](/manual/FrequentlyAskedQuestions/) and [search](/manual/Main/Search) the [manual](/manual/).
+For issues regarding the use of PRISM, please first look in the [FAQ](/manual/FrequentlyAskedQuestions/) and [search](/search/?section=Documentation) the [manual](/manual/).
 
 For other questions, comments or feedback, please post a message in our [forum](https://groups.google.com/group/prismmodelchecker).
 

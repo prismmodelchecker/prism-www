@@ -21,8 +21,8 @@ layout: layouts/base.njk
 {#- A second Section value, so that the manual's search box can search just the manual (base.njk gives "Documentation") #}
 <span hidden data-pagefind-filter="Section">Manual</span>
 
-{#- The contents pages only list other pages, so keep them out of search results #}
-<article class="manual-page"{% if page.url == "/manual/" or sectionPage %} data-pagefind-ignore="all"{% endif %}>
+{#- (the front page and section pages introduce their sections, so they are searchable like other pages) #}
+<article class="manual-page">
 {{ content | safe }}
 </article>
 

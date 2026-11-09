@@ -21,7 +21,7 @@ See also:
 -   the slides for [these lecture courses](/lectures/)
 -   this book: {% cite "KNP04a" %} and chapter 10 of this book: {% cite "BK08" %}
 
-To get started with PRISM, try the [PRISM tutorial](/tutorial/). The definitive guide to the PRISM tool is the [PRISM manual](/manual/ThePRISMLanguage/Introduction/).
+To get started with PRISM, try the [PRISM tutorial](/tutorial/). The definitive guide to the PRISM tool is the [PRISM manual](/manual/).
 
 For more details about case studies, see:
 
