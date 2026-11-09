@@ -194,29 +194,14 @@ In graphs below we present, for systems with a different numbers of restorative 
 
 Note that the system is supposed to model a correctly functioning NAND gate and we assume that the inputs are correct when stimulated. Hence, the more outputs that are non-stimulated, the greater the reliability of the system.
 
--   **1 restorative stage** (random permutation)
-    
-    ![plots output distribution (1 restorative stage, bundle size 20 and U)](/images/graphs/nand.dist20.3.permute.gif)
-
--   **1 restorative stage** (random choice with replacement)
-    
-    ![plots output distribution (1 restorative stage, bundle size 20 and UR)](/images/graphs/nand.dist20.3.random.gif)
-
--   **4 restorative stages** (random permutation)
-    
-    ![plots output distribution (4 restorative stages, bundle size 20 and U)](/images/graphs/nand.dist20.9.permute.gif)
-
--   **4 restorative stages** (random choice with replacement)
-    
-    ![plots output distribution (4 restorative stages, bundle size 20 and UR)](/images/graphs/nand.dist20.9.random.gif)
-
--   **7 restorative stages** (random permutation)
-    
-    ![plots output distribution (7 restorative stages, bundle size 20 and U)](/images/graphs/nand.dist20.15.permute.gif)
-
--   **7 restorative stages** (random choice with replacement)
-    
-    ![plots output distribution (7 restorative stages, bundle size 20 and UR)](/images/graphs/nand.dist20.15.random.gif)
+::: plots
+![plots output distribution (1 restorative stage, bundle size 20 and U)](/images/graphs/nand.dist20.3.permute.gif "1 restorative stage (random permutation)")
+![plots output distribution (1 restorative stage, bundle size 20 and UR)](/images/graphs/nand.dist20.3.random.gif "1 restorative stage (random choice with replacement)")
+![plots output distribution (4 restorative stages, bundle size 20 and U)](/images/graphs/nand.dist20.9.permute.gif "4 restorative stages (random permutation)")
+![plots output distribution (4 restorative stages, bundle size 20 and UR)](/images/graphs/nand.dist20.9.random.gif "4 restorative stages (random choice with replacement)")
+![plots output distribution (7 restorative stages, bundle size 20 and U)](/images/graphs/nand.dist20.15.permute.gif "7 restorative stages (random permutation)")
+![plots output distribution (7 restorative stages, bundle size 20 and UR)](/images/graphs/nand.dist20.15.random.gif "7 restorative stages (random choice with replacement)")
+:::
 
 ### Output Distribution when bundle size (**N**) equals 40
 
@@ -224,29 +209,14 @@ In graphs below we present, for systems with a different numbers of stages and b
 
 Note that the system is supposed to model a correctly functioning NAND gate and we assume that the inputs are correct when stimulated. Hence, the more outputs that are non-stimulated, the greater the reliability of the system.
 
--   **1 restorative stage** (random permutation)
-    
-    ![plots output distribution (1 restorative stage, bundle size 40 and U)](/images/graphs/nand.dist40.3.permute.gif)
-
--   **1 restorative stage** (random choice with replacement)
-    
-    ![plots output distribution (1 restorative stage, bundle size 40 and UR)](/images/graphs/nand.dist40.3.random.gif)
-
--   **4 restorative stages** (random permutation)
-    
-    ![plots output distribution (4 restorative stages, bundle size 40 and U)](/images/graphs/nand.dist40.9.permute.gif)
-
--   **4 restorative stages** (random choice with replacement)
-    
-    ![plots output distribution (4 restorative stages, bundle size 40 and UR)](/images/graphs/nand.dist40.9.random.gif)
-
--   **7 restorative stages** (random permutation)
-    
-    ![plots output distribution (7 restorative stages, bundle size 40 and U)](/images/graphs/nand.dist40.15.permute.gif)
-
--   **7 restorative stages** (random choice with replacement)
-    
-    ![plots output distribution (7 restorative stages, bundle size 40 and UR)](/images/graphs/nand.dist40.15.random.gif)
+::: plots
+![plots output distribution (1 restorative stage, bundle size 40 and U)](/images/graphs/nand.dist40.3.permute.gif "1 restorative stage (random permutation)")
+![plots output distribution (1 restorative stage, bundle size 40 and UR)](/images/graphs/nand.dist40.3.random.gif "1 restorative stage (random choice with replacement)")
+![plots output distribution (4 restorative stages, bundle size 40 and U)](/images/graphs/nand.dist40.9.permute.gif "4 restorative stages (random permutation)")
+![plots output distribution (4 restorative stages, bundle size 40 and UR)](/images/graphs/nand.dist40.9.random.gif "4 restorative stages (random choice with replacement)")
+![plots output distribution (7 restorative stages, bundle size 40 and U)](/images/graphs/nand.dist40.15.permute.gif "7 restorative stages (random permutation)")
+![plots output distribution (7 restorative stages, bundle size 40 and UR)](/images/graphs/nand.dist40.15.random.gif "7 restorative stages (random choice with replacement)")
+:::
 
 ### Output Distribution when bundle size (**N**) equals 60
 
@@ -254,72 +224,40 @@ In graphs below we present, for systems with a different numbers of stages and b
 
 Note that the system is supposed to model a correctly functioning NAND gate and we assume that the inputs are correct when stimulated. Hence, the more outputs that are non-stimulated, the greater the reliability of the system.
 
--   **1 restorative stage** (random permutation)
-    
-    ![plots output distribution (1 restorative stage, bundle size 60 and U)](/images/graphs/nand.dist60.3.permute.gif)
-
--   **1 restorative stage** (random choice with replacement)
-    
-    ![plots output distribution (1 restorative stage, bundle size 60 and UR)](/images/graphs/nand.dist60.3.random.gif)
-
--   **4 restorative stages** (random permutation)
-    
-    ![plots output distribution (4 restorative stages, bundle size 60 and U)](/images/graphs/nand.dist60.9.permute.gif)
-
--   **4 restorative stages** (random choice with replacement)
-    
-    ![plots output distribution (4 restorative stages, bundle size 60 and UR)](/images/graphs/nand.dist60.9.random.gif)
-
--   **7 restorative stages** (random permutation)
-    
-    ![plots output distribution (7 restorative stages, bundle size 60 and U)](/images/graphs/nand.dist60.15.permute.gif)
-
--   **7 restorative stages** (random choice with replacement)
-    
-    ![plots output distribution (7 restorative stages, bundle size 60 and UR)](/images/graphs/nand.dist60.15.random.gif)
+::: plots
+![plots output distribution (1 restorative stage, bundle size 60 and U)](/images/graphs/nand.dist60.3.permute.gif "1 restorative stage (random permutation)")
+![plots output distribution (1 restorative stage, bundle size 60 and UR)](/images/graphs/nand.dist60.3.random.gif "1 restorative stage (random choice with replacement)")
+![plots output distribution (4 restorative stages, bundle size 60 and U)](/images/graphs/nand.dist60.9.permute.gif "4 restorative stages (random permutation)")
+![plots output distribution (4 restorative stages, bundle size 60 and UR)](/images/graphs/nand.dist60.9.random.gif "4 restorative stages (random choice with replacement)")
+![plots output distribution (7 restorative stages, bundle size 60 and U)](/images/graphs/nand.dist60.15.permute.gif "7 restorative stages (random permutation)")
+![plots output distribution (7 restorative stages, bundle size 60 and UR)](/images/graphs/nand.dist60.15.random.gif "7 restorative stages (random choice with replacement)")
+:::
 
 ### Reliability versus the probability of gate failure
 
 The following graph plots the probability that at most 10% of the outputs of the overall system are incorrect (stimulated) against the failure probability of the gates.
 
--   bundle size (**N**) equals 20
-    
-    ![plots probability at most 10% outputs are incorrect for bundle size 60 (small failure rate)](/images/graphs/nand.20.multi.gif)
-
--   bundle size (**N**) equals 40
-    
-    ![plots probability at most 10% outputs are incorrect for bundle size 60 (small failure rate)](/images/graphs/nand.40.multi.gif)
-
--   bundle size (**N**) equals 60
-    
-    ![plots probability at most 10% outputs are incorrect for bundle size 60 (small failure rate)](/images/graphs/nand.60.multi.gif)
+::: plots
+![plots probability at most 10% outputs are incorrect for bundle size 60 (small failure rate)](/images/graphs/nand.20.multi.gif "bundle size (N) equals 20")
+![plots probability at most 10% outputs are incorrect for bundle size 60 (small failure rate)](/images/graphs/nand.40.multi.gif "bundle size (N) equals 40")
+![plots probability at most 10% outputs are incorrect for bundle size 60 (small failure rate)](/images/graphs/nand.60.multi.gif "bundle size (N) equals 60")
+:::
 
 ### Reliability versus the number of stages
 
 The following graph plots the probability that at most 10% of the outputs of the overall system are incorrect (stimulated) against the number of stages of the system.
 
--   bundle size (**N**) equals 20
-    
-    ![plots probability at most 10% outputs are incorrect for bundle size 20 (large failure rate)](/images/graphs/nand.20.prob.gif)
-
--   bundle size (**N**) equals 40
-    
-    ![plots probability at most 10% outputs are incorrect for bundle size 40 (large failure rate)](/images/graphs/nand.40.prob.gif)
-
--   bundle size (**N**) equals 60
-    
-    ![plots probability at most 10% outputs are incorrect for bundle size 60 (large failure rate)](/images/graphs/nand.60.prob.gif)
+::: plots
+![plots probability at most 10% outputs are incorrect for bundle size 20 (large failure rate)](/images/graphs/nand.20.prob.gif "bundle size (N) equals 20")
+![plots probability at most 10% outputs are incorrect for bundle size 40 (large failure rate)](/images/graphs/nand.40.prob.gif "bundle size (N) equals 40")
+![plots probability at most 10% outputs are incorrect for bundle size 60 (large failure rate)](/images/graphs/nand.60.prob.gif "bundle size (N) equals 60")
+:::
 
 The following graph plots the expected percentage of incorrect (stimulated) inputs against the number of stages of the system.
 
--   bundle size **N** equals 20
-    
-    ![plots expected % of incorrect outputs for bundle size 20](/images/graphs/nand.20.expected.gif)
+::: plots
+![plots expected % of incorrect outputs for bundle size 20](/images/graphs/nand.20.expected.gif "bundle size N equals 20")
+![plots expected % of incorrect outputs for bundle size 40](/images/graphs/nand.40.expected.gif "bundle size N equals 40")
+![plots expected % of incorrect outputs for bundle size 60](/images/graphs/nand.60.expected.gif "bundle size N equals 60")
+:::
 
--   bundle size **N** equals 40
-    
-    ![plots expected % of incorrect outputs for bundle size 40](/images/graphs/nand.40.expected.gif)
-
--   bundle size **N** equals 60
-    
-    ![plots expected % of incorrect outputs for bundle size 60](/images/graphs/nand.60.expected.gif)

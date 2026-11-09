@@ -8,6 +8,7 @@ import katex from "katex";
 import texmath from "markdown-it-texmath";
 import { classes } from "./src/_lib/classes.js";
 import { tables } from "./src/_lib/tables.js";
+import { images } from "./src/_lib/images.js";
 import { headingIds, rewriteLinks, pageHeadings, singlePageContent, manualUrl, MANUAL_DIR, SINGLE_URL, OFFLINE_URL } from "./src/_lib/manual.js";
 import { LARGE_FILE, LARGE_FILE_ORIGIN } from "./src/_lib/assets.js";
 import { fixLegacyLinks } from "./src/_lib/legacy.js";
@@ -67,7 +68,13 @@ export default function (eleventyConfig) {
 		// Styles for site pages, defined in site.css and listed in README.md: "::: box" around blocks,
 		// {.note} after an element (a block inside another has fewer colons)
 		for (const name of ["answer", "banner", "slideshow", "columns", "box", "questions", "labels"]) md.use(markdownItContainer, name);
+		// "::: plots": images (each with its caption as a title) in a grid; "::: plots pairs": two across
+		md.use(markdownItContainer, "plots", {
+			render: (tokens, idx) => tokens[idx].nesting === 1
+				? `<div class="plots${tokens[idx].info.trim().split(/\s+/).slice(1).map((c) => " " + c).join("")}">\n` : "</div>\n",
+		});
 		md.use(classes);
+		md.use(images);
 		// Images alone in a paragraph are figures, side by side if there are several; not in the manual, which has its own style
 		md.core.ruler.push("figures", (state) => {
 			const file = state.env?.page?.inputPath;
@@ -75,7 +82,7 @@ export default function (eleventyConfig) {
 			state.tokens.forEach((t, i) => {
 				if (t.type !== "inline" || state.tokens[i - 1]?.type !== "paragraph_open") return;
 				const items = t.children.filter((c) => !/^(softbreak|link_open|link_close)$/.test(c.type) && !(c.type === "text" && !c.content.trim()));
-				if (!items.length || items.some((c) => c.type !== "image")) return;
+				if (!items.length || items.some((c) => c.type !== "image" || c.meta?.figure)) return;
 				for (const image of items) if (!/\bright\b/.test(image.attrGet("class"))) image.attrJoin("class", "prism-image");
 				if (items.length > 1) state.tokens[i - 1].attrJoin("class", "gallery");
 			});

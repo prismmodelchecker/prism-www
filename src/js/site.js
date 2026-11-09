@@ -71,6 +71,31 @@ document.addEventListener("DOMContentLoaded", () => {
 	if (os) document.querySelector(`.downloads__row[data-os="${os}"]`)?.classList.add("is-yours");
 
 	// Code boxes: a "Copy" button at the top right (the box is wrapped, so the button stays put when the code scrolls sideways)
+	// Images shown smaller than their file (in figures and plot grids, or sized down): click to see them full size
+	let zoom;
+	const zoomable = (img) => {
+		if (img.naturalWidth > img.clientWidth * 1.15) img.classList.add("zoomable");
+	};
+	for (const img of document.querySelectorAll(".content img:is(.prism-image, .small, .medium, .large), .content figure.figure img")) {
+		if (img.complete) zoomable(img);
+		else img.addEventListener("load", () => zoomable(img), { once: true });
+		img.addEventListener("click", () => {
+			if (!img.classList.contains("zoomable")) return;
+			if (!zoom) {
+				zoom = document.createElement("dialog");
+				zoom.className = "zoom";
+				zoom.innerHTML = '<img alt=""><p></p>';
+				zoom.addEventListener("click", () => zoom.close());
+				document.body.append(zoom);
+			}
+			zoom.querySelector("img").src = img.currentSrc || img.src;
+			zoom.querySelector("img").alt = img.alt;
+			const caption = img.closest("figure")?.querySelector("figcaption");
+			zoom.querySelector("p").innerHTML = caption ? caption.innerHTML : "";
+			zoom.showModal();
+		});
+	}
+
 	const copyOldWay = (text) => {
 		const area = Object.assign(document.createElement("textarea"), { value: text });
 		area.style.cssText = "position:fixed;opacity:0";

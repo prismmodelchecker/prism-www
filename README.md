@@ -85,13 +85,20 @@ Blocks (registered in `eleventy.config.js`; the home page, `src/index.md`, uses 
 - `::: questions` – each paragraph and the code block after it as one item, with a blue bar down the side
 - `::: answer` – the same bar and tint, around an answer in a tutorial or practical
 - `::: labels` – a list as pale labels in the word cloud's colours, for a white background
+- `::: plots` – the images inside (one per line) as a grid of figures, two or three across (one on phones),
+  each captioned by its Markdown title: `![plot of ...](/images/graphs/x.png "Caption")`;
+  `::: plots pairs` keeps exactly two across
 
 Inline:
 
 - `{.wordmark}` – text in the blue gradient of the site title: `**PRISM**{.wordmark}`
 - `{.note}` – smaller, muted text: `*(by James Broad)*{.note}`; `{.caption}` – a centred caption under an image
-- Images: an image alone in a paragraph is a figure (several are shown side by side); `{.right}` floats it right,
-  and a size class sets its width, as a percentage (`{.w40}`) or in pixels (`{.px400}`): the sizes are listed in `site.css`
+- Images: an image alone in a paragraph with a title is a figure, with the title as its caption
+  (`![plot of ...](x.png "Caption")`). Images are shown at most their own size (the width and height
+  are read from the file when the site is built), and one shown smaller than its file can be clicked to see it
+  full size. Sizes: `{.small}`, `{.medium}`, `{.large}` (at most 16, 28 and 44rem wide); `{.right}` floats an image right.
+  (Older pages still use fixed widths, `{.w40}` or `{.px400}`, and several images in one paragraph side by side:
+  being replaced by the above.)
 
 Code blocks (fenced, with a language), in the colours of the `--tok-*` tokens:
 
