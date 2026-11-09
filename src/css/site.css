@@ -615,6 +615,20 @@ mark.bib-highlight { background: var(--bib-mark-bg); color: inherit; border-bott
 }
 .manual-nav__section, .manual-nav .manual-nav__top { margin: 1rem 0 0.3rem; }
 .manual-nav .manual-nav__section a { color: inherit; }
+/* Sections fold: the heading links to the section's contents page, the triangle beside it opens and closes it.
+   Closed sections sit closer together, so the list of them reads as one menu. */
+.manual-nav__group > summary { list-style: none; position: relative; cursor: pointer; padding-right: 1.6rem; }
+.manual-nav__group > summary::-webkit-details-marker { display: none; }
+.manual-nav__group > summary::after {
+	content: "▸"; position: absolute; right: 0.4rem; top: 50%; transform: translateY(-50%);
+	color: var(--text-muted); font-size: 0.95rem; transition: transform 0.15s;
+}
+.manual-nav__group[open] > summary::after { transform: translateY(-50%) rotate(90deg); }
+.manual-nav__group > summary:hover::after { color: var(--text); }
+.manual-nav__group > summary .manual-nav__section { margin: 0.35rem 0; }
+.manual-nav__group[open] > summary .manual-nav__section { margin-top: 1rem; }
+.manual-nav__group[open] + .manual-nav__group > summary .manual-nav__section { margin-top: 1rem; }
+.manual-nav__group[open] > ul { margin-bottom: 0.3rem; }
 .manual-nav .manual-nav__headings { margin: 0.15rem 0 0.4rem 0.5rem; border-left: 2px solid var(--border); }
 .manual-nav .manual-nav__headings a { font-size: 0.88rem; color: var(--text-muted); padding-left: 0.6rem; }
 

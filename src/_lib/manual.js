@@ -24,6 +24,25 @@ export function manualUrl(rel) {
 	return base + (anchor ? "#" + anchor : "");
 }
 
+// (the contents are read more than once in a build, so say each thing once)
+const warned = new Set();
+function warnOnce(message) {
+	if (!warned.has(message)) console.warn(message);
+	warned.add(message);
+}
+
+// Markdown inline text as plain text (for tooltips): links, code and emphasis markers dropped
+function plainText(md) {
+	return md.replace(/\[([^\]]*)\]\([^)]*\)/g, "$1").replace(/[`*_]/g, "").replace(/\s+/g, " ").trim();
+}
+
+// The first paragraph of a contents page after its "# Title": the section's description
+function introText(file) {
+	const text = fs.readFileSync(path.join(MANUAL_DIR, file), "utf8").replace(/^[\s\S]*?^#\s.*$/m, "");
+	const para = text.split(/\n\s*\n/).map((p) => p.trim()).find((p) => p && !/^[-*#<]/.test(p));
+	return para ? plainText(para) : "";
+}
+
 // The lines of a contents page that list its contents: those under its "## Contents" heading,
 // up to the next heading of the same or higher level, or the whole page if it has no such heading
 function contentsLines(file) {
@@ -37,14 +56,16 @@ function contentsLines(file) {
 // The "- [Title](Page.md)" items of a contents page (file relative to the manual root), in order,
 // with indented items as children of the one above. Only links to .md files count, and only under
 // the page's "## Contents" heading if it has one, so other lists on the page are left alone.
+// Text after the link ("- [Title](Page.md): what it covers") is the page's description.
 function contentsItems(file) {
 	const dir = path.posix.dirname(file);
 	const items = [];
 	for (const line of contentsLines(file)) {
-		const m = line.match(/^(\s*)[-*]\s+\[(.*?)\]\(([^):]+?\.md(?:#[^)]*)?)\)/);
+		const m = line.match(/^(\s*)[-*]\s+\[(.*?)\]\(([^):]+?\.md(?:#[^)]*)?)\)(.*)$/);
 		if (!m) continue;
 		const target = path.posix.normalize(path.posix.join(dir, m[3]));
-		const entry = { title: m[2], file: target.split("#")[0], url: manualUrl(target), children: [] };
+		const description = plainText(m[4].replace(/^\s*(?::|—|–|-)\s*/, ""));
+		const entry = { title: m[2], file: target.split("#")[0], url: manualUrl(target), description, children: [] };
 		if (m[1].length > 0 && items.length) items.at(-1).children.push(entry);
 		else items.push(entry);
 	}
@@ -57,8 +78,11 @@ export function readContents() {
 	const sections = [];
 	for (const item of contentsItems("README.md")) {
 		if (/^[^/]+\/README\.md$/.test(item.file)) {
-			sections.push({ title: item.title, url: item.url, file: item.file, pages: contentsItems(item.file) });
+			const description = item.description || introText(item.file);
+			sections.push({ title: item.title, url: item.url, file: item.file, description, pages: contentsItems(item.file) });
 		} else {
+			// Every page belongs in a section: in the menu, a page on its own looks like an empty section heading
+			warnOnce(`[manual] README.md lists a page outside any section: ${item.file}`);
 			if (!sections.length || sections.at(-1).url) sections.push({ title: "", url: "", pages: [] });
 			sections.at(-1).pages.push(item);
 		}

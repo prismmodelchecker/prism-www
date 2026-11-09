@@ -1,5 +1,6 @@
-{#- The manual's full table of contents (from its README.md), shown beside every manual page.
-    The current page also lists its own headings, as links into the page. -#}
+{#- The manual's table of contents (from its README.md), shown beside every manual page.
+    Each section folds (a <details>), open only for the section that the current page is in, so the menu
+    stays short. The current page also lists its own headings, as links into the page. -#}
 {%- set headings = content | manualHeadings %}
 <nav class="manual-nav" aria-label="Manual contents">
 	<div class="manual-nav__head">
@@ -12,11 +13,11 @@
 	</div>
 	<div class="local-nav__details">
 		{%- for section in manual.sections %}
-		{%- if section.title %}<h2 class="manual-nav__section"><a href="{{ section.url }}"{% if section.url == page.url %} aria-current="page"{% endif %}>{{ section.title }}</a></h2>{% endif %}
+		{%- set pageList %}
 		<ul{% if not section.title %} class="manual-nav__top"{% endif %}>
 			{%- for p in section.pages %}
 			<li>
-				<a href="{{ p.url }}"{% if p.url == page.url %} aria-current="page"{% endif %}>{{ p.title }}</a>
+				<a href="{{ p.url }}"{% if p.url == page.url %} aria-current="page"{% endif %}{% if p.description %} title="{{ p.description }}"{% endif %}>{{ p.title }}</a>
 				{%- if p.url == page.url and (headings.length or p.children.length) %}
 				<ul class="manual-nav__headings">
 					{%- for h in headings %}<li><a href="#{{ h.id }}">{{ h.text | safe }}</a></li>{% endfor %}
@@ -26,6 +27,15 @@
 			</li>
 			{%- endfor %}
 		</ul>
+		{%- endset %}
+		{%- if section.title %}
+		<details class="manual-nav__group"{% if section.url == page.url or (section.pages | manualPageItem(page.url)) %} open{% endif %}>
+			<summary><h2 class="manual-nav__section"><a href="{{ section.url }}"{% if section.url == page.url %} aria-current="page"{% endif %}{% if section.description %} title="{{ section.description }}"{% endif %}>{{ section.title }}</a></h2></summary>
+			{{- pageList | safe }}
+		</details>
+		{%- else %}
+		{{- pageList | safe }}
+		{%- endif %}
 		{%- endfor %}
 	</div>
 </nav>
