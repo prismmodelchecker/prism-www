@@ -40,7 +40,7 @@ Stochastic control oriented dynamic power management work relies on modelling in
 
 <a id="model"></a>In each of the case studies we consider, the system model has the following form.
 
-![power management system model](/images/cs/power.pm.gif)
+![power management system model](/images/cs/power.pm.svg)
 
 The model consists of a Service Requester (SR), a Service Provider (SP), a Service Request Queue (SRQ), and the power manager (PM). The SR models the arrival of requests and the SRQ corresponds to a (finite) queue in which the requests that cannot immediately be served are stored. The SP is the resource which services requests. It can have several states of operation with varying service rates (the time taken to service requests). The PM is a controller that observes the system and issues commands to the SP which correspond instruct it to change its current state.
 

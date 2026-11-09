@@ -22,7 +22,7 @@ This case study is based on a DTMC model of a IBM disk drive taken from {% cite 
 
 The service provider (SP) has five different states which are shown below.
 
-![](/images/cs/power_dtmc.sp.gif)
+![power states of the service provider](/images/cs/power_dtmc.sp.svg)
 
 It is only in state **active** that the SP can perform data reads and writes. In state **idle** the disk is spinning while some of the electronic components of the disk drive have been switched off. The state **idlelp** (idle low power) is similar except that it has a lower power dissipation. The states **stby** and **sleep** correspond to the disk being spun down. The specification of the SP is given in the following tables.
 

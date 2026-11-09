@@ -54,7 +54,7 @@ Node is installed in `~/opt/node` there (not the system's).
   Tables can have merged cells, row groups and column groups (see `src/_lib/tables.js`). The manual uses none of these,
   so that it reads properly on GitHub
 - `src/htaccess.njk` – generates the server's redirects from old URLs
-- `scripts/` – `sync-manual.js` and `manual-offline.js` (manual), `export-bib.php` and `export-bib.js` (database export),
+- `scripts/` – `sync-manual.js` and `manual-offline.js` (manual), `diagrams.py` (case study diagrams, as SVG), `export-bib.php` and `export-bib.js` (database export),
   `prism-www-build.sh` and `linked-folders.txt` (publishing), `check-links.js`
 - `archive/` – old material kept with the source but not published (extract into `src/courses/` to build it):
   `courses-pmc-2010-2023.tar.xz`, the PMC practicals 2010–11 to 2022–23, and `courses-aims-2014-2019.tar.xz`,

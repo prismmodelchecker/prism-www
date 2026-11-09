@@ -22,7 +22,7 @@ This case study is based on a CTMC model of a 3 state Fujitsu disk drive taken f
 
 In this model the Service Provider (SP) has three states which are shown below.
 
-![3 state service provider](/images/cs/power_ctmc3.sp.gif)
+![3 state service provider](/images/cs/power_ctmc3.sp.svg)
 
 The SP makes a transition from **idle** to **busy** whenever a request arrives for service. Similarly, it makes a transition from **busy** to **idle** whenever it finishes the service of a request. Transitions between **sleep** and **idle** are controlled by the PM. The only condition we impose on the PM is that, when the SRQ is full and the SP is in **sleep**, the PM switches the SP on, i.e. the SP moves to **idle**. The performance of the SP is given in the following tables where the data is taken from {% cite "QWP99" %}:
 

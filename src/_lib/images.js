@@ -19,7 +19,12 @@ export function imageSize(file) {
 		fs.closeSync(fd);
 		if (b.toString("ascii", 1, 4) === "PNG") size = [b.readUInt32BE(16), b.readUInt32BE(20)];
 		else if (b.toString("ascii", 0, 3) === "GIF") size = [b.readUInt16LE(6), b.readUInt16LE(8)];
-		else if (b.toString("ascii", 0, 4) === "RIFF" && b.toString("ascii", 8, 12) === "WEBP") {
+		else if (file.endsWith(".svg")) {
+			// (an SVG's own width and height attributes, in pixels)
+			const tag = b.toString("utf8", 0, n).match(/<svg\b[^>]*>/)?.[0] || "";
+			const w = tag.match(/\swidth="(\d+(?:\.\d+)?)(?:px)?"/), h = tag.match(/\sheight="(\d+(?:\.\d+)?)(?:px)?"/);
+			if (w && h) size = [Math.round(+w[1]), Math.round(+h[1])];
+		} else if (b.toString("ascii", 0, 4) === "RIFF" && b.toString("ascii", 8, 12) === "WEBP") {
 			const chunk = b.toString("ascii", 12, 16);
 			if (chunk === "VP8 ") size = [b.readUInt16LE(26) & 0x3fff, b.readUInt16LE(28) & 0x3fff];
 			else if (chunk === "VP8L") {

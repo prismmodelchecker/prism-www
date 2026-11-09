@@ -57,7 +57,7 @@ R{"queue"}=? [ I=T ]
 
 Next, we add the Service Provider (SP) component, representing the disk drive. This has 5 different power modes: *active*, *idle*, *idlelp* (idle low power), *stdby* (on standby) and *sleep*. These, and the possible transitions between them, are shown in the figure below.
 
-![SP states](/courses/mpp-mc15/images/power_dtmc.sp.gif)
+![SP states](/images/cs/power_dtmc.sp.svg)
 
 The SP will move between power states when it is instructed to do so by the power manager. Transitions between power states are not immediate, however, so our model includes additional "transient states" which, like in the Service Requester above, model a random delay.
 
