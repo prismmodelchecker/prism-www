@@ -1,6 +1,6 @@
 ---
 layout: layouts/base.njk
-title: "games - Compositional Strategy Synthesis"
+title: "PRISM-games: Compositional Strategy Synthesis"
 section: games
 permalink: /games/compositional/
 ---

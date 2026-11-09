@@ -1,6 +1,6 @@
 ---
 layout: layouts/base.njk
-title: "games - Property Specification"
+title: "PRISM-games: Property Specification"
 section: games
 permalink: /games/properties/
 ---

@@ -1,6 +1,6 @@
 ---
 layout: layouts/base.njk
-title: "games - Instructions"
+title: "PRISM-games: Instructions"
 section: games
 permalink: /games/instructions/
 ---

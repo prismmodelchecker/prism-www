@@ -1,6 +1,6 @@
 ---
 layout: layouts/base.njk
-title: "games - Modelling Language"
+title: "PRISM-games: Modelling Language"
 section: games
 permalink: /games/modelling/
 ---

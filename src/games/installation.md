@@ -1,6 +1,6 @@
 ---
 layout: layouts/base.njk
-title: "games - Installation"
+title: "PRISM-games: Installation"
 section: games
 permalink: /games/installation/
 ---

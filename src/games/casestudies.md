@@ -1,6 +1,6 @@
 ---
 layout: layouts/base.njk
-title: "games - Case Studies"
+title: "PRISM-games: Case Studies"
 section: games
 permalink: /games/casestudies/
 ---

@@ -1,6 +1,6 @@
 ---
 layout: layouts/base.njk
-title: PRISM-games publications
+title: "PRISM-games publications"
 section: games
 permalink: /games/publ/
 subjects:

@@ -1,6 +1,6 @@
 ---
 layout: layouts/base.njk
-title: "games: Demo"
+title: "PRISM-games: Demo"
 section: games
 permalink: /games/demo/
 ---
