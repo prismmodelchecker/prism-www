@@ -21,7 +21,7 @@ Starting at the root vertex (state **0**), one repeatedly tosses a coin.
 Every time *heads* appears, one takes the upper branch and when *tails* appears, the lower branch.
 This continues until the value of the die is decided.
 
-![Coin-toss diagram where every edge has probability 0.5. State 0 goes to states 1 or 2. State 1 goes to 3 or 4, and state 2 to 5 or 6. State 3 gives die value 1 or returns to state 1; state 4 gives 2 or 3; state 5 gives 4 or 5; state 6 gives 6 or returns to state 2.](/images/cs/dice.pic.gif)
+![Coin-toss diagram where every edge has probability 0.5. State 0 goes to states 1 or 2. State 1 goes to 3 or 4, and state 2 to 5 or 6. State 3 gives die value 1 or returns to state 1; state 4 gives 2 or 3; state 5 gives 4 or 5; state 6 gives 6 or returns to state 2.](/tutorial/images/dice.pic.jpg){.medium}
 
 The PRISM code for this program is as follows.
 
