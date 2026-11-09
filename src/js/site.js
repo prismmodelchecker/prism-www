@@ -70,6 +70,48 @@ document.addEventListener("DOMContentLoaded", () => {
 		: /win/i.test(ua) ? "windows" : /mac/i.test(ua) ? "mac" : /linux/i.test(ua) ? "linux" : null;
 	if (os) document.querySelector(`.downloads__row[data-os="${os}"]`)?.classList.add("is-yours");
 
+	// Code boxes: a "Copy" button at the top right (the box is wrapped, so the button stays put when the code scrolls sideways)
+	const copyOldWay = (text) => {
+		const area = Object.assign(document.createElement("textarea"), { value: text });
+		area.style.cssText = "position:fixed;opacity:0";
+		document.body.append(area);
+		area.select();
+		let ok = false;
+		try { ok = document.execCommand("copy"); } catch {}
+		area.remove();
+		return ok;
+	};
+	{
+		const icon = '<svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="5.5" y="5.5" width="8" height="9" rx="1.5"/><path d="M3.5 10.5h-.5a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1h6.5a1 1 0 0 1 1 1v.5"/></svg>';
+		for (const pre of document.querySelectorAll(".content pre")) {
+			let box = pre.parentElement;
+			if (!box.matches("figure.code")) {
+				box = document.createElement("div");
+				box.className = "codebox";
+				pre.before(box);
+				box.append(pre);
+			}
+			const copy = document.createElement("button");
+			copy.type = "button";
+			copy.className = "copy-code";
+			copy.innerHTML = `${icon}<span>Copy</span>`;
+			copy.setAttribute("aria-label", "Copy code");
+			copy.addEventListener("click", async () => {
+				const text = pre.textContent.replace(/\n$/, "");
+				let ok = true;
+				try {
+					await navigator.clipboard.writeText(text); // (throws if there is no clipboard API)
+				} catch {
+					ok = copyOldWay(text); // (where the clipboard API is refused, e.g. some embedded browsers)
+				}
+				copy.lastChild.textContent = ok ? "Copied" : "Failed";
+				copy.classList.add("is-done");
+				setTimeout(() => { copy.lastChild.textContent = "Copy"; copy.classList.remove("is-done"); }, 1500);
+			});
+			box.append(copy);
+		}
+	}
+
 	const button = document.querySelector(".menu-toggle");
 	const nav = document.getElementById("site-nav");
 	if (!button || !nav) return;

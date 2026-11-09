@@ -417,6 +417,22 @@ figure.code figcaption {
 	padding: 0.3rem 1rem; background: var(--side-head); border-top: 1px solid var(--border);
 	font-size: 0.85rem; color: var(--text-muted);
 }
+/* Copy button on code boxes: faint until the box is hovered or the button focused (always shown on touch screens) */
+.codebox, figure.code { position: relative; }
+.codebox > pre { margin: 0; }
+:is(.codebox, figure.code) > pre { padding-right: 5.5rem; } /* (room for the button, so it never covers a short command) */
+.codebox { margin: 1rem 0; }
+.copy-code {
+	position: absolute; top: 0.55rem; right: 0.55rem;
+	display: inline-flex; align-items: center; gap: 0.3em;
+	padding: 0.15rem 0.45rem; border: 1px solid var(--border); border-radius: var(--radius-sm);
+	background: var(--bg); color: var(--text-muted); font: inherit; font-size: 0.75rem; cursor: pointer;
+	opacity: 0; transition: opacity 0.15s;
+}
+:is(.codebox, figure.code):hover .copy-code, .copy-code:focus-visible, .copy-code.is-done { opacity: 1; }
+.copy-code:hover { color: var(--link); border-color: var(--link); }
+.copy-code.is-done { color: var(--bib-key); border-color: currentColor; }
+@media (hover: none) { .copy-code { opacity: 0.85; } }
 pre code { background: none; } /* (some old pages style all code elements, meaning inline code) */
 .tok-keyword { color: var(--tok-keyword); font-weight: 700; }
 .tok-ident { color: var(--tok-ident); }
