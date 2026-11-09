@@ -30,7 +30,7 @@ Furthermore, restricting the inter-arrival time to be exponentially distributed,
 -   [the expected power consumption by time **T**](#T.power);
 -   [the expected number of requests awaiting service at time **T**](#T.queue);
 -   [the expected number of lost requests by time **T**](#T.lost);
--   the probability, from the state where the SP is in **standby** and there are no requests awaiting service, that at least **N** requests are awaiting service by time **T**: see [here](#queue10) for the the case when **N=10** and [here](#queue15) for **N=15**;
+-   the probability, from the state where the SP is in **standby** and there are no requests awaiting service, that at least **N** requests are awaiting service by time **T**: see [here](#T.queue10) for the case when **N=10** and [here](#T.queue15) for **N=15**;
 -   the probability that a request is served by time **T**, given that it arrived into a certain position in the queue and that the SP is in **standby** when the request arrives: see [here](#served1) for the the case when the request arrives into the first position in the queue, [here](#served5) for the request arriving into the 5th position and and [here](#served10) when it arrives into the 10th position in the queue;
 -   [from the state where the SRQ is empty and the SP is in **standby**, the probability that a request gets lost by time **T**](#prob.lost).
 
@@ -263,11 +263,11 @@ Furthermore, restricting the inter-arrival time to be exponentially distributed,
 
 ![](/images/graphs/power_ctmc4.lost.gif)
 
-<a name="queue10"></a>
+<a name="T.queue10"></a>
 
 ![](/images/graphs/power_ctmc4.prob.queue10.gif)
 
-<a name="queue15"></a>
+<a name="T.queue15"></a>
 
 ![](/images/graphs/power_ctmc4.prob.queue15.gif)
 
