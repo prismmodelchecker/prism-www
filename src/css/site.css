@@ -138,7 +138,9 @@ h2 { font-size: 1.45rem; }
 h3 { font-size: 1.2rem; }
 h4 { font-size: 1.05rem; }
 
-code, pre { font-family: var(--font-mono); font-size: 0.9em; }
+/* (monospace letters are wide and heavy, so 0.85 reads as the same size as the text; code inside a listing doesn't shrink again) */
+code, pre { font-family: var(--font-mono); font-size: 0.85em; }
+pre code { font-size: 1em; }
 :not(pre) > code {
 	overflow-wrap: anywhere; /* long option names and paths mustn't widen the page on phones */
 	background: var(--code-bg);
