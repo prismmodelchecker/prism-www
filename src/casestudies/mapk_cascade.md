@@ -70,7 +70,7 @@ The PRISM model for the pathway is given below.
 
 We have included five reward structures in the description. The first reward structure (''activated'') assigns a state reward equal to the amount of MAPK that is activated while the second reward structure (''activated\_squared'') assigns a state reward equal to the square of the amount MAPK that is activated. Since, the standard deviation of a random variable *X* equals the square root of its variance which equals:
 
-<center><b>E</b>(<em>X</em><sup>2</sup>) - <b>E</b>(<em>X</em>)<sup>2</sup>,</center>
+$$\mathbf{E}(X^2) - \mathbf{E}(X)^2,$$
 
 together these rewards can be used to compute the standard deviation (and variance) of random variable for the amount of activated MAPK at a time instant. The third (''activated'') assigns a state reward equal to the percentage of MAPK that is activated. The forth reward structure (''reactions'') assigns a reward of 1 to all transitions which correspond to a reaction between MAPK and MAPKK and the last (''time'') simply assigns a state reward of 1 to all states in the model.
 

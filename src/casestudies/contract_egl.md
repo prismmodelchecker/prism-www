@@ -34,17 +34,17 @@ We also consider alternative message scheduling schemes for the second phase of 
 
 The probabilistic contract signing protocol of Even, Goldreich, and Lempel {% cite "EGL85" %} proceeds as follows. Initiator *A* generates *2n* random secret *a<sub>1</sub>*,...,*a<sub>2n</sub>* and reveals:
 
-<center><b>F</b>(<em>a<sub>1</sub></em>,<b>c</b>),...,<b>F</b>(<em>a<sub>2n</sub></em>,<b>c</b>)</center>
+$$\mathbf{F}(a_1,\mathbf{c}),\ldots,\mathbf{F}(a_{2n},\mathbf{c})$$
 
 where **c** is the text of the contract and **F**(*a<sub>i</sub>*,**c**) can be thought of, roughly, as encryption of **c** under secret *a<sub>i</sub>*. The assumption is that **F** is *uniformly secure* cryptosystem (see below). Similarly, *B* generates *2n* random secrets *b<sub>1</sub>*,...,*b<sub>2n</sub>*, and reveals:
 
-<center><b>F</b>(<em>b<sub>1</sub></em>,<b>c</b>),...,<b>F</b>(<em>b<sub>2n</sub></em>,<b>c</b>)</center>
+$$\mathbf{F}(b_1,\mathbf{c}),\ldots,\mathbf{F}(b_{2n},\mathbf{c})$$
 
 Intuitively, both *A*'s and *B*'s sequences of secrets can be thought of as sequence of pairs { (*a<sub>i</sub>*,*a<sub>n+i</sub>*) } and { (*b<sub>i</sub>*,*b<sub>n+i</sub>*) }, respectively.
 
 *A* is considered committed to contract **c** if *B* can present both secrets from any one of *A*'s pairs, that is, if *B* knows both *a<sub>i</sub>* and *a<sub>n+i</sub>* for some *i*. *B* is considered committed if *A* can present *b<sub>j</sub>* and *b<sub>n+j</sub>* for some *j*. The secrets can be verified by using them to decrypt the publicly announced values:
 
-<center><b>F</b>(<em>a<sub>i</sub></em>,<b>c</b>), <b>F</b>(<em>a<sub>n+i</sub></em>,<b>c</b>) &nbsp;&nbsp; and &nbsp;&nbsp; <b>F</b>(<em>b<sub>j</sub></em>,<b>c</b>),<b>F</b>(<em>b<sub>n+j</sub></em>,<b>c</b>)</center>
+$$\mathbf{F}(a_i,\mathbf{c}), \mathbf{F}(a_{n+i},\mathbf{c}) \quad\text{and}\quad \mathbf{F}(b_j,\mathbf{c}), \mathbf{F}(b_{n+j},\mathbf{c})$$
 
 that is, they should decrypt to **c**.
 
@@ -60,7 +60,7 @@ The protocol itself consists in *partial secret exchange* as presented in below.
 
 The EGL protocol assumes the existence of a uniformly secure cryptosystem **F**. Informally, given **c**, **F**(*k*,**c**) and first i bits of *k*, the expected time of computing *k* is independent of the i known bits. In particular, there exists an algorithm **A** which, given a pair **c**, **F**(*k*,**c**), finds *k* in expected time t<sub><b>A</b></sub>(*s*) where *s* is an i-bit string consistent with *k* (*s* represents partial knowledge of the key *k*), and t<sub><b>A</b></sub>(*s*) depends only on the number of unknown bits in *k*, that is,
 
-<center>t<sub><b>A</b></sub>(<em>s</em>)=T<sub><b>A</b></sub>(|<em>k</em>|-i)</center>
+$$t_{\mathbf{A}}(s) = T_{\mathbf{A}}(|k|-i)$$
 
 for each bit string *s* of length i consistent with *k*. Moreover, there is no algorithm that achieves this in less than half the time. A precise definition can be found in {% cite "EGL85" %} (section 2).
 

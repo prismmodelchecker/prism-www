@@ -20,7 +20,7 @@ Repeated public good games are a well studied model of social choice in economic
 
 More formally, assuming there are two players and in a round each player *i* decides to contributes a share *s*<sub>i</sub> of their endowment *e*<sub>i</sub>, then at the end of the round player *i* will receive in total:
 
-<center>(<em>e</em><sub>i</sub> − <em>s</em><sub>i</sub>) &nbsp; + &nbsp; <em>f</em>∙(<em>s</em><sub>1</sub>+<em>s</em><sub>2</sub>)/2</center>
+$$(e_i - s_i) + f \cdot (s_1 + s_2)/2$$
 
 i.e., the share of the player's endowment it keeps for itself plus the return it gets from the part it shares with the group.
 

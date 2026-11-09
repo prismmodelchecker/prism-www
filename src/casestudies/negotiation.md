@@ -50,7 +50,13 @@ The uncertain nature of an offer evaluation outcome is represented by making the
 
 The resulting *acceptance probability* functions are as follows:
 
-<center><table><tbody><tr><td rowspan="2"><b>S_AP</b>(x) &nbsp;&nbsp; = &nbsp;&nbsp;</td><td>0</td><td>&nbsp;&nbsp; <b>if</b> x ≤ <b>S_RP</b></td></tr><tr><td>1- <b>S_RP</b>/2</td><td>&nbsp;&nbsp; <b>if</b> x &gt; <b>S_RP</b></td></tr></tbody></table><br><table><tbody><tr><td rowspan="3"><b>B_AP</b>(x) &nbsp;&nbsp; = &nbsp;&nbsp;</td><td>1</td><td>&nbsp;&nbsp; <b>if</b> x ≤ 0</td></tr><tr><td>1+ <b>S_RP</b>/(x - (<b>B_RP</b> + <b>S_RP</b>))</td><td>&nbsp;&nbsp; <b>if</b> 0 &lt; x &lt; <b>B_RP</b></td></tr><tr><td>0</td><td>&nbsp;&nbsp; <b>if</b> x &gt; <b>B_RP</b></td></tr></tbody></table></center>
+$$
+\mathbf{S\_AP}(x) = \begin{cases} 0 & \text{if } x \le \mathbf{S\_RP} \\ 1 - \mathbf{S\_RP}/2 & \text{if } x > \mathbf{S\_RP} \end{cases}
+$$
+
+$$
+\mathbf{B\_AP}(x) = \begin{cases} 1 & \text{if } x \le 0 \\ 1 + \mathbf{S\_RP}/(x - (\mathbf{B\_RP} + \mathbf{S\_RP})) & \text{if } 0 < x < \mathbf{B\_RP} \\ 0 & \text{if } x > \mathbf{B\_RP} \end{cases}
+$$
 
 The following picture depicts the graph for functions **S\_AP**, **B\_AP** with **S\_RP** = 1000 and **B\_RP** = 10000. It is straightforward to see that functions **S\_AP**, **B\_AP** as in the above definition actually fulfil the described guidelines.
 

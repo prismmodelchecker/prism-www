@@ -122,7 +122,9 @@ All analyses reported below have been performed by running PRISM Version 2.0 and
 
 We first analyse the probability that a user that has requested the file and is now in "retry mode" (state &lt;2> of the User component), obtains the requested file within the next five hours. This measure can be formalised in CSL as (in a pseudo-notation close to the PRISM notation):
 
-<center><code>P</code> = ? [ <code>true</code> <code>U</code><sup>&lt;=5</sup> (<code>User_STATE = 1</code>) {<code>User_STATE = 2</code>} ]</center>
+```prism
+P=? [ true U<=5 (User_STATE=1) {User_STATE=2} ]
+```
 
 which must be read as follows: "what is the probability that path formula `true` `U`<sup>&lt;=5</sup> (`User_STATE = 1`) is satisfied for state `User_STATE = 2`?".
 

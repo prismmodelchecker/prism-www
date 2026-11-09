@@ -31,7 +31,7 @@ The protocol of Markowitch and Roggeman is probabilistic and does not require a 
 
 The steps of the protocol are outlined below. First, to prevent replay attacks, the recipient *R* selects a date *D* which it sends, along with a request, to the originator *O*. Next, *O* randomly selects an integer *n* representing the number of steps of the protocol (which is never revealed to *R* during the execution) and computes functions *f<sub>i</sub>* such that their composition satisfies the following:
 
-<center><em>f<sub>n</sub></em>(message)○(<em>f<sub>n-1</sub></em>(message)○(···○(<em>f<sub>2</sub></em>(message)○ <em>f<sub>1</sub></em>(message))···)) = message</center>
+$$f_n(\mathit{message}) \circ (f_{n-1}(\mathit{message}) \circ (\cdots \circ (f_2(\mathit{message}) \circ f_1(\mathit{message}))\cdots)) = \mathit{message}$$
 
 The composition operator ○ needs to be non-commutative to ensure that the recipient cannot start to compute the message until the final message *f<sub>1</sub>*(message) has been received.
 

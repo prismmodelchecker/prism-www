@@ -55,7 +55,7 @@ The probabilistic timed automaton representing a single station is given below. 
 
 A station starts by sending is data (we are modelling the case when initially the stations collide). If there is no collision, then, after λ time units, the station finishes sending its data (event **end**). On the other hand, if there is a collision (event **cd**), the station attempts to retransmit the packet where the scheduling of the retransmission is determined by a *truncated binary exponential backoff* process. The delay before retransmitting is an integer number of time slots (each of length **slotTime**). The number of slots that the station waits after the **n**th transmission failure is chosen as a uniformly distributed random integer in the range:
 
-<center><b>0</b> , <b>1</b> , <b>2</b> , ... , <b>2<sup>k+1</sup>-1</b></center>
+$$0, 1, 2, \ldots, 2^{k+1}-1$$
 
 where **k**\=min(**n**,**bcmax**). Once this time has elapsed, if the medium appears free the station resends the data (event **send**), while if the medium is sensed busy (event **busy**) the station repeats this process.
 

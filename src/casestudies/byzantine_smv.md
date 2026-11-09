@@ -50,7 +50,7 @@ A number of assumptions were made in order to perform the verification including
 
 First, we have assumptions which correspond to the fact that there cannot be **n-2t** honest votes for two distinct values in any round. These properties follow from the fact if this was not true there would be at least:
 
-<center><b>(n-2t) + (n-2t)=n-t+(n-3t)&gt;n-t</b></center>
+$$(n-2t) + (n-2t) = n-t+(n-3t) > n-t$$
 
 honest parties which is a contradiction since there are only **n-t** honest parties.
 

@@ -60,7 +60,7 @@ These property can be computed by PRISM through the following formulae:
     
     In the graph below, show the full set of these results for *N*\=3 and *N=4* nodes, respectively. The thicker solid lines show the minimum and maximum expected longest path length after *T* time-steps, for a range of values of *T*. In between these, the thinner solid line shows the average (i.e. expected) value for the same time points. The dashed lines indicate the standard deviation. The average values can be calculated by replacing the nondeterminism in the scheduler component of the PRISM model with uniform probabilistic choices, yielding a DTMC instead of an MDP. While the standard deviation is computed through the reward structure max\_path\_len\_sq and the equivalence
     
-    <center>σ(X)<sup>2</sup> = <b>E</b>(X<sup>2</sup>) - <b>E</b>(X)<sup>2</sup>.</center>
+    $$\sigma(X)^2 = \mathbf{E}(X^2) - \mathbf{E}(X)^2.$$
     
     See the properties file above for further details.
     

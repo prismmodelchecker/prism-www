@@ -25,7 +25,7 @@ The basic ideas behind the cooperation mechanism of {% cite "BPA+12" %} can be s
 
 Reputation is captured by a discrete trust measure, denoted *trust<sub>ij</sub>*, representing the extent to which user *i* trusts user *j*, based on previous interactions between them and the recommendations provided by the other users in the network. This is used to determine whether a service request from *j* is accepted by *i*. A trust level *T<sub>ij</sub>* is computed as a weighted sum:
 
-<center><em>T<sub>ij</sub></em> = α ∙ <em>trust<sub>ij</sub></em> +(1−α)·<em>recs<sub>ij</sub></em></center>
+$$T_{ij} = \alpha \cdot \mathit{trust}_{ij} + (1-\alpha) \cdot \mathit{recs}_{ij}$$
 
 where *recs<sub>ij</sub>* is an “indirect” trust measure, taken as the the average value of *trust<sub>kj</sub>* for other users k (whereas *trust<sub>kj</sub>* is called a “direct” measure of trust). By default, *i* will decide to accept *j*’s request if *T<sub>ij</sub>* is not below a pre-specified service trust level, denoted *st<sub>i</sub>*. The parameter α ∈ \[0,1\] controls the relative influence that the direct and indirect measures of trust have on this decision.
 
