@@ -93,6 +93,17 @@ Inline:
 - Images: an image alone in a paragraph is a figure (several are shown side by side); `{.right}` floats it right,
   and a size class sets its width, as a percentage (`{.w40}`) or in pixels (`{.px400}`): the sizes are listed in `site.css`
 
+Code blocks (fenced, with a language), in the colours of the `--tok-*` tokens:
+
+- ```` ```prism ```` and ```` ```pepa ```` – highlighted by our own code (`src/_lib/prism-highlight.js`)
+- ```` ```shell ```` – commands, each shown after a blue `$` (not part of the text, so not copied); lines starting `#`
+  are the commands' output, shown in grey without the `#` (the manual's convention). A block starting `#!` is a script,
+  highlighted as one
+- other languages (```` ```xml ````, ```` ```java ````, ```` ```python ````, ...) – highlighted by highlight.js
+  when the site is built; ```` ```text ```` is left plain
+- Every code box has a Copy button at its top right (`src/js/site.js`); where a box shows commands and their output,
+  it copies just the commands
+
 ## Page titles
 
 Each page has a `title` in its front matter (the browser tab, as "Title – PRISM", and search results)

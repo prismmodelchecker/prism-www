@@ -3,6 +3,7 @@ import path from "node:path";
 import { highlightPepa, highlightPrism } from "./src/_lib/prism-highlight.js";
 import { citation, itemUrl, itemTitle, notes, searchLinks, selectItems, groupItems, LIST_VIEWS } from "./src/_lib/bib.js";
 import markdownItContainer from "markdown-it-container";
+import hljs from "highlight.js/lib/common";
 import { classes } from "./src/_lib/classes.js";
 import { tables } from "./src/_lib/tables.js";
 import { headingIds, rewriteLinks, pageHeadings, singlePageContent, manualUrl, MANUAL_DIR, SINGLE_URL, OFFLINE_URL } from "./src/_lib/manual.js";
@@ -37,10 +38,19 @@ export default function (eleventyConfig) {
 		eleventyConfig.addPassthroughCopy({ "src/_lib/prism-highlight.js": "js/prism-highlight.js" });
 	}
 
-	// Code blocks in Markdown: ```prism gets PRISM highlighting
+	// Code blocks in Markdown: ```prism and ```pepa get our own highlighting; ```shell marks commands (shown with a $ prompt)
+	// and output (lines starting # in the manual's source, shown without the #), but a block starting #! is a script;
+	// scripts and other languages (```xml, ```java, ...) are highlighted by highlight.js, in the same colours (site.css)
+	const escapeHtml = (text) => text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+	const highlightOther = (code, lang) => hljs.highlight(code, { language: lang, ignoreIllegals: true }).value;
+	const highlightShell = (code) => code.startsWith("#!") ? highlightOther(code, "bash")
+		: code.replace(/\n$/, "").split("\n").map((line) => line.startsWith("#")
+			? `<span class="out">${escapeHtml(line.slice(1))}</span>`
+			: line.trim() ? `<span class="cmd">${escapeHtml(line)}</span>` : line).join("\n") + "\n";
 	eleventyConfig.amendLibrary("md", (md) => {
 		md.set({
-			highlight: (code, lang) => (lang === "prism" ? highlightPrism(code) : lang === "pepa" ? highlightPepa(code) : ""),
+			highlight: (code, lang) => (lang === "prism" ? highlightPrism(code) : lang === "pepa" ? highlightPepa(code) : lang === "shell" ? highlightShell(code)
+				: lang && lang !== "text" && hljs.getLanguage(lang) ? highlightOther(code, lang) : ""),
 		});
 		md.use(headingIds);
 		md.use(tables);

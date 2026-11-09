@@ -15,6 +15,8 @@
 	--focus: #e8a400;
 	--accent-bg: #ececf8;
 	--code-bg: #f6f6fa;
+	--shell-prompt: #5b58e6; /* the $ before shell commands */
+	--shell-out: #74748a; /* command output */
 	/* publications: a soft gold, the site's second colour (with green for keys, and matches when filtering a list) */
 	--bib-key: #006600;
 	--bib-box-bg: #fffbe5;   /* "butter"; a quieter alternative, "pale cream": #fcf9f0 */
@@ -73,6 +75,8 @@
 		--link-visited: #d0a8ff;
 		--accent-bg: #23233a;
 		--code-bg: #1c1c26;
+		--shell-prompt: #8f8dff;
+		--shell-out: #9a9ab0;
 		--bib-key: #7fcf6a;
 		--bib-box-bg: #2a2714;
 		--bib-box-head: #3a3519;
@@ -417,6 +421,9 @@ figure.code figcaption {
 	padding: 0.3rem 1rem; background: var(--side-head); border-top: 1px solid var(--border);
 	font-size: 0.85rem; color: var(--text-muted);
 }
+/* Shell commands (```shell): a blue $ prompt before each command (not part of the text, so not copied), output in grey */
+.language-shell .cmd::before { content: "$ "; color: var(--shell-prompt); font-weight: 700; user-select: none; }
+.language-shell .out { color: var(--shell-out); }
 /* Copy button on code boxes: faint until the box is hovered or the button focused (always shown on touch screens) */
 .codebox, figure.code { position: relative; }
 .codebox > pre { margin: 0; }
@@ -440,6 +447,13 @@ pre code { background: none; } /* (some old pages style all code elements, meani
 .tok-comment { color: var(--tok-comment); font-style: italic; }
 .tok-string { color: var(--tok-string); }
 .tok-preproc { color: var(--tok-preproc); }
+/* The same colours for other languages, highlighted by highlight.js (its class names) */
+:is(.hljs-keyword, .hljs-literal, .hljs-section) { color: var(--tok-keyword); font-weight: 700; }
+:is(.hljs-built_in, .hljs-name, .hljs-title, .hljs-type, .hljs-selector-tag) { color: var(--tok-ident); }
+:is(.hljs-number, .hljs-symbol) { color: var(--tok-num); }
+:is(.hljs-comment, .hljs-quote) { color: var(--tok-comment); font-style: italic; }
+:is(.hljs-string, .hljs-regexp) { color: var(--tok-string); }
+:is(.hljs-meta, .hljs-attr, .hljs-attribute, .hljs-variable, .hljs-template-variable) { color: var(--tok-preproc); }
 
 /* News and bibliography lists */
 

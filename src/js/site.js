@@ -97,7 +97,9 @@ document.addEventListener("DOMContentLoaded", () => {
 			copy.innerHTML = `${icon}<span>Copy</span>`;
 			copy.setAttribute("aria-label", "Copy code");
 			copy.addEventListener("click", async () => {
-				const text = pre.textContent.replace(/\n$/, "");
+				// (just the commands, if the box shows commands and their output)
+				const cmds = [...pre.querySelectorAll(".cmd")].map((c) => c.textContent);
+				const text = cmds.length ? cmds.join("\n") : pre.textContent.replace(/\n$/, "");
 				let ok = true;
 				try {
 					await navigator.clipboard.writeText(text); // (throws if there is no clipboard API)
