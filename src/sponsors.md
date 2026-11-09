@@ -8,7 +8,7 @@ permalink: /sponsors/
 
 The development of PRISM has taken place primarily in the [School of Computer Science](http://www.cs.bham.ac.uk/) at the [University of Birmingham](http://www.bham.ac.uk/) and the [Department of Computer Science](http://www.cs.ox.ac.uk/) at the [University of Oxford](http://www.ox.ac.uk/).
 
-<table><tbody><tr><td><a href="http://www.cs.bham.ac.uk/"><img src="/images/bham_logo.png" alt="University of Birmingham" title="University of Birmingham"></a></td><td><a href="http://www.cs.ox.ac.uk/"><img src="/images/oxford_logo.png" width="80px" alt="University of Oxford" title="University of Oxford"></a></td></tr></tbody></table>
+<table><tbody><tr><td><a href="http://www.cs.bham.ac.uk/"><img src="/images/bham_logo.png" alt="University of Birmingham" title="University of Birmingham"></a></td><td><a href="http://www.cs.ox.ac.uk/"><img src="/images/oxford_logo.png" width="80" alt="University of Oxford" title="University of Oxford"></a></td></tr></tbody></table>
 
 The project has benefited from funding from: [EPSRC](http://www.epsrc.ac.uk/), the [European Research Council](http://erc.europa.eu/) (ERC), the [European Commission](http://ec.europa.eu/) (EC), the [British Council](http://www.britishcouncil.org/), the [DTI](http://www.dti.gov.uk/), [Microsoft Research Cambridge](http://research.microsoft.com/), [QinetiQ](http://www.qinetiq.com/), [DARPA](http://www.darpa.mil/) and [Google Summer of Code](http://code.google.com/soc/) (2013, 2014, 2016). See [here](http://qav.cs.ox.ac.uk/projects/marta.kwiatkowska.php) and [here](http://www.cs.bham.ac.uk/~parkerdx/#projects) for more details of projects funding PRISM.
 
@@ -24,7 +24,7 @@ The PRISM users [forum](http://groups.google.com/group/prismmodelchecker) is hos
 
 PRISM uses [GitHub](https://github.com/) to host various [repositories](https://github.com/prismmodelchecker/), as well as our [issue tracker](https://github.com/prismmodelchecker/prism/issues).
 
-[<img src="/images/github.png" width="100px" alt="GitHub" title="GitHub">](https://github.com/)
+[<img src="/images/github.png" width="100" alt="GitHub" title="GitHub">](https://github.com/)
 
 PRISM development makes use of [JProfiler Java profiler](http://www.ej-technologies.com/products/jprofiler/overview.html):
 

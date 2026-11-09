@@ -36,7 +36,7 @@ This model is a DTMC like in the previous example. As the model includes several
 
 The controller module contains one variable representing the position (`p`) of the robot. It also reads the current status of the battery charge (`c`), but cannot update it as it belongs to another module. After a move, if its battery is not empty, the robot determines its next move by choosing uniformly a state among the available ones. If its battery is empty, then the robot is stuck. Assuming independence and when the battery is not empty, the controller module can be represented by the following DTMC.
 
-<img class="prism-image" width="400px" src="/courses/mpp-mc15/images/deliveryRobotControlerDTMC.png" alt="DTMC of the
+<img class="prism-image" width="400" src="/courses/mpp-mc15/images/deliveryRobotControlerDTMC.png" alt="DTMC of the
 controller">
 
 The battery module records the charge of the battery in the variable `c`. It synchronises with the controller and updates the current charge of the battery according to the movement of the robot. When the robot position is 0, the battery recharges itself.
