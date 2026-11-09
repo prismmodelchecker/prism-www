@@ -14,7 +14,7 @@ For information about installing and running PRISM, please see:
 
 In particular, you may find these two sections useful:
 
--   [Installation instructions](/manual/InstallingPRISM/)
+-   [Installation instructions](/manual/GettingStarted/)
 -   [Frequently asked questions](/manual/FrequentlyAskedQuestions/)
 
 For an introductory guide to using PRISM, please see:

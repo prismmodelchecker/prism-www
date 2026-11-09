@@ -35,7 +35,7 @@ This model is a Markov decision process (MDP), as denoted by the keyword at the 
 
 Notice that, after a philosopher eats (e.g. when `p1=9` for philosopher 1), the nondeterministic choice as to which fork he/she puts down first is represented by two commands being enabled (i.e. there are multiple commands with overlapping guard `p1=9`).
 
-Notice also the use of the PRISM [formulas](/manual/ThePRISMLanguage/FormulasAndLabels) (`lfree` and `rfree`) to represent expressions that are re-used several times in the file. In this model, these formulas are used to identify states of the left (or right) neighbour of a philosopher in which he/she is not using his/her fork. As a consequence, this requires the renaming of each of the variables `p1`, `p2` and `p3` when constructing the modules for philosophers 2 and 3. This renaming corresponds to the fact that the left and right neighbours of philosopher 2 and 3 differ from that of philosopher 1.
+Notice also the use of the PRISM [formulas](/manual/ThePRISMLanguage/Expressions/#formulas-and-labels) (`lfree` and `rfree`) to represent expressions that are re-used several times in the file. In this model, these formulas are used to identify states of the left (or right) neighbour of a philosopher in which he/she is not using his/her fork. As a consequence, this requires the renaming of each of the variables `p1`, `p2` and `p3` when constructing the modules for philosophers 2 and 3. This renaming corresponds to the fact that the left and right neighbours of philosopher 2 and 3 differ from that of philosopher 1.
 
 The basics steps of the algorithm for each philosopher are:
 
@@ -66,7 +66,7 @@ We will now use PRISM to analyse the above model.
 
 {% task %} Verify the loaded properties to check that the model is deadlock-free, but is *not* resource starvation-free. Also verify your models for four and five philosophers against these specifications.
 
-{% task %} Read the section of the manual on [filters](/manual/PropertySpecification/Filters) as we will uses these in our specifications.
+{% task %} Read the section of the manual on [filters](/manual/PropertySpecification/Filters/) as we will uses these in our specifications.
 
 {% task %} Construct properties to compute, from the (single) state where all philosophers are thinking, both the minimum and maximum probability that a philosopher eats within k steps. (Hint: look up the `state` filter in the manual page above.) Plot results for the case of three, four and five philosophers.
 
@@ -120,7 +120,7 @@ Next, we will add a number of constants, variables and formulas that will be nee
 
 {% task %} To represent the variables left-signal and right-signal, add the variables `left_signal1` and `right_signal1` to philosopher 1 and add similar variables for philosophers 2 and 3 through renaming. Define a suitable ranges and initial values for these variables given that left-signal and right-signal take two values (Off and On).
 
-{% task %} In the pseudo code there are two shared variables, left-last and right-last, that we will represent in PRISM using global variables. Read the sections on [global variables](/manual/ThePRISMLanguage/GlobalVariables) in the manual. Now add global variables `fork1_last`, `fork2_last` and `fork3_last` which will be used to represent the variables left-last and right-last in the pseudo code above. Define suitable ranges and initial values for these variables given that these variables take the values NEUTRAL, LEFT and RIGHT (and the constants we introduced above).
+{% task %} In the pseudo code there are two shared variables, left-last and right-last, that we will represent in PRISM using global variables. Read the sections on [global variables](/manual/ThePRISMLanguage/ModulesVariablesAndCommands/#global-variables) in the manual. Now add global variables `fork1_last`, `fork2_last` and `fork3_last` which will be used to represent the variables left-last and right-last in the pseudo code above. Define suitable ranges and initial values for these variables given that these variables take the values NEUTRAL, LEFT and RIGHT (and the constants we introduced above).
 
 {% task %} Draw a diagram of the three philosophers (phil1, phil2 and phil3) and three forks (fork1, fork2 and fork3) as this will help understand the relationships between the philosophers and the forks. For example, this should make to easier to work out which fork/philosopher is to the right/left of philosopher 1.
 

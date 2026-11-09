@@ -40,7 +40,7 @@ run PRISM on all DTMC benchmark instances with less than 10,000 states using thr
 
 See the [benchmarking](https://github.com/prismmodelchecker/prism/wiki/Benchmarking) section of the PRISM Developer Resources for more details.
 
-If you need the benchmarks in another format, don't forget that PRISM can [export models in various formats](/manual/RunningPRISM/ExportingTheModel).
+If you need the benchmarks in another format, don't forget that PRISM can [export models in various formats](/manual/RunningPRISM/ImportingAndExportingModels/#exporting).
 
 Comments or suggestions regarding this benchmark set, as well as contributed models, are [welcome](/contact/).
 

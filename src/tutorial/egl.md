@@ -118,6 +118,6 @@ We see that, for small values of `N`, the improved algorithm (EGL2) is better, i
 
 ## Other properties of the algorithm(s)
 
-There are several other properties which can be investigated for these algorithms. These use the costs and rewards capabilities of PRISM (see [here](/manual/ThePRISMLanguage/CostsAndRewards) and [here](/manual/PropertySpecification/Reward-basedProperties)).
+There are several other properties which can be investigated for these algorithms. These use the costs and rewards capabilities of PRISM (see [here](/manual/ThePRISMLanguage/CostsAndRewards/) and [here](/manual/PropertySpecification/Reward-basedProperties/)).
 
 {% task %} Have a look at [this part](/casestudies/contract_egl/#prop3) of the web page for this case study on the PRISM web site. By adding the appropriate reward structure to your models, and creating a new property, analyse "the expected number of messages from *B* that *A* needs to knows a pair once *B* knows a pair". You should be able to recreate (at least the first 4 plots) from the graph on this web page.

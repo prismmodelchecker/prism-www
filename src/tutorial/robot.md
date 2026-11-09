@@ -18,15 +18,15 @@ The PRISM code to model the robot is shown below.
 
 The first line indicates that this model is a **Markov decision process** (MDP). The remaining lines describe a single PRISM module, which we use to model the behaviour of the robot. We use one variable to represent the state of the system: `s`, denoting the current position of the robot in the 3 x 2 grid.
 
-{% task %} If you are not yet familiar with the PRISM modelling language, read the sections on [modules/variables](/manual/ThePRISMLanguage/ModulesAndVariables) and [commands](/manual/ThePRISMLanguage/Commands) in the manual to help clarify the model above.
+{% task %} If you are not yet familiar with the PRISM modelling language, read the sections on [modules/variables](/manual/ThePRISMLanguage/ModulesVariablesAndCommands/#modules-and-variables) and [commands](/manual/ThePRISMLanguage/ModulesVariablesAndCommands/#commands) in the manual to help clarify the model above.
 
   
 
 ## Exploring the model in PRISM
 
-{% task %} Download the model file **robot.prism** for this example from the link above. Launch the [PRISM GUI](/manual/RunningPRISM/StartingPRISM) (click the shortcut on Windows or run `bin/xprism` elsewhere) and load this file using the "Model | Open model" menu option. You should see a green tick in the top left corner indicating that the model was loaded and parsed successfully.
+{% task %} Download the model file **robot.prism** for this example from the link above. Launch the [PRISM GUI](/manual/GettingStarted/FirstSteps/#starting-prism) (click the shortcut on Windows or run `bin/xprism` elsewhere) and load this file using the "Model | Open model" menu option. You should see a green tick in the top left corner indicating that the model was loaded and parsed successfully.
 
-{% task %} Click on the "**Simulator**" tab at the bottom of the GUI. You can now use the [simulator](/manual/RunningPRISM/DebuggingModelsWithTheSimulator) to explore the model. Create a new path by double-clicking on the main part of the window (or right-clicking and selecting "New path"). Then, use the "Simulate" button repeatedly to generate a sample execution of the algorithm. Look at the trace displayed in the main part of the window. What is the final value of `s`? Why is that?
+{% task %} Click on the "**Simulator**" tab at the bottom of the GUI. You can now use the [simulator](/manual/RunningPRISM/DebuggingModelsWithTheSimulator/) to explore the model. Create a new path by double-clicking on the main part of the window (or right-clicking and selecting "New path"). Then, use the "Simulate" button repeatedly to generate a sample execution of the algorithm. Look at the trace displayed in the main part of the window. What is the final value of `s`? Why is that?
 
 {% task %} Right-click and select "Reset path". Then, step through a trace of the algorithm manually by double-clicking the available transitions from the "Manual exploration" box. Try to reach the **goal1**\-labelled state without passing through the **hazard**\-labelled state (the value of each label in the current state is shown in the top right of the window).
 
@@ -46,7 +46,7 @@ The property is of the form `Pmax`\=? \[ `F` `phi` \] which, intuitively, means 
 
 {% task %} Right click on the property in the GUI and select "**Verify**". Is the answer as you expected? Click on the "Log" tab to see some additional information that PRISM has displayed regarding the calculations performed.
 
-PRISM uses iterative numerical solution techniques which converge towards the correct result. The numerical computation process is terminated when it is detected that the answers have converged sufficiently. Have a look at the [manual](/manual/ConfiguringPRISM/IterativeNumericalMethods) for more information.
+PRISM uses iterative numerical solution techniques which converge towards the correct result. The numerical computation process is terminated when it is detected that the answers have converged sufficiently. Have a look at the [manual](/manual/ConfiguringPRISM/SolutionMethodsAndOptions/) for more information.
 
 {% task %} Open the PRISM options panel from the menu. Find the "Termination epsilon" parameter and change it from 1.0e-6 to 1.0e-10. Re-verify the property and see how the answer changes. Check the log again and see many more iterations were required.
 

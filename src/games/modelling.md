@@ -46,9 +46,9 @@ Since outcome of transmitting follows a joint probability distribution, we add a
 
 ## Turn-based probabilistic timed games (TPTGs) { #tptgs }
 
-Specification of turn-based probabilistic timed games (TPTGs) builds upon the existing language for specifying [turn-based games](#smgs) in PRISM-games and for [probabilistic timed automata (PTAs)](/manual/ThePRISMLanguage/PTAs) in PRISM.
+Specification of turn-based probabilistic timed games (TPTGs) builds upon the existing language for specifying [turn-based games](#smgs) in PRISM-games and for [probabilistic timed automata (PTAs)](/manual/ModelTypes/Real-timeModels/#modelling) in PRISM.
 
-TPTGs are indicated by including the keyword `tptg`. As for SMGs/TSGs, the set of players is specified using one or more `player` ... `endplayer` constructs, which indicate which player controls each location of a TPTG by proving a list of action names and/or module names for each player. The clocks, guards and invariants of a TPTG are specified [as for PTAs](/manual/ThePRISMLanguage/PTAs).
+TPTGs are indicated by including the keyword `tptg`. As for SMGs/TSGs, the set of players is specified using one or more `player` ... `endplayer` constructs, which indicate which player controls each location of a TPTG by proving a list of action names and/or module names for each player. The clocks, guards and invariants of a TPTG are specified [as for PTAs](/manual/ModelTypes/Real-timeModels/#modelling).
 
 For example, in the TPTG below there are two players: the sender and the medium, with the sender controlling the actions in location `l=0` and player medium the actions in location `l=1`. The TPTG has two clocks: `x` is used to keep track of the time it takes to send a message and `y` the elapsed time. In the initial location, the sender waits between 1 and 2 time units before sending the message. The message then passes through the medium that can either delay the message for between 1 and 2 time units after which it arrives with probability 0.5, or delay the message for 4 time units after which it arrives with probability 1. If the message does not arrive, then the sender tries to send it again until reaching a timeout after 24 time units.
 

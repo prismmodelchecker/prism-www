@@ -20,7 +20,7 @@ Several of the transitions are marked with intervals, indicating that the actual
 
 {% task %} Assume that the parameter `e` has value **0.2**. Assuming worst-case scenario values for the transition probabilities, without using PRISM, can you determine how the parameter `e` affects the optimal (maximum) probability of reaching a **goal1** state? (you may want to check the [earlier part](/tutorial/robot/) without intervals).
 
-PRISM offers direct support for uncertain transitions defined as intervals (see [here](/manual/ThePRISMLanguage/UncertainModels) for more information):
+PRISM offers direct support for uncertain transitions defined as intervals (see [here](/manual/ModelTypes/UncertainModels/#modelling) for more information):
 
 ```prism
  [a] x=0 -> [0.8,0.9]:(x'=0) + [0.1,0.2]:(x'=1);
@@ -38,7 +38,7 @@ const double e;
 
 We will now use PRISM to analyse the IMDP defined above and extract optimal behavior that is *robust* with respect to all possibilities induced by the epistemic uncertainty.
 
-Specifications for IMDPs either reason about the worst- or the best-case behavior admissible by the transition intervals, see [here](/manual/PropertySpecification/UncertainModels).
+Specifications for IMDPs either reason about the worst- or the best-case behavior admissible by the transition intervals, see [here](/manual/ModelTypes/UncertainModels/#properties).
 
 {% task %} Design appropriate specifications for the worst- and the best-case maximum probabilities of reaching a **goal1** state, and verify them in PRISM for different values of `e`. What are the probabilities and corresponding optimal policies? What do you observe?
 
@@ -74,7 +74,7 @@ The basis for a PRISM model of the drone can be found below.
 
 {% task %} Familiarise yourself with the given model. How is the environment implemented? What happens when the drone encounters an obstacle? Where does (epistemic) uncertainty come into play, and which effects does it model?
 
-We want to design policies that maximise the probability of the drone reaching the goal safely and satisfying its task. Before we let PRISM do that automatically, let's take on the role of a UAV engineer and build some policies ourselves. For that, we use a second module (called `policy`), which interacts with the main module (`env`) via [synchronisation](/manual/ThePRISMLanguage/Synchronisation). The `policy` module uses the same set of **actions** and only allows the UAV to execute actions when the given conditions are satisfied.
+We want to design policies that maximise the probability of the drone reaching the goal safely and satisfying its task. Before we let PRISM do that automatically, let's take on the role of a UAV engineer and build some policies ourselves. For that, we use a second module (called `policy`), which interacts with the main module (`env`) via [synchronisation](/manual/ThePRISMLanguage/CompositionAndSynchronisation/#synchronisation). The `policy` module uses the same set of **actions** and only allows the UAV to execute actions when the given conditions are satisfied.
 
 Below is the specification of a (maybe not entirely sensible) policy that controls the drone to fly straight up while the x-coordinate us less than 3, and to fly left in all other cases. Notice that the conditions ("guards") are mutually exclusive and cover the whole state space. Notice also that actions not used by the policy are also present, but with guard `false`, which disallows the other module from executing those actions independently.
 

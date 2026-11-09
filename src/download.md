@@ -43,11 +43,11 @@ See the [CHANGELOG](https://github.com/prismmodelchecker/prism/blob/master/CHANG
 
 ## Installation
 
-See the [installation instructions](/manual/InstallingPRISM/Instructions/),
+See the [installation instructions](/manual/GettingStarted/Installing/),
 included in the [PRISM manual](/manual/) (which is also distributed with the tool).
 
 If you have any problems, first check the list of
-[common problems and questions](/manual/InstallingPRISM/CommonProblemsAndQuestions/).
+[common problems and questions](/manual/GettingStarted/Troubleshooting/).
 
 If you are still stuck, post a message in the
 [forum](https://groups.google.com/group/prismmodelchecker).

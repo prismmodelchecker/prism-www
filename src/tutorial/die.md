@@ -6,7 +6,7 @@ permalink: /tutorial/die/
 ---
 # Knuth's die algorithm
 
-If you haven't done so already, [download](/download/) and [install](/manual/InstallingPRISM/Instructions) PRISM.
+If you haven't done so already, [download](/download/) and [install](/manual/GettingStarted/Installing/) PRISM.
 
 Our first example is a PRISM model of a simple probabilistic algorithm due to Knuth and Yao {% cite "KY76" %}. for emulating a 6-sided die with a fair coin. Here is a graphical illustration of the algorithm:
 
@@ -20,13 +20,13 @@ The PRISM code to model this algorithm is shown below.
 
 The first line indicates that this model is a discrete-time Markov chain (DTMC). The remaining lines describe a single PRISM module, which we use to model the behaviour of the algorithm. We use two variables to represent the state of the system: `s`, denoting which step of the algorithm is currently being executed (i.e. which circle in the diagram above), and `d`, denoting the value of the die (0 means no value has been chosen yet).
 
-{% task %} Read the sections on [modules/variables](/manual/ThePRISMLanguage/ModulesAndVariables) and [commands](/manual/ThePRISMLanguage/Commands) in the manual and try to understand how this description represents the algorithm.
+{% task %} Read the sections on [modules/variables](/manual/ThePRISMLanguage/ModulesVariablesAndCommands/#modules-and-variables) and [commands](/manual/ThePRISMLanguage/ModulesVariablesAndCommands/#commands) in the manual and try to understand how this description represents the algorithm.
 
 ## Exploring the model in PRISM
 
-{% task %} Download the model file **die.pm** for this example from the link above. Launch the [PRISM GUI](/manual/RunningPRISM/StartingPRISM) (click the shortcut on Windows or run `bin/xprism` elsewhere) and load this file using the "Model | Open model" menu option. You should see a green tick in the top left corner indicating that the model was loaded successfully.
+{% task %} Download the model file **die.pm** for this example from the link above. Launch the [PRISM GUI](/manual/GettingStarted/FirstSteps/#starting-prism) (click the shortcut on Windows or run `bin/xprism` elsewhere) and load this file using the "Model | Open model" menu option. You should see a green tick in the top left corner indicating that the model was loaded successfully.
 
-{% task %} Click on the "Simulator" tab at the bottom of the GUI. You can now use the [simulator](/manual/RunningPRISM/DebuggingModelsWithTheSimulator) to explore the model. Create a new path by double-clicking on the main part of the window (or right-clicking and selecting "New path"). Then, use the "Simulate" button repeatedly to generate a sample execution of the algorithm. Look at the trace displayed in the main part of the window. What is the final value of `s`? It should be 7. What is the value of the die?
+{% task %} Click on the "Simulator" tab at the bottom of the GUI. You can now use the [simulator](/manual/RunningPRISM/DebuggingModelsWithTheSimulator/) to explore the model. Create a new path by double-clicking on the main part of the window (or right-clicking and selecting "New path"). Then, use the "Simulate" button repeatedly to generate a sample execution of the algorithm. Look at the trace displayed in the main part of the window. What is the final value of `s`? It should be 7. What is the value of the die?
 
 {% task %} Right-click and select "Reset path". Then, step through a trace of the algorithm manually by double-clicking the available transitions from the "Manual exploration" box. Try to reach a state where the value of the die is 6.
 
@@ -46,17 +46,17 @@ The file comprises a constant `x`, whose value we leave undefined, and one prope
 
 {% task %} Right click on the property in the GUI and select "Verify". Pick a value of `x` between 1 and 6 and select "OK". Is the answer as you expected? Click on the "Log" tab to see some additional information that PRISM has displayed regarding the calculations performed.
 
-PRISM uses iterative numerical solution techniques which converge towards the correct result. The numerical computation process is terminated when it is detected that the answers have converged sufficiently. Have a look at the [manual](/manual/ConfiguringPRISM/IterativeNumericalMethods) for more information.
+PRISM uses iterative numerical solution techniques which converge towards the correct result. The numerical computation process is terminated when it is detected that the answers have converged sufficiently. Have a look at the [manual](/manual/ConfiguringPRISM/SolutionMethodsAndOptions/) for more information.
 
 {% task %} Open the PRISM options panel from the menu. Find the "Termination epsilon" parameter and change it from 1.0e-6 to 1.0e-10. Re-verify the property and see how the answer changes. Check the log again and see many more iterations were required.
 
 {% task %} Reset the "Termination epsilon" parameter to 1.0e-6.
 
-{% task %} Read the section in the PRISM manual describing [experiments](/manual/RunningPRISM/Experiments). Use PRISM to plot a graph of the value of the property `P`\=? \[ `F` `phi` \] for values of `x` between 0 and 7.
+{% task %} Read the section in the PRISM manual describing [experiments](/manual/RunningPRISM/Experiments/). Use PRISM to plot a graph of the value of the property `P`\=? \[ `F` `phi` \] for values of `x` between 0 and 7.
 
 ## Statistical model checking with PRISM
 
-PRISM also has a discrete-event simulation engine which can be used to generate [approximate](/manual/RunningPRISM/StatisticalModelChecking) verification results (this is often called *statistical model checking*). This engine is also what underlies the simulator that you used earlier to explore the model manually.
+PRISM also has a discrete-event simulation engine which can be used to generate [approximate](/manual/RunningPRISM/StatisticalModelChecking/) verification results (this is often called *statistical model checking*). This engine is also what underlies the simulator that you used earlier to explore the model manually.
 
 {% task %} Re-run your experiment using the simulator by ticking the "Use Simulation" option in the experiment dialog. On the "New Graph Series" dialog, choose to display the results on your existing graph. In the next dialog, which shows parameters for the simulation process, you will see that the default number of samples is set to 1000. Change the number of samples to 10 (if the field is not editable, select a different option from the "Automatically calculate" drop-down menu). How are good are these approximate results?
 
@@ -92,4 +92,4 @@ which means "what is the expected value of the rewards cumulated, from the initi
 
 {% task %} What should `phi` be in order to compute the expected number of steps that the algorithm requries to compute a value for the die?
 
-{% task %} Go to the "Properties" tab, add this new property to the list of properties, and then verify it. What is the result? The precise answer is 11/3. If you get a result of infinity, you have not got the right expression for `phi` (take a look at [this question](/manual/FrequentlyAskedQuestions/PRISMProperties#inf_rewards) to see why the reward might be infinite).
+{% task %} Go to the "Properties" tab, add this new property to the list of properties, and then verify it. What is the result? The precise answer is 11/3. If you get a result of infinity, you have not got the right expression for `phi` (take a look at [this question](/manual/FrequentlyAskedQuestions/PRISMProperties/#inf_rewards) to see why the reward might be infinite).
