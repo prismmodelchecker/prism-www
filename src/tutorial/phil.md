@@ -95,8 +95,9 @@ var left-last,right-last : {Left,Neutral,Right};
 *** left-last is the same as left neighbour’s right-last. ***
 
 1. trying:=true *** move from thinking to hungry ***
-2.   left-signal:=On; right-signal:=On 3.   while trying do
-4.        ‘draw a random element s of {Right,Left}; *** with equal probabilities ***
+2.   left-signal:=On; right-signal:=On
+3.   while trying do
+4.        draw a random element s of {Right,Left}; *** with equal probabilities ***
 5.        wait until s fork is down and (s-neighbour-signal=Off or s-last=Neutral or s-last=s)
 6.        then lift fork s
 7.        if R(s) fork is down *** R(Right)= Left and R(left)=Right ***
