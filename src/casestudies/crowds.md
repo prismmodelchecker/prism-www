@@ -42,9 +42,9 @@ Routing paths in Crowds are set up using the following protocol:
 
 The path from a particular source to a particular destination is set up only once, when the first message is sent. The routers maintain a persistent id for each constructed path, and all subsequent messages follow the established path.
 
-If the crowd contains *n* members, of which *c* are corrupt, and the forwarding probability is *p*<sub><i>f</i></sub>, then Crowds guarantees *probable innocence* of the real sender on any single path (i.e., the probability that the real sender appears on the path immediately before a corrupt member is less than 0.5) if the following condition holds:
+If the crowd contains $n$ members, of which $c$ are corrupt, and the forwarding probability is $p_f$, then Crowds guarantees *probable innocence* of the real sender on any single path (i.e., the probability that the real sender appears on the path immediately before a corrupt member is less than 0.5) if the following condition holds:
 
-![](/images/cs/crowds.probinn.gif)
+$$n \ge \frac{p_f}{p_f - \frac{1}{2}} (c+1)$$
 
 ## The Model { #model }
 

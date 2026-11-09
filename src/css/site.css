@@ -455,6 +455,10 @@ pre code { background: none; } /* (some old pages style all code elements, meani
 :is(.hljs-string, .hljs-regexp) { color: var(--tok-string); }
 :is(.hljs-meta, .hljs-attr, .hljs-attribute, .hljs-variable, .hljs-template-variable) { color: var(--tok-preproc); }
 
+/* Maths (KaTeX): a little smaller than its default 1.21em, closer to the text; a wide formula scrolls on narrow screens */
+:root .katex { font-size: 1.1em; } /* (:root, to win over katex.min.css, which loads later) */
+.katex-display { overflow-x: auto; overflow-y: hidden; padding: 0.2em 0; }
+
 /* News and bibliography lists */
 
 .news { list-style: none; padding: 0; }

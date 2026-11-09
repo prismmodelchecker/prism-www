@@ -4,6 +4,8 @@ import { highlightPepa, highlightPrism } from "./src/_lib/prism-highlight.js";
 import { citation, itemUrl, itemTitle, notes, searchLinks, selectItems, groupItems, LIST_VIEWS } from "./src/_lib/bib.js";
 import markdownItContainer from "markdown-it-container";
 import hljs from "highlight.js/lib/common";
+import katex from "katex";
+import texmath from "markdown-it-texmath";
 import { classes } from "./src/_lib/classes.js";
 import { tables } from "./src/_lib/tables.js";
 import { headingIds, rewriteLinks, pageHeadings, singlePageContent, manualUrl, MANUAL_DIR, SINGLE_URL, OFFLINE_URL } from "./src/_lib/manual.js";
@@ -34,6 +36,9 @@ export default function (eleventyConfig) {
 		for (const f of staticFiles("src")) eleventyConfig.addPassthroughCopy(f);
 		eleventyConfig.addPassthroughCopy("src/css");
 		eleventyConfig.addPassthroughCopy("src/js");
+		// KaTeX's stylesheet and fonts, for pages with maths (see the "maths" transform)
+		eleventyConfig.addPassthroughCopy({ "node_modules/katex/dist/katex.min.css": "css/katex/katex.min.css" });
+		eleventyConfig.addPassthroughCopy({ "node_modules/katex/dist/fonts/*.woff2": "css/katex/fonts" });
 		// (the highlighter also runs in the browser, for the file viewer at /view/)
 		eleventyConfig.addPassthroughCopy({ "src/_lib/prism-highlight.js": "js/prism-highlight.js" });
 	}
@@ -52,6 +57,8 @@ export default function (eleventyConfig) {
 			highlight: (code, lang) => (lang === "prism" ? highlightPrism(code) : lang === "pepa" ? highlightPepa(code) : lang === "shell" ? highlightShell(code)
 				: lang && lang !== "text" && hljs.getLanguage(lang) ? highlightOther(code, lang) : ""),
 		});
+		// Maths in LaTeX, as on GitHub: $...$ inline, $$...$$ displayed; rendered by KaTeX when the site is built
+		md.use(texmath, { engine: katex, delimiters: "dollars", katexOptions: { throwOnError: false } });
 		md.use(headingIds);
 		md.use(tables);
 		// Styles for site pages, defined in site.css and listed in README.md: "::: box" around blocks,
@@ -219,6 +226,12 @@ export default function (eleventyConfig) {
 	// Wide tables in pages scroll inside their own box rather than widening the page on phones:
 	// wrap each outermost table (old pages nest layout tables) in a scrollable region
 	// (tables written in Markdown are wrapped when it's rendered; HTML tables in Markdown pages are wrapped here)
+	// Pages with maths (KaTeX's output) load its stylesheet; others don't need it
+	eleventyConfig.addTransform("maths", function (content) {
+		if (!this.page.outputPath?.endsWith(".html") || !content.includes('class="katex')) return content;
+		return content.replace("</head>", '<link rel="stylesheet" href="/css/katex/katex.min.css">\n</head>');
+	});
+
 	eleventyConfig.addTransform("scrolling-tables", function (content) {
 		if (!(this.page.outputPath || "").endsWith(".html")) return content;
 		let depth = 0;

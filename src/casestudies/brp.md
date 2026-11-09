@@ -77,7 +77,7 @@ There are two precomputation steps in the model checking procedure involving BDD
 
 In the main algorithm we use the Jacobi iterative method and stop iterating when the *relative error* between subsequent iteration vectors is less than 1e-6, that is:
 
-![](/images/cs/err.gif)
+$$\max_i \left( \frac{|\pi_i^{(k)} - \pi_i^{(k-1)}|}{|\pi_i^{(k)}|} \right) < 10^{-6}$$
 
 <a name="propA"></a>
 

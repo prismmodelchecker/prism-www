@@ -81,7 +81,7 @@ We now report on the model checking results obtained using PRISM when checking t
 
 All experiments were carried out on a 2.80GHz PC with 1 Gb memory running Linux and in all iterative methods we stop iterating when the *relative error* between subsequent iteration vectors is less than 1e-6, that is:
 
-![relative error equation](/images/cs/err.gif)
+$$\max_i \left( \frac{|\pi_i^{(k)} - \pi_i^{(k-1)}|}{|\pi_i^{(k)}|} \right) < 10^{-6}$$
 
 -   **Computing Steady State Probabilities:** the table below gives the model checking statistics when computing these probabilities for both the Jacobi and Gauss-Seidel methods when using PRISM's different engines.
     

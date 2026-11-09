@@ -104,6 +104,11 @@ Code blocks (fenced, with a language), in the colours of the `--tok-*` tokens:
 - Every code box has a Copy button at its top right (`src/js/site.js`); where a box shows commands and their output,
   it copies just the commands
 
+Maths: LaTeX between dollar signs, as on GitHub: `$p_f$` inline, `$$ ... $$` for a displayed formula.
+KaTeX renders it when the site is built (`markdown-it-texmath`), and only pages with maths load its stylesheet
+and fonts (`/css/katex/`, copied from `node_modules`). A `$` in ordinary text would need escaping as `\$`.
+(The offline manual doesn't include KaTeX's stylesheet yet: add it if the manual gets maths.)
+
 ## Page titles
 
 Each page has a `title` in its front matter (the browser tab, as "Title – PRISM", and search results)

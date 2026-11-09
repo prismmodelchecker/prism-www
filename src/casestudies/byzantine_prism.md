@@ -92,7 +92,7 @@ The model checking procedure uses a precomputation step **Prob0A** which finds a
 
 In the main algorithm we stop iterating when the *relative error* between subsequent iteration vectors is less than 1e-6, that is:
 
-![](/images/cs/err.gif)
+$$\max_i \left( \frac{|\pi_i^{(k)} - \pi_i^{(k-1)}|}{|\pi_i^{(k)}|} \right) < 10^{-6}$$
 
 ## Requirements:
 

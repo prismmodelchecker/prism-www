@@ -317,7 +317,7 @@ The property we consider is: "the minimum probability that a leader (root) is ch
     
     **Using a fair coin:** In the table below, summarises the model checking results when using a fair coin and both the most compact encoding (**instances** encoding with both the **absolute** and **relative** compaction algorithms) and the explicit encoding and the reduced reachability graph, when using the MTBDD, sparse and hybrid engines, where in each case we stop iterating when the *relative error* between subsequent iteration vectors is less than 1e-6, that is:
     
-    ![](/images/cs/err.gif)
+    $$\max_i \left( \frac{|\pi_i^{(k)} - \pi_i^{(k-1)}|}{|\pi_i^{(k)}|} \right) < 10^{-6}$$
     
     **Model checking times:**
     

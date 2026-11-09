@@ -200,7 +200,7 @@ We now report on the model checking results obtained using PRISM when considerin
 
 In the numerical computation we stop iterating when the *relative error* between subsequent iteration vectors is less than 1e-6, that is:
 
-![image for relative error](/images/cs/err.gif)
+$$\max_i \left( \frac{|\pi_i^{(k)} - \pi_i^{(k-1)}|}{|\pi_i^{(k)}|} \right) < 10^{-6}$$
 
 <a name="prob"></a>
 
