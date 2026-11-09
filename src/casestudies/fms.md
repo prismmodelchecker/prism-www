@@ -88,10 +88,8 @@ The table below gives the times taken to compute the steady state probabilities 
 
 The graphs below present the results obtained for the different CSL properties.
 
--   **The expected throughput of each machine:**
-    
-    ![plots throughput of each machine](/images/graphs/fms.ss1.png)
+::: plots
+![plots throughput of each machine](/images/graphs/fms.ss1.png "The expected throughput of each machine")
+![plots productivity](/images/graphs/fms.ss2.png "The expected productivity of the system")
+:::
 
--   **The expected productivity of the system:**
-    
-    ![plots productivity](/images/graphs/fms.ss2.png)

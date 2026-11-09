@@ -339,17 +339,11 @@ Notice that to compute the average and maximum value of the expected rounds we u
 
 Concerning the probability of reaching a stable matching within r rounds, the following graphs plot these results for each of the specific instances.
 
--   **Symmetric*:*
-    
-    ![plot: probability of reaching a stable matching within r rounds (symmetric)](/images/graphs/stable.matching.bounded.symmetric.png)
-
--   **Uncoord*:*
-    
-    ![plot: probability of reaching a stable matching within r rounds (uncoordinated)](/images/graphs/stable.matching.bounded.uncoordinated.png)
-
--   **Uniform*:*
-    
-    ![plot: probability of reaching a stable matching within r rounds (uniform)](/images/graphs/stable.matching.bounded.uniform.png)
+::: plots
+![plot: probability of reaching a stable matching within r rounds (symmetric)](/images/graphs/stable.matching.bounded.symmetric.png "Symmetric")
+![plot: probability of reaching a stable matching within r rounds (uncoordinated)](/images/graphs/stable.matching.bounded.uncoordinated.png "Uncoord")
+![plot: probability of reaching a stable matching within r rounds (uniform)](/images/graphs/stable.matching.bounded.uniform.png "Uniform")
+:::
 
 With regards to the expected time properties, the tables below give the expected number of rounds to reach a stable matching for each of the specific instances and also the minimum, average and maximum values over 1,000 random samples. We have also included plots showing how the values differ over the random samples for the expected number of rounds when starting from the empty initial matching.
 

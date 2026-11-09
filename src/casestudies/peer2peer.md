@@ -71,18 +71,10 @@ The corresponding CSL formula is given by:
 
 In the graphs below we have plotted these probabilities from a range of values of `T`.
 
--   N=4 (full time range)
+::: plots
+![plot: graph for N=4 and K=4,5,...,8](/images/graphs/peer2peer4.gif "N=4 (full time range)")
+![plot: graph for N=4 and K=4,5,...,8 (zoom)](/images/graphs/peer2peer4_zoom.gif "N=4 (zoom)")
+![plot: graph for N=5 and K=4,5,...,7 ](/images/graphs/peer2peer5.gif "N=5 (full time range)")
+![plot: graph for N=5 and K=4,5,...,7 (zoom)](/images/graphs/peer2peer5_zoom.gif "N=5 (zoom)")
+:::
 
-    ![plot: graph for N=4 and K=4,5,...,8](/images/graphs/peer2peer4.gif)
-
--   N=4 (zoom)
-
-    ![plot: graph for N=4 and K=4,5,...,8 (zoom)](/images/graphs/peer2peer4_zoom.gif)
-
--   N=5 (full time range)
-
-    ![plot: graph for N=5 and K=4,5,...,7 ](/images/graphs/peer2peer5.gif)
-
--   N=5 (zoom)
-
-    ![plot: graph for N=5 and K=4,5,...,7 (zoom)](/images/graphs/peer2peer5_zoom.gif)

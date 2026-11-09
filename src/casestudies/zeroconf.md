@@ -139,15 +139,11 @@ and then check the following properties:
 
 In the graphs below, we haver plotted the minimum and maximum probability of not choosing a fresh IP address by time **T**, as **T** varies from 0 to 50 seconds for the model **Reset** when **N**\=1,000.
 
--   **Probability of message loss equals 0.1**  
-      
-    ![graph for minimum probabilities (100 hosts)](/images/graphs/zeroconf.time1000.min.0.1.png)
+![graph for minimum probabilities (100 hosts)](/images/graphs/zeroconf.time1000.min.0.1.png "Probability of message loss equals 0.1")
 
     ![graph for maximum probabilities (100 hosts)](/images/graphs/zeroconf.time1000.max.0.1.png)
     
--   **Probability of message loss equals 0.001**  
-      
-    ![graph for minimum probabilities (1000 hosts and messages lost with probability 0.001)](/images/graphs/zeroconf.time1000.min.0.001.png)
+![graph for minimum probabilities (1000 hosts and messages lost with probability 0.001)](/images/graphs/zeroconf.time1000.min.0.001.png "Probability of message loss equals 0.001")
 
     ![graph for maximum probabilities (1000 hosts and messages lost with probability 0.001)](/images/graphs/zeroconf.time1000.max.0.001.png)
     
@@ -160,18 +156,10 @@ To calculate the expected costs we check the following properties:
 
 In the graphs below, when the probability of message loss equals 0.1 and 0.001, we give the minimum and maximum cost of choosing an IP address for the model **Reset**.
 
--   **Probability of message loss equals 0.1 and E=1e+6**  
-      
-    ![Expected Costs (Probability of message loss equals 0.1 and  E=10^6)](/images/graphs/zeroconf.cost6.0.1.png)
-    
--   **Probability of message loss equals 0.1 and E=1e+12**  
-      
-    ![Expected Costs (Probability of message loss equals 0.1 and  E=10^12)](/images/graphs/zeroconf.cost12.0.1.png)
-    
--   **Probability of message loss equals 0.001 and E=1e+6**  
-      
-    ![Expected Costs (Probability of message loss equals 0.001 and  E=10^6)](/images/graphs/zeroconf.cost6.0.001.png)
-    
--   **Probability of message loss equals 0.001 and E=1e+12**  
-      
-    ![Expected Costs (Probability of message loss equals 0.001 and  E=10^12)](/images/graphs/zeroconf.cost12.0.001.png)
+::: plots
+![Expected Costs (Probability of message loss equals 0.1 and  E=10^6)](/images/graphs/zeroconf.cost6.0.1.png "Probability of message loss equals 0.1, E = 10⁶")
+![Expected Costs (Probability of message loss equals 0.1 and  E=10^12)](/images/graphs/zeroconf.cost12.0.1.png "Probability of message loss equals 0.1, E = 10¹²")
+![Expected Costs (Probability of message loss equals 0.001 and  E=10^6)](/images/graphs/zeroconf.cost6.0.001.png "Probability of message loss equals 0.001, E = 10⁶")
+![Expected Costs (Probability of message loss equals 0.001 and  E=10^12)](/images/graphs/zeroconf.cost12.0.001.png "Probability of message loss equals 0.001, E = 10¹²")
+:::
+

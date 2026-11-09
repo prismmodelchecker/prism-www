@@ -107,13 +107,10 @@ $$\max_i \left( \frac{|\pi_i^{(k)} - \pi_i^{(k-1)}|}{|\pi_i^{(k)}|} \right) < 10
     | 19  | 866     | -                  | 1.325487     | 2.003745 | 35            | 1.462714           | 2.633857     |
     | 20  | 920     | -                  | -            | 4.664724 | 36            | -                  | 5.759333     |
     
--   **Probability that in the long run station 1 is awaiting service:**
-    
-    ![plots probability that in the long run station 1 is awaiting service](/images/graphs/polling.ss1.png)
-
--   **Probability that in the long run station 1 is idle:**
-    
-    ![plots probability that in the long run station 1 is idle](/images/graphs/polling.ss2.png)
+::: plots
+![plots probability that in the long run station 1 is awaiting service](/images/graphs/polling.ss1.png "Probability that in the long run station 1 is awaiting service")
+![plots probability that in the long run station 1 is idle](/images/graphs/polling.ss2.png "Probability that in the long run station 1 is idle")
+:::
 
 -   **Once station 1 becomes full, the minimum probability it will eventually be polled:** the table below presents statistics for the model checking process. Note that as this property holds with probability 1 the statistics correspond to a BDD precomputation algorithm.
     
@@ -220,6 +217,5 @@ $$\max_i \left( \frac{|\pi_i^{(k)} - \pi_i^{(k-1)}|}{|\pi_i^{(k)}|} \right) < 10
       
     ![plots expected time station 1 spends awaiting service by time T](/images/graphs/polling.expected1.png)
 
--   **Expected number of times station 1 is served by time T:**
-    
-    ![plots expected number of times station 1 is served by time T](/images/graphs/polling.expected2.png)
+![plots expected number of times station 1 is served by time T](/images/graphs/polling.expected2.png "Expected number of times station 1 is served by time T")
+

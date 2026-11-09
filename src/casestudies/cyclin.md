@@ -57,38 +57,21 @@ These property can be specified by the following CSL formula:
 
 The following graph plots, in the cases when N equals 2, 3 and 4, the probability that there are k **cyclin\_bound** elements at time as the value of T varies.
 
--   **N = 2**
-    
-    ![plot: probability k cyclin\_bound elements at time instant T (T small and N=2)](/images/graphs/cyclin.prob2.small.png)
-
-    ![plot: probability k cyclin\_bound elements at time instant T (T large and N=2)](/images/graphs/cyclin.prob2.large.png)
-
--   **N = 3**
-    
-    ![plot: probability k cyclin\_bound elements at time instant T (T small and N=3)](/images/graphs/cyclin.prob3.small.png)
-
-    ![plot: probability k cyclin\_bound elements at time instant T (T large and N=3)](/images/graphs/cyclin.prob3.large.png)
-
--   **N = 4**
-    
-    ![plot: probability k cyclin\_bound elements at time instant T (T small and N=4)](/images/graphs/cyclin.prob4.small.png)
-
-    ![plot: probability k cyclin\_bound elements at time instant T (T large and N=4)](/images/graphs/cyclin.prob4.large.png)
+::: plots pairs
+![plot: probability k cyclin\_bound elements at time instant T (T small and N=2)](/images/graphs/cyclin.prob2.small.png "N = 2, T small")
+![plot: probability k cyclin\_bound elements at time instant T (T large and N=2)](/images/graphs/cyclin.prob2.large.png "N = 2, T large")
+![plot: probability k cyclin\_bound elements at time instant T (T small and N=3)](/images/graphs/cyclin.prob3.small.png "N = 3, T small")
+![plot: probability k cyclin\_bound elements at time instant T (T large and N=3)](/images/graphs/cyclin.prob3.large.png "N = 3, T large")
+![plot: probability k cyclin\_bound elements at time instant T (T small and N=4)](/images/graphs/cyclin.prob4.small.png "N = 4, T small")
+![plot: probability k cyclin\_bound elements at time instant T (T large and N=4)](/images/graphs/cyclin.prob4.large.png "N = 4, T large")
+:::
 
 In the graph below we have plotted the above expected values as T varies.
 
--   **N = 2**
-    
-    ![plot: expected number of proteins at time instant T (N=2)](/images/graphs/cyclin.expected2.png)
+::: plots
+![plot: expected number of proteins at time instant T (N=2)](/images/graphs/cyclin.expected2.png "N = 2")
+![plot: expected number of proteins at time instant T (N=3)](/images/graphs/cyclin.expected3.png "N = 3")
+![plot: expected number of proteins at time instant T (N=4)](/images/graphs/cyclin.expected4.png "N = 4")
+![plot: expected number of proteins at time instant T (N=5)](/images/graphs/cyclin.expected5.png "N = 5")
+:::
 
--   **N = 3**
-    
-    ![plot: expected number of proteins at time instant T (N=3)](/images/graphs/cyclin.expected3.png)
-
--   **N = 4**
-    
-    ![plot: expected number of proteins at time instant T (N=4)](/images/graphs/cyclin.expected4.png)
-
--   **N = 5**
-    
-    ![plot: expected number of proteins at time instant T (N=5)](/images/graphs/cyclin.expected5.png)

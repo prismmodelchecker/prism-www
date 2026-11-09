@@ -102,14 +102,11 @@ $$\max_i \left( \frac{|\pi_i^{(k)} - \pi_i^{(k-1)}|}{|\pi_i^{(k)}|} \right) < 10
       
     ![plot:  maximum probability that a hand off call can be dropped within t time units (assuming a guarded channel is free)](/images/graphs/cell.until1.png)
     
--   **The maximum probability that a call can be dropped within t time units (assuming a non-guarded channel is free):** the graph below presents the results for this property.
-    
-    ![plot: maximum probability that a call can be dropped within t time units (assuming a non-guarded channel is free)](/images/graphs/cell.until2.png)
+::: plots
+![plot: maximum probability that a call can be dropped within t time units (assuming a non-guarded channel is free)](/images/graphs/cell.until2.png "The maximum probability that a call can be dropped within t time units (assuming a non-guarded channel is free): the graph below presents the results for this property.")
+![plot: minimum probability of leaving a situation where the second queue is fully occupied within T time units](/images/graphs/cell.until3.png "The minimum probability that a cell will be accepted within T time units (assuming no channels are free): the graph below presents the results for this property.")
+:::
 
--   **The minimum probability that a cell will be accepted within T time units (assuming no channels are free):** the graph below presents the results for this property.
-    
-    ![plot: minimum probability of leaving a situation where the second queue is fully occupied within T time units](/images/graphs/cell.until3.png)
-    
 -   **The expected number of calls in the cell at time T:** the table and graph below presents the model checking statistics for this property.
     
     | c:  | T=1:   ||||

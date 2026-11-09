@@ -105,7 +105,10 @@ endrewards
 
 {% task %} With the new PM component in place, investigate how the value of `p` affects both performance and energy usage, using the two properties above (i.e., the expected number of lost request and expected energy usage over the time period 0 to 250). You should get something like the plots below. As you might expect, increasing `p` increases both performance and energy usage.
 
-![](/courses/gran-sasso15/images/power_lost.png){.px350} ![](/courses/gran-sasso15/images/power_energy.png){.px350}
+::: plots pairs
+![plot: expected number of lost requests](/courses/gran-sasso15/images/power_lost.png "Expected number of lost requests")
+![plot: expected energy usage](/courses/gran-sasso15/images/power_energy.png "Expected energy usage")
+:::
 
 {% task %} Can you design a better PM component that offers an improved compromise between performance and energy usage?
 

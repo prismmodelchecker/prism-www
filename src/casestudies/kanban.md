@@ -79,10 +79,8 @@ The table below gives the times taken to compute the steady state probabilities 
 
 The graphs below present the results obtained for the different CSL properties.
 
--   **The expected number of tokens in each cell:**
-    
-    ![plots the expected number of tokens in each cell](/images/graphs/kanban.ss1.png)
+::: plots
+![plots the expected number of tokens in each cell](/images/graphs/kanban.ss1.png "The expected number of tokens in each cell")
+![plots the expected throughput of the system](/images/graphs/kanban.ss2.png "The expected throughput of the system")
+:::
 
--   **The expected throughput of the system:**
-    
-    ![plots the expected throughput of the system](/images/graphs/kanban.ss2.png)
