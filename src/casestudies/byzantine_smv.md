@@ -111,7 +111,7 @@ We complete the proof of **Fast Convergence** with a simple manual proof. First 
 -   **(a)** *if the party does not decide in round* **r**, *then the coin for round* **r** *is flipped*;
 -   **(b)** *if the party does not decide in round* **r** *and* **r+1**, *then the coin in round* **r+1** *is flipped*.
 
-**Proof.** Now suppose that a party enters round **r+1** and does not decide in round **r**, then by **Agreement** no party decides before round **r**. Now since all parties continue for one more round after deciding, under fairness all parties cast their votes in round **r**, and hence the coin for round **r** is flipped and **(a)** holds. If in addition the party does not decide in round **r+1** then by **Agreement** no party decides before round **r+1**. Then since all parties continue for one more round after deciding, under fairness all parties cast their votes in round **r+1**, and hence the coin for round **r+1** is flipped and **(b)** holds.   ![](/images/cs/qed.gif)
+**Proof.** Now suppose that a party enters round **r+1** and does not decide in round **r**, then by **Agreement** no party decides before round **r**. Now since all parties continue for one more round after deciding, under fairness all parties cast their votes in round **r**, and hence the coin for round **r** is flipped and **(a)** holds. If in addition the party does not decide in round **r+1** then by **Agreement** no party decides before round **r+1**. Then since all parties continue for one more round after deciding, under fairness all parties cast their votes in round **r+1**, and hence the coin for round **r+1** is flipped and **(b)** holds.   <span class="qed" aria-label="end of proof">∎</span>
 
 We next introduce the following classification of protocol states:
 
@@ -131,7 +131,7 @@ If follows from **P4** that these sets are pairwise disjoint and any state where
 
 Putting this together and since **P**(A & B) = **P**(A | B) \* **P**(B), we have the probability of a party advancing more than **2r+3** rounds equals:
 
-<table><tbody><tr><td>&nbsp;&nbsp;&nbsp;</td><td>= <b>P</b>(a party advances &gt; <b>2r+3</b> rounds and a party advances &gt; <b>2r+1</b> rounds)</td></tr><tr><td>&nbsp;&nbsp;&nbsp;</td><td>= <b>P</b>(a party advances &gt; <b>2r+3</b> rounds | a party advances &gt; <b>2r+1</b> rounds) * <b>P</b>(a party advances &gt; <b>2r+1</b> rounds)</td></tr><tr><td>&nbsp;&nbsp;&nbsp;</td><td>≤ 1/2 * 2<sup>-r</sup></td></tr><tr><td>&nbsp;&nbsp;&nbsp;</td><td>= 2<sup>-(r+1)</sup> &nbsp;&nbsp;&nbsp; as required. &nbsp; <img src="/images/cs/qed.gif"></td></tr></tbody></table>
+<table><tbody><tr><td>&nbsp;&nbsp;&nbsp;</td><td>= <b>P</b>(a party advances &gt; <b>2r+3</b> rounds and a party advances &gt; <b>2r+1</b> rounds)</td></tr><tr><td>&nbsp;&nbsp;&nbsp;</td><td>= <b>P</b>(a party advances &gt; <b>2r+3</b> rounds | a party advances &gt; <b>2r+1</b> rounds) * <b>P</b>(a party advances &gt; <b>2r+1</b> rounds)</td></tr><tr><td>&nbsp;&nbsp;&nbsp;</td><td>≤ 1/2 * 2<sup>-r</sup></td></tr><tr><td>&nbsp;&nbsp;&nbsp;</td><td>= 2<sup>-(r+1)</sup> &nbsp;&nbsp;&nbsp; as required. &nbsp; <span class="qed" aria-label="end of proof">∎</span></td></tr></tbody></table>
 
 It can be argued that in a real system the probability of a party advancing by more than **2r+1** rounds is bounded above by **2<sup>-r</sup>** + *e*, where *e* is negligible. This follows from the unpredictability of the coin tossing scheme and **P6**; for more details see {% cite "CKS00" %}.
 

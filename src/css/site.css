@@ -772,3 +772,6 @@ mark.bib-highlight { background: var(--bib-mark-bg); color: inherit; border-bott
 	/* The tops of the first line's letters line up with the top of the news panel */
 	.page--home .content { padding-top: calc(0.7 * var(--h1-size) - 0.4rem); }
 }
+
+/* End-of-proof mark (in place of the old qed.gif) */
+.qed { float: right; margin-left: 1em; color: var(--text-muted); }
