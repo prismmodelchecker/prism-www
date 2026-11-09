@@ -22,7 +22,7 @@ This case study is based on {% cite "FWHT15" %} and considers the control of an 
 
 The following figure shows a map of the road network considered in this case study, which has six surveillance waypoints labeled w1, w2, ..., w6. Approaching a waypoint from certain angles may be better than others, e.g., in order to obtain desired look angles on a waypoint target using an ellipsoidal loiter pattern. Angles of approach are thus discretized into eight angle points around each waypoint. Roads connecting waypoints are discretized into road points r1, r2, ..., r9. Red polygons represent “restricted operating zones” (ROZs), areas in which flying the UAV may be dangerous or lead to a higher chance of being detected by an adversary.
 
-![A road network for UAV missions](/images/cs/human-uav-map.png){.px421}
+![A road network for UAV missions](/images/cs/human-uav-map.png){.medium}
 
 We assume the UAV has a certain degree of autonomy that is used to fulfill most of the piloting functions, e.g., maintaining loiter patterns around waypoints, selecting most of the points that comprise the route, and flying the route. The human operator primarily performs sensor tasks, e.g., steering the onboard sensor to capture imagery of targets at waypoints. However, the operator retains the ability to affect some of the piloting functions of the UAV. The operator decides how many loiters to perform at each waypoint, since more loiters may be needed if the operator is not satisfied with the sensor imagery obtained on previous loiters.
 

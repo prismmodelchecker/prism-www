@@ -3,7 +3,7 @@ layout: layouts/base.njk
 title: "Probabilistic Model Checking"
 permalink: /courses/essai23/
 ---
-![ESSLI'23 logo](/courses/essai23/essai23.png){.right .px235}
+![ESSLI'23 logo](/courses/essai23/essai23.png){.right .small}
 
 # ESSAI'23 - Model Uncertainty in Sequential Decision-Making
 

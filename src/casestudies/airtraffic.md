@@ -71,7 +71,7 @@ In each air sector, AutoResolver and TSAFE execute in parallel to tackle LoSs in
 
 The timeline for AutoResolver is given in the diagram below.
 
-![AutoResolver timeline for LoS detection and resolution](/images/cs/airtraffic_flow2.png){.w75}
+![AutoResolver timeline for LoS detection and resolution](/images/cs/airtraffic_flow2.png){.large}
 
 The basic separation assurance process can be described as follows.
 

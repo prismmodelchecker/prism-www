@@ -12,7 +12,7 @@ Items that should be included in your practical report are marked with a **\[\*\
 
 We consider a robot moving through a 3 x 2 grid. This example was also considered in the lecture on MDPs. Here is a graphical illustration of the robot and its possible behaviours in the environment:
 
-![3x2 Robot MDP](/courses/pmc2526/images/robot.png){.px400}
+![3x2 Robot MDP](/courses/pmc2526/images/robot.png){.medium}
 
 The PRISM code to model the robot is shown below.
 
@@ -48,7 +48,7 @@ The property is of the form `Pmax`\=? \[ `F` `phi` \] which, intuitively, means 
 
 We now want to obtain the corresponding optimal policy for the robot, yielding this maximum probability of reaching **goal1**. For that, we tick the box "Generate Strategy" under the "Strategies" menu:
 
-![3x2 Robot MDP](/courses/pmc2526/images/strategy.png){.px200}
+![3x2 Robot MDP](/courses/pmc2526/images/strategy.png){.small}
 
 {% task %} Now, after verifying the property again, we can extract the optimal policy by selecting "View Strategy" -> "Action List" under the "Strategies" tab. What is the optimal policy? You can also generate some paths in the simulator, and the policy will be enforced/displayed at each step.
 
@@ -74,11 +74,11 @@ We now want to analyse MDPs with more involved objectives, such as cost optimisa
 
 The environment in which the drone is maneuvering is discretised into a 5 x 6 grid. The drone starts at coordinates (1,1) and is tasked with reaching the goal at (1,6) **safely**, i.e., without crashing into the obstacles depicted in red. We ignore the yellow parcel for now.
 
-![5x6 drone environment](/courses/pmc2526/images/uav-env-parcel.png){.px350}
+![5x6 drone environment](/courses/pmc2526/images/uav-env-parcel.png){.medium}
 
 The drone is autonomous, i.e., it operates according to a fixed policy that, for every state (position), may choose to fly straight, left, or right. A complicating factor is that the drone is susceptible to **wind**, which, with some probability, may push it into an undesired direction or make it not move at all.
 
-![3x2 Robot MDP](/courses/pmc2526/images/uav.png){.px150}
+![3x2 Robot MDP](/courses/pmc2526/images/uav.png){.small}
 
 The basis for a PRISM model of the drone can be found below.
 

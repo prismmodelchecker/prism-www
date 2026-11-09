@@ -23,7 +23,7 @@ Fibroblast Growth Factors (FGF) are a family of proteins which play a key role i
 
 Our model incorporates protein-protein interactions (including competition for partners), phosphorylation and dephosphorylation, protein complex relocation and protein complex degradation (via ubiquitin-mediated proteolysis). The follow figure illustrates the different components in the pathway and their possible bindings.
 
-![image of pathway](/images/cs/fgf.gif){.w90}
+![image of pathway](/images/cs/fgf.gif){.large}
 
 Below is a list of the reactions included in the model.
 

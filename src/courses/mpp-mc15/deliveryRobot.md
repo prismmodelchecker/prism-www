@@ -24,7 +24,7 @@ The different components are synchronised with each other to build the full mode
 
 A map of the workplace is depicted below. Offices are labelled from 1 to 8. Office 0 is where the robot recharges its battery. Lines represent the corridors the robot can use to navigate between offices.
 
-![Map of the workplace](/courses/mpp-mc15/images/deliveryRobotGraph.png){.px400}
+![Map of the workplace](/courses/mpp-mc15/images/deliveryRobotGraph.png){.medium}
 
 ## 2\. Part 1: Modelling as a Markov Chain
 

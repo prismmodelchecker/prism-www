@@ -14,7 +14,7 @@ The problem supposes a certain number of philosophers, seated around a circular 
 
 Below we represent graphically the case when there are five philosophers seated around the table.
 
-![image of dining philosophers](/tutorial/images/dining-phil.jpg){.w40}
+![image of dining philosophers](/tutorial/images/dining-phil.jpg){.medium}
 
 A solution to this problem is an algorithm for each of the philosophers to follow that will ensure that:
 

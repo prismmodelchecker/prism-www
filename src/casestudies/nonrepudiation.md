@@ -63,13 +63,13 @@ We verify the following properties corresponding to successful termination.
 
 We find that the protocol does terminate with probability 1 and the following plots both the minimum and maximum probability of terminating by time *T* for *p*\=0.01 and *p*\=0.1. We see that increasing the parameter p improves the performance of the protocol when the parties behave honestly. However, as we shall see below, when the recipient behaves maliciously, increasing this parameter comes at a cost since it also increases the likelihood that the recipient gains an advantage.
 
-![plot: probability that the protocol terminates successfully by time T (p=0.01)](/images/graphs/repudiation_honest001.png){.w40}
+![plot: probability that the protocol terminates successfully by time T (p=0.01)](/images/graphs/repudiation_honest001.png){.medium}
 
 *Min/max probability of terminating by time *T* for *p*=0.01*{.caption}
 
   
   
-![plot: probability that the protocol terminates successfully by time T (p=0.1)](/images/graphs/repudiation_honest01.png){.w40}
+![plot: probability that the protocol terminates successfully by time T (p=0.1)](/images/graphs/repudiation_honest01.png){.medium}
 
 *Min/max probability of terminating by time *T* for *p*=0.1*{.caption}
 
@@ -91,13 +91,13 @@ For these models we analyse the maximum probability that the recipient can gain 
 
 The following graph plots the maximum probability the recipient eventually gains knowledge as the parameter *p* varies. The plot demonstrates that the protocol is **ε-fair** with ε equal to *p*. Essentially, all this recipient can do to gain knowledge is to correctly guess which message is the last (which, when a message arrives, is true with probability *p*).
 
-![plot: maximum probability the recipient eventually gains knowledge](/images/graphs/repudiation_malicious.png){.w50}
+![plot: maximum probability the recipient eventually gains knowledge](/images/graphs/repudiation_malicious.png){.medium}
 
 The following two graphs plot the maximum probability the recipient gains knowledge by a time bound as the parameter *p* varies for the two versions of the malicious recipient.
 
-![plot: probability that the recipient gains knowledge by time T f(version 2)](/images/graphs/repudiation_malicious1.png){.w50}
+![plot: probability that the recipient gains knowledge by time T f(version 2)](/images/graphs/repudiation_malicious1.png){.medium}
   
-![plot: probability that the recipient gains knowledge by time T (version 2)](/images/graphs/repudiation_malicious2.png){.w50}
+![plot: probability that the recipient gains knowledge by time T (version 2)](/images/graphs/repudiation_malicious2.png){.medium}
 
 In the first graph, the probability of gaining an advantage over time remains constant after the arrival of the first message: since each message has an equal chance of being the last, there is nothing to be gained by waiting for a later one to try and decode. The figures also show that the malicious recipient in the second variant of the model (which has a chance of correctly decoding the message before the deadline) has a greater chance of gaining knowledge, thanks to its additional power.
 

@@ -60,4 +60,4 @@ We consider both the maximum fraction and number of unpaid services the user can
 
 The results are presented below using dashed lines for the TSG mode and solid lines for CSG model. The results demonstrate that the user can take advantage of the fact that in the CSG model it can request multiple services at the same time, and obtain more services without paying before the different providers get a chance to inform each other about non-payment. In addition, the results show that having a more severe penalty on the trust measure for non-payment decreases the unpaid services the user can obtain.
 
-![plot: maximum fraction and number of unpaid services the user can ensure for each trust model for both the TSG and CSG models](/images/graphs/trust_graphs.png){.w75}
+![plot: maximum fraction and number of unpaid services the user can ensure for each trust model for both the TSG and CSG models](/images/graphs/trust_graphs.png){.large}

@@ -42,9 +42,9 @@ We consider both the maximum probability the user can ensure that at least half 
 
 The following graphs plot the results for these properties as the number of slots varies.
 
-![plot: maximum probability the user can ensure that at least half their messages are sent](/images/graphs/jamming_probability.png){.w50}
+![plot: maximum probability the user can ensure that at least half their messages are sent](/images/graphs/jamming_probability.png){.medium}
   
-![plot: the maximum expected number of messages the user can ensure are sent](/images/graphs/jamming_expected.png){.w50}
+![plot: the maximum expected number of messages the user can ensure are sent](/images/graphs/jamming_expected.png){.medium}
 
 Performing strategy synthesis, we see that, if there are two slots, the optimal behaviour of the user is to initially send on channel 1 (as there is a high chance it will be free in the next slot and the jammer cannot jam this channel). In the next slot it again sends on channel 1, unless channel 1 was in use in the previous slot and both channels 2 and 3 were free and in this case it chooses between channels 2 and 3 uniformly at random. The reason is that in this case there is only a small chance channel 1 will be free when the message is sent and a high chance both that channel 2 and channel 3 will be free and the jammer cannot block both these channels while in all other cases there is either:
 

@@ -38,7 +38,7 @@ The basic model concerns computing the arithmetic expression **D × (C × (A + B
 
 The following figure presents a task graph for computing this expression and shows both the tasks that need to be performed (the subterms of the expression) and the dependencies between the tasks (the order the tasks must be evaluated in).
 
-![task graph representation](/images/cs/task_graph.png){.w35}
+![task graph representation](/images/cs/task_graph.png){.medium}
 
 The system is formed as the parallel composition of three PTAs (PRISM modules), one for the scheduler and one for each processor is presented below.
 
@@ -109,9 +109,9 @@ The PRISM model for this scenario is presented below. Note that to prevent the s
 
 Analysing this model, we find that for small values of *p* (the probability of **P3** failing to successfully complete a task), as **P3** has better performance than **P2**, both the optimal expected time and energy consumption can be improved using **P3**. However, as the probability of failure increases, **P3**’s better performance is out-weighed by the chance of its failure and using it no longer yields optimal values. This can be seen in the following graphs which plot the optimal expected time and energy consumption for this extended model as the failure probability *p* varies.
 
-![plot: optimal expected time to complete](/images/graphs/scheduler_failure_time.png){.w40}
+![plot: optimal expected time to complete](/images/graphs/scheduler_failure_time.png){.medium}
   
-![plot: optimal expected energy to complete](/images/graphs/scheduler_failure_energy.png){.w40}
+![plot: optimal expected energy to complete](/images/graphs/scheduler_failure_energy.png){.medium}
 
 For example, we give an optimal scheduler for the expected time when *p=0.25* which takes 11.0625 picoseconds (the optimal expected time is 12 picoseconds when **P3** is not used). The dark boxes are used to denote the cases when **P3** is scheduled to complete a task, but experiences a fault and does not complete the scheduled task correctly.
 
@@ -201,9 +201,9 @@ We now extend the basic TPTG model by allowing the processors **P1** and **P2** 
 
 In the figures below we have plotted both the optimal expected time and energy the scheduler can ensure when there are different number of faults in each processor as the parameter **p** (the probability of a fault causing a failure) varies. As would be expected, both the optimal expected time and energy consumption increases both as the number of faults increases and the probability that a fault causes a failure increases.
 
-![plot: optimal expected time the scheduler can ensure](/images/graphs/task_graph_tptg_time.png){.w50}
+![plot: optimal expected time the scheduler can ensure](/images/graphs/task_graph_tptg_time.png){.medium}
   
-![plot: optimal expected energy the scheduler can ensure](/images/graphs/task_graph_tptg_energy.png){.w50}
+![plot: optimal expected energy the scheduler can ensure](/images/graphs/task_graph_tptg_energy.png){.medium}
 
 Considering the synthesised optimal schedulers for the expected time case, when **k1**\=**k2**\=1 and **p**\=1, the optimal approach is to just use the faster processor **P1** and the expected time equals 18.0. The optimal strategy for the environment, i.e., the choices that yield the worst-case expected time, against this scheduler is to delay all tasks as long as possible and cause a fault when a multiplication task is just about to complete on **P1** (recall **P2** is never used under the optimal scheduler). A multiplication is chosen as this takes longer (3 picoseconds) than an addition task (2 picoseconds). These choices can be seen through the fact that 18.0 is the time for 4 multiplications and 3 additions to be performed on **P1**, while the problem requires 3 multiplications and 3 additions. As soon as the probability of a fault causing a failure is less than 1, the optimal scheduler does use processor **P2** from the beginning by initially scheduling *task1* on process **P1** and *task2* on processor **P2** (which is also optimal when no faults can occur).
 

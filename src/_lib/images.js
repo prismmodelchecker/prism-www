@@ -73,6 +73,8 @@ export function images(md) {
 			if (size) {
 				token.attrSet("width", String(size[0]));
 				token.attrSet("height", String(size[1]));
+				// (a named size never stretches an image beyond its own pixels)
+				if (/\b(small|medium|large)\b/.test(token.attrGet("class") || "")) token.attrSet("style", `max-width: min(100%, ${size[0]}px)`);
 			}
 		}
 		if (!token.meta?.figure) return image(tokens, idx, options, env, self);

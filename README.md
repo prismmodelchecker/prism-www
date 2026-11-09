@@ -97,8 +97,7 @@ Inline:
   (`![plot of ...](x.png "Caption")`). Images are shown at most their own size (the width and height
   are read from the file when the site is built), and one shown smaller than its file can be clicked to see it
   full size. Sizes: `{.small}`, `{.medium}`, `{.large}` (at most 16, 28 and 44rem wide); `{.right}` floats an image right.
-  (Older pages still use fixed widths, `{.w40}` or `{.px400}`, and several images in one paragraph side by side:
-  being replaced by the above.)
+  Several images in one paragraph are shown side by side (`::: plots` is better for a set of plots).
 
 Code blocks (fenced, with a language), in the colours of the `--tok-*` tokens:
 

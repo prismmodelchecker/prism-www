@@ -14,7 +14,7 @@ Specifically, PRISM offers support for the analysis of **interval MDPs** (IMDPs)
 
 The main part of this tutorial develops a model of an autonomous drone. However, we begin with an IMDP variant of the model from the [robot navigation](/tutorial/robot/) part of the tutorial:
 
-![3x2 Robot MDP](/tutorial/images/uncertain.png){.px400}
+![3x2 Robot MDP](/tutorial/images/uncertain.png){.medium}
 
 Several of the transitions are marked with intervals, indicating that the actual probabilities could fall anywhere within this range,
 
@@ -48,11 +48,11 @@ Performing the same operations for multiple constant values, like `e` above, can
 
 {% task %} Right-click on the property you want to verify and click "New Experiment". You should see the following dialogue, allowing you to specify the parameters for the experiment. Choose a range and a step-size, and make sure that the "Create Graph" option is ticked.
 
-![3x2 Robot MDP](/tutorial/images/experiments.png){.px350}
+![3x2 Robot MDP](/tutorial/images/experiments.png){.medium}
 
 If you specified everything correctly for the worst-case probability, you should see a plot similar to:
 
-![3x2 Robot MDP](/tutorial/images/robot-imdp-plot.jpeg){.px350}
+![3x2 Robot MDP](/tutorial/images/robot-imdp-plot.jpeg){.medium}
 
 {% task %} Can you explain the sharp-bend in the plot?
 
@@ -62,11 +62,11 @@ We now want to analyse how different amounts of epistemic uncertainty can affect
 
 The environment in which the drone is maneuvering is discretised into a 5 x 6 grid. The drone starts at coordinates (1,1) and is tasked with reaching the goal at (1,6) **safely**, i.e., without crashing into the obstacles depicted in red.
 
-![5x6 drone environment](/tutorial/images/uav-env.png){.px350}
+![5x6 drone environment](/tutorial/images/uav-env.png){.medium}
 
 The drone is autonomous, i.e., it operates according to a fixed policy that, for every state (position), may choose to fly straight, left, or right. A complicating factor is that the drone is susceptible to **wind**, which, with some probability, may push it into an undesired direction or make it not move at all.
 
-![3x2 Robot MDP](/tutorial/images/uav.png){.px150}
+![3x2 Robot MDP](/tutorial/images/uav.png){.small}
 
 The basis for a PRISM model of the drone can be found below.
 

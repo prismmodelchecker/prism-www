@@ -44,7 +44,7 @@ For anything else (e.g., to compile from source), go to the [download page](/dow
 
 Our first example is a PRISM model of a simple robot moving through a 3 x 2 grid, that you know from the lecture. Here is a graphical illustration of the robot and its possible behaviours in the environment:
 
-![3x2 Robot MDP](/courses/aims2526/images/robot.png){.px400}
+![3x2 Robot MDP](/courses/aims2526/images/robot.png){.medium}
 
 The PRISM code to model the robot is shown below.
 
@@ -88,7 +88,7 @@ PRISM uses iterative numerical solution techniques which converge towards the co
 
 We now want to obtain the corresponding optimal policy for the robot, yielding this maximum probability of reaching **goal1**. For that, we tick the box "Generate Strategy" under the "Strategies" menu:
 
-![3x2 Robot MDP](/courses/aims2526/images/strategy.png){.px200}
+![3x2 Robot MDP](/courses/aims2526/images/strategy.png){.small}
 
 {% task %} Now, after verifying the property again, we can extract the optimal policy by selecting "View Strategy" -> "Action List" under the "Strategies" tab. What is the optimal policy? You can also generate some paths in the simulator, and the policy will be enforced/displayed at each step.
 
@@ -110,7 +110,7 @@ We now consider a second property:
 
 ## Modelling epistemic uncertainty in PRISM
 
-![3x2 Robot MDP](/courses/aims2526/images/uncertain.png){.px400}
+![3x2 Robot MDP](/courses/aims2526/images/uncertain.png){.medium}
 
 As you saw in the lecture, full knowledge of the model and all its probabilities might not be available in a realistic setting. This **epistemic uncertainty** on the transition probabilities can be modelled using *uncertain* models. Specifically, PRISM offers support for the analysis of *interval MDPs* (IMDPs), where transition probabilities are only known to lie within certain intervals. This models, e.g., the situation where transition probabilities were experimentally estimated by confidence intervals.
 
@@ -148,11 +148,11 @@ Performing the same operations for multiple constant values, like `e` above, can
 
 {% task %} Right-click on the property you want to verify and click "New Experiment". You should see the following dialogue, allowing you to specify the parameters for the experiment. Choose a range and a step-size, and make sure that the "Create Graph" option is ticked.
 
-![3x2 Robot MDP](/courses/aims2526/images/experiments.png){.px350}
+![3x2 Robot MDP](/courses/aims2526/images/experiments.png){.medium}
 
 If you specified everything correctly for the worst-case probability, you should see a plot similar to:
 
-![3x2 Robot MDP](/courses/aims2526/images/plot.jpeg){.px350}
+![3x2 Robot MDP](/courses/aims2526/images/plot.jpeg){.medium}
 
 {% task %} Can you explain the sharp-bend in the plot?
 
@@ -162,11 +162,11 @@ We now want to analyse how different amounts of epistemic uncertainty can affect
 
 The environment in which the drone is maneuvering is discretised into a 5 x 6 grid. The drone starts at coordinates (1,1) and is tasked with reaching the goal at (1,6) **safely**, i.e., without crashing into the obstacles depicted in red.
 
-![5x6 drone environment](/courses/aims2526/images/env.png){.px350}
+![5x6 drone environment](/courses/aims2526/images/env.png){.medium}
 
 The drone is autonomous, i.e., it operates according to a fixed policy that, for every state (position), may choose to fly straight, left, or right. A complicating factor is that the drone is susceptible to **wind**, which, with some probability, may push it into an undesired direction or make it not move at all.
 
-![3x2 Robot MDP](/courses/aims2526/images/uav.png){.px150}
+![3x2 Robot MDP](/courses/aims2526/images/uav.png){.small}
 
 The basis for a PRISM model of the drone can be found below.
 

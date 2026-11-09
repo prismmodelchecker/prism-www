@@ -642,10 +642,9 @@ mark.bib-highlight { background: var(--bib-mark-bg); color: inherit; border-bott
 @media (max-width: 30rem) { .content .plots.pairs { grid-template-columns: 1fr; } }
 .content .plots figure.figure { margin: 0; }
 /* Sizes for a single image: ![...](x.png "Caption"){.small} (otherwise its own size, at most the column's width) */
-.content img:is(.small, .medium, .large) { width: 100%; }
-.content img.small { max-width: 16rem; }
-.content img.medium { max-width: 28rem; }
-.content img.large { max-width: 44rem; }
+.content img.small { width: min(100%, 16rem); }
+.content img.medium { width: min(100%, 28rem); }
+.content img.large { width: min(100%, 44rem); }
 /* Click to enlarge */
 .content img.zoomable { cursor: zoom-in; transition: border-color 0.15s, box-shadow 0.15s; }
 .content img.zoomable:hover { border-color: var(--link); box-shadow: 0 2px 8px rgba(20, 20, 60, 0.12); }
@@ -654,28 +653,10 @@ dialog.zoom::backdrop { background: rgba(10, 10, 30, 0.8); }
 dialog.zoom img { display: block; max-width: 96vw; max-height: 86vh; width: auto; height: auto; background: #fff; border-radius: var(--radius-sm); padding: 0.6rem; cursor: zoom-out; }
 dialog.zoom p { color: #fff; text-align: center; margin: 0.6rem auto 0; max-width: 50rem; font-size: 0.95rem; }
 
-/* Images side by side, and image sizes: ![plot](x.png){.w40} */
+/* Several images in one paragraph: side by side */
 .content .gallery { display: flex; flex-wrap: wrap; justify-content: center; align-items: flex-start; gap: 1rem; }
 .content .gallery img.prism-image { margin: 0; }
 .content img.right { float: right; margin: 0.25rem 0 1rem 1rem; }
-.content img.px150 { width: 150px; }
-.content img.px200 { width: 200px; }
-.content img.px235 { width: 235px; }
-.content img.px350 { width: 350px; }
-.content img.px390 { width: 390px; }
-.content img.px400 { width: 400px; }
-.content img.px421 { width: 421px; }
-.content img.px800 { width: 800px; }
-.content img.w20 { width: 20%; }
-.content img.w25 { width: 25%; }
-.content img.w30 { width: 30%; }
-.content img.w35 { width: 35%; }
-.content img.w40 { width: 40%; }
-.content img.w50 { width: 50%; }
-.content img.w70 { width: 70%; }
-.content img.w75 { width: 75%; }
-.content img.w80 { width: 80%; }
-.content img.w90 { width: 90%; }
 .content .note { font-style: normal; font-size: 0.9em; }
 .content .note, .content .note a { color: var(--text-muted); }
 .content .answer { margin: 1rem 0; padding: 0.6rem 1rem; border-left: 3px solid var(--callout-bar); background: var(--callout-bg); }

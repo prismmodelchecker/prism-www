@@ -41,7 +41,7 @@ Here, `prism-games` is the command-line version of PRISM-games, i.e, the script 
 
 The command above synthesises the optimal strategy for player 2 and generates a [dot](http://www.graphviz.org) file which allows easy graphical visualisation of it. This is displayed below (the output has been edited, replacing floating point numbers with rationals to simplify the presentation).
 
-![plot: optimal strategy for player 2 when maximising the probability of winning before player 1](/images/graphs/rps2_strat4.png){.w75}
+![plot: optimal strategy for player 2 when maximising the probability of winning before player 1](/images/graphs/rps2_strat4.png){.large}
 
 In the graph, the vertices correspond to the states of the game (each one shows the index of the state and the values of the single variable `win`), and edges from each state represent the optimal choices of player 2 and all available choices for player 1 from that state. The choices for the two players (probability of choosing available actions) are separated by `--`. By including all possible choices for player 1, the graph includes all states reachable when player 2 follows its optimal strategy, and therefore all choices for this strategy when it is followed. As can be seen, in any state in which a player has not yet won, the optimal strategy for player 2 is to choose rock, paper and scissors each with probability 1/3.
 
@@ -63,7 +63,7 @@ prism-games rps2_rounds.prism rps2_rounds.props -const k=1 -prop 3 -exportstrat 
 
 which generates the optimal strategy to maximise the expected utility of a player 1 over 1 round (i.e., the optimal strategy for the matrix game corresponding to the utility function). This is displayed below (again, the output has been edited replacing floating point numbers with rationals to simplify the presentation).
 
-![plot: optimal strategy for player 1 for the rps matrix game](/images/graphs/rps2_strat3.png){.w75}
+![plot: optimal strategy for player 1 for the rps matrix game](/images/graphs/rps2_strat3.png){.large}
 
 Again, the vertices of the graph correspond to the states of the game, so now show the values of the two variables `rounds` and `win`. Edges from each state represent the optimal choices (probabilities) of player 1 and all available choices for player 2 from that state. As can be seen, the optimal strategy is for player 1 to choose rock, paper and scissors each with probability 1/3.
 
@@ -105,6 +105,6 @@ As for the earlier example, `prism-games` is the command-line version of PRISM-g
 
 As for zero-sum properties, the synthesised strategies are given in the [dot](http://www.graphviz.org) format. For nonzero-sum properties we are generating a SWNE strategy profile, and therefore this includes optimal choices for both players. When neither player has reached its goal, edges are labelled `CSG` followed by the choices for the two players (the probabilities of choosing available actions) with the choices for the different players separated by `--`. On the other hand, once the goal of one of the players has been reached, since the players then form a coalition and try and reach the goal of the other player, the edges in the graph are labelled `MDP` followed by the a single choice (the probability of choosing actions for both players). The synthesised profile is given below.
 
-![plot: SWNE strategy profile for the players maximising the probability of eventually successfully transmitting twice](/images/graphs/medium_access_strat.png){.w75}
+![plot: SWNE strategy profile for the players maximising the probability of eventually successfully transmitting twice](/images/graphs/medium_access_strat.png){.large}
 
 The graph demonstrates that in the synthesised strategy profile, the players cooperate to achieve their individual goals. More precisely, player 1 waits while first player 2 tries to transmit until either its goal has been reached, i.e. two successful transmissions, or it does not have sufficient energy to meet its objective, i.e. either the first transmission fails and it has only the energy to try and transmit one more time or the first succeeds and then second transmission fails after which it has run out of energy. After this player 2 no longer tries to transmit and player 1 tries to transmit until again either its goal has been reached or does not have sufficient energy to meet its objective. This can also be seen in the SWNE values of (0.81,0.81), as 0.81 corresponds to a player trying to transmit twice and being successful each time and the other player not transmitting at these times (recall the probabilities of a successful transmission are 0.9 and 0.75 when a single user and both users try to transmit, respectively).

@@ -31,7 +31,7 @@ The basic design of a multiplexing unit consists of two stages: the *executive* 
 
 We now consider multiplexing in the case when the processing unit is a single NAND gate. We therefore replace both the inputs and output of the gate with **N** copies and in the executive stage duplicate the NAND gate **N** times, as shown below.
 
-![picture of NAND muliplexing unit](/images/cs/nand.multiplex.gif){.px390}
+![picture of NAND muliplexing unit](/images/cs/nand.multiplex.gif){.medium}
 
 The unit **U** represents a *random permutation* of the input signals, that is, each signal of the first input is randomly paired with a signal from the second input to form an input pair for one of the copies of the NAND gate. Also shown in the figure is the restorative stage which is made using the same technique as the executive stage duplicating the outputs of the executive stage to use as its inputs. Note that, applying this approach only once will invert the result, therefore two steps are required. To give a more effective restoration mechanism the restorative stage can be iterated {% cite "vN56" %}.
 

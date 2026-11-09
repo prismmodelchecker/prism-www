@@ -82,9 +82,9 @@ For the two scenarios given above we consider both the cumulated cost over a num
 
 The two graphs below plot the minimum expected cumulative cost over a number of rounds and the minimum expected cost in a specific round that the policy player can ensure.
 
-![plot: minimum expected cumulative cost over a number of rounds the idp policy player can ensure](/images/graphs/ids_graph1.png){.w50}
+![plot: minimum expected cumulative cost over a number of rounds the idp policy player can ensure](/images/graphs/ids_graph1.png){.medium}
   
-![plot: minimum expected  cost in a specific round the idp policy player can ensure](/images/graphs/ids_graph2.png){.w50}
+![plot: minimum expected  cost in a specific round the idp policy player can ensure](/images/graphs/ids_graph2.png){.medium}
 
 We also synthesise the optimal strategy for the defender over 1, 2 and 4 rounds. For example, for the first scenario and when the number of rounds is 2, this is achieved through the following command:
 
@@ -98,16 +98,16 @@ As the graphs below demonstrate, the optimal strategy for the defender is in eac
 
 ### Optimal Strategies for Scenario 1
 
-![plot: optimal strategy for the defender (scenario 1 and 1 round)](/images/graphs/ids_strat1_scenario1.png){.w75}
+![plot: optimal strategy for the defender (scenario 1 and 1 round)](/images/graphs/ids_strat1_scenario1.png){.large}
   
-![plot: optimal strategy for the defender (scenario 1 and 2 round)](/images/graphs/ids_strat2_scenario1.png){.w75}
+![plot: optimal strategy for the defender (scenario 1 and 2 round)](/images/graphs/ids_strat2_scenario1.png){.large}
   
-![plot: optimal strategy for the defender (scenario 1 and 4 round)](/images/graphs/ids_strat4_scenario1.png){.w75}
+![plot: optimal strategy for the defender (scenario 1 and 4 round)](/images/graphs/ids_strat4_scenario1.png){.large}
 
 ### Optimal Strategies for Scenario 2
 
-![plot: optimal strategy for the defender (scenario 2 and 1 round)](/images/graphs/ids_strat1_scenario2.png){.w75}
+![plot: optimal strategy for the defender (scenario 2 and 1 round)](/images/graphs/ids_strat1_scenario2.png){.large}
   
-![plot: optimal strategy for the defender (scenario 2 and 2 round)](/images/graphs/ids_strat2_scenario2.png){.w75}
+![plot: optimal strategy for the defender (scenario 2 and 2 round)](/images/graphs/ids_strat2_scenario2.png){.large}
   
-![plot: optimal strategy for the defender (scenario 2 and 4 round)](/images/graphs/ids_strat4_scenario2.png){.w75}
+![plot: optimal strategy for the defender (scenario 2 and 4 round)](/images/graphs/ids_strat4_scenario2.png){.large}

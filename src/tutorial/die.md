@@ -10,7 +10,7 @@ If you haven't done so already, [download](/download/) and [install](/manual/Ins
 
 Our first example is a PRISM model of a simple probabilistic algorithm due to Knuth and Yao {% cite "KY76" %}. for emulating a 6-sided die with a fair coin. Here is a graphical illustration of the algorithm:
 
-![Die algorithm](/tutorial/images/dice.pic.jpg){.w50}
+![Die algorithm](/tutorial/images/dice.pic.jpg){.medium}
 
 The idea of the algorithm is as follows. Starting from step 0 (i.e. the circle labelled 0), at every step a coin is tossed and there is 50% chance of taking each of the two possible choices. The algorithm terminates when you reach one of the values for the die on the right-hand side.
 

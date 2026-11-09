@@ -10,7 +10,7 @@ This example illustrates the use of Markov decision processes to solve a simple 
 
 We consider a robot moving through a 3 x 2 grid. Here is a graphical illustration of the robot and its possible behaviours in the environment:
 
-![3x2 Robot MDP](/tutorial/images/robot.png){.px400}
+![3x2 Robot MDP](/tutorial/images/robot.png){.medium}
 
 The PRISM code to model the robot is shown below.
 
@@ -54,7 +54,7 @@ PRISM uses iterative numerical solution techniques which converge towards the co
 
 We now want to obtain the corresponding optimal policy for the robot, yielding this maximum probability of reaching **goal1**. For that, we tick the box "Generate Strategy" under the "Strategies" menu:
 
-![3x2 Robot MDP](/tutorial/images/strategy.png){.px200}
+![3x2 Robot MDP](/tutorial/images/strategy.png){.small}
 
 {% task %} Now, after verifying the property again, we can extract the optimal policy by selecting "View Strategy" -> "Action List" under the "Strategies" tab. What is the optimal policy? You can also generate some paths in the simulator, and the policy will be enforced/displayed at each step.
 

@@ -57,7 +57,7 @@ The property we consider is the maximum possible expected profit the investor ca
 
 The graph below plots the expected profit the investor can guarantee as the initial value of the shares varies.
 
-![plot: expected profit the investor can guarantee as the initial value of the shares varies](/images/graphs/investor_basic_tsg.png){.w50}
+![plot: expected profit the investor can guarantee as the initial value of the shares varies](/images/graphs/investor_basic_tsg.png){.medium}
 
 We have considered several variants of the basic model, to allow for the analysis of optimal strategies for investors under adversarial conditions. We first consider those for zero-sum properties and then for non-zero sum properties.
 
@@ -77,7 +77,7 @@ The CSG PRISM model given below has 3 players: one for each investor, one for th
 
 The CSG also include three reward structures referenting distinct profit models: 'normal market', 'later cash-ins' and 'later cash-ins with fluctuation'. The first is from {% cite "MM07" %} and the latter two reward the investor postponing cashing in shares and are illustrated in the graphs below.
 
-![plot: payoff profiles](/images/graphs/investor_payoffs.png){.w50}
+![plot: payoff profiles](/images/graphs/investor_payoffs.png){.medium}
 
 For comparison, we have also build a TSG model, given below, in which the investors first take turns to decide whether to invest (the ordering decided by the market) and then the market decides on whether to bar any of the investors.
 
@@ -89,13 +89,13 @@ We study both the maximum profit of one investor and the maximum combined profit
 
 The figure shows the maximum expected value over a fixed number of months under the 'normal market' for both the profit of first investor and the combined profit of the two investors. For the former, we show results for the first investor acting alone and when in a coalition with the second investor. We plot the corresponding results from the TSG model for comparison.
 
-![plot: payoffs for the normal market](/images/graphs/two_investors_normal.png){.w75}
+![plot: payoffs for the normal market](/images/graphs/two_investors_normal.png){.large}
 
 The figures below shows first the same results for the 'later cash-ins' profit model and then for the 'later cash-ins with fluctuation' two profit model.
 
-![plot: payoffs for the later cash-ins market](/images/graphs/two_investors_late.png){.w75}
+![plot: payoffs for the later cash-ins market](/images/graphs/two_investors_late.png){.large}
   
-![plot: payoffs for the later cash-ins with fluctutations market](/images/graphs/two_investors_late_fluctuations.png){.w75}
+![plot: payoffs for the later cash-ins with fluctutations market](/images/graphs/two_investors_late_fluctuations.png){.large}
 
 When investors cooperate to maximise the profit of the first, results for the CSG and TSG models coincide. This follows from the discussion above since all the second investor can do is make sure it does not invest at the same time as the first. For the remaining cases and given sufficient months, there is always a strategy in the concurrent setting that outperforms all turn-based strategies.
 
@@ -123,8 +123,8 @@ Regarding the properties, we consider both when the investors are in the same ma
 
 The following graphs plot the results when `pbar=0`.5 as the number of months varies.
 
-![plot: payoffs forwhen pbar equals 0.5](/images/graphs/two_investors_nash05.png){.w75}
+![plot: payoffs forwhen pbar equals 0.5](/images/graphs/two_investors_nash05.png){.large}
 
 In addition, the follow graphs consider the case when `pbar=0`.2.
 
-![plot: payoffs forwhen pbar equals 0.2](/images/graphs/two_investors_nash02.png){.w75}
+![plot: payoffs forwhen pbar equals 0.2](/images/graphs/two_investors_nash02.png){.large}
