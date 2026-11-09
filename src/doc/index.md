@@ -31,5 +31,5 @@ Information for developers is here:
 
 Other useful documentation:
 
--   [CHANGELOG](https://github.com/prismmodelchecker/prism-svn/blob/master/prism/CHANGELOG.txt) (information about the features in each version of PRISM)
+-   [CHANGELOG](https://github.com/prismmodelchecker/prism/blob/master/CHANGELOG.txt) (information about the features in each version of PRISM)
 -   [semantics.pdf](/doc/semantics.pdf) (the semantics of the PRISM language)
