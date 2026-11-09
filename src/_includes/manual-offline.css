@@ -35,3 +35,7 @@ th { background: var(--bg-subtle); }
 .offline-note { color: var(--text-muted); font-size: 0.9rem; }
 .manual-single__version { color: var(--text-muted); font-weight: 400; }
 .manual-single__page, .manual-single__section > :first-child { border-top: 1px solid var(--border); margin-top: 2.5rem; }
+
+/* Maths (KaTeX, its stylesheet in katex/): as on the site */
+:root .katex { font-size: 1.1em; white-space: nowrap; }
+.katex-display { overflow-x: auto; overflow-y: hidden; padding: 0.2em 0; }

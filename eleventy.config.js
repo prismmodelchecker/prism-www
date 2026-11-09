@@ -31,6 +31,9 @@ export default function (eleventyConfig) {
 			eleventyConfig.ignores.add(`src/${f}`);
 			eleventyConfig.ignores.add(`src/${f}/**`);
 		}
+		// (KaTeX for the offline copy's maths, next to its index.html)
+		eleventyConfig.addPassthroughCopy({ "node_modules/katex/dist/katex.min.css": "manual/offline/katex/katex.min.css" });
+		eleventyConfig.addPassthroughCopy({ "node_modules/katex/dist/fonts/*.woff2": "manual/offline/katex/fonts" });
 	} else {
 		eleventyConfig.ignores.add("src/manual-offline.njk");
 		for (const f of staticFiles("src")) eleventyConfig.addPassthroughCopy(f);
@@ -229,7 +232,8 @@ export default function (eleventyConfig) {
 	// Pages with maths (KaTeX's output) load its stylesheet; others don't need it
 	eleventyConfig.addTransform("maths", function (content) {
 		if (!this.page.outputPath?.endsWith(".html") || !content.includes('class="katex')) return content;
-		return content.replace("</head>", '<link rel="stylesheet" href="/css/katex/katex.min.css">\n</head>');
+		const href = this.page.outputPath.includes("/manual/offline/") ? "katex/katex.min.css" : "/css/katex/katex.min.css";
+		return content.replace("</head>", `<link rel="stylesheet" href="${href}">\n</head>`);
 	});
 
 	eleventyConfig.addTransform("scrolling-tables", function (content) {
