@@ -98,6 +98,9 @@ Inline:
   are read from the file when the site is built), and one shown smaller than its file can be clicked to see it
   full size. Sizes: `{.small}`, `{.medium}`, `{.large}` (at most 16, 28 and 44rem wide); `{.right}` floats an image right.
   Several images in one paragraph are shown side by side (`::: plots` is better for a set of plots).
+  Image files: PNG for plots and diagrams; for big plots with a lot of colour (3D surfaces), WebP, made from the
+  plot's PDF (kept beside it) at 1200px wide: `pdftocairo -png -singlefile -scale-to-x 1200 -scale-to-y -1 x.pdf x`
+  then `cwebp -q 90 x.png -o x.webp` (Homebrew: poppler, webp).
 
 Code blocks (fenced, with a language), in the colours of the `--tok-*` tokens:
 

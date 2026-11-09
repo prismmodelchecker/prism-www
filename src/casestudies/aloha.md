@@ -41,8 +41,8 @@ These properties are formally specified as follows for the case of three users, 
 Considering the minimum expected time that a coalition can guarantee of eventually sending their packets, the following graphs plot the results for the coalition of only user 1 (left) and the coalition of users 2 and 3 (right) as `q` and `bcmax` vary.
 
 ::: plots pairs
-![plot: the minimum expected time that player 1 can guantee of eventually sending its packet](/images/graphs/aloha_zero_expected1.png "User 1")
-![plot: the minimum expected time that the coalition of players 2 and 3 can guantee of eventually sending their packets](/images/graphs/aloha_zero_expected23.png "Users 2 and 3")
+![plot: the minimum expected time that player 1 can guantee of eventually sending its packet](/images/graphs/aloha_zero_expected1.webp "User 1")
+![plot: the minimum expected time that the coalition of players 2 and 3 can guantee of eventually sending their packets](/images/graphs/aloha_zero_expected23.webp "Users 2 and 3")
 :::
 
 The results demonstrate that the expected time increases as the probability a packet is correctly sent decreases and the maximum value of the backoff counter increases. We also see that the expected time for the second coalition is larger, which is two be expected as this coalition consists of two users, rather than one, and therefore is the minimum expected time that can be guaranteed for two packets to be sent.
@@ -50,12 +50,12 @@ The results demonstrate that the expected time increases as the probability a pa
 The graphs below plot the results for both the step-bounded property for the different coalitions of user 1 (left) and users 1 and 2 (right) as `q` and `D` vary for `bcmax=1`, 2 and 4.
 
 ::: plots pairs
-![plot: maximum probability user 1 can ensure they send the packet within a deadline (bcmax=1)](/images/graphs/aloha_zero_deadline_bcmax1_p1.png "User 1, bcmax = 1")
-![plot: maximum probability users 2 and 3 can ensure they send their packets within a deadline (bcmax=1)](/images/graphs/aloha_zero_deadline_bcmax1_p23.png "Users 2 and 3, bcmax = 1")
-![plot: maximum probability user 1 can ensure they send the packet within a deadline (bcmax=2)](/images/graphs/aloha_zero_deadline_bcmax2_p1.png "User 1, bcmax = 2")
-![plot: maximum probability users 2 and 3 can ensure they send their packets within a deadline (bcmax=2)](/images/graphs/aloha_zero_deadline_bcmax2_p23.png "Users 2 and 3, bcmax = 2")
-![plot: maximum probability user 1 can ensure they send the packet within a deadline (bcmax=4)](/images/graphs/aloha_zero_deadline_bcmax4_p1.png "User 1, bcmax = 4")
-![plot: maximum probability users 2 and 3 can ensure they send their packets within a deadline (bcmax=4)](/images/graphs/aloha_zero_deadline_bcmax4_p23.png "Users 2 and 3, bcmax = 4")
+![plot: maximum probability user 1 can ensure they send the packet within a deadline (bcmax=1)](/images/graphs/aloha_zero_deadline_bcmax1_p1.webp "User 1, bcmax = 1")
+![plot: maximum probability users 2 and 3 can ensure they send their packets within a deadline (bcmax=1)](/images/graphs/aloha_zero_deadline_bcmax1_p23.webp "Users 2 and 3, bcmax = 1")
+![plot: maximum probability user 1 can ensure they send the packet within a deadline (bcmax=2)](/images/graphs/aloha_zero_deadline_bcmax2_p1.webp "User 1, bcmax = 2")
+![plot: maximum probability users 2 and 3 can ensure they send their packets within a deadline (bcmax=2)](/images/graphs/aloha_zero_deadline_bcmax2_p23.webp "Users 2 and 3, bcmax = 2")
+![plot: maximum probability user 1 can ensure they send the packet within a deadline (bcmax=4)](/images/graphs/aloha_zero_deadline_bcmax4_p1.webp "User 1, bcmax = 4")
+![plot: maximum probability users 2 and 3 can ensure they send their packets within a deadline (bcmax=4)](/images/graphs/aloha_zero_deadline_bcmax4_p23.webp "Users 2 and 3, bcmax = 4")
 :::
 
 ## Nonzero-Sum Properties { #nonzerosum }
@@ -70,12 +70,12 @@ We next consider nonzero-sum properties where two coalitions (the first user in 
 Through strategy synthesis, we find the collaboration is dependent on `q` and, in the case of deadline properties, `D`. In particular, given more time (i.e., larger values of `D`), there is more chance for the users to collaborate sending in different slots. While, if `q` is large, it is unlikely users need to repeatedly try and send their packets, and therefore again can send in different slots. As the coalition has more messages to send, their probabilities are lower. However, even for two users, the probabilities are different, since, although it is advantageous to collaborate and only one user tries first, if transmission fails, then both users try to send as this is the best option for their individual goals.
 
 ::: plots pairs
-![plot: the minimum expected time of player 1 eventually sending its packet](/images/graphs/aloha_nonzero_expected1.png "User 1")
-![plot: the minimum expected time of the coalition of players 2 and 3 eventually sending their packets](/images/graphs/aloha_nonzero_expected23.png "Users 2 and 3")
-![plot: maximum probability user 1 sends their packet within a deadline (bcmax=1)](/images/graphs/aloha_nonzero_deadline_bcmax1_p1.png "User 1, bcmax = 1")
-![plot: maximum probability users 2 and 3 send their packets within a deadline (bcmax=1)](/images/graphs/aloha_nonzero_deadline_bcmax1_p23.png "Users 2 and 3, bcmax = 1")
-![plot: maximum probability user 1 sends their packet within a deadline (bcmax=2)](/images/graphs/aloha_nonzero_deadline_bcmax2_p1.png "User 1, bcmax = 2")
-![plot: maximum probability users 2 and 3 send their packets within a deadline (bcmax=2)](/images/graphs/aloha_nonzero_deadline_bcmax2_p23.png "Users 2 and 3, bcmax = 2")
-![plot: maximum probability user 1 sends their packet within a deadline (bcmax=4)](/images/graphs/aloha_nonzero_deadline_bcmax4_p1.png "User 1, bcmax = 4")
-![plot: maximum probability users 2 and 3 send their packets within a deadline (bcmax=4)](/images/graphs/aloha_nonzero_deadline_bcmax4_p23.png "Users 2 and 3, bcmax = 4")
+![plot: the minimum expected time of player 1 eventually sending its packet](/images/graphs/aloha_nonzero_expected1.webp "User 1")
+![plot: the minimum expected time of the coalition of players 2 and 3 eventually sending their packets](/images/graphs/aloha_nonzero_expected23.webp "Users 2 and 3")
+![plot: maximum probability user 1 sends their packet within a deadline (bcmax=1)](/images/graphs/aloha_nonzero_deadline_bcmax1_p1.webp "User 1, bcmax = 1")
+![plot: maximum probability users 2 and 3 send their packets within a deadline (bcmax=1)](/images/graphs/aloha_nonzero_deadline_bcmax1_p23.webp "Users 2 and 3, bcmax = 1")
+![plot: maximum probability user 1 sends their packet within a deadline (bcmax=2)](/images/graphs/aloha_nonzero_deadline_bcmax2_p1.webp "User 1, bcmax = 2")
+![plot: maximum probability users 2 and 3 send their packets within a deadline (bcmax=2)](/images/graphs/aloha_nonzero_deadline_bcmax2_p23.webp "Users 2 and 3, bcmax = 2")
+![plot: maximum probability user 1 sends their packet within a deadline (bcmax=4)](/images/graphs/aloha_nonzero_deadline_bcmax4_p1.webp "User 1, bcmax = 4")
+![plot: maximum probability users 2 and 3 send their packets within a deadline (bcmax=4)](/images/graphs/aloha_nonzero_deadline_bcmax4_p23.webp "Users 2 and 3, bcmax = 4")
 :::

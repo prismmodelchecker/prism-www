@@ -41,21 +41,21 @@ These properties are formally specified as follows.
 
 The following graph plots, for varying `q` and `l`, the maximum probability that player 1 can guarantee for eventually reaching its goal without crashing,
 
-![plot: maximum probability robot 1 can ensure they reach their goal](/images/graphs/robot_coordination_zero.png){.medium}
+![plot: maximum probability robot 1 can ensure they reach their goal](/images/graphs/robot_coordination_zero.webp){.medium}
 
 The results demonstrate that the probability increases as the size of the grid increases, which follows from the fact for larger grids it is easier to avoid the other robot, and hence not crash. On the other hand, as the probability of a movement failure increases, the probability of reaching the goal without crashing decreases since it is difficult to avoid crashing with more limited control of movement. As the size of the grid increases and this probability increases, after the initial decrease, the probability then increases as given a large area and the second robot having less control of movement, the first can avoid crashing even with its limited control of movement.
 
 The graph below plots the results for the step-bounded variant of the same property as `q` and `k` vary for `l=3`, 5 and 7.
 
 ::: plots
-![plot: maximum probability robot 1 can ensure they reach their goal within a deadline (l=3)](/images/graphs/robot_coordination_zero_deadline3.png "l = 3")
-![plot: maximum probability robot 1 can ensure they reach their goal within a deadline (l=5)](/images/graphs/robot_coordination_zero_deadline5.png "l = 5")
-![plot: maximum probability robot 1 can ensure they reach their goal within a deadline (l=7)](/images/graphs/robot_coordination_zero_deadline7.png "l = 7")
+![plot: maximum probability robot 1 can ensure they reach their goal within a deadline (l=3)](/images/graphs/robot_coordination_zero_deadline3.webp "l = 3")
+![plot: maximum probability robot 1 can ensure they reach their goal within a deadline (l=5)](/images/graphs/robot_coordination_zero_deadline5.webp "l = 5")
+![plot: maximum probability robot 1 can ensure they reach their goal within a deadline (l=7)](/images/graphs/robot_coordination_zero_deadline7.webp "l = 7")
 :::
 
 The graph below plots the results for expected reachability as `l` and `q` vary.
 
-![plot: minimum expected time robot 1 can ensure they reach their goal](/images/graphs/robot_coordination_zero_expected.png){.medium}
+![plot: minimum expected time robot 1 can ensure they reach their goal](/images/graphs/robot_coordination_zero_expected.webp){.medium}
 
 Again we see that increasing the size of the grid decreases the chance of crashing, and therefore increases the probability of reaching the goal within a deadline. The expected time increases as increasing the size of the grid means that more steps are required to reach the goal.
 
@@ -72,19 +72,19 @@ We next consider non-zero-sum properties where both players (robots) try and rea
 In the unbounded probabilistic reachability case, the optimal strategies allow each robot to reach its goal with a very high probability since, as time is not an issue, they can collaborate to avoid crashing and this also increases as the grid size increases as there is more room to avoid each other even with movement errors. The probability for odd sized grids is lower than for even sized grids, as for even sized grids the robots are more likely to jump over each other rather than landing in the same grid square. The graphs below plot the values of player 1 (left) and player 2 (right) as `l` and `q` vary.
 
 ::: plots pairs
-![plot: maximum probability robot 1 can ensure they reach their goal](/images/graphs/robot_coordination_nonzero_player1.png "Robot 1")
-![plot: maximum probability robot 2 can ensure they reach their goal](/images/graphs/robot_coordination_nonzero_player2.png "Robot 2")
+![plot: maximum probability robot 1 can ensure they reach their goal](/images/graphs/robot_coordination_nonzero_player1.webp "Robot 1")
+![plot: maximum probability robot 2 can ensure they reach their goal](/images/graphs/robot_coordination_nonzero_player2.webp "Robot 2")
 :::
 
 For the step-bounded property, the graphs below show the probabilities for the individual players (player 1 left and player 2 right) as `k` and `q` vary, for `l=3`, 5 and 7.
 
 ::: plots pairs
-![plot: maximum probability robot 1 can ensure they reach their goal within a deadline (l=3)](/images/graphs/robot_coordination_nonzero_player1_deadline3.png "Robot 1, l = 3")
-![plot: maximum probability robot 2 can ensure they reach their goal within a deadline (l=3)](/images/graphs/robot_coordination_nonzero_player2_deadline3.png "Robot 2, l = 3")
-![plot: maximum probability robot 1 can ensure they reach their goal within a deadline (l=5)](/images/graphs/robot_coordination_nonzero_player1_deadline5.png "Robot 1, l = 5")
-![plot: maximum probability robot 2 can ensure they reach their goal within a deadline (l=5)](/images/graphs/robot_coordination_nonzero_player2_deadline5.png "Robot 2, l = 5")
-![plot: maximum probability robot 1 can ensure they reach their goal within a deadline (l=7)](/images/graphs/robot_coordination_nonzero_player1_deadline7.png "Robot 1, l = 7")
-![plot: maximum probability robot 2 can ensure they reach their goal within a deadline (l=7)](/images/graphs/robot_coordination_nonzero_player2_deadline7.png "Robot 2, l = 7")
+![plot: maximum probability robot 1 can ensure they reach their goal within a deadline (l=3)](/images/graphs/robot_coordination_nonzero_player1_deadline3.webp "Robot 1, l = 3")
+![plot: maximum probability robot 2 can ensure they reach their goal within a deadline (l=3)](/images/graphs/robot_coordination_nonzero_player2_deadline3.webp "Robot 2, l = 3")
+![plot: maximum probability robot 1 can ensure they reach their goal within a deadline (l=5)](/images/graphs/robot_coordination_nonzero_player1_deadline5.webp "Robot 1, l = 5")
+![plot: maximum probability robot 2 can ensure they reach their goal within a deadline (l=5)](/images/graphs/robot_coordination_nonzero_player2_deadline5.webp "Robot 2, l = 5")
+![plot: maximum probability robot 1 can ensure they reach their goal within a deadline (l=7)](/images/graphs/robot_coordination_nonzero_player1_deadline7.webp "Robot 1, l = 7")
+![plot: maximum probability robot 2 can ensure they reach their goal within a deadline (l=7)](/images/graphs/robot_coordination_nonzero_player2_deadline7.webp "Robot 2, l = 7")
 :::
 
 When there is only one route to each goal within the bound (along the diagonal), i.e. when `k = l`−1, the optimal strategies of both robots take this route as this is the only way of reaching the target within the deadline. In even grids, both players follow the diagonal route since, as discussed for the unbounded case, they will not crash but instead jump over each other. On the other hand, for odd grids, there is a high chance of crashing when they both follow the diagonal route, but there is also a chance one will deviate and the other reaches their goal. Initially, as the bound `k` increases, for odd grids the optimal values for the players are not equal. Here, it is better overall for one to follow the diagonal and the other to take a longer route, as if both took the diagonal route, the chance of crashing increases, decreasing the chance of reaching their goals.
@@ -92,8 +92,8 @@ When there is only one route to each goal within the bound (along the diagonal),
 The graph below plots the values of the individual players (player 1 left and player 2 right) for expected reachability as `l` and `q` vary.
 
 ::: plots pairs
-![plot: minimum expected time robot 1 can reach their goal](/images/graphs/robot_coordination_nonzero_player1_expected.png "Robot 1")
-![plot: minimum expected time robot 2 can reach their goal](/images/graphs/robot_coordination_nonzero_player2_expected.png "Robot 2")
+![plot: minimum expected time robot 1 can reach their goal](/images/graphs/robot_coordination_nonzero_player1_expected.webp "Robot 1")
+![plot: minimum expected time robot 2 can reach their goal](/images/graphs/robot_coordination_nonzero_player2_expected.webp "Robot 2")
 :::
 
 As for the deadline properties, we see that for odd grid sizes the values of the players are different for odd size grids. This is again due to the fact that if both players follow the (direct) diagonal route they will only crash for odd sized grids. The results again demonstrate that the players can gain by collaborating.

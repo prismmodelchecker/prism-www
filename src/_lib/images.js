@@ -19,6 +19,14 @@ export function imageSize(file) {
 		fs.closeSync(fd);
 		if (b.toString("ascii", 1, 4) === "PNG") size = [b.readUInt32BE(16), b.readUInt32BE(20)];
 		else if (b.toString("ascii", 0, 3) === "GIF") size = [b.readUInt16LE(6), b.readUInt16LE(8)];
+		else if (b.toString("ascii", 0, 4) === "RIFF" && b.toString("ascii", 8, 12) === "WEBP") {
+			const chunk = b.toString("ascii", 12, 16);
+			if (chunk === "VP8 ") size = [b.readUInt16LE(26) & 0x3fff, b.readUInt16LE(28) & 0x3fff];
+			else if (chunk === "VP8L") {
+				const bits = b.readUInt32LE(21);
+				size = [(bits & 0x3fff) + 1, ((bits >> 14) & 0x3fff) + 1];
+			} else if (chunk === "VP8X") size = [b.readUIntLE(24, 3) + 1, b.readUIntLE(27, 3) + 1];
+		}
 		else if (b[0] === 0xff && b[1] === 0xd8) {
 			// JPEG: the first start-of-frame marker (C0-CF, except C4, C8 and CC) has the size
 			for (let i = 2; i + 9 < n; ) {
@@ -70,6 +78,9 @@ export function images(md) {
 		// (width and height from the file, unless given: the browser keeps the space while the image loads)
 		if (file && !file.includes("/manual/") && !token.attrGet("width")) {
 			const size = imageFile(token.attrGet("src"), file) && imageSize(imageFile(token.attrGet("src"), file));
+			// (images load as they come into view: safe with the size known, so nothing moves)
+			token.attrSet("loading", "lazy");
+			token.attrSet("decoding", "async");
 			if (size) {
 				token.attrSet("width", String(size[0]));
 				token.attrSet("height", String(size[1]));
