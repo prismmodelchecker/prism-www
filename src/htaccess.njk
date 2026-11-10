@@ -7,6 +7,11 @@ eleventyExcludeFromCollections: true
 # Missing pages: the site's own "page not found" page (src/404.njk)
 ErrorDocument 404 /404.html
 
+# PRISM model and properties files (manual examples, case studies, ...): shown in the browser as plain text
+# (Apache doesn't know these extensions, so they'd be sent with no type, leaving it to each browser)
+AddType text/plain .prism .props .pm .nm .sm .pctl .csl
+AddCharset utf-8 .prism .props .pm .nm .sm .pctl .csl
+
 # Any host but the live one (e.g. the test server, by IP address): kept out of search engines,
 # with a robots.txt that disallows everything and a noindex header on every response
 <IfModule mod_headers.c>
