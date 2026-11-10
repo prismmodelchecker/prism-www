@@ -87,6 +87,36 @@ export default function (eleventyConfig) {
 				if (items.length > 1) state.tokens[i - 1].attrJoin("class", "gallery");
 			});
 		});
+		// Manual: a link alone in a paragraph with the title "include", [mutex.prism](../files/mutex.prism "include"),
+		// becomes a listing of that file with a download link below it, as {% prismCode %} gives elsewhere
+		// (on GitHub, the link is shown as it is). The link stays relative, for the "manual-links" transform.
+		md.core.ruler.push("manual-includes", (state) => {
+			const file = state.env?.page?.inputPath;
+			if (!file || !file.includes("/manual/")) return;
+			const tokens = state.tokens;
+			for (let i = 1; i < tokens.length - 1; i++) {
+				const t = tokens[i];
+				if (t.type !== "inline" || tokens[i - 1].type !== "paragraph_open") continue;
+				const kids = t.children.filter((c) => !(c.type === "text" && !c.content.trim()) && c.type !== "softbreak");
+				if (kids.length !== 3 || kids[0].type !== "link_open" || kids[2].type !== "link_close" || kids[0].attrGet("title") !== "include") continue;
+				const href = kids[0].attrGet("href");
+				const source = path.join(path.dirname(file), href);
+				if (!fs.existsSync(source)) {
+					console.warn(`[manual] ${file}: included file not found: ${href}`);
+					kids[0].attrs = kids[0].attrs.filter(([name]) => name !== "title");
+					continue;
+				}
+				const code = fs.readFileSync(source, "utf8").replace(/\s+$/, "") + "\n";
+				const ext = path.extname(href).slice(1);
+				const lang = ["prism", "props", "pm", "nm", "sm", "pctl", "csl"].includes(ext) ? "prism" : ext === "pepa" ? "pepa" : "text";
+				const listing = lang === "prism" ? highlightPrism(code) : lang === "pepa" ? highlightPepa(code) : escapeHtml(code);
+				const name = path.basename(href);
+				const html = new state.Token("html_block", "", 0);
+				html.content = `<figure class="code"><pre class="language-${lang}" tabindex="0"><code>${listing}</code></pre>`
+					+ `<figcaption>Download: <a href="${href}" download>${escapeHtml(name)}</a></figcaption></figure>\n`;
+				tokens.splice(i - 1, 3, html);
+			}
+		});
 		// (```prism scroll gives a long listing a limited height, as {% prismCode file, true %} does)
 		const fence = md.renderer.rules.fence;
 		md.renderer.rules.fence = (tokens, idx, ...rest) => {
