@@ -87,6 +87,17 @@ export default function (eleventyConfig) {
 				if (items.length > 1) state.tokens[i - 1].attrJoin("class", "gallery");
 			});
 		});
+		// In a table cell, a "|" in code is written "\|" (so it doesn't end the cell); GitHub shows it as "|", so do the same
+		md.core.ruler.push("table-code-pipes", (state) => {
+			let inTable = 0;
+			for (const t of state.tokens) {
+				if (t.type === "table_open") inTable++;
+				else if (t.type === "table_close") inTable--;
+				else if (inTable && t.type === "inline") {
+					for (const c of t.children) if (c.type === "code_inline") c.content = c.content.replace(/\\\|/g, "|");
+				}
+			}
+		});
 		// Manual: a link alone in a paragraph with the title "include", [mutex.prism](../files/mutex.prism "include"),
 		// becomes a listing of that file with a download link below it, as {% prismCode %} gives elsewhere
 		// (on GitHub, the link is shown as it is). The link stays relative, for the "manual-links" transform.
