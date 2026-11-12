@@ -18,6 +18,9 @@ export default function (eleventyConfig) {
 	// The manual is copied in from the PRISM repo and git-ignored here, so don't let .gitignore hide it
 	eleventyConfig.setUseGitIgnore(false);
 	eleventyConfig.ignores.add("_site/**");
+	// With `eleventy --serve` (npm run dev), the server sends static files straight from src/,
+	// rather than each rebuild copying them all to _site/
+	eleventyConfig.setServerPassthroughCopyBehavior("passthrough");
 
 	// Pages are .njk and .md; every other file under src/ (images, example models, old static
 	// HTML pages, ...) is copied as it is. Data, templates and the bib export are left out.
@@ -37,6 +40,15 @@ export default function (eleventyConfig) {
 		eleventyConfig.addPassthroughCopy({ "node_modules/katex/dist/fonts/*.woff2": "manual/offline/katex/fonts" });
 	} else {
 		eleventyConfig.ignores.add("src/manual-offline.njk");
+		// MANUAL_DEV=1 (npm run dev): of the site's pages, build just the manual's (and its one-page copy),
+		// so a rebuild after editing the manual takes a second or so; the site's files are still served
+		if (process.env.MANUAL_DEV) {
+			for (const f of fs.readdirSync("src")) {
+				if (f.startsWith("_") || ["manual", "manual-all.njk"].includes(f)) continue;
+				eleventyConfig.ignores.add(`src/${f}`);
+				eleventyConfig.ignores.add(`src/${f}/**`);
+			}
+		}
 		for (const f of staticFiles("src")) eleventyConfig.addPassthroughCopy(f);
 		eleventyConfig.addPassthroughCopy("src/css");
 		eleventyConfig.addPassthroughCopy("src/js");

@@ -7,6 +7,7 @@
   "scripts": {
     "build": "rm -rf _site && node scripts/sync-manual.js && eleventy --quiet && pagefind --site _site",
     "serve": "eleventy --serve --port 8080",
+    "dev": "node scripts/sync-manual.js && (node scripts/sync-manual.js --watch & MANUAL_DEV=1 eleventy --serve --port 8080 --quiet)",
     "export-bib": "node scripts/export-bib.js",
     "sync-manual": "node scripts/sync-manual.js",
     "manual-offline": "node scripts/manual-offline.js"

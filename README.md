@@ -25,6 +25,11 @@ or it defaults to `../prism-benchmarks`.
 To preview, serve `_site/` with any static server, e.g. `python3 -m http.server 8080 -d _site`.
 (`npm run serve` gives live reload while editing, but doesn't rebuild the search index.)
 
+When editing the manual, `npm run dev` serves it at http://localhost:8080/manual/ and keeps it up to date:
+it watches the PRISM checkout's `doc/manual`, copies in each file that changes, and rebuilds just the manual's pages
+(in a second or so), and the browser then updates the open page. The site's other pages aren't built
+(links to them from the manual give "not found"), nor is the search index; deleting a file doesn't rebuild until the next change.
+
 ## Publishing
 
 The site is built on qav itself, by `scripts/prism-www-build.sh` from cron (every 5 minutes). Each run fetches this repo,
