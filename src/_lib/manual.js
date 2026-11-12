@@ -1,6 +1,7 @@
 // Building the manual from the Markdown kept in the PRISM repo (doc/manual, copied to src/manual).
 // The repo's conventions are GitHub-friendly; this module maps them onto the website:
-//  - README.md is the contents: its "- [Title](Page.md)" items are pages, in order, and an item
+//  - README.md is the contents: its "- [Title](Page.md)" items (under its "## Contents" heading, if it
+//    has one) are pages, in order, and an item
 //    linking to Folder/README.md is a section, whose own README.md lists the section's pages
 //    (indented items linking to anchors add menu entries for parts of a page)
 //  - Group/Page.md is published at /manual/Group/Page/, and Group/README.md at /manual/Group/
@@ -23,13 +24,23 @@ export function manualUrl(rel) {
 	return base + (anchor ? "#" + anchor : "");
 }
 
+// The lines of a contents page that list its contents: those under its "## Contents" heading,
+// up to the next heading of the same or higher level, or the whole page if it has no such heading
+function contentsLines(file) {
+	const lines = fs.readFileSync(path.join(MANUAL_DIR, file), "utf8").split("\n");
+	const start = lines.findIndex((line) => /^##\s+Contents\s*$/.test(line));
+	if (start < 0) return lines;
+	const end = lines.findIndex((line, i) => i > start && /^#{1,2}\s/.test(line));
+	return lines.slice(start + 1, end < 0 ? undefined : end);
+}
+
 // The "- [Title](Page.md)" items of a contents page (file relative to the manual root), in order,
-// with indented items as children of the one above. Only links to .md files count, so other lists
-// on a section's page are left alone.
+// with indented items as children of the one above. Only links to .md files count, and only under
+// the page's "## Contents" heading if it has one, so other lists on the page are left alone.
 function contentsItems(file) {
 	const dir = path.posix.dirname(file);
 	const items = [];
-	for (const line of fs.readFileSync(path.join(MANUAL_DIR, file), "utf8").split("\n")) {
+	for (const line of contentsLines(file)) {
 		const m = line.match(/^(\s*)[-*]\s+\[(.*?)\]\(([^):]+?\.md(?:#[^)]*)?)\)/);
 		if (!m) continue;
 		const target = path.posix.normalize(path.posix.join(dir, m[3]));
