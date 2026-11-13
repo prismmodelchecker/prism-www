@@ -637,6 +637,8 @@ mark.bib-highlight { background: var(--bib-mark-bg); color: inherit; border-bott
 .content img.prism-image { display: block; margin: 1rem auto; padding: 4px; border: 1px solid var(--border); background: #fff; }
 /* Search page: a filter with nothing to choose from for these results (Year or Type, when no papers match) */
 #search .pagefind-ui__filter-block:not(:has(input)) { display: none; }
+/* Search page: each page's URL under its title (not for the sections within a page) */
+#search .pagefind-ui__result-inner > .pagefind-ui__result-title > .pagefind-ui__result-link::after { content: attr(href); display: block; width: fit-content; margin-top: 2px; font-size: 0.85em; font-weight: normal; color: var(--bib-key); }
 
 /* "How to cite" boxes */
 .content .prism-citebox { margin: 1.5rem 0; border: 1px solid var(--border); border-radius: var(--radius-sm); background: var(--accent-bg); font-size: 0.9rem; overflow: auto; }
