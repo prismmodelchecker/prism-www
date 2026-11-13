@@ -18,6 +18,9 @@ layout: layouts/base.njk
 <p class="breadcrumb" data-pagefind-ignore><a href="/manual/">Manual</a> ›</p>
 {%- endif %}
 
+{#- A second Section value, so that the manual's search box can search just the manual (base.njk gives "Documentation") #}
+<span hidden data-pagefind-filter="Section">Manual</span>
+
 {#- The contents pages only list other pages, so keep them out of search results #}
 <article class="manual-page"{% if page.url == "/manual/" or sectionPage %} data-pagefind-ignore="all"{% endif %}>
 {{ content | safe }}
