@@ -27,7 +27,8 @@ To preview, serve `_site/` with any static server, e.g. `python3 -m http.server 
 
 When editing the manual, `npm run dev` serves it at http://localhost:8080/manual/ and keeps it up to date:
 it watches the PRISM checkout's `doc/manual`, copies in each file that changes, and rebuilds just the manual's pages
-(in a second or so), and the browser then updates the open page. The site's other pages aren't built
+(in a second or so), and the browser then updates the open page. It also copies the files those pages use
+into `_site/`, so a server for `_site/` (e.g. Apache) shows the changes too. The site's other pages aren't built
 (links to them from the manual give "not found"), nor is the search index; deleting a file doesn't rebuild until the next change.
 
 ## Publishing
