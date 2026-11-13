@@ -50,6 +50,8 @@ export default function (eleventyConfig) {
 			}
 		}
 		for (const f of staticFiles("src")) eleventyConfig.addPassthroughCopy(f);
+		// (the manual's files as a folder, so that ones added while `npm run dev` runs are served too)
+		eleventyConfig.addPassthroughCopy(`${MANUAL_DIR}/files`);
 		eleventyConfig.addPassthroughCopy("src/css");
 		eleventyConfig.addPassthroughCopy("src/js");
 		// KaTeX's stylesheet and fonts, for pages with maths (see the "maths" transform)
@@ -345,7 +347,7 @@ function staticFiles(dir) {
 		const p = path.join(dir, f);
 		if (f.startsWith("_") || f === ".DS_Store") continue;
 		if (fs.statSync(p).isDirectory()) {
-			if (!f.startsWith(".")) out.push(...staticFiles(p));
+			if (!f.startsWith(".") && p !== `${MANUAL_DIR}/files`) out.push(...staticFiles(p));
 		} else if (!/\.(njk|md|js|json)$/.test(f)) out.push(p);
 	}
 	return out;
