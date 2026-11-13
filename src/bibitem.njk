@@ -11,10 +11,11 @@ listUrl: /publications/references/
 fileIcons: { pdf: file-pdf, ps: file-ps, "ps.gz": file-ps, bib: file-bib }
 fileNames: { pdf: PDF, ps: PostScript, "ps.gz": PostScript, bib: BibTeX }
 ---
-<article class="bib-item">
+{#- Search: papers count for less than other pages with the same words (their titles somewhat less so) #}
+<article class="bib-item" data-pagefind-weight="0.4">
 {%- if item.year %}<span hidden data-pagefind-filter="Year">{{ item.year }}</span>{% endif %}
 <span hidden data-pagefind-filter="Type">{{ bib.types | typeName(item.type) }}</span>
-<h1>{{ item | bibTitle }}</h1>
+<h1 data-pagefind-weight="2.5">{{ item | bibTitle }}</h1>
 
 <p class="bib-cite">{{ item | citation({ link: false }) | safe }}</p>
 
