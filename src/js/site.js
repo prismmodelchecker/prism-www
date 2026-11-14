@@ -149,3 +149,16 @@ document.addEventListener("DOMContentLoaded", () => {
 		nav.classList.toggle("is-open", open);
 	});
 });
+
+// A link to a question in a page's <details> (e.g. the manual's Troubleshooting) opens it
+function openLinkedDetails() {
+	const id = decodeURIComponent(location.hash.slice(1));
+	const target = id && document.getElementById(id);
+	const details = target && target.closest(".content details");
+	if (details && !details.open) {
+		details.open = true;
+		details.scrollIntoView();
+	}
+}
+document.addEventListener("DOMContentLoaded", openLinkedDetails);
+window.addEventListener("hashchange", openLinkedDetails);

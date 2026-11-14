@@ -92,6 +92,8 @@ Blocks (registered in `eleventy.config.js`; the home page, `src/index.md`, uses 
 - `::: box` – a white panel with a border and light shadow; its `##` heading is smaller
 - `::: questions` – each paragraph and the code block after it as one item, with a blue bar down the side
 - `::: answer` – the same bar and tint, around an answer in a tutorial or practical
+- `<details id="…">` with a `<summary>` question – a collapsible question and answer (as in the manual's Troubleshooting
+  and FAQ); leave a blank line after `</summary>` and before `</details>`, and a link to its id opens it
 - `::: labels` – a list as pale labels in the word cloud's colours, for a white background
 - `::: plots` – the images inside (one per line) as a grid of figures, two or three across (one on phones),
   each captioned by its Markdown title: `![plot of ...](/images/graphs/x.png "Caption")`;
