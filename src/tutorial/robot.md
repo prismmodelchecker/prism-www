@@ -18,7 +18,7 @@ The PRISM code to model the robot is shown below.
 
 The first line indicates that this model is a **Markov decision process** (MDP). The remaining lines describe a single PRISM module, which we use to model the behaviour of the robot. We use one variable to represent the state of the system: `s`, denoting the current position of the robot in the 3 x 2 grid.
 
-{% task %} If you are not yet familiar with the PRISM modelling language, read the sections on [modules/variables](/manual/ThePRISMLanguage/ModulesVariablesAndCommands/#modules-and-variables) and [commands](/manual/ThePRISMLanguage/ModulesVariablesAndCommands/#commands) in the manual to help clarify the model above.
+{% task %} If you are not yet familiar with the PRISM modelling language, read the sections on [modules/variables](/manual/ThePRISMLanguage/Variables/) and [commands](/manual/ThePRISMLanguage/ModulesAndCommands/#commands) in the manual to help clarify the model above.
 
   
 

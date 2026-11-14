@@ -20,7 +20,7 @@ The PRISM code to model this algorithm is shown below.
 
 The first line indicates that this model is a discrete-time Markov chain (DTMC). The remaining lines describe a single PRISM module, which we use to model the behaviour of the algorithm. We use two variables to represent the state of the system: `s`, denoting which step of the algorithm is currently being executed (i.e. which circle in the diagram above), and `d`, denoting the value of the die (0 means no value has been chosen yet).
 
-{% task %} Read the sections on [modules/variables](/manual/ThePRISMLanguage/ModulesVariablesAndCommands/#modules-and-variables) and [commands](/manual/ThePRISMLanguage/ModulesVariablesAndCommands/#commands) in the manual and try to understand how this description represents the algorithm.
+{% task %} Read the sections on [modules/variables](/manual/ThePRISMLanguage/Variables/) and [commands](/manual/ThePRISMLanguage/ModulesAndCommands/#commands) in the manual and try to understand how this description represents the algorithm.
 
 ## Exploring the model in PRISM
 

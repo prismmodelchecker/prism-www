@@ -82,7 +82,7 @@ R{"activated_protein"}=? [ I=T ]
 
 Next, we will study the influence of the rates for transcription on the oscillation of the activator protein.
 
-{% task %} Add a [constant](/manual/ThePRISMLanguage/Expressions/#constants) called `k` of type double to the model and change the rates of transcription such that the rates are multiplied by a factor of `k`. Check your modifications are correct by generating a number of random paths in the simulation engine.
+{% task %} Add a [constant](/manual/ThePRISMLanguage/ConstantsLabelsAndFormulas/#constants) called `k` of type double to the model and change the rates of transcription such that the rates are multiplied by a factor of `k`. Check your modifications are correct by generating a number of random paths in the simulation engine.
 
 {% task %} Run an experiment, similar to the one above, to see what happens to the oscillations of the activator protein as `k` varies between `0.5` and `1.5`. Make sure that you choose `T` as the variable to be plotted on the x-axis in the resulting graph. When prompted, say that you want to use the same initial state for the experiments). The results should demonstrate that changing the rate of transcription influences the peaks of the oscillations but not the period. Note that the peaks will not be at the same points due to the stochastic nature of the model and the fact the plots are for different simulation runs.
 

@@ -30,7 +30,7 @@ The state of each process is given by a single two-valued (0/1) variable. Initia
 
 For this self-stabilisation algorithm, a stable state is defined as one in which only a single process has a token. A process is said to possess a token if its variable is the same as the process to its left.
 
-{% task %} Look at the label "`stable`" which is defined in the file above and the formula `num_tokens` from the model file which it uses. Check that you understand how it relates to the definition of a stable state. Look at the [expressions](/manual/ThePRISMLanguage/Expressions/) section of the manual if not.
+{% task %} Look at the label "`stable`" which is defined in the file above and the formula `num_tokens` from the model file which it uses. Check that you understand how it relates to the definition of a stable state. Look at the [labels and formulas](/manual/ThePRISMLanguage/ConstantsLabelsAndFormulas/) section of the manual if not.
 
 {% task %} Use the PRISM simulator to generate some random paths through the model. Click on the "`stable`" label in the top-right part of the simulator to help you identify which states of these paths are stable. Note that in this model of the algorithm, we do not actually terminate when a stable state has been reached. Is a stable state always reached eventually? On average, how long does it take to reach a stable state?
 
