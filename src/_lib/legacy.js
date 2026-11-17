@@ -56,6 +56,19 @@ export const OLD_PATHS = {
 	"/courses/aims2627/dave-aims26-sysver.pdf": "/talks/dave-aims26-sysver.pdf",
 	"/courses/essai23/essai23part5.pdf": "/talks/essai23part5.pdf",
 	"/courses/aims1819/marta-qver-p2.pdf": "/talks/marta-aims1819-qver-p2.pdf",
+	// The old manual's files whose names (or formats) changed: its example models and their diagrams, and screenshots
+	"/manual/uploads/lec3.pm": "/manual/files/dtmc.prism",
+	"/manual/uploads/lec3.dot.pdf": "/manual/files/dtmc.svg",
+	"/manual/uploads/lec12mdp.nm": "/manual/files/mdp.prism",
+	"/manual/uploads/lec12mdp.dot.pdf": "/manual/files/mdp.svg",
+	"/manual/uploads/lec12mdpa.nm": "/manual/files/mdp-actions.prism",
+	"/manual/uploads/lec12mdpa.dot.pdf": "/manual/files/mdp-actions.svg",
+	"/manual/uploads/poll2.sm": "/manual/files/poll2.prism",
+	"/manual/uploads/poll2.dot.pdf": "/manual/files/poll2.svg",
+	"/manual/uploads/pta.png": "/manual/files/retry.svg",
+	"/manual/uploads/gui1.gif": "/manual/files/gui1.png",
+	"/manual/uploads/gui2.gif": "/manual/files/gui2.png",
+	"/manual/uploads/gui-sim.gif": "/manual/files/gui-sim.png",
 };
 export const GITHUB_WIKI = "https://github.com/prismmodelchecker/prism/wiki";
 // GRIP (a symmetry reduction tool for PRISM, from Glasgow) used to have a page and downloads here: now its source on GitHub
