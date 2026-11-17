@@ -15,7 +15,7 @@ and various extensions of these models to support real-time, partial observabili
 **PRISM-games**{.wordmark} extends PRISM, adding support for several types of **stochastic games**,
 to reason about multi-agent systems and game-theoretic concepts.
 
-These tools are free and [open source](https://github.com/prismmodelchecker/prism),
+These tools are free and [open source](https://github.com/prismmodelchecker/),
 and include contributions from many [people](/people/).
 
 The [manual](/manual/) is the definitive guide to using PRISM and to the PRISM language,
@@ -35,7 +35,7 @@ To reference [PRISM-games](/games/), please cite the tool paper:
 
 ## Overviews
 
-An introduction to probabilistic model checking:
+An high-level introduction to probabilistic model checking and recent developments in the field:
 
 -   {{ ref("KNP22") }}
 
