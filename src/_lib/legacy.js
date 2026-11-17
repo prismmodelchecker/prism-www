@@ -12,11 +12,8 @@ export const PAGE_URLS = {
 	"/bib-ext.php": "/publications/external/",
 	"/publ-lists.php": "/publications/",
 	"/publ-search.php": "/publications/bibliography/",
-	"/publications/lists": "/publications/",
-	"/publications/lists/": "/publications/",
 	"/publ-parker.php": "/publications/parker/",
 	"/courses/pmc2526/practical4_new.php": "/courses/pmc2526/practical4/",
-	"/courses/pmc2526/practical4_new/": "/courses/pmc2526/practical4/",
 };
 
 // Other old paths (from the old site's .htaccess, and very old links in news items)
@@ -53,14 +50,8 @@ export const OLD_PATHS = {
 	"/casestudies/examples/cell100.php": "/view/?f=/casestudies/examples/cell.sm",
 	"/casestudies/examples/kronos10000.php": "/casestudies/examples/abs.kronos10000",
 	"/casestudies/contract_egl2_5.php": "/view/?f=/casestudies/examples/contract_egl2_5.pm",
-	"/casestudies/contract_egl2_5": "/view/?f=/casestudies/examples/contract_egl2_5.pm",
-	"/casestudies/contract_egl2_5/": "/view/?f=/casestudies/examples/contract_egl2_5.pm",
 	"/casestudies/contract_egl3_5.php": "/view/?f=/casestudies/examples/contract_egl3_5.pm",
-	"/casestudies/contract_egl3_5": "/view/?f=/casestudies/examples/contract_egl3_5.pm",
-	"/casestudies/contract_egl3_5/": "/view/?f=/casestudies/examples/contract_egl3_5.pm",
 	"/casestudies/contract_egl4_5.php": "/view/?f=/casestudies/examples/contract_egl4_5.pm",
-	"/casestudies/contract_egl4_5": "/view/?f=/casestudies/examples/contract_egl4_5.pm",
-	"/casestudies/contract_egl4_5/": "/view/?f=/casestudies/examples/contract_egl4_5.pm",
 	"/courses/aims2526/dave-aims25-sysver.pdf": "/talks/dave-aims25-sysver.pdf",
 	"/courses/aims2627/dave-aims26-sysver.pdf": "/talks/dave-aims26-sysver.pdf",
 	"/courses/essai23/essai23part5.pdf": "/talks/essai23part5.pdf",
@@ -81,6 +72,11 @@ export function manualRedirects() {
 		for (const s of readContents().sections.filter((s) => s.url)) {
 			const group = s.file.replace(/\/README\.md$/, "");
 			manualUrls[`${group}/AllOnOnePage`] = `${SINGLE_URL}#${group}`;
+		}
+		// (and of sections since renamed: "Appendices" -> /manual/Reference/, so Appendices/AllOnOnePage -> #Reference)
+		for (const [group, url] of Object.entries(manualUrls)) {
+			const now = !group.includes("/") && url.match(/^\/manual\/([^/#]+)\/$/)?.[1];
+			if (now && !manualUrls[`${group}/AllOnOnePage`]) manualUrls[`${group}/AllOnOnePage`] = `${SINGLE_URL}#${now}`;
 		}
 		manualUrls["Main/AllOnOnePage"] = SINGLE_URL;
 	} catch {
