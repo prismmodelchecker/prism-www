@@ -1,0 +1,14 @@
+{#- A grid of cards, one per item of `cards` (a list in the page's front matter): title, url, text, and
+    optional icon (an SVG in _includes/icons/, drawn in currentColor), tags and note (a badge by the title).
+    The whole card is a link to its page. -#}
+<ul class="cards">
+{%- for c in cards %}
+<li class="card">
+{%- if c.note %}<p class="card__note">{{ c.note }}</p>{% endif %}
+<div class="card__head"><h2 class="card__title"><a href="{{ c.url }}">{{ c.title }}</a></h2>
+{%- if c.icon %}<span class="card__icon">{% include "icons/" + c.icon + ".svg" %}</span>{% endif %}</div>
+<p class="card__text">{{ c.text | safe }}</p>
+{%- if c.tags %}<p class="card__tags">{% for t in c.tags %}<span class="tag">{{ t }}</span>{% endfor %}</p>{% endif %}
+</li>
+{%- endfor %}
+</ul>
