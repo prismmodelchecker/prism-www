@@ -6,30 +6,23 @@ permalink: /doc/
 ---
 # Documentation
 
-For information about installing and running PRISM, please see:
+## Using PRISM
 
--   the online [PRISM manual](/manual/)
+-   [PRISM manual](/manual/): the full guide to installing and using PRISM, its modelling and property
+    languages and its configuration. You can also  [search](/search/?section=Manual) it, or view it all [on one page](/manual/all/).
+-   [Tutorial](/tutorial/): worked examples that introduce PRISM's main features step by step,
+    across a variety of different model types.
+-   [Getting help](/support/): where to look, and where to ask, if you have a problem or a question.
 
-(a local copy is also included when you [download](/download/) PRISM)
+## Background
 
-In particular, you may find these two sections useful:
+-   [About PRISM](/about/): the PRISM tool paper, and tutorial papers and books on probabilistic model checking.
+-   [Lectures](/lectures/): slides from courses on probabilistic model checking and PRISM.
+-   [Semantics of the PRISM language](/doc/semantics.pdf) (PDF): a formal definition of the PRISM modelling language.
 
--   [Installation instructions](/manual/GettingStarted/)
--   [Frequently asked questions](/manual/FrequentlyAskedQuestions/)
+## Releases and development
 
-For an introductory guide to using PRISM, please see:
-
--   the [PRISM tutorial](/tutorial/)
-
-If you have problems or questions, see [getting help](/support/).
-
-For some pointers to useful talks, papers, etc. see [About PRISM](/about/).
-
-Information for developers is here:
-
--   [PRISM developer resources](https://github.com/prismmodelchecker/prism/wiki)
-
-Other useful documentation:
-
--   [CHANGELOG](https://github.com/prismmodelchecker/prism/blob/master/CHANGELOG.txt) (information about the features in each version of PRISM)
--   [semantics.pdf](/doc/semantics.pdf) (the semantics of the PRISM language)
+-   [CHANGELOG](https://github.com/prismmodelchecker/prism/blob/master/CHANGELOG.txt): the changes and
+    new features in each version of PRISM.
+-   [Developer resources](https://github.com/prismmodelchecker/prism/wiki): for working on or with
+    PRISM's source code (on GitHub).

@@ -21,7 +21,10 @@ export const PAGE_URLS = {
 
 // Other old paths (from the old site's .htaccess, and very old links in news items)
 export const OLD_PATHS = {
-	"/doc/VERSIONS.txt": "/doc/CHANGELOG.txt",
+	"/doc/VERSIONS.txt": "https://github.com/prismmodelchecker/prism/blob/master/CHANGELOG.txt",
+	// (the site's own copy of the CHANGELOG stopped at 4.3.1; the old offline copy of the tutorial was unlinked)
+	"/doc/CHANGELOG.txt": "https://github.com/prismmodelchecker/prism/blob/master/CHANGELOG.txt",
+	"/doc/tutorial.tar.gz": "/tutorial/",
 	"/download.html": "/download/",
 	"/manual/Main/Search": "/search/?section=Documentation",
 	"/qr": "/",
