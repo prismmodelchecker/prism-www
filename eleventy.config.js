@@ -83,7 +83,7 @@ export default function (eleventyConfig) {
 		md.use(tables);
 		// Styles for site pages, defined in site.css and listed in README.md: "::: box" around blocks,
 		// {.note} after an element (a block inside another has fewer colons)
-		for (const name of ["answer", "banner", "slideshow", "columns", "box", "questions", "labels"]) md.use(markdownItContainer, name);
+		for (const name of ["answer", "banner", "slideshow", "columns", "box", "questions", "labels", "logos"]) md.use(markdownItContainer, name);
 		// "::: plots": images (each with its caption as a title) in a grid; "::: plots pairs": two across
 		md.use(markdownItContainer, "plots", {
 			render: (tokens, idx) => tokens[idx].nesting === 1

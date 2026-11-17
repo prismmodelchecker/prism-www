@@ -72,11 +72,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
 	// Code boxes: a "Copy" button at the top right (the box is wrapped, so the button stays put when the code scrolls sideways)
 	// Images shown smaller than their file (in figures and plot grids, or sized down): click to see them full size
+	// (not linked images)
 	let zoom;
 	const zoomable = (img) => {
 		if (img.naturalWidth > img.clientWidth * 1.15) img.classList.add("zoomable");
 	};
 	for (const img of document.querySelectorAll(".content img:is(.prism-image, .small, .medium, .large), .content figure.figure img")) {
+		if (img.closest("a")) continue; // (a linked image, such as a logo, follows its link)
 		if (img.complete) zoomable(img);
 		else img.addEventListener("load", () => zoomable(img), { once: true });
 		img.addEventListener("click", () => {

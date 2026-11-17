@@ -797,6 +797,14 @@ dialog.zoom p { color: #fff; text-align: center; margin: 0.6rem auto 0; max-widt
 .card__text { margin: 0 0 0.6rem; color: var(--text-muted); font-size: 0.92rem; }
 .card__tags { margin: auto 0 0; }
 
+/* ::: logos: linked logos in a wrapping row, centred on a line, at most 4.5rem high (never enlarged);
+   each on a white tile, so logos drawn for a white page also work in dark mode */
+.content .logos p { display: flex; flex-wrap: wrap; justify-content: flex-start; align-items: center; gap: 1rem 1.5rem; margin: 1.25rem 0; }
+.content .logos img.prism-image {
+	display: block; width: auto; height: auto; max-width: 10rem; max-height: 4.5rem; margin: 0;
+	padding: 6px; border: 0; border-radius: var(--radius-sm); background: #fff;
+}
+
 /* ::: questions: each paragraph and the code block after it as one item, with a bar down the side */
 .questions > p { margin: 1rem 0 0; padding: 0.4rem 0.7rem 0.3rem 0.9rem; border-left: 3px solid var(--callout-bar); background: var(--callout-bg); }
 .questions > pre {
