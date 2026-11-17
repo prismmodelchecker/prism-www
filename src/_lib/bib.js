@@ -94,6 +94,19 @@ export function citation(item, { link = true, synopsis = true } = {}) {
 	].filter(Boolean).join("\n").replace(/\s*\n\s*\n\s*/g, "\n"); // (a blank line would end an HTML block in a Markdown page)
 }
 
+// A short reference for reading lists: linked title, authors, venue (its acronym, e.g. "CAV'11", where the
+// name has one; else the journal or book, up to any subtitle), year
+export function shortCitation(item) {
+	const it = escaped(item);
+	const name = it.journal || (it.type === "inbook" ? it.title : it.booktitle) || "";
+	const venue = name.match(/\(([A-Z][A-Za-z-]*'\d\d)\)\s*$/)?.[1] || name.split(": ")[0] || it.publisher || "";
+	return [
+		`<a href="${itemUrl(item.key)}">${esc(itemTitle(item))}</a>.`,
+		it.author && `${it.author}.`,
+		[venue && `<em>${venue}</em>`, it.year].filter(Boolean).join(", ") + ".",
+	].filter(Boolean).join(" ");
+}
+
 // Extra notes shown on the item page (from the "links" field, plus publisher hints)
 export function notes(item) {
 	const out = [];

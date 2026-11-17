@@ -1,7 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { highlightPepa, highlightPrism } from "./src/_lib/prism-highlight.js";
-import { citation, itemUrl, itemTitle, notes, searchLinks, selectItems, groupItems, LIST_VIEWS } from "./src/_lib/bib.js";
+import { citation, shortCitation, itemUrl, itemTitle, notes, searchLinks, selectItems, groupItems, LIST_VIEWS } from "./src/_lib/bib.js";
 import markdownItContainer from "markdown-it-container";
 import hljs from "highlight.js/lib/common";
 import katex from "katex";
@@ -182,6 +182,7 @@ export default function (eleventyConfig) {
 
 	// Bibliography
 	eleventyConfig.addFilter("citation", (item, opts) => citation(item, opts));
+	eleventyConfig.addFilter("shortCitation", shortCitation);
 	eleventyConfig.addFilter("itemUrl", itemUrl);
 	eleventyConfig.addFilter("bibTitle", itemTitle);
 	eleventyConfig.addFilter("bibNotes", notes);
