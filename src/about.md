@@ -2,6 +2,7 @@
 layout: layouts/base.njk
 title: About PRISM
 section: about
+permalink: /about/
 ---
 {%- macro ref(key) %}{{ bib.items | bibItem(key) | shortCitation | safe }}{% endmacro -%}
 # About PRISM
