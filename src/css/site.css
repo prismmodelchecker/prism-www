@@ -890,7 +890,7 @@ dialog.zoom p { color: #fff; text-align: center; margin: 0.6rem auto 0; max-widt
 @media (min-width: 60rem) {
 	.page--home > .local-nav { position: static; max-height: none; }
 	/* The tops of the first line's letters line up with the top of the news panel */
-	.page--home .content { padding-top: calc(0.7 * var(--h1-size) - 0.4rem); }
+	.page--home .content { padding-top: calc(1.44rem + 0.7 * var(--h1-size) - 0.4rem); }
 }
 
 /* End-of-proof mark (in place of the old qed.gif) */
