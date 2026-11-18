@@ -332,6 +332,8 @@ button:hover { background: var(--accent-bg); }
 	   line above it (0.9rem text at line-height 1.6). Manual headings have a 0.3em margin. */
 	.page--with-nav > nav { margin-top: calc(0.7 * var(--h1-size)); }
 	.page--with-nav:has(> .content > .breadcrumb) > nav { margin-top: calc(1.44rem + 0.7 * var(--h1-size)); }
+	/* (the home page's news panel too, though it has no breadcrumb: the left column starts at one height everywhere) */
+	.page--home > nav { margin-top: calc(1.44rem + 0.7 * var(--h1-size)); }
 	.page--manual > nav { margin-top: calc(0.6 * var(--h1-size)); }
 	.page--manual:has(> .content > .breadcrumb) > nav { margin-top: calc(1.44rem + 0.6 * var(--h1-size)); }
 	.local-nav, .manual-nav { position: sticky; top: 1rem; align-self: start; max-height: calc(100vh - 2rem); overflow-y: auto; }
