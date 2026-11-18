@@ -1,4 +1,5 @@
 import fs from "node:fs";
+import yaml from "js-yaml";
 import path from "node:path";
 import { highlightPepa, highlightPrism } from "./src/_lib/prism-highlight.js";
 import { citation, shortCitation, itemUrl, itemTitle, notes, searchLinks, selectItems, groupItems, LIST_VIEWS } from "./src/_lib/bib.js";
@@ -72,7 +73,11 @@ export default function (eleventyConfig) {
 		: code.replace(/\n$/, "").split("\n").map((line) => line.startsWith("#")
 			? `<span class="out">${escapeHtml(line.slice(1))}</span>`
 			: line.trim() ? `<span class="cmd">${escapeHtml(line)}</span>` : line).join("\n") + "\n";
+	let markdown;
+	// A line of Markdown (a news item) as HTML, without a surrounding <p>
+	eleventyConfig.addFilter("markdownInline", (text) => markdown.renderInline(text));
 	eleventyConfig.amendLibrary("md", (md) => {
+		markdown = md;
 		md.set({
 			highlight: (code, lang) => (lang === "prism" ? highlightPrism(code) : lang === "pepa" ? highlightPepa(code) : lang === "shell" ? highlightShell(code)
 				: lang && lang !== "text" && hljs.getLanguage(lang) ? highlightOther(code, lang) : ""),
@@ -218,6 +223,8 @@ export default function (eleventyConfig) {
 	// A path as a mod_rewrite pattern: escape regex characters
 	eleventyConfig.addFilter("regexPath", (p) => p.replace(/[.+?()[\]^$|]/g, "\\$&"));
 	eleventyConfig.addFilter("prism", highlightPrism);
+	// Data files in YAML (the news)
+	eleventyConfig.addDataExtension("yaml", (contents) => yaml.load(contents));
 
 	// Group items into [{year, items}], newest first; year comes from field (number or "YYYY-MM")
 	eleventyConfig.addFilter("groupByYear", (arr, field = "date") => {

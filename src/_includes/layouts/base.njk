@@ -70,7 +70,7 @@
 		<div class="news-panel">
 		<ul class="news news--striped">
 		{%- for item in news | limit(3) %}
-			<li><time datetime="{{ item.date }}">{{ item.date | monthYear }}</time> {{ item.html | safe }}</li>
+			<li><time datetime="{{ item.date }}">{{ item.date | monthYear }}</time> {{ item.text | markdownInline | safe }}</li>
 		{%- endfor %}
 		</ul>
 		<p><a href="/news/">All news</a></p>

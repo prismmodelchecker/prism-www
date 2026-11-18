@@ -45,7 +45,7 @@ Node is installed in `~/opt/node` there (not the system's).
 
 - `src/_includes/layouts/` – page templates: `base.njk` (all pages), `manual.njk` (manual pages)
 - `src/_data/site.js` – site settings and menus; `releases.js` – current PRISM and PRISM-games releases
-  (edit this for a new release: download pages, home page and manual follow); `news.json` – news items;
+  (edit this for a new release: download pages, home page and manual follow); `news.yaml` – news items, in Markdown;
   `bib.json` – bibliography snapshot (not in git)
 - `src/_lib/` – build code: `bib.js` (citations), `prism-highlight.js`
   (PRISM and PEPA syntax highlighting), `manual.js`, `legacy.js` (old URLs), `assets.js` (large files)

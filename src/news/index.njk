@@ -14,6 +14,6 @@ section: about
 
 <ul class="news news--striped">
 {%- for group in years %}{% for item in group.items %}
-<li{% if loop.first %} id="y{{ group.year }}"{% endif %}><time datetime="{{ item.date }}">{{ item.date | monthYear }}</time> {{ item.html | safe }}</li>
+<li{% if loop.first %} id="y{{ group.year }}"{% endif %}><time datetime="{{ item.date }}">{{ item.date | monthYear }}</time> {{ item.text | markdownInline | safe }}</li>
 {%- endfor %}{% endfor %}
 </ul>

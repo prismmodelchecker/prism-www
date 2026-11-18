@@ -1,0 +1,715 @@
+# News items, newest first: the home page shows the first three.
+# `date` is year-month; `text` is Markdown.
+
+- date: 2026-10
+  text: >-
+    PRISM 4.11 is now [available](/download/), including additional reward properties and enhanced/optimised
+    export of models/strategies.
+    [Further details](https://github.com/prismmodelchecker/prism/blob/master/CHANGELOG.txt).
+
+- date: 2026-01
+  text: >-
+    New releases of [PRISM](/download/) (4.10) and [PRISM-games](/games/download/) (3.2.2) with support for the
+    [UMB (Unified Markov Binary)](https://github.com/pmc-tools/umb/) format.
+
+- date: 2025-09
+  text: >-
+    New paper surveying [applications of probabilistic model checking](/bibitem/KNP25/), a contribution to the
+    [Festschrift](https://link.springer.com/book/10.1007/978-3-031-97439-7) for Christel Baier.
+
+- date: 2025-08
+  text: >-
+    PRISM 4.9 is now [available](/download/), including model import/export enhancements and more.
+    [Further details](/download/).
+
+- date: 2025-03
+  text: >-
+    Postdoc position available now with [Dave Parker](https://www.cs.ox.ac.uk/people/david.parker/home.html) and
+    [Nobuko Yoshida ](https://www.cs.ox.ac.uk/people/nobuko.yoshida/) on probabilistic verification for
+    concurrency. Applications close on 30th April 2025.
+    [Details](https://my.corehr.com/pls/uoxrecruit/erq_jobspec_version_4.display_form?p_company=10&p_internal_external=E&p_display_in_irish=N&p_process_type=&p_applicant_no=&p_form_profile_detail=&p_display_apply_ind=Y&p_refresh_search=Y&p_recruitment_id=178593).
+
+- date: 2024-08
+  text: >-
+    Up to two postdoc positions are available now on the [FUN2MODEL](http://www.fun2model.org/) project.
+    Applications close on 12th September 2024.
+    [More details](https://my.corehr.com/pls/uoxrecruit/erq_jobspec_version_4.display_form?p_company=10&p_internal_external=E&p_display_in_irish=N&p_process_type=&p_applicant_no=&p_form_profile_detail=&p_display_apply_ind=Y&p_refresh_search=Y&p_recruitment_id=174929).
+
+- date: 2024-05
+  text: >-
+    A postdoc position is available now at Oxford on the
+    [FAIR](https://www.turing.ac.uk/research/research-projects/fair-framework-responsible-adoption-artificial-intelligence-financial)
+    project. Applications close on 22nd May 2024. Follow [this link](https://www.cs.ox.ac.uk/news/2314-full.html)
+    for more details.
+
+- date: 2024-04
+  text: >-
+    We are honoured that PRISM and its creators have won the 2024
+    [ETAPS Test-of-Time Tool Award](https://etaps.org/awards/test-of-time-tool/)!
+    [More details](/news/2024-04-etaps/).
+
+- date: 2023-11
+  text: >-
+    PRISM-games 3.2 is now [available](/games/download/), including symbolic model checking of turn-based
+    stochastic games, correlated/fair equilibria and more. [Further information](/games/download/).
+
+- date: 2023-10
+  text: >-
+    A postdoc position is available now at Oxford on the
+    [FAIR](https://www.turing.ac.uk/research/research-projects/fair-framework-responsible-adoption-artificial-intelligence-financial)
+    project. Applications close on 28th November 2023.
+    [More details](https://www.cs.ox.ac.uk/news/2209-full.html).
+
+- date: 2023-10
+  text: >-
+    Two postdoc positions are available now on the [FUN2MODEL](http://www.fun2model.org/) project. Applications
+    close on 6th November 2023. [More details](https://www.cs.ox.ac.uk/news/2193-full.html).
+
+- date: 2023-09
+  text: >-
+    [Dave Parker](https://www.cs.ox.ac.uk/people/david.parker/home.html) is giving a keynote talk at
+    [QEST](http://www.qest.org/qest2023/) / [CONFEST](https://www.uantwerpen.be/en/conferences/confest-2023/) 2023
+    on "[Multi-Agent Verification and Control with Probabilistic Model Checking](/talks/dave-qest23inv.pdf)".
+    There is an [accompanying paper](/bibitem/Par23/).
+
+- date: 2023-07
+  text: >-
+    PRISM features in the [ESSAI'23](https://essai.si/) course on
+    "[Model Uncertainty in Sequential Decision Making](/courses/essai23/)" by
+    [Dave Parker](https://www.cs.ox.ac.uk/people/david.parker/home.html),
+    [Bruno Lacerda](https://ori.ox.ac.uk/people/bruno-lacerda/) and
+    [Nick Hawes](http://www.robots.ox.ac.uk/~nickh/).
+
+- date: 2023-07
+  text: >-
+    PRISM 4.8 is now [available](/download/), including uncertain models (IMDPs, IDTMCs) and improved strategy
+    generation. [More information](/download/).
+
+- date: 2022-05
+  text: >-
+    New [survey paper](/bibitem/KNP22/) covering MDPs, POMDPs, stochastic games and their support in [PRISM](/)
+    and [PRISM-games](/games/) and their support in [PRISM](/) and [PRISM-games](/games/) now available.
+
+- date: 2022-02
+  text: >-
+    [Distinguished paper award](https://aihub.org/2022/02/24/congratulations-to-the-aaai2022-award-winners/) at
+    [AAAI-22](https://aaai.org/Conferences/AAAI-22/) for [this paper](/bibitem/BAJ+22/), which builds on new
+    interval MDP model checking in [PRISM](/).
+
+- date: 2022-01
+  text: >-
+    We are looking for 2 motivated Research Associates to play key roles on the
+    [FUN2MODEL](http://www.fun2model.org/) project. Applications close on 7th February.
+    [More details](http://www.cs.ox.ac.uk/news/2005-full.html).
+
+- date: 2021-09
+  text: >-
+    PRISM is 20 years old this month! It's first official release was in
+    [2001](https://ls4-www.cs.tu-dortmund.de/home/kemper/toolsataachen.html). Thanks to all those have
+    [used](/publications/bibliography/) it and who have helped [develop](/people/) it over the years.
+
+- date: 2021-03
+  text: >-
+    PRISM 4.7 is now [available](/download/), including support for POMDPs, improved accuracy reporting and
+    [more](https://github.com/prismmodelchecker/prism/blob/master/CHANGELOG.txt).
+
+- date: 2021-02
+  text: >-
+    We are looking for a senior researcher to play a key role on the [FUN2MODEL](http://www.fun2model.org/)
+    project. Applications close on 12th March, with interviews expected to be held from 29th March 2020 onwards.
+    [More details](https://my.corehr.com/pls/uoxrecruit/erq_jobspec_version_4.display_form?p_company=10&p_internal_external=E&p_display_in_irish=N&p_process_type=&p_applicant_no=&p_form_profile_detail=&p_display_apply_ind=Y&p_refresh_search=Y&p_recruitment_id=149540).
+
+- date: 2021-01
+  text: >-
+    There are now [over 400 papers](/publications/bibliography/) by external research teams using or building on
+    PRISM. Thanks for your support!
+
+- date: 2020-11
+  text: >-
+    [Dave Parker](https://www.cs.ox.ac.uk/people/david.parker/home.html) is giving a keynote at
+    [iFM 2020](https://ifm20.si.usi.ch/) on "Verification with Stochastic Games: Advances and Challenges".
+
+- date: 2020-09
+  text: >-
+    [Marta Kwiatkowska](http://www.cs.ox.ac.uk/people/marta.kwiatkowska/) is giving a keynote at
+    [KR 2020](https://kr2020.inf.unibz.it/) on "Probabilistic model checking for strategic equilibria-based
+    decision making".
+
+- date: 2020-05
+  text: >-
+    [PRISM-games](/games/) 3.0 is now [available](/games/download/), providing concurrent stochastic games,
+    equilibria, real-time models and many new [examples](/games/casestudies/).
+
+- date: 2020-04
+  text: >-
+    PRISM 4.6 is now [available](/download/), including a wide range of updates and fixes for users and
+    developers. [More information](/download/).
+
+- date: 2020-03
+  text: >-
+    We are looking for a research associate to work on probabilistic reasoning for multi-agent systems on the
+    [FUN2MODEL](http://www.fun2model.org/) project. Applications close on 15th April, with interviews expect in
+    the week of 20th April 2020. See [ here](http://www.cs.ox.ac.uk/news/1794-full.html) for more details.
+
+- date: 2020-02
+  text: >-
+    We are looking for a senior researcher to play a key role on the [FUN2MODEL](http://www.fun2model.org/)
+    project. Applications close on 4th March, with interviews to be held on 11th March 2020.
+    [More details](http://www.cs.ox.ac.uk/news/1783-full.html).
+
+- date: 2020-01
+  text: >-
+    [PRISM-games](/games/) 3.0 is now [available](/games/download/) as a beta release, providing concurrent
+    stochastic games, equilibria, real-time models and many new [examples](/games/casestudies/).
+
+- date: 2019-09
+  text: >-
+    Senior researcher position and studentship are available at Oxford on the forthcoming
+    [FUN2MODEL](http://www.fun2model.org/) project project. Applications close 30th October and 28th October
+    respectively, and interviews will be on 8th November 2019. Details:
+    [senior researcher position](http://www.cs.ox.ac.uk/news/1681-full.html) and
+    [studentship](http://www.cs.ox.ac.uk/news/1733-full.html).
+
+- date: 2019-06
+  text: >-
+    Three postdoctoral positions are now available at Oxford on the forthcoming
+    [FUN2MODEL](http://www.fun2model.org/) project. Applications close 8 July 2019. Details:
+    [position 1](http://www.cs.ox.ac.uk/news/1684-full.html),
+    [position 2](http://www.cs.ox.ac.uk/news/1683-full.html) and
+    [position 3](http://www.cs.ox.ac.uk/news/1682-full.html).
+
+- date: 2019-06
+  text: >-
+    Two fully funded ERC Doctoral Studentships are now available at Oxford on the forthcoming
+    [FUN2MODEL](http://www.fun2model.org/) project. Applications close 8 July 2019.
+    [More details](http://www.cs.ox.ac.uk/news/1681-full.html).
+
+- date: 2019-05
+  text: >-
+    PRISM-games 2.1 is now [available](/games/download/), providing simpler installation/compilation, updates from
+    PRISM 4.5 and more. [More information](/games/download/).
+
+- date: 2019-04
+  text: >-
+    PRISM 4.5 is now [available](/download/), including a wide range of updates and fixes for users and
+    developers. [More information](/download/).
+
+- date: 2019-03
+  text: >-
+    [Marta Kwiatkowska](http://www.cs.ox.ac.uk/people/marta.kwiatkowska/) has been awarded an ERC Advanced Grant
+    titled "FUN2MODEL: From FUNction-based TO MOdel-based automated probabilistic reasoning for DEep Learning",
+    which aims to make advances towards provably robust 'strong' Artificial Intelligence.
+    [More details](http://www.cs.ox.ac.uk/news/1652-full.html).
+
+- date: 2019-01
+  text: >-
+    PRISM just competed in [QComp 2019](http://qcomp.org/competition/2019/index.html): the inaugural "Comparison
+    of Tools for the Analysis of Quantitative Formal Models". See the [report](/bibitem/HHH+19/) to appear at
+    TACAS'19 as part of [Toolympics](https://tacas.info/toolympics.php).
+
+- date: 2018-08
+  text: >-
+    The paper "[Using Probabilistic Model Checking for Dynamic Power Management](/bibitem/NPK+05/)" is one of 5
+    selected to "highlight important developments for the scientific community" as part of the 30-year anniversary
+    of the journal [Formal Aspects of Computing](https://link.springer.com/journal/165).
+
+- date: 2018-08
+  text: >-
+    [Dave Parker](https://www.cs.ox.ac.uk/people/david.parker/home.html) is giving an invited talk at the
+    [2018 Highlights of Logic, Games and Automata](http://logic.las.tu-berlin.de/hlga2018/index.html) conference
+    on "[Probabilistic Model Checking: Advances and Applications](/talks/dave-highlights18.pdf)", summarising
+    recent developments and future directions for PRISM.
+
+- date: 2017-07
+  text: >-
+    PRISM 4.4 is now [available](/download/), including interval iteration, topological iteration, new reward
+    operators, CTL/LTL model checking and [much more](/download/).
+
+- date: 2016-09
+  text: >-
+    A 2-3 year postdoc position is available now at Birmingham, working with
+    [Dave Parker](https://www.cs.ox.ac.uk/people/david.parker/home.html) on verification of probabilistic
+    programming languages. [Details](http://www.cs.bham.ac.uk/~parkerdx/projects/brass/postdoc.php).
+
+- date: 2016-07
+  text: >-
+    Marta Kwiatkowska, Gethin Norman and Dave Parker have been given the
+    [2016 HVC award](https://www.research.ibm.com/haifa/conferences/hvc2016/award.shtml) for "the invention,
+    development and maintenance of the PRISM probabilistic model checker". [More details](/news/2016-07-hvc/).
+
+- date: 2016-07
+  text: >-
+    A 3-year postdoc and a PhD position are available now at Birmingham, working with
+    [Dave Parker](https://www.cs.ox.ac.uk/people/david.parker/home.html) on a new project under the DARPA-funded
+    [BRASS](http://www.darpa.mil/program/building-resource-adaptive-software-systems) program. This will be
+    advertised shortly. Please [contact him](mailto:d.a.parker@cs.bham.ac.uk) directly for details.
+
+- date: 2016-02
+  text: >-
+    We are delighted to announce that PRISM has again been selected to participate in
+    [Google Summer of Code](https://summerofcode.withgoogle.com/). Contribute to PRISM and get paid for it!
+    [More details](/news/2016-02-gsoc/).
+
+- date: 2015-11
+  text: >-
+    We are pleased to report that PRISM has now been [downloaded](/download/) more than 50,000 times. Thanks for
+    your support!
+
+- date: 2015-10
+  text: >-
+    Version 2.0 of [PRISM-games](/games/) is out, featuring new reward properties,
+    [multi-objective](/games/properties/#multi) strategy synthesis and [assume-guarantee](/games/compositional/)
+    reasoning. [More info](/games/).
+
+- date: 2015-09
+  text: >-
+    [Dave Parker](https://www.cs.ox.ac.uk/people/david.parker/home.html) will give a lecture on "Probabilistic
+    Model Checking and Controller Synthesis" at the [2nd AVACS Autumn School](http://www.avacs.org/autumn2015/) on
+    1 October. [Resources](/lectures/avacs15/).
+
+- date: 2015-07
+  text: >-
+    A beta release of PRISM version 4.3 is now [available](/download/). New features include external
+    LTL-to-automata converters and various new model checking algorithms. [Details](/download/).
+
+- date: 2015-06
+  text: >-
+    PRISM now supports the [HOA](http://adl.github.io/hoaf/) (Hanoi Omega Automata) format. This allows external
+    LTL-to-automaton converters to be used. More details in this [CAV'15](/bibitem/BBDL+15/) paper.
+
+- date: 2015-02
+  text: >-
+    Three postdoctoral positions [available](/news/2015-02-pg/) to work on the 5-year Programme Grant "Mobile
+    Robotics: Enabling a Pervasive Technology of the Future", held by Paul Newman and Ingmar Posner (Oxford's
+    Engineering Science) and Niki Trigoni and
+    [Marta Kwiatkowska](http://www.cs.ox.ac.uk/people/marta.kwiatkowska/) (Oxford's Computer Science).
+    [More details](/news/2015-02-pg/).
+
+- date: 2014-11
+  text: >-
+    [Marta Kwiatkowska](http://www.cs.ox.ac.uk/people/marta.kwiatkowska/) has been awarded an honorary doctorate
+    from KTH Royal Institute of Technology. [More details](/news/2014-11-kth/).
+
+- date: 2014-08
+  text: >-
+    Here is a [new report](/papers/lms-qv.pdf), published by the
+    [LMS](http://www.lms.ac.uk/about/committees/knowledge-transfer-papers) and the
+    [Smith Institute](http://www.smithinst.co.uk/partnerships/publications/), giving an accessible introduction to
+    quantitative verification.
+
+- date: 2014-07
+  text: >-
+    Two PRISM-related postdoctoral positions are now available at Birmingham on the
+    [HIERATIC](http://www.cs.bham.ac.uk/research/projects/hieratic/) project. See the
+    [advert](http://www.jobs.ac.uk/job/AJF693/research-fellow-hieratic/). The posts run until 30 Sep 2015.
+    Applications close 17 Aug 2014.
+
+- date: 2014-07
+  text: >-
+    [Dave Parker](https://www.cs.ox.ac.uk/people/david.parker/home.html) will give a session on "Probabilistic
+    real-time systems" at the [MOVEP'14](http://movep14.irccyn.ec-nantes.fr/) summer-school on 7 July.
+    [Resources](/lectures/movep14/).
+
+- date: 2014-05
+  text: >-
+    [Marta Kwiatkowska](http://www.cs.ox.ac.uk/people/marta.kwiatkowska/) will give a course on "Probabilistic
+    model checking with PRISM" at the [SSFT'14](http://fm.csl.sri.com/SSFT14/) summer-school this month. See
+    [this page](/courses/ssft14/) for resources.
+
+- date: 2014-05
+  text: >-
+    A beta release of PRISM version 4.2 is now [available](/download/). New features include featuring parametric
+    model checking, fast adaptive uniformisation and
+    [more](https://github.com/prismmodelchecker/prism/blob/master/CHANGELOG.txt).
+
+- date: 2014-04
+  text: >-
+    We are delighted that PRISM has again been selected for the
+    [Google Summer of Code](http://code.google.com/soc/) programme. This year we will have
+    [8 students](/news/2014-04-gsoc/) joining us.
+
+- date: 2014-02
+  text: >-
+    We are delighted to announce that PRISM has again been selected to participate in
+    [Google Summer of Code](http://code.google.com/soc/). Contribute to PRISM and get paid for it!
+    [More details](/news/2014-02-gsoc/).
+
+- date: 2013-11
+  text: >-
+    A new [development version](https://github.com/prismmodelchecker/prism) of PRISM is now available, featuring
+    parametric model checking, fast adaptive uniformisation and more.
+
+- date: 2013-09
+  text: >-
+    See the upcoming [tutorial](/bibitem/KP13/) and keynote at [ATVA'13](http://www.uet.vnu.edu.vn/atva2013/) by
+    Marta Kwiatkowska on probabilistic model checking, strategy synthesis and PRISM.
+
+- date: 2013-08
+  text: >-
+    Two more postdoctoral positions are available in automated verification and synthesis on the ERC Advanced
+    Investigator Grant [VERIWARE](http://www.veriware.org/). Candidates with prior experience of applications to
+    biology are particularly encouraged to apply. Applications close 30 Sep 2013.
+    [More details](http://www.cs.ox.ac.uk/news/679-full.html).
+
+- date: 2013-05
+  text: >-
+    A postdoc position is now available at [Birmingham](http://www.cs.bham.ac.uk/) on the new project
+    "[Automated Game-Theoretic Verification of Security Systems](http://www.cs.bham.ac.uk/~parkerdx/projects/epsrc-gamesec/)".
+    [Details](http://www.cs.bham.ac.uk/~parkerdx/projects/epsrc-gamesec/advert.php). Applications close on 4 Sep
+    2013.
+
+- date: 2013-06
+  text: >-
+    A fully funded [PhD studentship](/news/2013-06-phd/) is now available at Birmingham on the topic "Quantitative
+    Verification of Complex Systems". [More details](/news/2013-06-phd/).
+
+- date: 2013-06
+  text: >-
+    Congratulations to Alessandro Bruni and Proteek Roy, who have been selected to work on PRISM as part of GSoC
+    2013, and also to Jan Gorzny, who will work on PRISM as part of a
+    [JPF](http://babelfish.arc.nasa.gov/trac/jpf) GSoC project.
+
+- date: 2013-05
+  text: >-
+    Two postdoctoral positions are now available in automated verification and synthesis on the ERC Advanced
+    Investigator Grant [VERIWARE](http://www.veriware.org/). Applications close on 31st May 2013.
+    [More details](http://www.cs.ox.ac.uk/news/636-full.html).
+
+- date: 2013-04
+  text: >-
+    We are delighted to announce that PRISM has been selected to participate in the 2013
+    [Google Summer of Code](http://code.google.com/soc/). Contribute to PRISM and get paid for it!
+    [More details](/news/2013-04-gsoc/).
+
+- date: 2013-04
+  text: >-
+    PRISM features this week in a [tutorial](/lectures/cpsweek13) on probabilistic hybrid systems at
+    [CPSWeek 2013](http://www.cpsweek.org/), run by
+    [Marta Kwiatkowska](http://www.cs.ox.ac.uk/people/Marta.Kwiatkowska/) and
+    [Holger Hermanns](http://depend.cs.uni-saarland.de/hermanns).
+
+- date: 2013-03
+  text: >-
+    [PRISM-games](/games/) an extension of PRISM for probabilistic model checking of *stochastic multi-player
+    games* will be presented at TACAS'13 this week. Read the [tool paper](/bibitem/CFK+13/) or visit the
+    [website](/games/) for more information.
+
+- date: 2012-10
+  text: >-
+    A postdoctoral position is now available at Birmingham on the new
+    [HIERATIC](http://www.cs.bham.ac.uk/research/projects/hieratic/) project. See the
+    [advert](http://www.jobs.ac.uk/job/AFG066/research-fellow/), the
+    [particulars](http://www.download.bham.ac.uk/vacancies/jd/43880.pdf) and
+    [apply online](https://atsv7.wcn.co.uk/search_engine/jobs.cgi?SID=amNvZGU9MTI2MTE5NyZ2dF90ZW1wbGF0ZT03Njcmb3duZXI9NTAzMjUyMSZvd25lcnR5cGU9ZmFpciZicmFuZF9pZD0wJnZhY2Zpcm0udmFjdGl0bGU9aGllcmF0aWMmcG9zdGluZ19jb2RlPTExNyZyZXFzaWc9MTM0OTIxNDMzMi1jNDliZGIxNDRjMjlhMzFlMTNhMGMxNDNlNDNkMDMzNGVmZjdlYzQ5).
+    Applications close 22 Oct 2012.
+
+- date: 2012-09
+  text: >-
+    Interested in probabilistic model checking for probabilistic timed automata? A new
+    [tutorial paper](/bibitem/NPS13/) is now available, to appear in
+    [Formal Methods in System Design](http://www.springer.com/engineering/circuits+%26+systems/journal/10703).
+
+- date: 2012-09
+  text: >-
+    Nature Scientific Reports publish a
+    [paper](http://www.nature.com/srep/2012/120913/srep00656/full/srep00656.html) by Luca Cardelli & Attila
+    Csikász-Nagy that uses PRISM to study cell cycle switch as a computing device. [Details](/news/2012-09-nsr/).
+
+- date: 2012-09
+  text: >-
+    Marta Kwiatkowska will give this year's
+    [Milner Lecture](http://wcms.inf.ed.ac.uk/lfcs/events/milner-lectures/), entitled "Sensing everywhere: on
+    quantitative verification for ubiquitous computing", at the University of Edinburgh on 25 Sep 2012.
+
+- date: 2012-07
+  text: >-
+    A postdoctoral position is now available at Birmingham on the forthcoming
+    [HIERATIC](http://www.cs.bham.ac.uk/research/projects/hieratic/) project. See the
+    [advert](http://www.jobs.ac.uk/job/AEU961/research-fellow/), the
+    [particulars](http://www.download.bham.ac.uk/vacancies/jd/43880.pdf) and
+    [apply online](https://atsv7.wcn.co.uk/search_engine/jobs.cgi?SID=amNvZGU9MTI2MTE5NyZ2dF90ZW1wbGF0ZT03Njcmb3duZXI9NTAzMjUyMSZvd25lcnR5cGU9ZmFpciZicmFuZF9pZD0wJnZhY2Zpcm0udmFjdGl0bGU9aGllcmF0aWMmcG9zdGluZ19jb2RlPTExNyZyZXFzaWc9MTM0MjYyNjg3Ny04YTYzNTgwYjM2NTkwZTcyYTc4YTA0ZDRlZjhlNTgxY2E2Yjc0NTNj).
+    Applications close 14 Aug 2012.
+
+- date: 2012-04
+  text: >-
+    Two postdoctoral positions are now available at Oxford on the [VERIWARE](http://www.veriware.org/) and
+    [Autonomous Ubiquitous Sensing](http://qav.cs.ox.ac.uk/projects/sensing/) projects. Applications close 25
+    April 2012. Details: [position 1](http://www.cs.ox.ac.uk/news/474-full.html) and
+    [position 2](http://www.cs.ox.ac.uk/news/475-full.html).
+
+- date: 2012-02
+  text: >-
+    We are pleased to announce the release of [PRISM-games](/games/), a new extension of PRISM for model checking
+    [stochastic multi-player games](/bibitem/CFK+12/).
+
+- date: 2012-02
+  text: >-
+    PRISM has now been [downloaded](/download/) more than 25,000 times. Thanks for your support.
+
+- date: 2010-08
+  text: >-
+    Marta Kwiatkowska will give a course on "Advances in Probabilistic Model Checking" at the
+    [Marktoberdorf 2011](http://asimod.in.tum.de/2011/) summer-school this month. See
+    [this page](/courses/marktoberdorf11/) for resources.
+
+- date: 2011-07
+  text: >-
+    To coincide with the recent [release](/download/) of [PRISM 4.0](/bibitem/KNP11/), we are pleased to announce
+    the new [PRISM benchmark suite](/benchmarks/), for testing or evaluating probabilistic model checking tools
+    and techniques.
+
+- date: 2011-07
+  text: >-
+    Congratulations to Shinji Kikuchi and Yasuhide Matsumoto from [Fujitsu](http://jp.fujitsu.com/group/labs/en/),
+    who won the Best Paper award for their new [paper](/bibitem/KM11/) applying PRISM to cloud computing systems.
+
+- date: 2011-05
+  text: >-
+    The final beta release of PRISM 4.0, which includes support for probabilistic timed automata (PTAs) and
+    statistical model checking, is available on the main [download](/download/) page.
+
+- date: 2011-03
+  text: >-
+    Interested in probabilistic model checking for MDPs? A new [tutorial paper](/bibitem/FKNP11/) on the subject,
+    written for the [SFM-11:CONNECT](http://www.sti.uniurb.it/events/sfm11connect/) summer-school, is now
+    available.
+
+- date: 2011-02
+  text: >-
+    A fully funded PhD studentship is now available at Oxford on the topic "Automated Verification Techniques for
+    DNA Computing". Applications close 28 Feb 2011. [More details](http://www.cs.ox.ac.uk/news/304-full.html).
+
+- date: 2010-12
+  text: >-
+    An early release of PRISM 4.0 is now available as a
+    [development version](https://github.com/prismmodelchecker/prism). This includes support for probabilistic
+    timed automata (PTAs) and statistical model checking.
+
+- date: 2010-11
+  text: >-
+    A 1-year postdoc position is now available at Oxford on the
+    [PRISMATIC](http://qav.cs.ox.ac.uk/projects/darpa-prismatic/) project. Applications close 8 Dec 2010.
+    [More details](http://www.cs.ox.ac.uk/news/278-full.html).
+
+- date: 2010-10
+  text: >-
+    A fully funded PhD studentship is now available at Oxford on the new [VERIWARE](http://www.veriware.org/)
+    project. Applications close 15 Nov 2010. [More details](http://www.cs.ox.ac.uk/news/236-full.html).
+
+- date: 2010-09
+  text: >-
+    US R&D company [SIFT](http://www.sift.info/) is hiring researchers in probabilistic verification.
+    [Details](/news/2010-09-sift/).
+
+- date: 2010-08
+  text: >-
+    The paper "[Probabilistic Model Checking of Complex Biological Pathways](/bibitem/HKN+08/)", by John Heath,
+    Marta Kwiatkowska, Gethin Norman, David Parker and Oksana Tymchyshyn, was recently awarded the Top Cited
+    Article award in the journal Theoretical Computer Science, for the period 2005-2010.
+
+- date: 2010-07
+  text: >-
+    Marta Kwiatkowska and Dave Parker will give a 5-part [course](/lectures/esslli10/) on "Probabilistic Model
+    Checking" at the [ESSLLI'10](http://esslli2010cph.info/) summer-school in Copenhagen next month.
+
+- date: 2010-06
+  text: >-
+    Interested in applying PRISM to systems biology? This new [book chapter](/bibitem/KNP10a/) in "Symbolic
+    Systems Biology: Theory and Methods" provides a tutorial and exercises on the subject.
+
+- date: 2010-04
+  text: >-
+    A 2-year postdoc position is now available at Oxford on the
+    [Predictable Software Systems](http://qav.cs.ox.ac.uk/projects/epsrc-pss/) project. Applications close 28 May
+    2010. [More details](http://www.cs.ox.ac.uk/news/190-full.html).
+
+- date: 2010-03
+  text: >-
+    Two postdoctoral positions are now available at Oxford on the forthcoming [VERIWARE](http://www.veriware.org/)
+    project. Applications close 7 May 2010. [More details](http://www.cs.ox.ac.uk/news/185-full.html).
+
+- date: 2010-03
+  text: >-
+    Two fully funded PhD studentships are now available at Oxford on the forthcoming
+    [VERIWARE](http://www.veriware.org/) project. Applications close 4 May 2010.
+    [More details](http://www.cs.ox.ac.uk/news/183-full.html).
+
+- date: 2010-02
+  text: >-
+    There will be a PRISM [session](/courses/qmc10/) at this month's PhD school on
+    [Quantitative Model Checking](http://www.artist-embedded.org/artist/Overview,2048.html) (QMC), organised by
+    ArtistDesign/MT-LAB.
+
+- date: 2009-05
+  text: >-
+    A beta release of PRISM version 3.3 is now [available](/download/). New features include LTL model checking,
+    better error reporting, an extended property language and
+    [much more](https://github.com/prismmodelchecker/prism/blob/master/CHANGELOG.txt).
+
+- date: 2008-12
+  text: >-
+    A new [development version](https://github.com/prismmodelchecker/prism) of PRISM is now available, with many
+    new features and improvements. [Full details](https://github.com/prismmodelchecker/prism).
+
+- date: 2008-11
+  text: >-
+    Two research positions are now available at Oxford, working on the CONNECT-IP project: one Research Assistant
+    (Grade 7) and one Student Researcher. Applications close 5 January 2009. Details:
+    [Research Assistant](http://www.cs.ox.ac.uk/news/documents/connect7-fps.pdf) and
+    [Student Researcher](http://www.cs.ox.ac.uk/news/documents/connect6-fps.pdf).
+
+- date: 2008-04
+  text: >-
+    A fully funded [PhD studentship](http://www.cs.ox.ac.uk/news/21-full.html) is now available at Oxford on the
+    forthcoming [Predictable Software Systems](http://qav.cs.ox.ac.uk/projects/epsrc-pss/) project. Applications
+    close 16 May 2008. [More details](http://www.cs.ox.ac.uk/news/21-full.html).
+
+- date: 2008-03
+  text: >-
+    PRISM has now been [downloaded](/download/) more than 10,000 times. Thanks for your support.
+
+- date: 2008-02
+  text: >-
+    A beta version of the next PRISM release (version 3.2) is now [available](/download/). [Details](/download/).
+
+- date: 2007-11
+  text: >-
+    A fully funded [PhD studentship](http://www.cs.ox.ac.uk/oucl/prospective/dphil/MartaStudentship.pdf) is now
+    available at Oxford on the forthcoming
+    [Predictable Software Systems](http://qav.cs.ox.ac.uk/projects/epsrc-pss/) project. Applications close 18
+    January. [More details](http://www.cs.ox.ac.uk/oucl/prospective/dphil/MartaStudentship.pdf).
+
+- date: 2007-10
+  text: >-
+    A new [development version](https://github.com/prismmodelchecker/prism) of PRISM is now available. Changes
+    since the last development release include a new graph plotting engine, improvements to labels/formula, and a
+    (slight) redesign to match the new web site.
+
+- date: 2007-09
+  text: >-
+    A [postdoctoral position](http://www.cs.ox.ac.uk/oucl/jobs/pss7-07.html) is now available at Oxford on the
+    forthcoming Predictable Software Systems project. Applications close 18 October.
+    [More details](http://www.cs.ox.ac.uk/oucl/jobs/pss7-07.html).
+
+- date: 2007-07
+  text: >-
+    The PRISM team have moved to [Oxford University](http://www.cs.ox.ac.uk/). Concurrently, we have re-launched
+    the PRISM web site, with a new design and a new [URL](/).
+
+- date: 2007-06
+  text: >-
+    New [development versions](https://github.com/prismmodelchecker/prism) of PRISM are now being made available
+    again. Recent new functionality includes: an SBML-to-PRISM translator, support for 64-bit architectures and an
+    improved simulator GUI.
+
+- date: 2007-05
+  text: >-
+    A new [FAQ](/manual/FrequentlyAskedQuestions/) section has been added to the PRISM manual. Comments or
+    requests for topics to be covered are welcome.
+
+- date: 2007-05
+  text: >-
+    A new symmetry reduction tool for PRISM called [GRIP](https://github.com/afd/symmetrytools/tree/master/GRIP),
+    developed at the University of Glasgow, is now available.
+
+- date: 2007-04
+  text: >-
+    The PRISM web site now includes slides for an 11-part [lecture course](/lectures/) introducing probabilistic
+    model checking and PRISM. This material formed the basis of the recent 15-hour course given at the
+    [BISS 2007](http://www.cs.unibo.it/ricerca/grad/biss2007/) school.
+
+- date: 2007-04
+  text: >-
+    Version 3.1.1 of PRISM has now been [released](/download/), including a few small but important bug fixes
+    ([precise details](https://github.com/prismmodelchecker/prism/blob/master/CHANGELOG.txt)).
+
+- date: 2006-11
+  text: >-
+    A beta release of version 3.1 of PRISM is now [ available](/download/). New features include a Windows
+    installer, multiple reward structures and command-line generation of random paths
+    ([more details](https://github.com/prismmodelchecker/prism/blob/master/CHANGELOG.txt)).
+
+- date: 2006-10
+  text: >-
+    New and up-to-date material for those wishing to learn about PRISM is now available, to coincide with the
+    [VPSM](http://first.dk/VPSM) PhD school in Copenhagen this month. An online tutorial is now
+    [available](/tutorial/). There are also up-to-date slides. These are in three parts: (I)
+    [probabilistic model checking for DTMCs/MDPs/PTAs](/talks/vpsm06-part1.pdf), (II)
+    [PRISM](/talks/vpsm06-part2.pdf) and (III) [case studies](/talks/vpsm06-part3.pdf).
+
+- date: 2006-07
+  text: >-
+    The PRISM manual is now [online](/manual/), making it considerably easier to navigate and search. This will
+    also allow us to update and improve the manual more efficiently. This launch coincides with the full
+    [release](/download/) of version 3.0 of PRISM, which was previously available as a beta release.
+
+- date: 2006-06
+  text: >-
+    Applications are invited for a Research Associate to work on the new EPSRC funded project
+    [Automated quantitative software verification with PRISM](http://www.cs.bham.ac.uk/~mzk/research/projects/swverif/),
+    whose aim is to extend the PRISM tool with the capability to extract models from software.
+    [Details of the post](http://www.personnel.bham.ac.uk/vacancies/furtherParticulars.htm?refNo=43042) are
+    available. Informal enquires can be emailed to [Marta Kwiatkowska](mailto:mzk@cs.bham.ac.uk).
+
+- date: 2006-03
+  text: >-
+    Version 3.0.beta1 of PRISM is [now available](/download/). This major new release includes a simulator
+    (providing approximate verification techniques and a model debugging tool), costs and rewards, support for Mac
+    OS X, improved import/export functionality and
+    [much more](https://github.com/prismmodelchecker/prism/blob/master/CHANGELOG.txt).
+
+- date: 2006-03
+  text: >-
+    A [tool paper](/bibitem/HKNP06/) and demo of the forthcoming new release of PRISM will be presented at the
+    [TACAS'06](http://depend.cs.uni-sb.de/index.php?id=329) conference in Vienna this month.
+
+- date: 2006-03
+  text: >-
+    There will be a tutorial on probabilistic model checking and PRISM at the
+    [Verification of Protocols for Security and Mobility (VPSM)](http://first.dk/VPSM) PhD School to be held in
+    Copenhagen in October.
+
+- date: 2006-01
+  text: >-
+    We are in the process of migrating "[support](/support/)" aspects of the PRISM project to SourceForge. See the
+    [project page](http://sourceforge.net/projects/prism-mc/). Please help out by posting queries in the
+    [help forum](http://sourceforge.net/forum/forum.php?forum_id=520372) or filing a
+    [bug report](http://sourceforge.net/tracker/?func=add&group_id=155178&atid=794764).
+
+- date: 2005-10
+  text: >-
+    PRISM now runs on Mac OS X, as well as on Linux, Solaris and Windows. To try it out, download a
+    [development version](https://github.com/prismmodelchecker/prism) of PRISM.
+
+- date: 2005-06
+  text: >-
+    A PhD studentship is now available in the School of Computer Science at the University of Birmingham to work
+    on probabilistic model checking and PRISM. See
+    [the studentship](http://www.cs.bham.ac.uk/~mzk/research_probmc_stud.html) and
+    [other funded PhD opportunities](http://www.cs.bham.ac.uk/study/postgraduate-research/special_opportunities.html)
+    for more information.
+
+- date: 2005-01
+  text: >-
+    Recent development versions of PRISM are now being made available
+    [for download](https://github.com/prismmodelchecker/prism). These versions add various new features, including
+    support for analysis of models which include information about costs and rewards.
+
+- date: 2004-09
+  text: >-
+    PRISM now runs on Windows, as well as on Linux and Solaris. This new functionality is available in version
+    2.1, the current release of PRISM, which can be [downloaded](/download/).
+
+- date: 2004-04
+  text: >-
+    The book Mathematical Techniques for Analyzing Concurrent and Probabilistic Systems has now been published by
+    [AMS](http://www.ams.org/bookstore?fn=20&arg1=crmmseries&item=CRMM-23). This includes six chapters of lecture
+    notes covering the background of probabilistic model checking and the PRISM tool.
+    [More information](/bibitem/KNP04a/).
+
+- date: 2004-03
+  text: >-
+    Version 2.0 of PRISM is now [available](/download/). The new release includes significant improvements to the
+    PRISM modelling language and a completely new graphical user interface. See
+    [more precise details](https://github.com/prismmodelchecker/prism/blob/master/CHANGELOG.txt) of what is
+    included. [Download PRISM 2.0](/download/).
