@@ -83,6 +83,9 @@
 		{%- if not isManual and breadcrumb != false %}{% set crumbs = page.url | breadcrumbs(parent, collections.all) %}
 		{%- if crumbs.length %}
 		<p class="breadcrumb" data-pagefind-ignore>{% for c in crumbs %}<a href="{{ c.url }}">{{ c.title }}</a> › {% endfor %}</p>
+		{#- (a section's front page has no breadcrumb: an empty line keeps its content and menu where its subpages' are) #}
+		{%- elif sectionNav %}
+		<p class="breadcrumb" aria-hidden="true" data-pagefind-ignore>&nbsp;</p>
 		{%- endif %}{% endif %}
 		{{ content | safe }}
 		{%- if subNav %}{% set pn = subNav | prevNext(page.url) %}{% if pn.prev or pn.next %}
