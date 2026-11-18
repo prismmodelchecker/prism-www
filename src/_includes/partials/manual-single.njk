@@ -5,7 +5,7 @@
 {%- set item = items | manualPageItem(url) %}
 {%- if item %}{{ item | manualSingle(shift, offline) | safe }}{% endif %}
 {%- endmacro %}
-<h1 id="top">PRISM manual <span class="manual-single__version">{{ manualVersion or site.version }}</span></h1>
+<h1 id="top">PRISM manual <span class="manual-single__version">{{ manualVersion or (site.version if offline else "latest") }}</span></h1>
 {{ manualPage(collections.manualPage, "/manual/", 0, offline) }}
 {%- for s in manual.sections %}
 {%- if s.url %}
