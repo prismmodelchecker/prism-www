@@ -7,9 +7,9 @@ import { readRedirects, readContents, SINGLE_URL } from "./manual.js";
 export const PAGE_URLS = {
 	"/index.php": "/",
 	"/publications.php": "/publications/",
-	"/publ-selected.php": "/publications/selected/",
+	"/publ-selected.php": "/about/",
 	"/bib.php": "/publications/bibliography/",
-	"/bib-ext.php": "/publications/external/",
+	"/bib-ext.php": "/publications/bibliography/",
 	"/publ-lists.php": "/publications/",
 	"/publ-search.php": "/publications/bibliography/",
 	"/publ-parker.php": "/publications/parker/",

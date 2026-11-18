@@ -41,9 +41,7 @@ export default {
 		] },
 		{ id: "publ", title: "Publications", url: "/publications/", children: [
 			{ title: "PRISM publications", url: "/publications/" },
-			{ title: "Selected publications", url: "/publications/selected/" },
 			{ title: "PRISM bibliography", url: "/publications/bibliography/" },
-			{ title: "External publications", url: "/publications/external/" },
 			{ title: "References", url: "/publications/references/" },
 		] },
 		{ id: "casestudies", title: "Case studies", url: "/casestudies/", children: [

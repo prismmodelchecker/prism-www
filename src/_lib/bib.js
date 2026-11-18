@@ -170,12 +170,12 @@ export const LIST_VIEWS = [
 
 // Subject groups: each item goes in the first one whose category it has
 const SUBJECTS = [
-	{ cat: "casestudies", title: "Case studies using PRISM" },
-	{ cat: "techniques", title: "Underlying techniques in PRISM" },
-	{ cat: "extensions", title: "Extensions and adaptions to PRISM" },
-	{ cat: "connections", title: "Tool/language connections to PRISM" },
-	{ cat: "toolpapers", title: "PRISM tool papers" },
-	{ cat: "tutorials", title: "PRISM-related tutorials and surveys" },
+	{ cat: "casestudies", title: "Case studies" },
+	{ cat: "techniques", title: "Underlying techniques" },
+	{ cat: "extensions", title: "Extensions" },
+	{ cat: "connections", title: "Tool connections" },
+	{ cat: "toolpapers", title: "Tool papers" },
+	{ cat: "tutorials", title: "Tutorials and surveys" },
 ];
 
 const byDate = (a, b) => (b.year || 0) - (a.year || 0) || (b.month || 0) - (a.month || 0);

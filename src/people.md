@@ -52,4 +52,4 @@ Details of the people who worked on the underlying theory and techniques impleme
 
 There are also many people who have worked on case studies using PRISM. You can find details of these in the [case studies](/casestudies/) section of the site.
 
-<a id="extensions"></a>See also [here](/publications/external/) for publications about extensions and connections to PRISM.
+<a id="extensions"></a>See also the [extensions](/publications/bibliography/by-subject/#extensions) and [tool connections](/publications/bibliography/by-subject/#connections) in the PRISM bibliography.

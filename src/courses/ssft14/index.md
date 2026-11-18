@@ -26,4 +26,4 @@ The site contains various resources for [SSFT'14](http://fm.csl.sri.com/SSFT14/)
 -   This [tutorial paper](/bibitem/FKNP11/) is a good source of background reading.  
       
     
--   There are further tutorial papers listed [here](/publications/selected/).
+-   There are further tutorial papers listed under [background reading](/about/#background) on the About page.

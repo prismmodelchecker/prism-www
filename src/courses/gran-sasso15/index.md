@@ -26,4 +26,4 @@ The site contains various resources for [GSSI'15](http://cs.gssi.infn.it/phd-pro
 -   This [tutorial paper](/bibitem/FKNP11/) is a good source of background reading.  
       
     
--   There are further tutorial papers listed [here](/publications/selected/).
+-   There are further tutorial papers listed under [background reading](/about/#background) on the About page.

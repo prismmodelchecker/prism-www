@@ -33,4 +33,4 @@ The site contains various resources for the Probabilistic Model Checking with PR
 -   The book [Principles of of Model Checking](http://mitpress.mit.edu/books/principles-model-checking) by Christel Baier and Joost-Pieter Katoen is recommended reading for the course.  
       
     
--   There are further tutorial papers listed [here](/publications/selected/).
+-   There are further tutorial papers listed under [background reading](/about/#background) on the About page.

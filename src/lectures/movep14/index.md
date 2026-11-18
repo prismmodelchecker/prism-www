@@ -24,4 +24,4 @@ And here is some useful background reading:
 -   This [tutorial paper](/bibitem/FKNP11/) on probabilistic model checking of MDPs.  
       
     
--   There are further tutorial papers listed [here](/publications/selected/).
+-   There are further tutorial papers listed under [background reading](/about/#background) on the About page.

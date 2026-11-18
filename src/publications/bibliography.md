@@ -13,11 +13,11 @@ eleventyComputed:
   searchExclude: "{% if view.id != 'date' %}true{% endif %}"
 ---
 {% set items = bib.items | bibSelect({ cats: ["prism", "prismbib"] }) %}
+{% set team = bib.items | bibSelect({ cats: ["prism"] }) %}
 # PRISM bibliography
 
-A bibliography of all {{ items.length }} PRISM-related papers, from the PRISM team and from elsewhere.
-See also the separate lists of papers [produced externally](/publications/external/)
-and [by the PRISM team](/publications/), and the [selected PRISM papers](/publications/selected/).
+All PRISM-related (and PRISM-games related) papers.
+**{{ items.length }}** papers in total ({{ team.length }} from the PRISM team, {{ items.length - team.length }} external).
 If there is something we have omitted, please [contact](/contact/) us.
 
 {% include "partials/bib-views.njk" %}

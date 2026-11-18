@@ -16,10 +16,10 @@ eleventyComputed:
 {% set items = bib.items | bibSelect({ cats: ["prism"] }) %}
 # PRISM publications
 
-All {{ items.length }} PRISM-related papers authored or co-authored by members of the PRISM team.
-See also the [selected publications](/publications/selected/),
-the full [PRISM bibliography](/publications/bibliography/)
-and [external PRISM papers](/publications/external/).
-If you have a PRISM-related publication not included in these lists, please [tell](/contact/) us.
+All PRISM-related (and PRISM-games related) papers authored or co-authored by members of the PRISM team.
+**{{ items.length }}** papers in total.
+
+See also the full [PRISM bibliography](/publications/bibliography/)
+and "[About PRISM](/about/)" for specific pointers to background reading.
 
 {% include "partials/bib-views.njk" %}
