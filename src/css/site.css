@@ -614,8 +614,7 @@ mark.bib-highlight { background: var(--bib-mark-bg); color: inherit; border-bott
 }
 /* Three levels: sections (linking to their contents pages), pages, and the current page's headings */
 .manual-nav__section, .manual-nav .manual-nav__top > li > a {
-	font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em;
-	color: var(--text-muted);
+	font-size: 0.95rem; font-weight: 700; color: var(--text);
 }
 .manual-nav__section, .manual-nav .manual-nav__top { margin: 1rem 0 0.3rem; }
 .manual-nav .manual-nav__section a { color: inherit; }
