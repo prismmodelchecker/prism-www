@@ -68,7 +68,7 @@ export default {
 			{ title: "Examples", url: "/games/examples/" },
 			{ title: "Case studies", url: "/games/casestudies/" },
 			{ title: "Demo", url: "/games/demo/" },
-			{ title: "Publications", url: "/games/publ/" },
+			{ title: "Publications", url: "/publications/prism-games/" },
 		] },
 	],
 };

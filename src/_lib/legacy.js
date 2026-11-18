@@ -13,6 +13,7 @@ export const PAGE_URLS = {
 	"/publ-lists.php": "/publications/",
 	"/publ-search.php": "/publications/bibliography/",
 	"/publ-parker.php": "/publications/parker/",
+	"/games/publ.php": "/publications/prism-games/",
 	"/courses/pmc2526/practical4_new.php": "/courses/pmc2526/practical4/",
 };
 

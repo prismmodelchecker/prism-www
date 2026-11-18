@@ -21,7 +21,7 @@ Here is a list of cases studies, for which we have developed web pages to explai
 -   [Intrusion detection policies](/casestudies/ids/) {% cite "KNPS18" %} <span class="tag">CSG</span>
 -   [Aloha protocol](/casestudies/aloha/) {% cite "KNPS19", "KNPS20" %} <span class="tag">CSG</span>
 
-We further list (non-exhaustively) other PRISM-games case studies where details are available in publications. (See also the PRISM-games [publications list](/games/publ/#casestudies))
+We further list (non-exhaustively) other PRISM-games case studies where details are available in publications. (See also the PRISM-games [publications list](/publications/prism-games/by-subject/#casestudies))
 
 -   Collective decision making for sensor networks (files [here](/files/fmsd-smg/)) {% cite "CFK+13b", "Sim14" %} <span class="tag">SMG</span>
 -   Team formation protocol (files [here](/files/clima11/)) {% cite "CKPS11" %} <span class="tag">SMG</span>
