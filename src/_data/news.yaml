@@ -1,6 +1,10 @@
 # News items, newest first: the home page shows the first three.
 # `date` is year-month; `text` is Markdown.
 
+- date: 2026-11
+  text: >-
+    PRISM has a new [website](/), with a [rewritten manual](/manual/) and many other improvements.
+
 - date: 2026-10
   text: >-
     PRISM 4.11 is now [available](/download/), including additional reward properties and enhanced/optimised
