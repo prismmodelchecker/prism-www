@@ -16,6 +16,9 @@ layout: layouts/base.njk
 <p class="breadcrumb" data-pagefind-ignore><a href="/manual/">Manual</a> › <a href="{{ current.sectionUrl }}">{{ current.section }}</a> ›</p>
 {%- elif sectionPage %}
 <p class="breadcrumb" data-pagefind-ignore><a href="/manual/">Manual</a> ›</p>
+{%- else %}
+{#- (the front page: an empty line keeps its content and menu where the other pages' are) #}
+<p class="breadcrumb" aria-hidden="true" data-pagefind-ignore>&nbsp;</p>
 {%- endif %}
 
 {#- A second Section value, so that the manual's search box can search just the manual (base.njk gives "Documentation") #}
