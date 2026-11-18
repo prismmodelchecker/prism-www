@@ -42,6 +42,7 @@ export default {
 		{ id: "publ", title: "Publications", url: "/publications/", children: [
 			{ title: "PRISM publications", url: "/publications/" },
 			{ title: "PRISM bibliography", url: "/publications/bibliography/" },
+			{ title: "PRISM-games bibliography", url: "/publications/prism-games/" },
 			{ title: "References", url: "/publications/references/" },
 		] },
 		{ id: "casestudies", title: "Case studies", url: "/casestudies/", children: [
