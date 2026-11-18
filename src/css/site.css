@@ -618,6 +618,8 @@ mark.bib-highlight { background: var(--bib-mark-bg); color: inherit; border-bott
 }
 .manual-nav__section, .manual-nav .manual-nav__top { margin: 1rem 0 0.3rem; }
 .manual-nav .manual-nav__section a { color: inherit; }
+/* (a section heading that is the current page keeps its weight, highlighted like any current page) */
+.manual-nav .manual-nav__section a[aria-current] { font-weight: inherit; color: var(--link); }
 /* Sections fold: the heading links to the section's contents page, the triangle beside it opens and closes it.
    Closed sections sit close together, so the list of them reads as one menu; an open one has space below it. */
 .manual-nav__group > summary { list-style: none; position: relative; cursor: pointer; padding-right: 1.6rem; }
