@@ -12,19 +12,19 @@ Our first example is a PRISM model of a simple probabilistic algorithm due to Kn
 
 ![Die algorithm](/tutorial/images/dice.pic.jpg){.medium}
 
-The idea of the algorithm is as follows. Starting from step 0 (i.e. the circle labelled 0), at every step a coin is tossed and there is 50% chance of taking each of the two possible choices. The algorithm terminates when you reach one of the values for the die on the right-hand side.
+The idea of the algorithm is as follows. Starting from step 0 (i.e., the circle labelled 0), at every step a coin is tossed and there is 50% chance of taking each of the two possible choices. The algorithm terminates when you reach one of the values for the die on the right-hand side.
 
 The PRISM code to model this algorithm is shown below.
 
 {% prismCode "tutorial/examples/die/die.pm", false, true %}
 
-The first line indicates that this model is a discrete-time Markov chain (DTMC). The remaining lines describe a single PRISM module, which we use to model the behaviour of the algorithm. We use two variables to represent the state of the system: `s`, denoting which step of the algorithm is currently being executed (i.e. which circle in the diagram above), and `d`, denoting the value of the die (0 means no value has been chosen yet).
+The first line indicates that this model is a discrete-time Markov chain (DTMC). The remaining lines describe a single PRISM module, which we use to model the behaviour of the algorithm. We use two variables to represent the state of the system: `s`, denoting which step of the algorithm is currently being executed (i.e., which circle in the diagram above), and `d`, denoting the value of the die (0 means no value has been chosen yet).
 
-{% task %} Read the sections on [modules/variables](/manual/ThePRISMLanguage/Variables/) and [commands](/manual/ThePRISMLanguage/ModulesAndCommands/#commands) in the manual and try to understand how this description represents the algorithm.
+{% task %} Read the manual section on [commands](/manual/ThePRISMLanguage/ModulesAndCommands/#commands) in the manual and make sure you understand how this description represents the algorithm.
 
 ## Exploring the model in PRISM
 
-{% task %} Download the model file **die.pm** for this example from the link above. Launch the [PRISM GUI](/manual/GettingStarted/FirstSteps/#starting-prism) (click the shortcut on Windows or run `bin/xprism` elsewhere) and load this file using the "Model | Open model" menu option. You should see a green tick in the top left corner indicating that the model was loaded successfully.
+{% task %} Download the model file [examples/die/die.pm] for this example from the link above. Launch the [PRISM GUI](/manual/GettingStarted/FirstSteps/#starting-prism) (click the shortcut on Windows or run `bin/xprism` elsewhere) and load this file using the "Model | Open model" menu option. You should see a green tick in the top left corner indicating that the model was loaded successfully.
 
 {% task %} Click on the "Simulator" tab at the bottom of the GUI. You can now use the [simulator](/manual/RunningPRISM/DebuggingModelsWithTheSimulator/) to explore the model. Create a new path by double-clicking on the main part of the window (or right-clicking and selecting "New path"). Then, use the "Simulate" button repeatedly to generate a sample execution of the algorithm. Look at the trace displayed in the main part of the window. What is the final value of `s`? It should be 7. What is the value of the die?
 
