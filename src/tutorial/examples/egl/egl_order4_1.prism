@@ -11,7 +11,7 @@
 
 //-----------------------------------------------------------------------------------------
 
-probabilistic // model is a DTMC (no non-determinism)
+dtmc
 
 
 // CONSTANTS
@@ -62,10 +62,10 @@ module scheduler
 	[receiveA] phase=1 & party=2 & n=N-1 -> (party'=1) & (phase'=2) & (n'=0); // B has sent his final message - move to next phase
 	// SECOND AND THIRD PHASES
 	// when A sends
-	[receiveB] phase=2..3 & party=1 & n=0 & N>1 -> (party'=2); // A sends bth bit of secret 0 or N
-	[receiveA] phase=2..3 & party=2 & n=0 ->(party'=1) & (n'=1); // B sends 0..N-1 or N..2N-1
+	[receiveB] phase>=2 & phase<=3 & party=1 & n=0 & N>1 -> (party'=2); // A sends bth bit of secret 0 or N
+	[receiveA] phase>=2 & phase<=3 & party=2 & n=0 ->(party'=1) & (n'=1); // B sends 0..N-1 or N..2N-1
 	// when A sends
-	[receiveB] phase=2..3 & party=1 & (n=1 | N=1) & b<L -> (party'=1) & (n'=0) & (b'=b+1); // A sends 1..N-1 or N+1..2N-1 (next bit)
+	[receiveB] phase>=2 & phase<=3 & party=1 & (n=1 | N=1) & b<L -> (party'=1) & (n'=0) & (b'=b+1); // A sends 1..N-1 or N+1..2N-1 (next bit)
 	[receiveB] phase=2 & party=1 & (n=1 | N=1) & b=L -> (phase'=3) & (party'=1) & (n'=0) & (b'=1); // A sends 1..N-1 or N+1..2N-1 (finished bits for 0..N-1)
 	[receiveB] phase=3 & party=1 & (n=1 | N=1) & b=L -> (phase'=4); // A sends 1..N-1 or N+1..2N-1 (finished all bits)
 	

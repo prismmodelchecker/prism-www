@@ -69,12 +69,12 @@ module scheduler
 	// SECOND AND THIRD PHASES (interleaved for A and B):
 	
 	// in this case it alternates between A and B
-	[receiveB] phase=2..3 & party=1 -> (party'=2); // A transmits bth bit for message i then B does
-	[receiveA] phase=2..3 & party=2 & n<N-1 -> (n'=n+1) & (party'=1); // after B does we move onto the next secret
-	[receiveA] phase=2..3 & party=2 & n=N-1 & b<L -> (party'=1) & (n'=0) & (b'=b+1); // finished for this lot of bits
-	[receiveB] phase=2..3 & party=1 -> (party'=2); // A transmits bth bit for message i then B does
-	[receiveA] phase=2..3 & party=2 & n<N-1 -> (n'=n+1) & (party'=1); // after B does we move onto the next secret
-	[receiveA] phase=2..3 & party=2 & n=N-1 & b<L -> (party'=1) & (n'=0) & (b'=b+1); // finished for this lot of bits
+	[receiveB] phase>=2 & phase<=3 & party=1 -> (party'=2); // A transmits bth bit for message i then B does
+	[receiveA] phase>=2 & phase<=3 & party=2 & n<N-1 -> (n'=n+1) & (party'=1); // after B does we move onto the next secret
+	[receiveA] phase>=2 & phase<=3 & party=2 & n=N-1 & b<L -> (party'=1) & (n'=0) & (b'=b+1); // finished for this lot of bits
+	[receiveB] phase>=2 & phase<=3 & party=1 -> (party'=2); // A transmits bth bit for message i then B does
+	[receiveA] phase>=2 & phase<=3 & party=2 & n<N-1 -> (n'=n+1) & (party'=1); // after B does we move onto the next secret
+	[receiveA] phase>=2 & phase<=3 & party=2 & n=N-1 & b<L -> (party'=1) & (n'=0) & (b'=b+1); // finished for this lot of bits
 	[receiveA] phase=2    & party=2 & n=N-1 & b=L -> (phase'=3) & (party'=1) & (n'=0) & (b'=1); // finished for party B move to next phase
 	[receiveA] phase=3    & party=2 & n=N-1 & b=L -> (phase'=4); // finished protocol (reveal values)
 	

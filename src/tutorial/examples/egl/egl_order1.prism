@@ -10,7 +10,7 @@
 
 //-----------------------------------------------------------------------------------------
 
-probabilistic // model is a DTMC (no non-determinism)
+dtmc
 
 
 // CONSTANTS
@@ -78,7 +78,7 @@ module scheduler
 	// FINISHED
 	[] phase=4 -> (phase'=4); // loop
 	
-endmodul
+endmodule
 
 //-----------------------------------------------------------------------------------------
 // party A

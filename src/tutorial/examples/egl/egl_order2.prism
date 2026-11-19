@@ -10,7 +10,7 @@
 
 //-----------------------------------------------------------------------------------------
 
-probabilistic // model is a DTMC (no non-determinism)
+dtmc
 
 
 // CONSTANTS

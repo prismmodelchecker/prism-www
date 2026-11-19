@@ -10,7 +10,7 @@
 
 //-----------------------------------------------------------------------------------------
 
-probabilistic // model is a DTMC (no non-determinism)
+dtmc
 
 
 // CONSTANTS
@@ -61,13 +61,13 @@ module scheduler
 	[receiveA] phase=1 & party=2 & n=N-1 -> (party'=1) & (phase'=2) & (n'=0); // B has sent his final message - move to next phase
 	// SECOND AND THIRD PHASES
 	// when A sends
-	[receiveB] phase=2..3 & party=1 & func(mod,n,2)=0 & n<N-1 -> (party'=2); // A transmits odd bit of secrets 1..N or N=1..2N
-	[receiveB] phase=2..3 & party=1 & func(mod,n,2)=1 & n<N-1 -> (n'=n+1); // A transmits even bit of secrets 1..N or N=1..2N
-	[receiveA] phase=2..3 & party=2 & func(mod,n,2)=0 & n<N-1 -> (n'=n+1); // A transmits bth bit of secrets 1..N or N=1..2N
-	[receiveA] phase=2..3 & party=2 & func(mod,n,2)=1 & n<N-1 -> (party'=1); // finished for party A now move to party B
+	[receiveB] phase>=2 & phase<=3 & party=1 & func(mod,n,2)=0 & n<N-1 -> (party'=2); // A transmits odd bit of secrets 1..N or N=1..2N
+	[receiveB] phase>=2 & phase<=3 & party=1 & func(mod,n,2)=1 & n<N-1 -> (n'=n+1); // A transmits even bit of secrets 1..N or N=1..2N
+	[receiveA] phase>=2 & phase<=3 & party=2 & func(mod,n,2)=0 & n<N-1 -> (n'=n+1); // A transmits bth bit of secrets 1..N or N=1..2N
+	[receiveA] phase>=2 & phase<=3 & party=2 & func(mod,n,2)=1 & n<N-1 -> (party'=1); // finished for party A now move to party B
 	// when A sends
-	[receiveB] phase=2..3 & party=1 & n=N-1 & b<L -> (party'=1) & (n'=0) & (b'=b+1); // finished move to next bit
-	[receiveA] phase=2..3 & party=2 & n=N-1 & b<L -> (party'=1) & (n'=0) & (b'=b+1); // finished move to next bit
+	[receiveB] phase>=2 & phase<=3 & party=1 & n=N-1 & b<L -> (party'=1) & (n'=0) & (b'=b+1); // finished move to next bit
+	[receiveA] phase>=2 & phase<=3 & party=2 & n=N-1 & b<L -> (party'=1) & (n'=0) & (b'=b+1); // finished move to next bit
 
 	[receiveB] phase=2 & party=1 & n=N-1 & b=L -> (phase'=3) & (party'=1) & (n'=0) & (b'=1); // finished move to next phase
 	[receiveA] phase=2 & party=2 & n=N-1 & b=L -> (phase'=3) & (party'=1) & (n'=0) & (b'=1); // finished move to next phase
