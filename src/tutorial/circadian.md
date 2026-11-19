@@ -31,7 +31,7 @@ The following summarises the reactions that occur in the system:
 
 A PRISM model of this system is shown below. This is a continuous-time Markov chain (CTMC), which represents a *discrete stochastic* model of the system. For further reading on this topic, see for example section 2 (and in particular section 2.2) of {% cite "KNP+06" %}.
 
-{% prismCode "tutorial/examples/circadian/circadian.sm", false, true %}
+{% prismCode "tutorial/examples/circadian/circadian.prism", false, true %}
 
 The PRISM module comprises 7 modules. Each one represents the current quantity of one of the 7 species of the system, as listed above. For example, module `activator_protein` has a single variable `a`, representing the number of activator proteins. The range of values for this variable is \[`0..N`\]. If you look at the top of the file, you will see that `N`, which is used as the upper bound for most species, has been set to `1000000`. This is because, although there are potentially an unbounded number of these species, PRISM requires models to be finite state. Due to the size of this model we will only use the simulator engine during our analysis.
 
@@ -39,7 +39,7 @@ Look at the module `activator_gene`. It has a 0-1 variable `da`, representing th
 
 The modules representing genes and mRNA for the repressor are identical in structure to those for the activator and so are created with [module renaming](/manual/ThePRISMLanguage/CompositionAndSynchronisation/#module-renaming). The initial state of the model is given by the initial state of each variable. For `da` (and thus also `dr`), this is 1. For all other variables, the initial value is taken by default to be the lowest value in its range. Thus, in the initial configuration of our model, there is just a single activator gene and a single repressor gene.
 
-{% task %} Download the model file **circadian.sm** from above and load it into PRISM.
+{% task %} Download the model file **circadian.prism** from above and load it into PRISM.
 
 {% task %} Create a new path in the simulator and look at the values of the variables in the initial state. These should correspond to the description above.
 

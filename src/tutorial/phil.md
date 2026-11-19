@@ -29,7 +29,7 @@ We now consider Lehmann and Rabin's randomised solution to this problem {% cite 
 
 The PRISM model in the case of three philosophers is given below.
 
-{% prismCode "tutorial/examples/phil/lr3.nm", false, true %}
+{% prismCode "tutorial/examples/phil/lr3.prism", false, true %}
 
 This model is a Markov decision process (MDP), as denoted by the keyword at the start of the file. We have three modules, representing the three philosophers.
 
@@ -46,7 +46,7 @@ The basics steps of the algorithm for each philosopher are:
 5.  eat (since in possession of both forks);
 6.  when finished eating, put both forks down in any order and return to thinking.
 
-{% task %} Download the model file **lr3.nm** from above and load it into PRISM.
+{% task %} Download the model file **lr3.prism** from above and load it into PRISM.
 
 {% task %} Before starting you should modify one of the settings in PRISM: launch the "Options" dialog from the main menu and set the "engine" to be "MTBDD" (this might already be the case if you saved your setting in a previous practical). This is because not all the model checking algorithms used in the practical are currently supported by the other engines.
 
@@ -62,7 +62,7 @@ We will now use PRISM to analyse the above model.
 
 {% task %} Load the following properties file into PRISM:
 
-{% prismCode "tutorial/examples/phil/lr3.pctl", false, true %}
+{% prismCode "tutorial/examples/phil/lr3.props", false, true %}
 
 {% task %} Verify the loaded properties to check that the model is deadlock-free, but is *not* resource starvation-free. Also verify your models for four and five philosophers against these specifications.
 
@@ -112,7 +112,7 @@ var left-last,right-last : {Left,Neutral,Right};
 
 We will now extend our PRISM code to specify Lehmann and Rabin's courteous dining philosophers.
 
-{% task %} First, save a new copy of the model `lr3.nm` as `clr3.nm.`
+{% task %} First, save a new copy of the model `lr3.prism` as `clr3.prism`.
 
 Next, we will add a number of constants, variables and formulas that will be needed in the specification.
 

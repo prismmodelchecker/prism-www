@@ -16,7 +16,7 @@ The idea of the algorithm is as follows. Starting from step 0 (i.e., the circle 
 
 The PRISM code to model this algorithm is shown below.
 
-{% prismCode "tutorial/examples/die/die.pm", false, true %}
+{% prismCode "tutorial/examples/die/die.prism", false, true %}
 
 The first line indicates that this model is a discrete-time Markov chain (DTMC). The remaining lines describe a single PRISM module, which we use to model the behaviour of the algorithm. We use two variables to represent the state of the system: `s`, denoting which step of the algorithm is currently being executed (i.e., which circle in the diagram above), and `d`, denoting the value of the die (0 means no value has been chosen yet).
 
@@ -24,7 +24,7 @@ The first line indicates that this model is a discrete-time Markov chain (DTMC).
 
 ## Exploring the model in PRISM
 
-{% task %} Download the model file [examples/die/die.pm] for this example from the link above. Launch the [PRISM GUI](/manual/GettingStarted/FirstSteps/#starting-prism) (click the shortcut on Windows or run `bin/xprism` elsewhere) and load this file using the "Model | Open model" menu option. You should see a green tick in the top left corner indicating that the model was loaded successfully.
+{% task %} Download the model file **die.prism** for this example from the link above. Launch the [PRISM GUI](/manual/GettingStarted/FirstSteps/#starting-prism) (click the shortcut on Windows or run `bin/xprism` elsewhere) and load this file using the "Model | Open model" menu option. You should see a green tick in the top left corner indicating that the model was loaded successfully.
 
 {% task %} Click on the "Simulator" tab at the bottom of the GUI. You can now use the [simulator](/manual/RunningPRISM/DebuggingModelsWithTheSimulator/) to explore the model. Create a new path by double-clicking on the main part of the window (or right-clicking and selecting "New path"). Then, use the "Simulate" button repeatedly to generate a sample execution of the algorithm. Look at the trace displayed in the main part of the window. What is the final value of `s`? It should be 7. What is the value of the die?
 
@@ -36,9 +36,9 @@ The first line indicates that this model is a discrete-time Markov chain (DTMC).
 
 We will now use PRISM to perform some analysis of the model.
 
-{% task %} Download the properties file **die.pctl** below and then load it into PRISM using the "Properties | Open properties list" menu option.
+{% task %} Download the properties file **die.props** below and then load it into PRISM using the "Properties | Open properties list" menu option.
 
-{% prismCode "tutorial/examples/die/die.pctl", false, true %}
+{% prismCode "tutorial/examples/die/die.props", false, true %}
 
 The file comprises a constant `x`, whose value we leave undefined, and one property. The property is of the form `P`\=? \[ `F` `phi` \] which, intuitively, means "what is the probability, from the initial state of the model, of reaching a state where `phi` is true?"
 

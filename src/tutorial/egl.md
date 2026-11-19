@@ -8,7 +8,7 @@ permalink: /tutorial/egl/
 
 Now for a more involved PRISM case study: a model of the EGL contract signing protocol of Even, Goldreich & Lempel. The PRISM code is shown below.
 
-{% prismCode "tutorial/examples/egl/egl.pm", false, true %}
+{% prismCode "tutorial/examples/egl/egl.prism", false, true %}
 
 {% task %} The first step is to understand how the algorithm works (look at these [slides](/tutorial/contract-signing.pdf)) and then work out how the algorithm is represented by the PRISM model shown above. The following notes should help.
 
@@ -20,7 +20,7 @@ The scheduler module controls the behaviour of each party by synchronising with 
 
 The module for party *A* keeps track of the number of bits of each secret of *B*'s that *A* has received from *B* (and vice versa for the module representing party *B*). The code above can be used for the case with `N=10` pairs of secrets. In fact, it can also be used for any value of `N` less than 10. In these cases, we only actually use the variables `b1_i` and `b2_i` for `i`<`N`.
 
-{% task %} Download the model **egl.pm** from above and load it into PRISM. Check for the green tick indicating that model has loaded and parsed correctly.
+{% task %} Download the model **egl.prism** from above and load it into PRISM. Check for the green tick indicating that model has loaded and parsed correctly.
 
 {% task %} Using a fairly small value of `N` (say 4), generate a random path through the model using the simulator. You should find that the path stops after about 40 steps (when the contract signing algorithm ends). Look at the values of the first 4 variables in the table representing the path. Check that this matches your understanding of how the algorithm works.
 
@@ -28,7 +28,7 @@ The module for party *A* keeps track of the number of bits of each secret of *B*
 
 {% task %} Load the following properties file into PRISM:
 
-{% prismCode "tutorial/examples/egl/egl.pctl", false, true %}
+{% prismCode "tutorial/examples/egl/egl.props", false, true %}
 
 {% task %} Study the properties file above. There are two labels, used to identify certain important states of the model, and then two properties. The first property gives the probability, from the initial state of the model, of reaching a state where *B* knows a pair of *A*'s secrets and *A* does not know one of *B*'s. This is a measure of how likely the algorithm is to be unfair towards party *A*. The second property is the same, but with two parties reversed.
 
@@ -46,7 +46,7 @@ The interpretation is that, for any value of `N`, with probability 1, party *B* 
 
 We will now model an improved version of the algorithm. We only need to change the scheduler module and, more specifically, only the commands which control the second and third phases of the algorithm.
 
-{% task %} Save a new copy the model file as **egl2.pm** and then modify this new file, replacing this code in the original model:
+{% task %} Save a new copy the model file as **egl2.prism** and then modify this new file, replacing this code in the original model:
 
 ```prism
 	// SECOND AND THIRD PHASES (interleaved for A and B):
@@ -97,7 +97,7 @@ with this code:
 	[receiveA] phase=3 & party=2 & n=N-1 & b=L -> (phase'=4);
 ```
 
-{% task %} Now reload the property file **egl.pctl** used before and plot the results for the first property for the same range of `N` (1..10) on the same graph. Do the same for the second property. You should get something like this:
+{% task %} Now reload the property file **egl.props** used before and plot the results for the first property for the same range of `N` (1..10) on the same graph. Do the same for the second property. You should get something like this:
 
 ![Probability that a party is disadvantaged](/tutorial/images/tutorial.egl-graph2.png)
 
@@ -107,7 +107,7 @@ We see that, for small values of `N`, the improved algorithm (EGL2) is better, i
 
 ## Two more versions: EGL3 and EGL4
 
-{% task %} Look at the other 2 versions of the algorithm, EGL3 and EGL4, as described in the [slides](/tutorial/contract-signing.pdf) mentioned above. Create two new model files, **egl3.pm** and **egl4.pm** which model these versions in PRISM. As for modelling EGL2 above, you only need to change one part of the file, corresponding to phases 2 and 3 of the scheduler module. Some tips:
+{% task %} Look at the other 2 versions of the algorithm, EGL3 and EGL4, as described in the [slides](/tutorial/contract-signing.pdf) mentioned above. Create two new model files, **egl3.prism** and **egl4.prism** which model these versions in PRISM. As for modelling EGL2 above, you only need to change one part of the file, corresponding to phases 2 and 3 of the scheduler module. Some tips:
 
 -   A red cross at the top-left of the model editor indicates a parse error - probably a mistake in the syntax. Position the mouse over the cross to see the error. Alternatively, select menu option "Model | Parse model".
 -   If you want, you can edit the PRISM model in a different text editor. Use menu option "Model | Reload model" (Ctrl-R) to reload it.

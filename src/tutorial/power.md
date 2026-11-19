@@ -12,7 +12,7 @@ The DPM system comprises three components: the *Service Queue (SQ)* into which r
 
 Our initial PRISM model is the following:
 
-{% prismCode "tutorial/examples/power/power.sm", false, true %}
+{% prismCode "tutorial/examples/power/power.prism", false, true %}
 
 This model is a continuous-time Markov chain (CTMC), as denoted by the keyword at the start of the file. Presently, we just have two modules, representing the Service Queue (SQ) and Service Provider (SP). There are a couple of important things to note.
 
@@ -22,7 +22,7 @@ Secondly, notice that all the commands are labelled with actions (in square brac
 
 {% task %} Read the section on [synchronisation](/manual/ThePRISMLanguage/CompositionAndSynchronisation/#synchronisation) in the manual. Then, have a look at the definition of the `SQ` and `SP` modules, and try to understand what they describe.
 
-{% task %} Download the model file **power.sm** from above and load it into PRISM.
+{% task %} Download the model file **power.prism** from above and load it into PRISM.
 
 {% task %} Use the PRISM simulator to generate some random paths through the model. Notice how, for a CTMC model like this, the elapsed time as the path progresses is displayed in the table. You will probably find that the size of the queue (`q`) never gets above 1. Why is this? Generate a path by hand where the queue reaches its maximum size (currently `q_max=20`). What happens when more requests arrive while the queue is full?
 
@@ -32,7 +32,7 @@ Secondly, notice that all the commands are labelled with actions (in square brac
 
 We now extend our PRISM model by adding a Power Manager (PM) component. The PM functions by observing the state of the system (i.e. the SQ and the SP) and, based on this, instructs the SP when to change between the *sleep* power state and the *idle* and *busy* states. In PRISM, we will model this via synchronisation between the existing `SP` module and a new module called `PM`. We will use the actions `idle2sleep` and `sleep2idle` which tell the SP to move between its *sleep* and *idle* power states. Here is the PRISM code for the model extended with the `PM` module.
 
-{% prismCode "tutorial/examples/power/power_policy1.sm", false, true %}
+{% prismCode "tutorial/examples/power/power_policy1.prism", false, true %}
 
 The PM needs a *policy* in order to operate: a set of rules which dictate what power management instructions to send and when. This simple policy is to switch out of *sleep* mode when the request queue exceeds a certain size (denoted by the constant `q_trigger`) and to switch back to *sleep* mode when the queue is empty.
 

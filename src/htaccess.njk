@@ -74,6 +74,12 @@ RewriteRule ^manual/{{ from | regexPath | safe }}/?$ {{ to }} [R=301,NE,L]
 {%- endfor %}
 RewriteRule ^manual/uploads/(.*)$ /manual/files/$1 [R=301,L]
 
+# Tutorial example files, renamed to .prism and .props (and their "printable version" pages -> the file viewer)
+RewriteRule ^(tutorial/examples/.+)\.(pm|nm|sm)(\.frag)?\.(php|html)$ /view/?f=/$1.prism [R=301,L]
+RewriteRule ^(tutorial/examples/.+)\.(pctl|csl)(\.frag)?\.(php|html)$ /view/?f=/$1.props [R=301,L]
+RewriteRule ^(tutorial/examples/.+)\.(pm|nm|sm)$ /$1.prism [R=301,L]
+RewriteRule ^(tutorial/examples/.+)\.(pctl|csl)$ /$1.props [R=301,L]
+
 # "Printable version" pages of model and properties files (x.nm.php, x.nm.frag.php, x.nm.html)
 # -> the file viewer; of other example files -> the files themselves
 RewriteRule ^(.+\.(prism|nm|pm|sm|props|pctl|csl|smg|pp))(\.frag)?\.(php|html)$ /view/?f=/$1 [R=301,L]

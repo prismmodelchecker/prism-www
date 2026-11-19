@@ -10,13 +10,13 @@ This example concerns a self-stabilisation algorithm due to Herman. A self-stabi
 
 Here is a PRISM model of Herman's algorithm for 7 processes:
 
-{% prismCode "tutorial/examples/herman/herman7.pm", false, true %}
+{% prismCode "tutorial/examples/herman/herman7.prism", false, true %}
 
 The processes are arranged in a ring and are identical. Notice how we use PRISM's [module renaming](/manual/ThePRISMLanguage/CompositionAndSynchronisation/#module-renaming) facility to avoid duplicating the module definition for each process.
 
 {% task %} Have a look at the code and work out what a process does at each step of the protocol. Notice the `step` action in the square brackets at the start of every command. This is used to force all 7 processes to synchronise (move simultaneously at each step). You can read more about synchronisation in the [manual](/manual/ThePRISMLanguage/CompositionAndSynchronisation/#synchronisation).
 
-{% task %} Download the model file **herman7.pm** from above and load it into PRISM.
+{% task %} Download the model file **herman7.prism** from above and load it into PRISM.
 
 The state of each process is given by a single two-valued (0/1) variable. Initially, this value is 1 for all processes (note how this is done in the variable definition in the model file).
 
@@ -26,7 +26,7 @@ The state of each process is given by a single two-valued (0/1) variable. Initia
 
 {% task %} Download the property file below and load it into PRISM:
 
-{% prismCode "tutorial/examples/herman/herman7.pctl", false, true %}
+{% prismCode "tutorial/examples/herman/herman7.props", false, true %}
 
 For this self-stabilisation algorithm, a stable state is defined as one in which only a single process has a token. A process is said to possess a token if its variable is the same as the process to its left.
 
@@ -34,7 +34,7 @@ For this self-stabilisation algorithm, a stable state is defined as one in which
 
 {% task %} Use the PRISM simulator to generate some random paths through the model. Click on the "`stable`" label in the top-right part of the simulator to help you identify which states of these paths are stable. Note that in this model of the algorithm, we do not actually terminate when a stable state has been reached. Is a stable state always reached eventually? On average, how long does it take to reach a stable state?
 
-{% task %} We would like to know whether, from the initial state, a stable state is eventually reached with probability 1. Check this by verifying the property included in the **herman7.pctl** file that you loaded into PRISM. If you used a non-probabilistic model checker to verify whether "from the initial state, a stable state is **always** eventually reached", what would the result be?
+{% task %} We would like to know whether, from the initial state, a stable state is eventually reached with probability 1. Check this by verifying the property included in the **herman7.props** file that you loaded into PRISM. If you used a non-probabilistic model checker to verify whether "from the initial state, a stable state is **always** eventually reached", what would the result be?
 
 {% task %} Read about the [P Operator](/manual/PropertySpecification/ThePOperator/) in the PRISM manual. Modify the existing property (double-click or right-click and "Edit") to see if "the probability of a stable state being reached within 10 steps is (greater than or equal to) 1". Is it greater than 0.5? What is the actual probability? (Refer back to [this part](/tutorial/die/) of the tutorial or check the [manual](/manual/PropertySpecification/ThePOperator/).)
 
@@ -58,7 +58,7 @@ Any possible configuration of the process is now considered as an initial state 
 
 {% task %} Download the following modified properties file and load it into PRISM:
 
-{% prismCode "tutorial/examples/herman/herman7new.pctl", false, true %}
+{% prismCode "tutorial/examples/herman/herman7new.props", false, true %}
 
 This property allows us to compute "the maximum expected time to reach a stable state, starting from any initial configuration in which there are k tokens". (This is done using a [filter](/manual/PropertySpecification/Filters/).)
 
