@@ -24,9 +24,9 @@ The first line indicates that this model is a discrete-time Markov chain (DTMC).
 
 ## Exploring the model in PRISM
 
-{% task %} Download the model file [die.prism](/tutorial/examples/die/die.prism) for this example. Launch the [PRISM GUI](/manual/GettingStarted/FirstSteps/#starting-prism) (click the shortcut on Windows or run `bin/xprism` elsewhere) and load this file using the "Model | Open model" menu option. You should see a green tick in the top left corner indicating that the model was loaded successfully.
+{% task %} Download the model file [die.prism](/tutorial/examples/die/die.prism) for this example. Launch the [PRISM GUI](/manual/RunningPRISM/) (click the shortcut on Windows or run `bin/xprism` elsewhere) and load this file using the "Model | Open model" menu option. You should see a green tick in the top left corner indicating that the model was loaded successfully.
 
-{% task %} Click on the "Simulator" tab at the bottom of the GUI. You can now use the [simulator](/manual/RunningPRISM/DebuggingModelsWithTheSimulator/) to explore the model. Create a new path by double-clicking on the main part of the window (or right-clicking and selecting "New path"). Then, use the "Simulate" button repeatedly to generate a sample execution of the algorithm. Look at the trace displayed in the main part of the window. What is the final value of `s`? It should be 7. What is the value of the die?
+{% task %} Click on the "Simulator" tab at the bottom of the GUI. You can now use the [simulator](/manual/RunningPRISM/Simulation/#gui) to explore the model. Create a new path by double-clicking on the main part of the window (or right-clicking and selecting "New path"). Then, use the "Simulate" button repeatedly to generate a sample execution of the algorithm. Look at the trace displayed in the main part of the window. What is the final value of `s`? It should be 7. What is the value of the die?
 
 {% task %} Right-click and select "Reset path". Then, step through a trace of the algorithm manually by double-clicking the available transitions from the "Manual exploration" box. Try to reach a state where the value of the die is 6.
 
@@ -46,7 +46,7 @@ The file comprises a constant `x`, whose value we leave undefined, and one prope
 
 {% task %} Right click on the property in the GUI and select "Verify". Pick a value of `x` between 1 and 6 and select "OK". Is the answer as you expected? Click on the "Log" tab to see some additional information that PRISM has displayed regarding the calculations performed.
 
-PRISM uses iterative numerical solution techniques which converge towards the correct result. The numerical computation process is terminated when it is detected that the answers have converged sufficiently. Have a look at the [manual](/manual/ConfiguringPRISM/SolutionMethodsAndOptions/) for more information.
+By default, PRISM uses iterative numerical solution techniques which converge towards the correct result. The numerical computation process is terminated when it is detected that the answers have converged sufficiently. Have a look at the [manual](/manual/ConfiguringPRISM/SolutionMethodsAndOptions/#convergence) for more information.
 
 {% task %} Open the PRISM options panel from the menu. Find the "Termination epsilon" parameter and change it from 1.0e-6 to 1.0e-10. Re-verify the property and see how the answer changes. Check the log again and see many more iterations were required.
 
@@ -56,7 +56,7 @@ PRISM uses iterative numerical solution techniques which converge towards the co
 
 ## Statistical model checking with PRISM
 
-PRISM also has a discrete-event simulation engine which can be used to generate [approximate](/manual/RunningPRISM/StatisticalModelChecking/) verification results (this is often called *statistical model checking*). This engine is also what underlies the simulator that you used earlier to explore the model manually.
+PRISM also has a discrete-event simulation engine which can be used to generate [approximate](/manual/RunningPRISM/StatisticalModelChecking/) verification results (this is often called *statistical model checking*). This is also what underlies the simulator that you used earlier to explore the model manually.
 
 {% task %} Re-run your experiment using the simulator by ticking the "Use Simulation" option in the experiment dialog. On the "New Graph Series" dialog, choose to display the results on your existing graph. In the next dialog, which shows parameters for the simulation process, you will see that the default number of samples is set to 1000. Change the number of samples to 10 (if the field is not editable, select a different option from the "Automatically calculate" drop-down menu). How are good are these approximate results?
 

@@ -20,7 +20,7 @@ Firstly, since this is a CTMC, updates in guarded commands are labelled with rat
 
 Secondly, notice that all the commands are labelled with actions (in square brackets at the start of the line).
 
-{% task %} Read the section on [synchronisation](/manual/ThePRISMLanguage/CompositionAndSynchronisation/#synchronisation) in the manual. Then, have a look at the definition of the `SQ` and `SP` modules, and try to understand what they describe.
+{% task %} Read the sections on [synchronisation](/manual/ThePRISMLanguage/CompositionAndSynchronisation/#synchronisation) and [composing modules in CTMCs](/manual/ThePRISMLanguage/CompositionAndSynchronisation/#composing-modules-in-ctmcs) in the manual. Then, have a look at the definition of the `SQ` and `SP` modules, and try to understand what they describe.
 
 {% task %} Download the model file [power.prism](/tutorial/examples/power/power.prism) and load it into PRISM.
 
@@ -73,7 +73,7 @@ Another possible measure of the performance of the system is how many requests g
 
 {% task %} Add a second [reward structure](/manual/ThePRISMLanguage/CostsAndRewards/) to the model called "lost", which assigns 1 to every transition of the model labelled with action `request` from a state where the queue is full.
 
-{% task %} Now create a new property to check the expected *cumulated* reward up until time `T`. Don't forget to specify which reward structure you want in the property. (You might want to look at [this section](/manual/PropertySpecification/Reward-basedProperties/) of the manual.) How does this measure vary for different values of `q_trigger`?
+{% task %} Now create a new property to check the expected *cumulated* reward up until time `T`. Don't forget to specify which reward structure you want in the property. (You might want to look at [this section](/manual/PropertySpecification/Reward-basedProperties/#which-reward-structure) of the manual.) How does this measure vary for different values of `q_trigger`?
 
 Of course, the performance of the system is actually a trade-off between several factors. In particular, we are interested not just in how promptly requests are dealt with (one measure of which is the expected queue size), but also the power consumption of the system. The power consumption of the system is defined as follows. Energy is used at rate 0.13, 0.95 or 2.15 for SP power states "sleep","idle" and "busy", respectively. In addition, transitions between power states have a fixed energy cost: going from "sleep" to "idle" uses 7.0 units and from "idle" to "sleep" uses 0.067 units.
 

@@ -90,7 +90,7 @@ We will now look at the number of transcriptions that occur over a given period 
 
 {% task %} Add a [reward structure](/manual/ThePRISMLanguage/CostsAndRewards/) to the model called "`repressor_transcriptions`", which assigns 1 to transitions which corresponds to a transcription of the repressor gene.
 
-{% task %} Now create a new property to check the expected *cumulated* reward up until time `T`. Don't forget to specify which reward structure you want in the property. (You might want to look at [this section](/manual/PropertySpecification/Reward-basedProperties/) of the manual.) How does this measure vary for different values of `k`?
+{% task %} Now create a new property to check the expected *cumulated* reward up until time `T`. Don't forget to specify which reward structure you want in the property. (You might want to look at [this section](/manual/PropertySpecification/Reward-basedProperties/#which-reward-structure) of the manual.) How does this measure vary for different values of `k`?
 
 Finally, we will look at a more general model where initially there is more than one activator gene and more than one repressor gene.
 
