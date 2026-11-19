@@ -1,6 +1,6 @@
-Pmaxmin=? [ (!crashed) U ("goal") ]
+Pmaxmin=? [ (!crashed) U ("goal") ];
 
-Pmaxmax=? [ F "goal" ]
+Pmaxmax=? [ F "goal" ];
 
-Pminmin=? [ (!crashed) U ("goal") ]
+Pminmin=? [ (!crashed) U ("goal") ];
 

@@ -2,4 +2,4 @@
 label "stable" = num_tokens=1;
 
 // from the initial state, a stable state is reached with probability 1
-P>=1 [ F "stable" ]
+P>=1 [ F "stable" ];

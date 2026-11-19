@@ -1,5 +1,5 @@
 const int x;
 
-P=? [ F s=7 & d=x ]
+P=? [ F s=7 & d=x ];
 
-R=? [ F s=7 ]
+R=? [ F s=7 ];

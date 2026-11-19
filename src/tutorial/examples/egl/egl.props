@@ -26,8 +26,8 @@ label "knowA" = ( (b1_0=L & b2_0=L)
 
 // What is the probability (from the initial state)
 // of reaching a state where B knows a pair and A does not?
-P=?[ true U !"knowA" & "knowB" ]
+P=?[ true U !"knowA" & "knowB" ];
 
 // What is the probability (from the initial state)
 // of reaching a state where B knows a pair and A does not?
-P=?[ true U "knowA" & !"knowB" ]
+P=?[ true U "knowA" & !"knowB" ];
