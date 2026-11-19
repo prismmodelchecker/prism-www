@@ -29,6 +29,11 @@ RewriteRule ^robots\.txt$ /robots-test.txt [L]
 RewriteCond %{REQUEST_METHOD} ^(TRACE|TRACK)
 RewriteRule .* - [F]
 
+# Old manual (PmWiki) actions, e.g. ?action=sourceblock&num=N: scrapers request these in floods, and each got
+# the whole page (e.g. /manual/all/, 570 KB). Now a short "410 Gone" instead.
+RewriteCond %{QUERY_STRING} (^|&)action= [NC]
+RewriteRule ^manual(/|$) - [G]
+
 # Old bibliography item pages: bibitem.php?key=K -> /bibitem/K/
 RewriteCond %{QUERY_STRING} (^|&)key=([A-Za-z0-9+_-]+)
 RewriteRule ^bibitem\.php$ /bibitem/%2/? [R=301,L]
