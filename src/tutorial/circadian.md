@@ -39,7 +39,7 @@ Look at the module `activator_gene`. It has a 0-1 variable `da`, representing th
 
 The modules representing genes and mRNA for the repressor are identical in structure to those for the activator and so are created with [module renaming](/manual/ThePRISMLanguage/CompositionAndSynchronisation/#module-renaming). The initial state of the model is given by the initial state of each variable. For `da` (and thus also `dr`), this is 1. For all other variables, the initial value is taken by default to be the lowest value in its range. Thus, in the initial configuration of our model, there is just a single activator gene and a single repressor gene.
 
-{% task %} Download the model file **circadian.prism** from above and load it into PRISM.
+{% task %} Download the model file [circadian.prism](/tutorial/examples/circadian/circadian.prism) and load it into PRISM.
 
 {% task %} Create a new path in the simulator and look at the values of the variables in the initial state. These should correspond to the description above.
 

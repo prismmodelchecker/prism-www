@@ -46,7 +46,7 @@ The basics steps of the algorithm for each philosopher are:
 5.  eat (since in possession of both forks);
 6.  when finished eating, put both forks down in any order and return to thinking.
 
-{% task %} Download the model file **lr3.prism** from above and load it into PRISM.
+{% task %} Download the model file [lr3.prism](/tutorial/examples/phil/lr3.prism) and load it into PRISM.
 
 {% task %} Before starting you should modify one of the settings in PRISM: launch the "Options" dialog from the main menu and set the "engine" to be "MTBDD" (this might already be the case if you saved your setting in a previous practical). This is because not all the model checking algorithms used in the practical are currently supported by the other engines.
 

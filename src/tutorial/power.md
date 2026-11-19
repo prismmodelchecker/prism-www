@@ -22,7 +22,7 @@ Secondly, notice that all the commands are labelled with actions (in square brac
 
 {% task %} Read the section on [synchronisation](/manual/ThePRISMLanguage/CompositionAndSynchronisation/#synchronisation) in the manual. Then, have a look at the definition of the `SQ` and `SP` modules, and try to understand what they describe.
 
-{% task %} Download the model file **power.prism** from above and load it into PRISM.
+{% task %} Download the model file [power.prism](/tutorial/examples/power/power.prism) and load it into PRISM.
 
 {% task %} Use the PRISM simulator to generate some random paths through the model. Notice how, for a CTMC model like this, the elapsed time as the path progresses is displayed in the table. You will probably find that the size of the queue (`q`) never gets above 1. Why is this? Generate a path by hand where the queue reaches its maximum size (currently `q_max=20`). What happens when more requests arrive while the queue is full?
 

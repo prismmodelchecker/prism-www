@@ -20,7 +20,7 @@ The scheduler module controls the behaviour of each party by synchronising with 
 
 The module for party *A* keeps track of the number of bits of each secret of *B*'s that *A* has received from *B* (and vice versa for the module representing party *B*). The code above can be used for the case with `N=10` pairs of secrets. In fact, it can also be used for any value of `N` less than 10. In these cases, we only actually use the variables `b1_i` and `b2_i` for `i`<`N`.
 
-{% task %} Download the model **egl.prism** from above and load it into PRISM. Check for the green tick indicating that model has loaded and parsed correctly.
+{% task %} Download the model [egl.prism](/tutorial/examples/egl/egl.prism) and load it into PRISM. Check for the green tick indicating that model has loaded and parsed correctly.
 
 {% task %} Using a fairly small value of `N` (say 4), generate a random path through the model using the simulator. You should find that the path stops after about 40 steps (when the contract signing algorithm ends). Look at the values of the first 4 variables in the table representing the path. Check that this matches your understanding of how the algorithm works.
 

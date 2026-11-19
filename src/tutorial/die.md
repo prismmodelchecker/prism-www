@@ -24,7 +24,7 @@ The first line indicates that this model is a discrete-time Markov chain (DTMC).
 
 ## Exploring the model in PRISM
 
-{% task %} Download the model file **die.prism** for this example from the link above. Launch the [PRISM GUI](/manual/GettingStarted/FirstSteps/#starting-prism) (click the shortcut on Windows or run `bin/xprism` elsewhere) and load this file using the "Model | Open model" menu option. You should see a green tick in the top left corner indicating that the model was loaded successfully.
+{% task %} Download the model file [die.prism](/tutorial/examples/die/die.prism) for this example. Launch the [PRISM GUI](/manual/GettingStarted/FirstSteps/#starting-prism) (click the shortcut on Windows or run `bin/xprism` elsewhere) and load this file using the "Model | Open model" menu option. You should see a green tick in the top left corner indicating that the model was loaded successfully.
 
 {% task %} Click on the "Simulator" tab at the bottom of the GUI. You can now use the [simulator](/manual/RunningPRISM/DebuggingModelsWithTheSimulator/) to explore the model. Create a new path by double-clicking on the main part of the window (or right-clicking and selecting "New path"). Then, use the "Simulate" button repeatedly to generate a sample execution of the algorithm. Look at the trace displayed in the main part of the window. What is the final value of `s`? It should be 7. What is the value of the die?
 
@@ -36,7 +36,7 @@ The first line indicates that this model is a discrete-time Markov chain (DTMC).
 
 We will now use PRISM to perform some analysis of the model.
 
-{% task %} Download the properties file **die.props** below and then load it into PRISM using the "Properties | Open properties list" menu option.
+{% task %} Download the properties file [die.props](/tutorial/examples/die/die.props), shown below, and then load it into PRISM using the "Properties | Open properties list" menu option.
 
 {% prismCode "tutorial/examples/die/die.props", false, true %}
 

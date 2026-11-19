@@ -16,7 +16,7 @@ The processes are arranged in a ring and are identical. Notice how we use PRISM'
 
 {% task %} Have a look at the code and work out what a process does at each step of the protocol. Notice the `step` action in the square brackets at the start of every command. This is used to force all 7 processes to synchronise (move simultaneously at each step). You can read more about synchronisation in the [manual](/manual/ThePRISMLanguage/CompositionAndSynchronisation/#synchronisation).
 
-{% task %} Download the model file **herman7.prism** from above and load it into PRISM.
+{% task %} Download the model file [herman7.prism](/tutorial/examples/herman/herman7.prism) and load it into PRISM.
 
 The state of each process is given by a single two-valued (0/1) variable. Initially, this value is 1 for all processes (note how this is done in the variable definition in the model file).
 

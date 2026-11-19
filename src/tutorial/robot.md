@@ -24,7 +24,7 @@ The first line indicates that this model is a **Markov decision process** (MDP).
 
 ## Exploring the model in PRISM
 
-{% task %} Download the model file **robot.prism** for this example from the link above. Launch the [PRISM GUI](/manual/GettingStarted/FirstSteps/#starting-prism) (click the shortcut on Windows or run `bin/xprism` elsewhere) and load this file using the "Model | Open model" menu option. You should see a green tick in the top left corner indicating that the model was loaded and parsed successfully.
+{% task %} Download the model file [robot.prism](/tutorial/examples/robot/robot.prism) for this example. Launch the [PRISM GUI](/manual/GettingStarted/FirstSteps/#starting-prism) (click the shortcut on Windows or run `bin/xprism` elsewhere) and load this file using the "Model | Open model" menu option. You should see a green tick in the top left corner indicating that the model was loaded and parsed successfully.
 
 {% task %} Click on the "**Simulator**" tab at the bottom of the GUI. You can now use the [simulator](/manual/RunningPRISM/DebuggingModelsWithTheSimulator/) to explore the model. Create a new path by double-clicking on the main part of the window (or right-clicking and selecting "New path"). Then, use the "Simulate" button repeatedly to generate a sample execution of the algorithm. Look at the trace displayed in the main part of the window. What is the final value of `s`? Why is that?
 
@@ -36,7 +36,7 @@ The first line indicates that this model is a **Markov decision process** (MDP).
 
 We will now use PRISM to analyse the model and extract optimal policies that yield the highest probability of satisfying a user-defined goal. (Note that in PRISM policies are referred to as "strategies")
 
-{% task %} Download the properties file **robot.props** below and then load it into PRISM using the "Properties | Open properties list" menu option.
+{% task %} Download the properties file [robot.props](/tutorial/examples/robot/robot.props), shown below, and then load it into PRISM using the "Properties | Open properties list" menu option.
 
 {% prismCode "tutorial/examples/robot/robot.props", false, true %}
 
